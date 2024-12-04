@@ -30,10 +30,11 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<SettingsCubit, AppStates>(
         builder: (context, state) {
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             theme: SettingsCubit.instance.isDarkMode ? ThemeData.dark() : ThemeData.light(),
             locale: SettingsCubit.instance.locale,
             onGenerateRoute: generateRoute,
-            initialRoute: AppRoutes.login,
+            initialRoute: AppRoutes.loginDefault,
             supportedLocales: const [
               Locale('ar'),
               Locale('en'),

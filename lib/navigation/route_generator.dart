@@ -1,3 +1,4 @@
+import 'package:base/configurations/app_states.dart';
 import 'package:base/features/authentication/ui/blocs/login_bloc.dart';
 import 'package:base/features/product_details/ui/blocs/product_details_bloc.dart';
 import 'package:base/features/product_details/ui/screens/product_details_screen.dart';
@@ -34,10 +35,10 @@ Route generateRoute(settings) {
         ),
       );
 
-    case AppRoutes.login:
+    case AppRoutes.loginDefault:
       return _createRoute(
         BlocProvider(
-          create: (context) => LoginBloc(),
+          create: (context) => LoginBloc(InitialState as AppStates),//check this
           child: const LoginScreen(),
         ),
       );
