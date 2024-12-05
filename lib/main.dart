@@ -31,10 +31,12 @@ class MyApp extends StatelessWidget {
         builder: (context, state) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            theme: SettingsCubit.instance.isDarkMode ? ThemeData.dark() : ThemeData.light(),
+            theme: SettingsCubit.instance.isDarkMode
+                ? ThemeData.dark()
+                : ThemeData.light(),
             locale: SettingsCubit.instance.locale,
             onGenerateRoute: generateRoute,
-            initialRoute: AppRoutes.signupDefault,
+            initialRoute: AppRoutes.Splash,
             supportedLocales: const [
               Locale('ar'),
               Locale('en'),
