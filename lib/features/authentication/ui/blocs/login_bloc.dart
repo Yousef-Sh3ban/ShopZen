@@ -19,7 +19,9 @@ class LoginBloc extends Bloc<AppEvents, AppStates> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  LoginBloc(super.initialState);
+  LoginBloc() : super(InitialState()) {
+    on<LoginOnChangeEvent>(readyToLogin);
+  }
   // AuthenticationRepoInterface authenticationRepo = AuthenticationRepoImp();
 
   //==================================
@@ -52,16 +54,12 @@ class LoginBloc extends Bloc<AppEvents, AppStates> {
   //==================================
   //================================== Events
   //==================================
-  void loginEvent(ClickEvent event, Emitter emit) async {
-    // emit(LoadingState());
-    // try{
-    //   await _login(emailController.text, passwordController.text);
-    //   emit(SuccessState());
-    // } on FirebaseAuthException catch(e){
-    //   log(e.code.toString());
-    //   emit(ErrorState(e.code.toString()));
-    // } catch(e){
-    //   emit(ErrorState(e.toString()));
-    // }
+  void readyToLogin(LoginOnChangeEvent event, Emitter emit) {
+    if (event.name.length > 2 && event.password.length > 7) {
+      emit(ReadyToLoginState());
+    }
+     else {
+      emit(NotReadyToLoginState());
+    }
   }
 }

@@ -8,6 +8,8 @@ class LoadedState extends AppStates {
   LoadedState(this.data);
 }
 class EmptyState extends AppStates {}
+class ReadyToLoginState extends AppStates {}
+class NotReadyToLoginState extends AppStates {}
 class ErrorState extends AppStates {
   final String errorMessage;
   ErrorState(this.errorMessage);
