@@ -1,8 +1,6 @@
 import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/configurations/app_states.dart';
-import 'package:base/features/products_search/ui/blocs/products_categories_bloc.dart';
-import 'package:base/features/products_search/ui/blocs/products_search_bloc.dart';
-import 'package:base/features/products_search/ui/screens/products_search_screen.dart';
+
 import 'package:base/navigation/app_routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +34,7 @@ class MyApp extends StatelessWidget {
                 : ThemeData.light(),
             locale: SettingsCubit.instance.locale,
             onGenerateRoute: generateRoute,
-            initialRoute: AppRoutes.Splash,
+            initialRoute: AppRoutes.Home,
             supportedLocales: const [
               Locale('ar'),
               Locale('en'),

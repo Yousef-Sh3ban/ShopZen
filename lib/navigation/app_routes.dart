@@ -5,5 +5,5 @@ abstract class AppRoutes {
   static const String Login = '/login';
   static const String OnBoarding = "/OnBoarding";
   static const String LoginDefaultScreen = "/LoginDefaultScreen";
-  // Todo: Add more routes
+  static const String Home = "Home";
 }
