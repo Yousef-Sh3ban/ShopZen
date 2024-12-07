@@ -27,11 +27,11 @@ class MyApp extends StatelessWidget {
       create: (context) => SettingsCubit.instance,
       child: BlocBuilder<SettingsCubit, AppStates>(
         builder: (context, state) {
-          return MaterialApp(
+          return MaterialApp(theme: ThemeData(bottomNavigationBarTheme: BottomNavigationBarThemeData(backgroundColor:Colors.white )),
             debugShowCheckedModeBanner: false,
-            theme: SettingsCubit.instance.isDarkMode
-                ? ThemeData.dark()
-                : ThemeData.light(),
+            // theme: SettingsCubit.instance.isDarkMode
+            //     ? ThemeData.dark()
+            //     : ThemeData.light(),
             locale: SettingsCubit.instance.locale,
             onGenerateRoute: generateRoute,
             initialRoute: AppRoutes.Home,

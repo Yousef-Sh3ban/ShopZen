@@ -25,36 +25,40 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: BlocConsumer<HomeBloc, AppStates>(
-            listener: (context, state) {
-              if (state is ErrorState) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(state.errorMessage)),
-                );
-              }
-            },
-            builder: (context, state) {
-              if (state is LoadingState) {
-                return const Center(child: CircularProgressIndicator());
-              } else if (state is LoadedState) {
-                final List<ProductModel> products =
-                    state.data as List<ProductModel>;
-                log(products.toString());
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    LocationSearchBar(),
-                    const SizedBox(height: 16),
-                    CategoriesWidget(),
-                    const SizedBox(height: 16),
-                    HotDealsWidget(products: products),
-                    const SizedBox(height: 16),
-                  ],
-                );
-              } else {
-                return const Center(child: Text("No data available."));
-              }
-            },
+          child: Column(
+            children: [
+              LocationSearchBar(),
+              const SizedBox(height: 16),
+              CategoriesWidget(),
+              const SizedBox(height: 16),
+              BlocConsumer<HomeBloc, AppStates>(
+                listener: (context, state) {
+                  if (state is ErrorState) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text(state.errorMessage)),
+                    );
+                  }
+                },
+                builder: (context, state) {
+                  if (state is LoadingState) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (state is LoadedState) {
+                    final List<ProductModel> products =
+                        state.data as List<ProductModel>;
+                    log(products.toString());
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        HotDealsWidget(products: products),
+                        const SizedBox(height: 16),
+                      ],
+                    );
+                  } else {
+                    return const Center(child: Text("No data available."));
+                  }
+                },
+              ),
+            ],
           ),
         ),
       ),

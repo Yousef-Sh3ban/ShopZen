@@ -1,148 +1,20 @@
-// //
-// import 'package:flutter/material.dart';
-
-// class DealCard extends StatelessWidget {
-//   final String imageUrl;
-//   final String title;
-//   final double price;
-//   final double oldPrice;
-//   final double rating;
-//   final int reviewsCount;
-//   final bool isFavorite;
-
-//   const DealCard({
-//     required this.imageUrl,
-//     required this.title,
-//     required this.price,
-//     required this.oldPrice,
-//     required this.rating,
-//     required this.reviewsCount,
-//     required this.isFavorite,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       width: 180,
-//       margin: EdgeInsets.all(8),
-//       padding: EdgeInsets.all(8),
-//       decoration: BoxDecoration(
-//         color: Colors.white,
-//         borderRadius: BorderRadius.circular(16),
-//         //border: Border.all(color: Colors.purple, width: 1),
-//         boxShadow: [
-//           BoxShadow(
-//             color: Colors.grey.withOpacity(0.2),
-//             blurRadius: 10,
-//             offset: Offset(0, 5),
-//           ),
-//         ],
-//       ),
-//       child: SingleChildScrollView(
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             // الصورة وأيقونة المفضلة
-//             Stack(
-//               children: [
-//                 ClipRRect(
-//                   borderRadius: BorderRadius.circular(12),
-//                   child: Image.network(
-//                     imageUrl,
-//                     height: 120,
-//                     width: double.infinity,
-//                     fit: BoxFit.cover,
-//                   ),
-//                 ),
-//                 Positioned(
-//                   top: 8,
-//                   right: 8,
-//                   child: Container(
-//                     decoration: BoxDecoration(
-//                       shape: BoxShape.circle,
-//                       color: Colors.white,
-//                     ),
-//                     child: IconButton(
-//                       icon: Icon(Icons.favorite_border),
-//                       onPressed: () {},
-//                       iconSize: 20,
-//                       color: Colors.red,
-//                     ),
-//                   ),
-//                 ),
-//               ],
-//             ),
-//             SizedBox(height: 8),
-//             // اسم المنتج
-//             Text(
-//               title,
-//               style: TextStyle(
-//                 fontSize: 14,
-//                 fontWeight: FontWeight.bold,
-//                 color: Colors.black87,
-//               ),
-//               maxLines: 2,
-//               overflow: TextOverflow.ellipsis,
-//             ),
-//             SizedBox(height: 8),
-//             // السعر
-//             Row(
-//               children: [
-//                 Text(
-//                   "\$$price",
-//                   style: TextStyle(
-//                     fontSize: 16,
-//                     fontWeight: FontWeight.bold,
-//                     color: Colors.black87,
-//                   ),
-//                 ),
-//                 SizedBox(width: 8),
-//                 Text(
-//                   "\$$oldPrice",
-//                   style: TextStyle(
-//                     fontSize: 14,
-//                     color: Colors.grey,
-//                     decoration: TextDecoration.lineThrough,
-//                   ),
-//                 ),
-//               ],
-//             ),
-//             SizedBox(height: 8),
-//             // التقييم
-//             Row(
-//               children: [
-//                 Icon(Icons.star, color: Colors.amber, size: 16),
-//                 SizedBox(width: 4),
-//                 Text(
-//                   "$rating",
-//                   style: TextStyle(fontSize: 14, color: Colors.black87),
-//                 ),
-//                 SizedBox(width: 4),
-//                 Text(
-//                   "($reviewsCount)",
-//                   style: TextStyle(fontSize: 12, color: Colors.grey),
-//                 ),
-//               ],
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
+import 'package:base/configurations/app_events.dart';
+import 'package:base/features/home_screen/ui/blocs/home_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class DealCard extends StatelessWidget {
+class DealCard extends StatefulWidget {
   final String imageUrl;
   final String title;
   final double price;
   final double oldPrice;
   final double rating;
   final int reviewsCount;
-  final bool isFavorite;
+  bool isFavorite;
 
-  const DealCard({
+  DealCard({
+    super.key,
     required this.imageUrl,
     required this.title,
     required this.price,
@@ -153,93 +25,136 @@ class DealCard extends StatelessWidget {
   });
 
   @override
+  State<DealCard> createState() => _DealCardState();
+}
+
+class _DealCardState extends State<DealCard> {
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Stack(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.network(
-                imageUrl,
-                height: 160,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
-            ),
-            Positioned(
-              top: 7,
-              right: 7,
-              child: Container(
-                height: 24,
-                width: 24,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: Colors.white,
-                ),
-                child: IconButton(
-                  icon: Icon(
-                    isFavorite ? Icons.favorite : Icons.favorite_border,
-                  ),
-                  onPressed: () {},
-                  iconSize: 12,
-                  color: Colors.red,
-                ),
-              ),
-            ),
-          ],
-        ),
-        SizedBox(height: 8),
-        Text(
-          title,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
-            color: Colors.black87,
+    return Container(
+      width: 180,
+      margin: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.2),
+            blurRadius: 10,
+            offset: const Offset(0, 5),
           ),
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-        ),
-        SizedBox(height: 8),
-        Row(
-          children: [
-            Text(
-              "\$$price",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Stack(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.network(
+                  widget.imageUrl,
+                  height: 120,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-            SizedBox(width: 8),
-            Text(
-              "\$$oldPrice",
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey,
-                decoration: TextDecoration.lineThrough,
+              Positioned(
+                top: 8,
+                right: 8,
+                child: Container(
+                  height: 24,
+                  width: 24,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    shape: BoxShape.rectangle,
+                  ),
+                  child: MaterialButton(
+                    onPressed: () {
+                      setState(() {
+                        widget.isFavorite = !widget.isFavorite;
+                      });
+                    },
+                    color: Colors.white,
+                    child: Transform.translate(
+                      offset: const Offset(-12, 0),
+                      child: Icon(
+                          size: 15,
+                          widget.isFavorite
+                              ? Icons.favorite
+                              : Icons.favorite_border,
+                          color: widget.isFavorite
+                              ? Color(0xFFDE1135)
+                              : Color(0xFF323135)),
+                    ),
+                  ),
+                ),
               ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Text(
+            widget.title,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: Colors.black87,
             ),
-          ],
-        ),
-        SizedBox(height: 8),
-        Row(
-          children: [
-            Icon(Icons.star, color: Colors.amber, size: 16),
-            SizedBox(width: 4),
-            Text(
-              "$rating",
-              style: TextStyle(fontSize: 14, color: Colors.black87),
-            ),
-            SizedBox(width: 4),
-            Text(
-              "($reviewsCount)",
-              style: TextStyle(fontSize: 12, color: Colors.grey),
-            ),
-          ],
-        ),
-      ],
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+          const SizedBox(height: 8),
+          Row(
+            children: [
+              Text(
+                "\$${widget.price}",
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF323135),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Text(
+                "\$${widget.oldPrice}",
+                style: const TextStyle(
+                    fontSize: 14,
+                    color: Color(0xFF68656E),
+                    fontWeight: FontWeight.w400,
+                    decoration: TextDecoration.lineThrough,
+                    decorationColor: Color(0xFF68656E)),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Row(
+            children: [
+              SvgPicture.asset(
+                "assets/icons/star.svg",
+                height: 21.5,
+                width: 21.5,
+              ),
+              const SizedBox(width: 8),
+              Text(
+                "${widget.rating}",
+                style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    color: Color(0xFF68656E)),
+              ),
+              const SizedBox(width: 4),
+              Text(
+                "(${widget.reviewsCount})",
+                style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    color: Color(0xFF68656E)),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   const CustomBottomNavigationBar({this.ontap});
@@ -6,14 +7,22 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      showUnselectedLabels: true,        elevation: 0, // No shadow
+
+      backgroundColor: Colors.white,
       items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-        BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Saved"),
-        BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: "Cart"),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: "Account"),
+        BottomNavigationBarItem(
+            icon: SvgPicture.asset("assets/icons/home.svg"), label: "Home"),
+        BottomNavigationBarItem(
+            icon: SvgPicture.asset("assets/icons/heart.svg"), label: "Saved"),
+        BottomNavigationBarItem(
+            icon: SvgPicture.asset("assets/icons/cart.svg"), label: "Cart"),
+        BottomNavigationBarItem(
+            icon: SvgPicture.asset("assets/icons/profile.svg"),
+            label: "Account"),
       ],
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: Colors.grey,
+      selectedItemColor: const Color(0xFF452CE8),
+      unselectedItemColor: const Color(0xFF938F9C),
     );
   }
 }

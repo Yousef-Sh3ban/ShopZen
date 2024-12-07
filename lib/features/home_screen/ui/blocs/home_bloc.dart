@@ -4,13 +4,14 @@ import 'package:base/features/home_screen/data/repo/authentication_repo_imp.dart
 import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/features/home_screen/domain/repo/get_hot_deals_repo_interface.dart';
 import 'package:base/features/products_search/domain/models/product.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../configurations/app_events.dart';
 import '../../../../configurations/app_states.dart';
 
 class HomeBloc extends Bloc<AppEvents, AppStates> {
-  HomeBloc() : super(InitialState()) {
+  HomeBloc() : super(LoadingState()) {
     on<GetDataEvent>(getHotDeals);
   }
   //==================================
@@ -35,4 +36,5 @@ class HomeBloc extends Bloc<AppEvents, AppStates> {
       );
     }
   }
+
 }

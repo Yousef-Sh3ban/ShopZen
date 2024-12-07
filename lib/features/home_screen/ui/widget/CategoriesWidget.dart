@@ -21,11 +21,15 @@ class CategoriesWidget extends StatelessWidget {
           children: [
             const Text(
               "Categories",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
             ),
             TextButton(
               onPressed: () {},
-              child: const Text("View All", style: TextStyle(color: Colors.blue)),
+              child: const Text("View All",
+                  style: TextStyle(
+                      color: Color(0xFF57545B),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14)),
             ),
           ],
         ),
@@ -34,29 +38,37 @@ class CategoriesWidget extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: categories.map((category) {
-              return Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: const Color(0xffEBEFFF),
-                ),
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SvgPicture.asset(
-                      category["icon"]!,
-                      width: 28,
-                      height: 28,
-                      color: Colors.grey[700],
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      category["name"]!,
-                      style: const TextStyle(fontSize: 12),
-                    ),
-                  ],
-                ),
+              return Row(
+                children: [
+                  Column(
+                    children: [
+                      Container(
+                        height: 48,
+                        width: 48,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: const Color(0xFFEBEFFF),
+                        ),
+                        padding: const EdgeInsets.all(12),
+                        child: SvgPicture.asset(
+                          category["icon"]!,
+                        ),
+                      ),
+                      Text(
+                        category["name"]!,
+                        style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFF57545B)),
+                      ),
+                    ],
+                  ),
+                  category["name"] != "Beauty"
+                      ? const SizedBox(
+                          width: 16,
+                        )
+                      : const SizedBox()
+                ],
               );
             }).toList(),
           ),
