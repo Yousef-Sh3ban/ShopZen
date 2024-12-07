@@ -185,21 +185,23 @@ class _SignupDefaultScreenState extends State<SignupDefaultScreen> {
                           ? const Color(0xFF452CE8)
                           : const Color(0xFF6A70FF),
                       ontap: () {
-                        if (!isChecked) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                  "Please accept the terms and conditions"),
-                            ),
-                          );
-                        } else {
-                          if (formKey.currentState!.validate()) {
-                            BlocProvider.of<SignupBloc>(context).add(
-                              SignupEvent(
-                                name: nameController.text,
-                                password: passwordController.text,
+                        if (!SignupBloc.readyToGo) {
+                          if (!isChecked) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                    "Please accept the terms and conditions"),
                               ),
                             );
+                          } else {
+                            if (formKey.currentState!.validate()) {
+                              BlocProvider.of<SignupBloc>(context).add(
+                                SignupEvent(
+                                  name: nameController.text,
+                                  password: passwordController.text,
+                                ),
+                              );
+                            }
                           }
                         }
                       },

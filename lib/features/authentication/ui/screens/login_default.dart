@@ -24,7 +24,22 @@ class _LoginDefaultScreenState extends State<LoginDefaultScreen> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20),
-          child: BlocBuilder<LoginBloc, AppStates>(
+          child: BlocConsumer<LoginBloc, AppStates>(
+            listener: (context, state) {
+              if (state is LoadedState) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("You login successfully"),
+                  ),
+                );
+              } else if (state is ErrorState) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(state.errorMessage),
+                  ),
+                );
+              }
+            },
             builder: (context, state) {
               return Form(
                 key: formKey,
@@ -100,8 +115,25 @@ class _LoginDefaultScreenState extends State<LoginDefaultScreen> {
                           ? const Color(0xFF452CE8)
                           : const Color(0xFF6A70FF),
                       ontap: () {
-                        formKey.currentState!.validate();
+                        if (formKey.currentState!.validate()) {
+                          BlocProvider.of<LoginBloc>(context).add(
+                            LoginEvent(
+                              name: nameController.text,
+                              password: passwordController.text,
+                            ),
+                          );
+                        }
                       },
+                      child: state is LoadingState
+                          ? const SizedBox(
+                              height: 20,
+                              width: 20,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                color: Colors.white,
+                              ),
+                            )
+                          : null,
                     )
                   ],
                 ),

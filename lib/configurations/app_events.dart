@@ -12,6 +12,11 @@ class SignupEvent extends AppEvents {
   final String password;
   SignupEvent(
       {required this.name, required this.password});
+}class LoginEvent extends AppEvents {
+  final String name;
+  final String password;
+  LoginEvent(
+      {required this.name, required this.password});
 }
 
 class UpdateEvent extends AppEvents {

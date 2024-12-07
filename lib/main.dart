@@ -1,5 +1,6 @@
 import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/configurations/app_states.dart';
+
 import 'package:base/navigation/app_routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -27,10 +28,14 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<SettingsCubit, AppStates>(
         builder: (context, state) {
           return MaterialApp(
+            theme: ThemeData(
+              bottomNavigationBarTheme:
+                  BottomNavigationBarThemeData(backgroundColor: Colors.white),
+            ),
             debugShowCheckedModeBanner: false,
-            theme: SettingsCubit.instance.isDarkMode
-                ? ThemeData.dark()
-                : ThemeData.light(),
+            // theme: SettingsCubit.instance.isDarkMode
+            //     ? ThemeData.dark()
+            //     : ThemeData.light(),
             locale: SettingsCubit.instance.locale,
             onGenerateRoute: generateRoute,
             initialRoute: AppRoutes.splash,

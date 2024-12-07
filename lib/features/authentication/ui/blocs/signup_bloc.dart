@@ -56,7 +56,6 @@ class SignupBloc extends Bloc<AppEvents, AppStates> {
       String response = await sendDateToApi(event);
       emit(LoadedState(response));
     } catch (e) {
-
       emit(ErrorState(e.toString()));
     }
   }
