@@ -19,15 +19,16 @@ class HotDealsWidget extends StatelessWidget {
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 8),
-        Row(
-          children: [
             dealCaredList[0],
-            const SizedBox(
-              width: 15,
-            ),
-            dealCaredList[1],
-          ],
-        ),
+        // Row(
+        //   children: [
+        //     dealCaredList[0],
+        //     const SizedBox(
+        //       width: 15,
+        //     ),
+        //     dealCaredList[1],
+        //   ],
+        // ),
         // const SizedBox(
         //   height: 24,
         // ),
