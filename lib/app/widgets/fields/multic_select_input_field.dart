@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import '../../models/select_option.dart';
 
@@ -47,7 +45,7 @@ class _MultiSelectInputFieldState extends State<MultiSelectInputField> {
             alignment: Alignment.centerLeft,
             child: Text(
               widget.label!,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
             ),
           ),
         if (widget.label != null) const SizedBox(height: 8),
@@ -63,7 +61,7 @@ class _MultiSelectInputFieldState extends State<MultiSelectInputField> {
           child: Container(
             height: 56,
             width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
               borderRadius: BorderRadius.circular(16),
@@ -78,8 +76,8 @@ class _MultiSelectInputFieldState extends State<MultiSelectInputField> {
                     ),
                   ),
                 ),
-                SizedBox(width: 16),
-                Icon(Icons.arrow_circle_down)
+                const SizedBox(width: 16),
+                const Icon(Icons.arrow_circle_down)
               ],
             ),
           ),
@@ -98,7 +96,7 @@ Future<List<SelectOption>> showMultiOptionsBottomSheet({
   await showModalBottomSheet(
     context: context,
     backgroundColor: Colors.white,
-    shape: RoundedRectangleBorder(
+    shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(16),
         topRight: Radius.circular(16),
@@ -111,7 +109,7 @@ Future<List<SelectOption>> showMultiOptionsBottomSheet({
           Row(
             children: [
               IconButton(
-                icon: Icon(Icons.close),
+                icon: const Icon(Icons.close),
                 onPressed: () {
                   Navigator.pop(context, valueSet);
                 },
@@ -119,12 +117,12 @@ Future<List<SelectOption>> showMultiOptionsBottomSheet({
               Expanded(
                 child: Text(
                   "Select ${label}",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                 ),
               ),
             ],
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Expanded(
             child: ListView.separated(
               itemCount: valueSet.length,
@@ -132,7 +130,7 @@ Future<List<SelectOption>> showMultiOptionsBottomSheet({
                 option: valueSet[index],
                 onSelect: (option) {},
               ),
-              separatorBuilder: (context, index) => Divider(height: 0),
+              separatorBuilder: (context, index) => const Divider(height: 0),
             ),
           ),
         ],

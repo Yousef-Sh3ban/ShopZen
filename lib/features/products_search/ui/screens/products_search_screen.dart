@@ -19,7 +19,7 @@ class ProductsSearchScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         surfaceTintColor: Colors.white,
-        title: Text('Products Search'),
+        title: const Text('Products Search'),
       ),
       body: Column(
         children: [
@@ -27,10 +27,10 @@ class ProductsSearchScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Row(
               children: [
-                Expanded(
+                const Expanded(
                   child: ProductsSearchInputField(),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 BlocBuilder<ProductsSearchBloc, AppStates>(
                   buildWhen: (previous, current) => current is LoadedState,
                   builder: (context, state) {
@@ -51,24 +51,24 @@ class ProductsSearchScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 16),
-          CategoriesPanel(),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
+          const CategoriesPanel(),
+          const SizedBox(height: 16),
           Expanded(
             child: BlocBuilder<ProductsSearchBloc, AppStates>(
               builder: (context, state) {
                 if (state is LoadingState)
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 else if (state is EmptyState)
-                  return Center(child: Text('No Products Found'));
+                  return const Center(child: Text('No Products Found'));
                 else if (state is ErrorState)
-                  return Center(child: Text("Error"));
+                  return const Center(child: Text("Error"));
                 else if (state is LoadedState) {
                   List<Product> products = state.data as List<Product>;
                   var bloc = BlocProvider.of<ProductsSearchBloc>(context);
                   if (bloc.showGrid) {
                     return GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         mainAxisSpacing: 16,
                         crossAxisSpacing: 16,
@@ -93,10 +93,10 @@ class ProductsSearchScreen extends StatelessWidget {
                         product: products[index],
                       ),
                     ),
-                    separatorBuilder: (context, index) => SizedBox(height: 16),
+                    separatorBuilder: (context, index) => const SizedBox(height: 16),
                   );
                 } else
-                  return SizedBox();
+                  return const SizedBox();
               },
             ),
           ),

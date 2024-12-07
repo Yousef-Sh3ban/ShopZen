@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:base/configurations/app_states.dart';
 import 'package:base/features/product_details/domain/models/product_details.dart';
@@ -32,7 +31,6 @@ class ProductDetailsBloc extends Cubit<AppStates>{
       productDetails = await _getDetailsRequest();
       emit(LoadedState(productDetails));
     }catch(e){
-      log(e.toString());
       emit(ErrorState(e.toString()));
     }
   }

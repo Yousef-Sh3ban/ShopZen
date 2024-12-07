@@ -12,10 +12,10 @@ class ProductDetailsScreen extends StatelessWidget {
     return Scaffold(
       body: BlocBuilder<ProductDetailsBloc, AppStates>(
         builder: (context, state) {
-          if (state is LoadingState)
-            return Center(child: CircularProgressIndicator());
-          else if (state is ErrorState)
-            return Center(child: Text("state.error"));
+          if (state is LoadingState) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is ErrorState)
+            return const Center(child: Text("state.error"));
           else if (state is LoadedState) {
             ProductDetails productDetails = state.data as ProductDetails;
             return Column(
@@ -33,13 +33,13 @@ class ProductDetailsScreen extends StatelessWidget {
                                 productDetails.name,
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                                style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Text("\$${productDetails.price}", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color: Colors.green))
+                            Text("\$${productDetails.price}", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color: Colors.green))
                           ],
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         Text(productDetails.description),
                       ],
                     ),
@@ -48,7 +48,7 @@ class ProductDetailsScreen extends StatelessWidget {
               ],
             );
           }
-          return SizedBox();
+          return const SizedBox();
         },
       ),
     );

@@ -83,10 +83,11 @@ class _TextInputFieldState extends State<TextInputField> {
 
   _onChange(String val){
     setState(() {
-      if (val.isNotEmpty)
+      if (val.isNotEmpty) {
         this.value = val;
-      else
+      } else {
         this.value = null;
+      }
     });
     widget.onChange?.call(val);
   }

@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:base/configurations/app_states.dart';
 import 'package:base/features/products_search/domain/models/category.dart';
@@ -37,10 +36,11 @@ class ProductsSearchBloc extends Cubit<AppStates> {
   }
 
   void filterByCategory(Category category) async {
-    if (selectedCategoryFilter?.id == category.id)
+    if (selectedCategoryFilter?.id == category.id) {
       selectedCategoryFilter = null;
-    else
+    } else {
       selectedCategoryFilter = category;
+    }
     getProducts();
   }
 
@@ -53,7 +53,6 @@ class ProductsSearchBloc extends Cubit<AppStates> {
       }
       emit(LoadedState(products));
     } catch (e) {
-      log(e.toString());
       emit(ErrorState(e.toString()));
     }
   }

@@ -1,6 +1,10 @@
+import 'package:base/features/authentication/ui/blocs/login_bloc.dart';
+import 'package:base/features/authentication/ui/blocs/signup_bloc.dart';
 import 'package:base/features/authentication/ui/screens/login.dart';
 import 'package:base/features/authentication/ui/screens/login_default.dart';
 import 'package:base/features/authentication/ui/screens/on_boarding.dart';
+import 'package:base/features/authentication/ui/screens/signup_default.dart';
+import 'package:base/features/authentication/ui/screens/singup.dart';
 import 'package:base/features/authentication/ui/screens/splash.dart';
 import 'package:base/features/product_details/ui/blocs/product_details_bloc.dart';
 import 'package:base/features/product_details/ui/screens/product_details_screen.dart';
@@ -18,14 +22,28 @@ _createRoute(Widget page) {
 
 Route generateRoute(settings) {
   switch (settings.name) {
-    case AppRoutes.Splash:
-      return _createRoute(Splash());
-    case AppRoutes.OnBoarding:
-      return _createRoute(OnBoarding());
-    case AppRoutes.Login:
-      return _createRoute(Login());
-    case AppRoutes.LoginDefaultScreen:
-      return _createRoute(LoginDefaultScreen()); // New Case
+    case AppRoutes.splash:
+      return _createRoute(const Splash());
+    case AppRoutes.onBoarding:
+      return _createRoute(const OnBoarding());
+    case AppRoutes.login:
+      return _createRoute(const Login());
+    case AppRoutes.signup:
+      return _createRoute(const SingupScreen());
+    case AppRoutes.loginDefaultScreen:
+      return _createRoute(
+        BlocProvider(
+          create: (context) => LoginBloc(),
+          child: const LoginDefaultScreen(),
+        ),
+      );
+    case AppRoutes.signupDefaultScreen:
+      return _createRoute(
+        BlocProvider(
+          create: (context) => SignupBloc(),
+          child: const SignupDefaultScreen(),
+        ),
+      );
 
     case AppRoutes.productDetails:
       return _createRoute(
@@ -43,11 +61,11 @@ Route generateRoute(settings) {
             BlocProvider<ProductsCategoriesBloc>(
                 create: (context) => ProductsCategoriesBloc()),
           ],
-          child: ProductsSearchScreen(),
+          child: const ProductsSearchScreen(),
         ),
       );
 
     default:
-      return _createRoute(SizedBox());
+      return _createRoute(const SizedBox());
   }
 }

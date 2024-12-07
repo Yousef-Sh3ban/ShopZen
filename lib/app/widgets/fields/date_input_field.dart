@@ -27,7 +27,7 @@ class _DateInputFieldState extends State<DateInputField> {
         if (widget.label != null)
           Align(
             alignment: Alignment.centerLeft,
-            child: Text(widget.label!, style: TextStyle(fontSize: 16,fontWeight: FontWeight.w700),),
+            child: Text(widget.label!, style: const TextStyle(fontSize: 16,fontWeight: FontWeight.w700),),
           ),
         if (widget.label != null) const SizedBox(height: 8),
         GestureDetector(
@@ -47,7 +47,7 @@ class _DateInputFieldState extends State<DateInputField> {
           child: Container(
             height: 56,
             width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
               borderRadius: BorderRadius.circular(16),
@@ -62,8 +62,8 @@ class _DateInputFieldState extends State<DateInputField> {
                     ),
                   ),
                 ),
-                SizedBox(width: 16),
-                Icon(Icons.calendar_month)
+                const SizedBox(width: 16),
+                const Icon(Icons.calendar_month)
               ],
             ),
           ),

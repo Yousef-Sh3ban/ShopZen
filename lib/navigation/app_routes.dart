@@ -1,9 +1,11 @@
 abstract class AppRoutes {
-  static const String Splash = '/splash';
+  static const String splash = '/splash';
   static const String main = '/main';
   static const String productDetails = '/productDetails';
-  static const String Login = '/login';
-  static const String OnBoarding = "/OnBoarding";
-  static const String LoginDefaultScreen = "/LoginDefaultScreen";
+  static const String login = '/login';
+  static const String signup = '/signup';
+  static const String onBoarding = "/OnBoarding";
+  static const String loginDefaultScreen = "/LoginDefaultScreen";
+  static const String signupDefaultScreen = "/SignupDefaultScreen";
   // Todo: Add more routes
 }
