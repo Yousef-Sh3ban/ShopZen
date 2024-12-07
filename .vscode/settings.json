@@ -47,5 +47,5 @@
         "README.md",
         "lib/firebase_options.dart"
     ],
-    "autoHide.autoHideSideBar": false
+    "autoHide.autoHideSideBar": true
 }
