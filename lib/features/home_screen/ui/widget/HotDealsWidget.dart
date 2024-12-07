@@ -1,102 +1,106 @@
+import 'dart:developer';
+
+import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/features/home_screen/ui/widget/DealCard.dart';
 import 'package:flutter/widgets.dart';
 
 class HotDealsWidget extends StatelessWidget {
-  List<DealCard> dealCaredList = [
-    DealCard(
-        imageUrl: "https://via.placeholder.com/100",
-        title: 'Portable Neck Fan Hands Free Fan',
-        price: 40.0,
-        oldPrice: 60.0,
-        rating: 4.8,
-        reviewsCount: 120,
-        isFavorite: true),
-    DealCard(
-        imageUrl: "https://via.placeholder.com/100",
-        title: 'Portable Neck Fan Hands Free Fan',
-        price: 40.0,
-        oldPrice: 60.0,
-        rating: 4.8,
-        reviewsCount: 120,
-        isFavorite: true),
-    DealCard(
-        imageUrl: "https://via.placeholder.com/100",
-        title: 'Portable Neck Fan Hands Free Fan',
-        price: 40.0,
-        oldPrice: 60.0,
-        rating: 4.8,
-        reviewsCount: 120,
-        isFavorite: true),
-    DealCard(
-        imageUrl: "https://via.placeholder.com/100",
-        title: 'Portable Neck Fan Hands Free Fan',
-        price: 40.0,
-        oldPrice: 60.0,
-        rating: 4.8,
-        reviewsCount: 120,
-        isFavorite: true),
-    DealCard(
-        imageUrl: "https://via.placeholder.com/100",
-        title: 'Portable Neck Fan Hands Free Fan',
-        price: 40.0,
-        oldPrice: 60.0,
-        rating: 4.8,
-        reviewsCount: 120,
-        isFavorite: true),
-    DealCard(
-        imageUrl: "https://via.placeholder.com/100",
-        title: 'Portable Neck Fan Hands Free Fan',
-        price: 40.0,
-        oldPrice: 60.0,
-        rating: 4.8,
-        reviewsCount: 120,
-        isFavorite: true),
-    DealCard(
-        imageUrl: "https://via.placeholder.com/100",
-        title: 'Portable Neck Fan Hands Free Fan',
-        price: 40.0,
-        oldPrice: 60.0,
-        rating: 4.8,
-        reviewsCount: 120,
-        isFavorite: true),
-    DealCard(
-        imageUrl: "https://via.placeholder.com/100",
-        title: 'Portable Neck Fan Hands Free Fan',
-        price: 40.0,
-        oldPrice: 60.0,
-        rating: 4.8,
-        reviewsCount: 120,
-        isFavorite: true),
-  ];
-  HotDealsWidget({
-    super.key,
-  });
-
+  List<ProductModel> products;
+  HotDealsWidget({super.key, required this.products});
   @override
   Widget build(BuildContext context) {
+    List<DealCard> dealCaredList = modelingProductList(products);
+    log("number of elemnts in the list is :");
+    log(dealCaredList[1].title.toString());
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           "Hot Deals",
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 8),
-        GridView.builder(
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 8,
-            crossAxisSpacing: 8,
-            childAspectRatio: 0.7,
-          ),
-          itemCount: dealCaredList.length,
-          itemBuilder: (context, index) {
-            return dealCaredList[index];
-          },
+        const SizedBox(height: 8),
+        Row(
+          children: [
+            dealCaredList[0],
+            const SizedBox(
+              width: 15,
+            ),
+            dealCaredList[1],
+          ],
         ),
+        // const SizedBox(
+        //   height: 24,
+        // ),
+        // Row(
+        //   children: [
+        //     dealCaredList[2],
+        //     const SizedBox(
+        //       width: 15,
+        //     ),
+        //     dealCaredList[3],
+        //   ],
+        // ),
+        // const SizedBox(
+        //   height: 24,
+        // ),
+        // Row(
+        //   children: [
+        //     dealCaredList[4],
+        //     const SizedBox(
+        //       width: 15,
+        //     ),
+        //     dealCaredList[5],
+        //   ],
+        // ),
+        // const SizedBox(
+        //   height: 24,
+        // ),
+        // Row(
+        //   children: [
+        //     dealCaredList[6],
+        //     const SizedBox(
+        //       width: 15,
+        //     ),
+        //     dealCaredList[7],
+        //   ],
+        // ),
+        // const SizedBox(
+        //   height: 24,
+        // ),
+        // Row(
+        //   children: [
+        //     dealCaredList[8],
+        //     const SizedBox(
+        //       width: 15,
+        //     ),
+        //     dealCaredList[9],
+        //   ],
+        // ),
       ],
     );
   }
+}
+
+List<DealCard> modelingProductList(List<ProductModel> products) {
+  List<DealCard> data = [];
+  for (int i = 0; i < products.length; i++) {
+    log(products[i].imageUrl);
+    log(products[i].title);
+    log(products[i].price.toString());
+    log(products[i].oldPrice.toString());
+    log(products[i].rating.toString());
+    log(products[i].reviewsCount.toString());
+    data.add(
+      DealCard(
+          imageUrl: products[i].imageUrl ?? "no image",
+          title: products[i].title ?? "Unknown title",
+          price: products[i].price ?? 0.00,
+          oldPrice: products[i].oldPrice ?? 0.00,
+          rating: products[i].rating ?? 0.00,
+          reviewsCount: products[i].reviewsCount ?? 0,
+          isFavorite: false),
+    );
+  }
+  log("i will return now the data after modeling it ");
+  return data;
 }

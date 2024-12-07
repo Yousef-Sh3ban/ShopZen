@@ -22,6 +22,12 @@ class ClickEvent extends AppEvents {
   ClickEvent({this.data});
 }
 
+class GetDataEvent extends AppEvents {
+  final dynamic data;
+
+  GetDataEvent({required this.data});
+}
+
 class LoginOnChangeEvent extends AppEvents {
   final String name;
   final String password;
@@ -34,6 +40,8 @@ class SignupOnChangeEvent extends AppEvents {
   final String password;
   final String passwordConfirm;
 
-  SignupOnChangeEvent({required this.passwordConfirm,
-      required this.name, required this.password});
+  SignupOnChangeEvent(
+      {required this.passwordConfirm,
+      required this.name,
+      required this.password});
 }

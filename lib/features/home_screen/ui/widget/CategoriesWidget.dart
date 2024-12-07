@@ -19,17 +19,17 @@ class CategoriesWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            const Text(
               "Categories",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             TextButton(
               onPressed: () {},
-              child: Text("View All", style: TextStyle(color: Colors.blue)),
+              child: const Text("View All", style: TextStyle(color: Colors.blue)),
             ),
           ],
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -37,10 +37,10 @@ class CategoriesWidget extends StatelessWidget {
               return Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: Color(0xffEBEFFF),
+                  color: const Color(0xffEBEFFF),
                 ),
-                margin: EdgeInsets.symmetric(horizontal: 8.0),
-                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -50,10 +50,10 @@ class CategoriesWidget extends StatelessWidget {
                       height: 28,
                       color: Colors.grey[700],
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     Text(
                       category["name"]!,
-                      style: TextStyle(fontSize: 12),
+                      style: const TextStyle(fontSize: 12),
                     ),
                   ],
                 ),

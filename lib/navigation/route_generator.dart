@@ -1,3 +1,4 @@
+import 'package:base/features/home_screen/ui/blocs/home_bloc.dart';
 import 'package:base/features/home_screen/ui/screen/Home.dart';
 import 'package:base/features/authentication/ui/screens/login.dart';
 import 'package:base/features/authentication/ui/screens/login_default.dart';
@@ -30,7 +31,12 @@ Route generateRoute(settings) {
     case AppRoutes.LoginDefaultScreen:
       return _createRoute(LoginDefaultScreen());
     case AppRoutes.Home:
-      return _createRoute(Home());
+      return _createRoute(
+        BlocProvider(
+          create: (context) => HomeBloc(),
+          child: const HomeScreen(),
+        ),
+      );
 
     case AppRoutes.productDetails:
       return _createRoute(

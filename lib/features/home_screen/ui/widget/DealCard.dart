@@ -154,94 +154,92 @@ class DealCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Stack(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.network(
-                  imageUrl,
-                  height: 160,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Stack(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.network(
+                imageUrl,
+                height: 160,
+                width: double.infinity,
+                fit: BoxFit.cover,
               ),
-              Positioned(
-                top: 7,
-                right: 7,
-                child: Container(
-                  height: 24,
-                  width: 24,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: Colors.white,
-                  ),
-                  child: IconButton(
-                    icon: Icon(
-                      isFavorite ? Icons.favorite : Icons.favorite_border,
-                    ),
-                    onPressed: () {},
-                    iconSize: 12,
-                    color: Colors.red,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 8),
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-              color: Colors.black87,
             ),
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          ),
-          SizedBox(height: 8),
-          Row(
-            children: [
-              Text(
-                "\$$price",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+            Positioned(
+              top: 7,
+              right: 7,
+              child: Container(
+                height: 24,
+                width: 24,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: Colors.white,
+                ),
+                child: IconButton(
+                  icon: Icon(
+                    isFavorite ? Icons.favorite : Icons.favorite_border,
+                  ),
+                  onPressed: () {},
+                  iconSize: 12,
+                  color: Colors.red,
                 ),
               ),
-              SizedBox(width: 8),
-              Text(
-                "\$$oldPrice",
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey,
-                  decoration: TextDecoration.lineThrough,
-                ),
-              ),
-            ],
+            ),
+          ],
+        ),
+        SizedBox(height: 8),
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+            color: Colors.black87,
           ),
-          SizedBox(height: 8),
-          Row(
-            children: [
-              Icon(Icons.star, color: Colors.amber, size: 16),
-              SizedBox(width: 4),
-              Text(
-                "$rating",
-                style: TextStyle(fontSize: 14, color: Colors.black87),
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        ),
+        SizedBox(height: 8),
+        Row(
+          children: [
+            Text(
+              "\$$price",
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
               ),
-              SizedBox(width: 4),
-              Text(
-                "($reviewsCount)",
-                style: TextStyle(fontSize: 12, color: Colors.grey),
+            ),
+            SizedBox(width: 8),
+            Text(
+              "\$$oldPrice",
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.grey,
+                decoration: TextDecoration.lineThrough,
               ),
-            ],
-          ),
-        ],
-      ),
+            ),
+          ],
+        ),
+        SizedBox(height: 8),
+        Row(
+          children: [
+            Icon(Icons.star, color: Colors.amber, size: 16),
+            SizedBox(width: 4),
+            Text(
+              "$rating",
+              style: TextStyle(fontSize: 14, color: Colors.black87),
+            ),
+            SizedBox(width: 4),
+            Text(
+              "($reviewsCount)",
+              style: TextStyle(fontSize: 12, color: Colors.grey),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
