@@ -8,4 +8,5 @@ abstract class AppRoutes {
   static const String signupDefaultScreen = "/SignupDefaultScreen";
   static const String home = "Home";
   static const String productDetails = '/productDetails';
+  static const String notifaction = '/notifaction';
 }

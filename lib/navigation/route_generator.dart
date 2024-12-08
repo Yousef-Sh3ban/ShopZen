@@ -8,6 +8,8 @@ import 'package:base/features/authentication/ui/screens/on_boarding.dart';
 import 'package:base/features/authentication/ui/screens/signup_default.dart';
 import 'package:base/features/authentication/ui/screens/singup.dart';
 import 'package:base/features/authentication/ui/screens/splash.dart';
+import 'package:base/features/notifaction/ui/blocs/notifaction_bloc.dart';
+import 'package:base/features/notifaction/ui/screen/notifaction_screen.dart';
 
 import 'package:base/features/product_details/ui/blocs/product_details_bloc.dart';
 import 'package:base/features/product_details/ui/screens/product_details_screen.dart';
@@ -25,6 +27,13 @@ _createRoute(Widget page) {
 
 Route generateRoute(settings) {
   switch (settings.name) {
+    case AppRoutes.notifaction:
+      return _createRoute(
+        BlocProvider(
+          create: (context) => NotifactionBloc(),
+          child: const NotifactionScreen(),
+        ),
+      );
     case AppRoutes.splash:
       return _createRoute(const Splash());
     case AppRoutes.onBoarding:
