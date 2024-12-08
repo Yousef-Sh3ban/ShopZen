@@ -6,4 +6,5 @@ abstract class AppRoutes {
   static const String OnBoarding = "/OnBoarding";
   static const String LoginDefaultScreen = "/LoginDefaultScreen";
   static const String Home = "Home";
+  static const String SearchProduact = "SearchProduact";
 }

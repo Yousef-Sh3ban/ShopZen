@@ -7,8 +7,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      showUnselectedLabels: true, elevation: 0, // No shadow
-
+      showUnselectedLabels: true,
+      elevation: 0,
       backgroundColor: Colors.white,
       items: [
         BottomNavigationBarItem(
@@ -22,7 +22,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
         BottomNavigationBarItem(
             icon: SvgPicture.asset("assets/icons/profile.svg"),
             label: "Account"),
-      ],type: BottomNavigationBarType.fixed,
+      ],
+      type: BottomNavigationBarType.fixed,
       unselectedFontSize: 12,
       selectedItemColor: const Color(0xFF452CE8),
       unselectedItemColor: const Color(0xFF938F9C),

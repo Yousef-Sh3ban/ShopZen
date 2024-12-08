@@ -7,6 +7,7 @@ import 'package:base/features/authentication/ui/screens/splash.dart';
 
 import 'package:base/features/product_details/ui/blocs/product_details_bloc.dart';
 import 'package:base/features/product_details/ui/screens/product_details_screen.dart';
+import 'package:base/features/search%20_products/ui/screens/search_produact.dart';
 import 'package:base/navigation/app_routes.dart';
 import 'package:base/network/network_handler.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,16 @@ Route generateRoute(settings) {
           child: const ProductDetailsScreen(),
         ),
       );
-    case AppRoutes.main:
+
+    case AppRoutes.SearchProduact:
+      return _createRoute(
+        BlocProvider(
+          create: (context) => HomeBloc(),
+          child: const SearchProduact(),
+        ),
+      );
+
+    /* case AppRoutes.ProductsSearchScreen:
       return _createRoute(
         MultiBlocProvider(
           providers: [
@@ -56,7 +66,7 @@ Route generateRoute(settings) {
           ],
           child: ProductsSearchScreen(),
         ),
-      );
+      );*/
 
     default:
       return _createRoute(SizedBox());

@@ -1,5 +1,6 @@
 import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/configurations/app_states.dart';
+import 'package:base/features/products_search/ui/screens/products_search_screen.dart';
 
 import 'package:base/navigation/app_routes.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -27,7 +28,10 @@ class MyApp extends StatelessWidget {
       create: (context) => SettingsCubit.instance,
       child: BlocBuilder<SettingsCubit, AppStates>(
         builder: (context, state) {
-          return MaterialApp(theme: ThemeData(bottomNavigationBarTheme: BottomNavigationBarThemeData(backgroundColor:Colors.white )),
+          return MaterialApp(
+            theme: ThemeData(
+                bottomNavigationBarTheme: BottomNavigationBarThemeData(
+                    backgroundColor: Colors.white)),
             debugShowCheckedModeBanner: false,
             // theme: SettingsCubit.instance.isDarkMode
             //     ? ThemeData.dark()
@@ -39,7 +43,7 @@ class MyApp extends StatelessWidget {
               Locale('ar'),
               Locale('en'),
             ],
-            localizationsDelegates: [
+            localizationsDelegates: const [
               // AppLocalizationsDelegate(),
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LocationSearchBar extends StatelessWidget {
+  final VoidCallback? ontap;
+
+  const LocationSearchBar({super.key, this.ontap});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -55,6 +58,7 @@ class LocationSearchBar extends StatelessWidget {
             ],
           ),
           child: TextField(
+            onTap: ontap,
             decoration: InputDecoration(
               hintText: "Find your favorite items",
               hintStyle: const TextStyle(
