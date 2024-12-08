@@ -9,6 +9,8 @@ class HotDealsWidget extends StatelessWidget {
   HotDealsWidget({super.key, required this.products});
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     List<DealCard> dealCaredList = modelingProductList(products);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -20,11 +22,11 @@ class HotDealsWidget extends StatelessWidget {
         GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 8,
             crossAxisSpacing: 8,
-            childAspectRatio: 0.68,
+            childAspectRatio: screenWidth/screenHeight*1.2,
           ),
           itemCount: dealCaredList.length,
           itemBuilder: (context, index) {
