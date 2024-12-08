@@ -32,6 +32,7 @@
 // }
 import 'package:base/features/authentication/ui/screens/on_boarding.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -74,7 +75,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
     _controller.forward();
 
     // Navigate to the next screen after 4 seconds
-    Future.delayed(const Duration(seconds: 10), () {
+    Future.delayed(const Duration(seconds: 20), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const OnBoarding()),
@@ -101,19 +102,20 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
               return Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
+                  SizedBox(
                     width: _widthAnimation.value,
                     height: _heightAnimation.value,
-                    child: Image.asset("assets/images/logo.png"),
+                    child: SvgPicture.asset("assets/images/logo.svg"),
                   ),
                   const SizedBox(width: 30),
                   Text(
                     "ShopZen",
                     style: TextStyle(
+                      fontStyle: FontStyle.italic,
                       color: const Color(0xffFBFBFC),
                       fontSize: _widthAnimation.value / 2,
                       fontWeight: FontWeight.w700,
-                      fontFamily: "Pacifico",
+                      fontFamily: "Satoshi",
                     ),
                   ),
                 ],

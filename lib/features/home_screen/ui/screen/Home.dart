@@ -14,9 +14,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+   @override
+  void initState() {
+    super.initState();
+    // Call your event inside initState
+    Future.microtask(() {
+      context.read<HomeBloc>().add(GetDataEvent(data: null));
+    });
+  }
   @override
   Widget build(BuildContext context) {
     context.read<HomeBloc>().add(GetDataEvent(data: null));

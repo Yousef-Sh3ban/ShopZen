@@ -26,7 +26,7 @@ class _FileInputFieldState extends State<FileInputField> {
             alignment: Alignment.centerLeft,
             child: Text(
               widget.label!,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
             ),
           ),
         if (widget.label != null) const SizedBox(height: 8),
@@ -41,7 +41,7 @@ class _FileInputFieldState extends State<FileInputField> {
           },
           child: Container(
             width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
               borderRadius: BorderRadius.circular(16),
@@ -49,12 +49,12 @@ class _FileInputFieldState extends State<FileInputField> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                if (file == null) Icon(Icons.file_copy_outlined, size: 48),
-                if (file != null) Icon(Icons.file_copy, size: 48),
+                if (file == null) const Icon(Icons.file_copy_outlined, size: 48),
+                if (file != null) const Icon(Icons.file_copy, size: 48),
                 const SizedBox(height: 8),
-                if (file != null) Text(file!.path.split("/").last, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400)),
+                if (file != null) Text(file!.path.split("/").last, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400)),
                 const SizedBox(height: 8),
-                if (file == null) Text(widget.hint, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+                if (file == null) Text(widget.hint, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
                 if (file != null) const SizedBox(height: 8),
                 if (file != null)
                   OutlinedButton(
@@ -63,7 +63,7 @@ class _FileInputFieldState extends State<FileInputField> {
                         file = null;
                       });
                     },
-                    child: Text("Clear"),
+                    child: const Text("Clear"),
                   ),
               ],
             ),

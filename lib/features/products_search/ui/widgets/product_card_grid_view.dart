@@ -12,7 +12,7 @@ class ProductCardGridView extends StatelessWidget {
         Expanded(
           child: Image.network(product.imageUrl,fit: BoxFit.cover,),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         Text(product.name),
       ],
     );

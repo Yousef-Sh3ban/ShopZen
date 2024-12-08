@@ -1,20 +1,16 @@
 import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/configurations/app_states.dart';
 
+
 import 'package:base/navigation/app_routes.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'firebase_options.dart';
 import 'navigation/route_generator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
   runApp(const MyApp());
 }
 
@@ -29,15 +25,16 @@ class MyApp extends StatelessWidget {
         builder: (context, state) {
           return MaterialApp(
             theme: ThemeData(
-                bottomNavigationBarTheme: BottomNavigationBarThemeData(
-                    backgroundColor: Colors.white)),
+              bottomNavigationBarTheme:
+                  BottomNavigationBarThemeData(backgroundColor: Colors.white),
+            ),
             debugShowCheckedModeBanner: false,
             // theme: SettingsCubit.instance.isDarkMode
             //     ? ThemeData.dark()
             //     : ThemeData.light(),
             locale: SettingsCubit.instance.locale,
             onGenerateRoute: generateRoute,
-            initialRoute: AppRoutes.Home,
+            initialRoute: AppRoutes.splash,
             supportedLocales: const [
               Locale('ar'),
               Locale('en'),

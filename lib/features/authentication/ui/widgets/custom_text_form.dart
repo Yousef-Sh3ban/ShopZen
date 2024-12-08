@@ -36,7 +36,7 @@ class _CustomTextFormState extends State<CustomTextForm> {
       children: [
         Text(
           widget.title,
-          style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+          style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
         ),
         TextFormField(
           keyboardType: widget.keyboardType ?? TextInputType.text,

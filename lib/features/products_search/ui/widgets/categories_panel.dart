@@ -28,13 +28,13 @@ class _CategoriesPanelState extends State<CategoriesPanel> {
       width: MediaQuery.of(context).size.width,
       child: BlocBuilder<ProductsCategoriesBloc, AppStates>(
         builder: (context, state) {
-          if (state is LoadingState)
+          if(state is LoadingState) {
             return const Center(child: CircularProgressIndicator());
-          else if (state is ErrorState)
+          } else if(state is ErrorState)
             return const Center(child: Text("Error"));
-          else if (state is EmptyState)
+          else if(state is EmptyState)
             return const Center(child: Text('No Categories'));
-          else if (state is LoadedState) {
+          else if(state is LoadedState){
             List<Category> categories = state.data as List<Category>;
 
             return ListView.separated(
@@ -58,8 +58,7 @@ class _CategoriesPanelState extends State<CategoriesPanel> {
                   ),
                   child: Row(
                     children: [
-                      Image.network(categories[index].imageUrl,
-                          width: 24, height: 24, fit: BoxFit.cover),
+                      Image.network(categories[index].imageUrl, width: 24, height: 24, fit: BoxFit.cover),
                       const SizedBox(width: 8),
                       Text(categories[index].name),
                     ],

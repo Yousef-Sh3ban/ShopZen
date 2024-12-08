@@ -15,7 +15,10 @@ class EmptyState extends AppStates {}
 
 class ReadyToLoginState extends AppStates {}
 
-class NotReadyToLoginState extends AppStates {}
+class NotReadyToLoginState extends AppStates {
+  String ?message;
+  NotReadyToLoginState({this.message});
+}
 
 class ErrorState extends AppStates {
   final String errorMessage;
@@ -23,3 +26,4 @@ class ErrorState extends AppStates {
 
   String? get error => null;
 }
+

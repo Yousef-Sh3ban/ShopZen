@@ -7,6 +7,18 @@ class SaveEvent extends AppEvents {
   SaveEvent(this.data);
 }
 
+class SignupEvent extends AppEvents {
+  final String name;
+  final String password;
+  SignupEvent({required this.name, required this.password});
+}
+
+class LoginEvent extends AppEvents {
+  final String name;
+  final String password;
+  LoginEvent({required this.name, required this.password});
+}
+
 class UpdateEvent extends AppEvents {
   final dynamic data;
   UpdateEvent(this.data);
@@ -28,6 +40,11 @@ class GetDataEvent extends AppEvents {
   GetDataEvent({required this.data});
 }
 
+class CheckboxEvent extends AppEvents {
+  final bool? data;
+  CheckboxEvent({required this.data});
+}
+
 class LoginOnChangeEvent extends AppEvents {
   final String name;
   final String password;
@@ -35,13 +52,15 @@ class LoginOnChangeEvent extends AppEvents {
   LoginOnChangeEvent({required this.name, required this.password});
 }
 
-class SignupOnChangeEvent extends AppEvents {
+class OnChangeEvent extends AppEvents {
   final String name;
   final String password;
-  final String passwordConfirm;
+  final String? passwordConfirm;
+  final bool? isChecked;
 
-  SignupOnChangeEvent(
-      {required this.passwordConfirm,
-      required this.name,
-      required this.password});
+  OnChangeEvent(
+      {required this.name,
+      required this.password,
+      this.isChecked,
+      this.passwordConfirm});
 }

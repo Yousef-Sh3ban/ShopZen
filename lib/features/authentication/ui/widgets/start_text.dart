@@ -8,7 +8,7 @@ class StartText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       "$text",
-      style: TextStyle(
+      style: const TextStyle(
         color: Color(0xff323135),
         fontWeight: FontWeight.w400,
         fontSize: 32,

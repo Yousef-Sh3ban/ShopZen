@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 class LoginBottom extends StatelessWidget {
-  const LoginBottom({super.key, required this.text, this.ontap, this.color, this.child});
+  const LoginBottom({super.key, required this.text, this.ontap, this.color});
   final String text;
   final VoidCallback? ontap;
   final Color? color;
-  final Widget? child;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -14,18 +13,18 @@ class LoginBottom extends StatelessWidget {
       child: OutlinedButton(
         onPressed: ontap,
         style: OutlinedButton.styleFrom(
-            backgroundColor: color,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 125, vertical: 14)),
-        child: child??Text(
+          backgroundColor: color,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+        child: Text(
           text,
           style: const TextStyle(
               fontFamily: "Poppins",
               fontSize: 16,
               fontWeight: FontWeight.w400,
-              color: Color(0xffFFFFFF)),
+              color: Color(0xFFFFFFFF)),
         ),
       ),
     );

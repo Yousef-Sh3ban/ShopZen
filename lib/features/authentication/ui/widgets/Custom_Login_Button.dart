@@ -1,26 +1,27 @@
-import 'package:flutter/material.dart';
+
+
+import 'package:flutter/widgets.dart';
 
 class CustomLoginButton extends StatelessWidget {
-  CustomLoginButton(
+  const CustomLoginButton(
       {super.key,
       required this.text,
       required this.textcolor,
       required this.imagepath,
-      required this.ContinarColor,
+      required this.continarColor,
       this.ontap});
   final String text;
   final Color textcolor;
   final String imagepath;
-  final Color ContinarColor;
+  final Color continarColor;
   final VoidCallback? ontap;
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 335,
       height: 50,
       decoration: BoxDecoration(
         border: Border.all(color: Color((0xffDAE2FF))),
-        color: ContinarColor,
+        color: continarColor,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
