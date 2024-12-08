@@ -11,6 +11,8 @@ class CategoriesWidget extends StatelessWidget {
     {"name": "Beauty", "icon": "assets/icons/Beauty.svg"},
   ];
 
+   CategoriesWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             theme: ThemeData(
               bottomNavigationBarTheme:
-                  BottomNavigationBarThemeData(backgroundColor: Colors.white),
+                  const BottomNavigationBarThemeData(backgroundColor: Colors.white),
             ),
             debugShowCheckedModeBanner: false,
             // theme: SettingsCubit.instance.isDarkMode

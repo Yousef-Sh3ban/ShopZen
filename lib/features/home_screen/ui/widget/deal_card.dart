@@ -1,7 +1,4 @@
-import 'package:base/configurations/app_events.dart';
-import 'package:base/features/home_screen/ui/blocs/home_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class DealCard extends StatefulWidget {
@@ -84,8 +81,8 @@ class _DealCardState extends State<DealCard> {
                               ? Icons.favorite
                               : Icons.favorite_border,
                           color: widget.isFavorite
-                              ? Color(0xFFDE1135)
-                              : Color(0xFF323135)),
+                              ? const Color(0xFFDE1135)
+                              : const Color(0xFF323135)),
                     ),
                   ),
                 ),

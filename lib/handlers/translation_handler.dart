@@ -30,11 +30,11 @@ class GlobalTranslations {
       [String language = "en", bool saveInPrefs = true]) async {
     _locale = Locale(language);
     String jsonContent = await rootBundle
-        .loadString("assets/lang/${language}.json");
+        .loadString("assets/lang/$language.json");
     _localizedValues = json.decode(jsonContent);
     return;
   }
-  static final GlobalTranslations translator = new GlobalTranslations._internal();
+  static final GlobalTranslations translator = GlobalTranslations._internal();
   GlobalTranslations._internal();
 }
 

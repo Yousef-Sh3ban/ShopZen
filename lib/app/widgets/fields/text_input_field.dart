@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 import '../icon_handler.dart';
 
 class TextInputField extends StatefulWidget {
-  const TextInputField({
+  const TextInputField({super.key, 
     this.onChange,
     this.controller,
     this.inputFormatters = const [],
@@ -84,9 +84,9 @@ class _TextInputFieldState extends State<TextInputField> {
   _onChange(String val){
     setState(() {
       if (val.isNotEmpty) {
-        this.value = val;
+        value = val;
       } else {
-        this.value = null;
+        value = null;
       }
     });
     widget.onChange?.call(val);

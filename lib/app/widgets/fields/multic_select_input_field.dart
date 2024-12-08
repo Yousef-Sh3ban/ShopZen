@@ -116,7 +116,7 @@ Future<List<SelectOption>> showMultiOptionsBottomSheet({
               ),
               Expanded(
                 child: Text(
-                  "Select ${label}",
+                  "Select $label",
                   style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                 ),
               ),

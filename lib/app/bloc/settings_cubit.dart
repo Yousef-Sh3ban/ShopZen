@@ -9,7 +9,7 @@ class SettingsCubit extends Cubit<AppStates>{
   //======================================== Variables
   //========================================
   bool isDarkMode = false;
-  Locale locale = Locale('en');
+  Locale locale = const Locale('en');
   //========================================
   //======================================== Functions
   //========================================
@@ -21,9 +21,9 @@ class SettingsCubit extends Cubit<AppStates>{
 
   void toggleLocale() async{
     if(locale.languageCode == 'en'){
-      locale = Locale('ar');
+      locale = const Locale('ar');
     }else{
-      locale = Locale('en');
+      locale = const Locale('en');
     }
     // TODO: save the value in shared preferences
     emit(LoadedState(locale));
