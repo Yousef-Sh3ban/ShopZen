@@ -27,7 +27,10 @@ class MyApp extends StatelessWidget {
       create: (context) => SettingsCubit.instance,
       child: BlocBuilder<SettingsCubit, AppStates>(
         builder: (context, state) {
-          return MaterialApp(theme: ThemeData(bottomNavigationBarTheme: BottomNavigationBarThemeData(backgroundColor:Colors.white )),
+          return MaterialApp(
+            theme: ThemeData(
+                bottomNavigationBarTheme: BottomNavigationBarThemeData(
+                    backgroundColor: Colors.white)),
             debugShowCheckedModeBanner: false,
             // theme: SettingsCubit.instance.isDarkMode
             //     ? ThemeData.dark()
@@ -39,7 +42,7 @@ class MyApp extends StatelessWidget {
               Locale('ar'),
               Locale('en'),
             ],
-            localizationsDelegates: [
+            localizationsDelegates: const [
               // AppLocalizationsDelegate(),
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,

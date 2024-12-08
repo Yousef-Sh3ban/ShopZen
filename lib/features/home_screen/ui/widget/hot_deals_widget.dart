@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:base/features/home_screen/domain/models/product_model.dart';
-import 'package:base/features/home_screen/ui/widget/DealCard.dart';
+import 'package:base/features/home_screen/ui/widget/deal_card.dart';
 import 'package:flutter/widgets.dart';
 
 class HotDealsWidget extends StatelessWidget {
@@ -10,8 +10,6 @@ class HotDealsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<DealCard> dealCaredList = modelingProductList(products);
-    log("number of elemnts in the list is :");
-    log(dealCaredList[1].title.toString());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -19,7 +17,6 @@ class HotDealsWidget extends StatelessWidget {
           "Hot Deals",
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 8),
         GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),

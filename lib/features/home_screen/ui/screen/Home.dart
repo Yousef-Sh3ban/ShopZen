@@ -4,14 +4,15 @@ import 'package:base/configurations/app_events.dart';
 import 'package:base/configurations/app_states.dart';
 import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/features/home_screen/ui/blocs/home_bloc.dart';
-import 'package:base/features/home_screen/ui/widget/BannerWidget.dart';
-import 'package:base/features/home_screen/ui/widget/CategoriesWidget.dart';
-import 'package:base/features/home_screen/ui/widget/Custom_Bottom_NavigationBar.dart';
-import 'package:base/features/home_screen/ui/widget/DealCard.dart';
-import 'package:base/features/home_screen/ui/widget/HotDealsWidget.dart';
-import 'package:base/features/home_screen/ui/widget/LocationSearchBar.dart';
+import 'package:base/features/home_screen/ui/widget/banner_widget.dart';
+import 'package:base/features/home_screen/ui/widget/categories_widget.dart';
+import 'package:base/features/home_screen/ui/widget/custom_bottom_navigationBar.dart';
+import 'package:base/features/home_screen/ui/widget/deal_card.dart';
+import 'package:base/features/home_screen/ui/widget/hot_deals_widget.dart';
+import 'package:base/features/home_screen/ui/widget/location_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -30,6 +31,10 @@ class HomeScreen extends StatelessWidget {
               LocationSearchBar(),
               const SizedBox(height: 16),
               CategoriesWidget(),
+              const SizedBox(height: 16),
+              const BannerWidget(),
+              const SizedBox(height: 8),
+              Center(child: SvgPicture.asset("assets/icons/ad_dots.svg"),),
               const SizedBox(height: 16),
               BlocConsumer<HomeBloc, AppStates>(
                 listener: (context, state) {

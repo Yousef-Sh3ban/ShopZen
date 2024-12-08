@@ -33,7 +33,6 @@ class _DealCardState extends State<DealCard> {
   Widget build(BuildContext context) {
     return Container(
       width: 180,
-      margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: Colors.white,
