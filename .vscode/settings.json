@@ -24,7 +24,9 @@
         "firebase.json": true,
         "pubspec.lock": true,
         "README.md": true,
-        "lib/firebase_options.dart": true
+        "lib/firebase_options.dart": true,
+        "lib/features/product_details": true,
+        "lib/features/products_search": true
     },
     "hide-files.files": [
         ".dart_tool",
@@ -45,7 +47,9 @@
         "firebase.json",
         "pubspec.lock",
         "README.md",
-        "lib/firebase_options.dart"
+        "lib/firebase_options.dart",
+        "lib/features/product_details",
+        "lib/features/products_search"
     ],
     "autoHide.autoHideSideBar": false
 }
