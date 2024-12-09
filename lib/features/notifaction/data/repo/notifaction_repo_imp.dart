@@ -25,14 +25,16 @@ class GetDiscountRepoImp implements GetNotifactionRepoInterface {
   Future<List<NotifactionModel>> mapingData(data) async {
     log("Start maping\n this is the data");
     log(data.toString());
-    List<NotifactionModel> notifactions = [];
-    for (int i = 0; i < 10; i++) {
-      log(i.toString());
-      notifactions.add(NotifactionModel(
-          iconUrl: determineIcon(data["data"][i]["type"]),
-          message: data["data"][i]["message"],
-          title: data["data"][i]["title"]));
-    }
+    List<NotifactionModel> notifactions = (data['data'] as List)
+        .map((json) => NotifactionModel.fromJson(json))
+        .toList();
+    // for (int i = 0; i < 10; i++) {
+    //   log(i.toString());
+    //   notifactions.add(NotifactionModel(
+    //       iconUrl: determineIcon(data["data"][i]["type"]),
+    //       message: data["data"][i]["message"],
+    //       title: data["data"][i]["title"]));
+    // }
     log("this is data after maping");
     log(notifactions.toString());
     return notifactions;

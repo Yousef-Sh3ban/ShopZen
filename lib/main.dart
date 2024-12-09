@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
             //     : ThemeData.light(),
             locale: SettingsCubit.instance.locale,
             onGenerateRoute: generateRoute,
-            initialRoute: AppRoutes.splash,
+            initialRoute: AppRoutes.notifaction,
             supportedLocales: const [
               Locale('ar'),
               Locale('en'),
