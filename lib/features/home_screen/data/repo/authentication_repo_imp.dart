@@ -23,22 +23,25 @@ class GetProductsRepoImp implements GetProductsRepoInterface {
   Future<List<ProductModel>> mapingData(data) async {
     log("Start maping");
     // log(data.toString());
-    List<ProductModel> products = [];
-    for (int i = 0; i < 10; i++) {
-      log(i.toString());
-      log(data["products"][i]["images"][0].toString());
-      products.add(ProductModel(
-          imageUrl: data["products"][i]["images"][0] ?? "NO image",
-          title: data["products"][i]["title"] ?? "Unknown Title",
-          price: data["products"][i]["price"] ?? 0.00,
-          oldPrice: data["products"][i]["price"] ?? 0.00,
-          rating: data["products"][i]["rating"] ?? 0.00,
-          reviewsCount: data["products"][i]["reviews"] != null
-              ? data["products"][i]["reviews"].length
-              : 0,
-          isFavorite: false));
-    }
-    log(products.toString());
+    List<ProductModel> products = (data['products'] as List)
+        .map((json) => ProductModel.fromJson(json))
+        .toList();
+
+    // for (int i = 0; i < 10; i++) {
+    //   log(i.toString());
+    //   log(data["products"][i]["images"][0].toString());
+    //   products.add(ProductModel(
+    //       imageUrl: data["products"][i]["images"][0] ?? "NO image",
+    //       title: data["products"][i]["title"] ?? "Unknown Title",
+    //       price: data["products"][i]["price"] ?? 0.00,
+    //       oldPrice: data["products"][i]["price"] ?? 0.00,
+    //       rating: data["products"][i]["rating"] ?? 0.00,
+    //       reviewsCount: data["products"][i]["reviews"] != null
+    //           ? data["products"][i]["reviews"].length
+    //           : 0,
+    //       isFavorite: false));
+    // }
+    // log(products.toString());
     return products;
   }
 }
