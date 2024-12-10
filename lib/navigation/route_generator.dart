@@ -1,4 +1,5 @@
-import 'package:base/features/search_products/ui/screen/search_prodct.dart';
+import 'package:base/search_products_Ecommerc/ui/blocs/search_cubit.dart';
+import 'package:base/search_products_Ecommerc/ui/screen/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -43,11 +44,11 @@ Route generateRoute(settings) {
         ),
       );
 
-    case AppRoutes.SearchProduact:
-      return _createRoute(
-        BlocProvider(
-            create: (context) => HomeBloc(), child: const SearchProduact()),
-      );
+    case AppRoutes.SearchScreen:
+      return _createRoute(BlocProvider(
+        create: (context) => SearchCubit(),
+        child: SearchScreen(),
+      ));
 
     default:
       return _createRoute(SizedBox());

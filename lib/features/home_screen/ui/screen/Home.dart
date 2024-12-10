@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               LocationSearchBar(
                 ontap: () {
-                  Navigator.pushNamed(context, AppRoutes.SearchProduact);
+                  Navigator.pushNamed(context, AppRoutes.SearchScreen);
                 },
               ),
               const SizedBox(height: 16),
