@@ -1,9 +1,8 @@
-import 'package:base/configurations/app_events.dart';
-import 'package:base/features/home_screen/ui/blocs/home_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 
+// ignore: must_be_immutable
 class DealCard extends StatefulWidget {
   final String imageUrl;
   final String title;

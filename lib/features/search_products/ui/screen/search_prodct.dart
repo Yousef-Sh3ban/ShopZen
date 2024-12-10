@@ -1,17 +1,12 @@
-import 'dart:math';
-
 import 'package:base/configurations/app_events.dart';
 import 'package:base/configurations/app_states.dart';
 import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/features/home_screen/ui/blocs/home_bloc.dart';
 import 'package:base/features/home_screen/ui/widget/custom_bottom_navigationBar.dart';
-import 'package:base/features/home_screen/ui/widget/hot_deals_widget.dart';
-
 import 'package:base/features/search_products/ui/widget/hot_diles_widget.dart';
 import 'package:base/features/search_products/ui/widget/location_search_par.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SearchProduact extends StatelessWidget {
   const SearchProduact({super.key, this.text});

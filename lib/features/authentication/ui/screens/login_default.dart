@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:base/app/widgets/fields/text_input_field.dart';
 import 'package:base/configurations/app_events.dart';
 import 'package:base/configurations/app_states.dart';
 import 'package:base/features/authentication/ui/widgets/custom_text_form.dart';

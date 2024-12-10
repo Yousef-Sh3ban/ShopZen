@@ -7,7 +7,6 @@ import 'package:base/features/home_screen/ui/blocs/home_bloc.dart';
 import 'package:base/features/home_screen/ui/widget/banner_widget.dart';
 import 'package:base/features/home_screen/ui/widget/categories_widget.dart';
 import 'package:base/features/home_screen/ui/widget/custom_bottom_navigationBar.dart';
-import 'package:base/features/home_screen/ui/widget/deal_card.dart';
 import 'package:base/features/home_screen/ui/widget/hot_deals_widget.dart';
 import 'package:base/features/home_screen/ui/widget/location_search_bar.dart';
 import 'package:base/navigation/app_routes.dart';

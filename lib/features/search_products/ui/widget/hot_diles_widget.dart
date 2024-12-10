@@ -1,9 +1,8 @@
-import 'dart:developer';
-
 import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/features/home_screen/ui/widget/deal_card.dart';
 import 'package:flutter/widgets.dart';
 
+// ignore: must_be_immutable
 class HotDealsWidgetSearch extends StatelessWidget {
   List<ProductModel> products;
   HotDealsWidgetSearch({super.key, required this.products});
