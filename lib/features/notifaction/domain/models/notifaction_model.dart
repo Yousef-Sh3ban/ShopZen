@@ -9,7 +9,7 @@ class NotifactionModel {
     return NotifactionModel(
       title: json['title'],
       message: json['message'],
-      iconUrl: json['type'],
+      iconUrl: determineIcon(json['type']),
     );
   }
 }

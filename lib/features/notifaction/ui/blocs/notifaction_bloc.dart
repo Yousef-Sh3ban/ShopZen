@@ -31,7 +31,7 @@ class NotifactionBloc extends Bloc<AppEvents, AppStates> {
       emit(LoadedState(products));
     } else {
       emit(
-        LoadedState([]),
+        ErrorState("s"),
       );
     }
   }

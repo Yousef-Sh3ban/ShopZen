@@ -3,6 +3,7 @@ import 'package:base/configurations/app_states.dart';
 import 'package:base/features/home_screen/ui/widget/deal_card.dart';
 import 'package:base/features/notifaction/domain/models/notifaction_model.dart';
 import 'package:base/features/notifaction/ui/blocs/notifaction_bloc.dart';
+import 'package:base/features/notifaction/ui/widget/notification_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,12 +45,9 @@ class _NotifactionScreenState extends State<NotifactionScreen> {
             return Center(
                 child: SvgPicture.asset("assets/images/no_notifaction.svg"));
           } else if (state is LoadedState) {
-            NotifactionModel m=state.data[0] ;
-            return Column(
-              children: [
-                Text(m.title),
-                Text(m.message)
-              ],
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: NotificationWidget(notifactionList: state.data),
             );
           }
           return const Center(child: Text("No data to show"));
