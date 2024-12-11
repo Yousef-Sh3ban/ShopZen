@@ -14,13 +14,9 @@ class NotificationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log("number of elemnts in the list is ${notifactionList.length}");
-    log("before listview bulider");
     return ListView.builder(
       itemCount: notifactionList.length,
       itemBuilder: (BuildContext context, int index) {
-        log("start listview bulider");
-        log(index.toString());
         return Column(
           children: [
             SizedBox(height: 16,),

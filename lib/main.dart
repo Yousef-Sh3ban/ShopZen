@@ -19,35 +19,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => SettingsCubit.instance,
-      child: BlocBuilder<SettingsCubit, AppStates>(
-        builder: (context, state) {
-          return MaterialApp(
-            theme: ThemeData(
-              bottomNavigationBarTheme:
-                  const BottomNavigationBarThemeData(backgroundColor: Colors.white),
-            ),
-            debugShowCheckedModeBanner: false,
-            // theme: SettingsCubit.instance.isDarkMode
-            //     ? ThemeData.dark()
-            //     : ThemeData.light(),
-            locale: SettingsCubit.instance.locale,
-            onGenerateRoute: generateRoute,
-            initialRoute: AppRoutes.notifaction,
-            supportedLocales: const [
-              Locale('ar'),
-              Locale('en'),
-            ],
-            localizationsDelegates: const [
-              // AppLocalizationsDelegate(),
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-          );
-        },
+    return MaterialApp(
+      theme: ThemeData(
+        bottomNavigationBarTheme:
+            const BottomNavigationBarThemeData(backgroundColor: Colors.white),
       ),
+      debugShowCheckedModeBanner: false,
+      // theme: SettingsCubit.instance.isDarkMode
+      //     ? ThemeData.dark()
+      //     : ThemeData.light(),
+      locale: SettingsCubit.instance.locale,
+      onGenerateRoute: generateRoute,
+      initialRoute: AppRoutes.home,
+      supportedLocales: const [
+        Locale('ar'),
+        Locale('en'),
+      ],
+      localizationsDelegates: const [
+        // AppLocalizationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
     );
   }
 }

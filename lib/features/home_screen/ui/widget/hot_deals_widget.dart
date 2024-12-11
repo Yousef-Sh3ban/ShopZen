@@ -1,4 +1,6 @@
 
+import 'dart:developer';
+
 import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/features/home_screen/ui/widget/deal_card.dart';
 import 'package:flutter/widgets.dart';
@@ -29,6 +31,7 @@ class HotDealsWidget extends StatelessWidget {
           ),
           itemCount: dealCaredList.length,
           itemBuilder: (context, index) {
+            // log(dealCaredList[index].isFavorite.toString());
             return dealCaredList[index];
           },
         ),
@@ -48,7 +51,7 @@ List<DealCard> modelingProductList(List<ProductModel> products) {
           oldPrice: products[i].oldPrice * 2,
           rating: products[i].rating,
           reviewsCount: products[i].reviewsCount,
-          isFavorite: false),
+          isFavorite: products[i].isFavorite),
     );
   }
   return data;

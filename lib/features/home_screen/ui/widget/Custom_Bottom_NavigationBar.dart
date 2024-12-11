@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
-  const CustomBottomNavigationBar({this.ontap});
-  final VoidCallback? ontap;
+  const CustomBottomNavigationBar({super.key,required this.ontap});
+  final void Function(int) ontap;
+
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      onTap: ontap,
       showUnselectedLabels: true,
       elevation: 0,
       backgroundColor: Colors.white,
@@ -30,3 +32,4 @@ class CustomBottomNavigationBar extends StatelessWidget {
     );
   }
 }
+

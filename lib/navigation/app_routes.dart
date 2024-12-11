@@ -9,4 +9,5 @@ abstract class AppRoutes {
   static const String home = "Home";
   static const String productDetails = '/productDetails';
   static const String notifaction = '/notifaction';
+  static const String favorites = '/favorites';
 }

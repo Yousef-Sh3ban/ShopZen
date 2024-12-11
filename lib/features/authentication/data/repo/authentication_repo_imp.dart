@@ -9,7 +9,6 @@ class AuthenticationRepoImp implements AuthenticationRepoInterface {
   @override
   Future<LoginRequestResponse> login(String email, String password) async{
     UserCredential response = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
-    log(response.user!.uid.toString());
     return LoginRequestResponse(userId: response.user!.uid, message: "Login Successful");
   }
 

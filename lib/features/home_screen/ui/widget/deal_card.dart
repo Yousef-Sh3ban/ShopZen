@@ -1,3 +1,5 @@
+import 'package:base/features/home_screen/domain/models/product_model.dart';
+import 'package:base/handlers/favorites_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -26,6 +28,16 @@ class DealCard extends StatefulWidget {
 }
 
 class _DealCardState extends State<DealCard> {
+  @override
+  void initState() {
+    super.initState();
+    FavoritesHandler.isFavorite(widget.title).then((isFav) {
+      setState(() {
+        widget.isFavorite = isFav;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -71,6 +83,19 @@ class _DealCardState extends State<DealCard> {
                       setState(() {
                         widget.isFavorite = !widget.isFavorite;
                       });
+                      if (widget.isFavorite) {
+                        FavoritesHandler.addFavorite(ProductModel(
+                          imageUrl: widget.imageUrl,
+                          title: widget.title,
+                          price: widget.price,
+                          oldPrice: widget.oldPrice,
+                          rating: widget.rating,
+                          reviewsCount: widget.reviewsCount,
+                          isFavorite: widget.isFavorite,
+                        ));
+                      } else {
+                        FavoritesHandler.removeFavorite(widget.title);
+                      }
                     },
                     color: Colors.white,
                     child: Transform.translate(

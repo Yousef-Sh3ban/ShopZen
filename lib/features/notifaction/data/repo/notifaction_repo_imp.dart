@@ -1,6 +1,4 @@
-import 'dart:developer';
 
-import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/features/notifaction/domain/models/notifaction_model.dart';
 import 'package:base/features/notifaction/domain/repo/notifaction_repo_interface.dart';
 import 'package:base/network/app_end_points.dart';
@@ -12,19 +10,13 @@ class GetDiscountRepoImp implements GetNotifactionRepoInterface {
     try {
       Dio dio = Dio();
       Response response = await dio.get(AppEndPoints.notifactionUrl);
-      log("get completed");
       return await mapingData(response.data);
     } catch (e) {
-      log("this is error meassage");
-      log(e.toString());
-      log("i will return empty list");
       return [];
     }
   }
 
   Future<List<NotifactionModel>> mapingData(data) async {
-    log("Start maping\n this is the data");
-    log(data.toString());
     List<NotifactionModel> notifactions = (data['data'] as List)
         .map((json) => NotifactionModel.fromJson(json))
         .toList();
@@ -35,8 +27,6 @@ class GetDiscountRepoImp implements GetNotifactionRepoInterface {
     //       message: data["data"][i]["message"],
     //       title: data["data"][i]["title"]));
     // }
-    log("this is data after maping");
-    log(notifactions.toString());
     return notifactions;
   }
 }

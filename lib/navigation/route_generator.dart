@@ -1,5 +1,6 @@
 import 'package:base/features/authentication/ui/blocs/login_bloc.dart';
 import 'package:base/features/authentication/ui/blocs/signup_bloc.dart';
+import 'package:base/features/favorites/ui/screens/favorites_screen.dart';
 import 'package:base/features/home_screen/ui/blocs/home_bloc.dart';
 import 'package:base/features/home_screen/ui/screen/home_screen.dart';
 import 'package:base/features/authentication/ui/screens/login.dart';
@@ -27,6 +28,8 @@ _createRoute(Widget page) {
 
 Route generateRoute(settings) {
   switch (settings.name) {
+    case AppRoutes.favorites:
+      return _createRoute(FavoritesScreen());
     case AppRoutes.notifaction:
       return _createRoute(
         BlocProvider(

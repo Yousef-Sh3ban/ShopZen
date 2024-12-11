@@ -1,7 +1,6 @@
-import 'dart:developer';
-
 import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/features/home_screen/domain/repo/get_hot_deals_repo_interface.dart';
+import 'package:base/handlers/favorites_handler.dart';
 import 'package:dio/dio.dart';
 
 class GetProductsRepoImp implements GetProductsRepoInterface {
@@ -11,22 +10,15 @@ class GetProductsRepoImp implements GetProductsRepoInterface {
       Dio dio = Dio();
       Response response =
           await dio.get("https://dummyjson.com/products?limit=10&skip=10");
-      log("get completed");
       return await mapingData(response.data);
     } catch (e) {
-      log(e.toString());
-      log("i will return empty list");
       return [];
     }
   }
 
   Future<List<ProductModel>> mapingData(data) async {
-    log("Start maping");
-    // log(data.toString());
     List<ProductModel> products = [];
     for (int i = 0; i < 10; i++) {
-      log(i.toString());
-      log(data["products"][i]["images"][0].toString());
       products.add(ProductModel(
           imageUrl: data["products"][i]["images"][0] ?? "NO image",
           title: data["products"][i]["title"] ?? "Unknown Title",
@@ -36,9 +28,9 @@ class GetProductsRepoImp implements GetProductsRepoInterface {
           reviewsCount: data["products"][i]["reviews"] != null
               ? data["products"][i]["reviews"].length
               : 0,
-          isFavorite: false));
+          isFavorite:
+              await FavoritesHandler.isFavorite(data["products"][i]["title"])));
     }
-    log(products.toString());
     return products;
   }
 }
