@@ -23,7 +23,7 @@ class HotDealsWidget extends StatelessWidget {
             crossAxisCount: 2,
             mainAxisSpacing: 8,
             crossAxisSpacing: 8,
-            childAspectRatio: 0.65,
+            childAspectRatio: 0.68,
           ),
           itemCount: dealCaredList.length,
           itemBuilder: (context, index) {

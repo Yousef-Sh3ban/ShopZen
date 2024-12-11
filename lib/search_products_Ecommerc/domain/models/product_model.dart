@@ -6,6 +6,7 @@ class ProductModel {
   final int reviewsCount;
   final String thumbnail;
   final String brand;
+  final bool isFavorite;
 
   ProductModel({
     required this.title,
@@ -15,6 +16,7 @@ class ProductModel {
     required this.reviewsCount,
     required this.thumbnail,
     required this.brand,
+    required this.isFavorite,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
@@ -26,6 +28,7 @@ class ProductModel {
       reviewsCount: json['reviewsCount'] ?? 0,
       thumbnail: json['thumbnail'],
       brand: json['brand'] ?? 'Unknown',
+      isFavorite: false,
     );
   }
 }

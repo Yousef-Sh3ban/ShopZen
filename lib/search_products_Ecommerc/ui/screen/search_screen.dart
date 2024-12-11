@@ -2,6 +2,7 @@ import 'package:base/search_products_Ecommerc/ui/widget/EmptySearchWidget.dart';
 import 'package:base/search_products_Ecommerc/ui/widget/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import '../blocs/search_cubit.dart';
 import '../blocs/search_state.dart';
 
@@ -31,7 +32,18 @@ class SearchScreen extends StatelessWidget {
           children: [
             TextField(
               decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.search),
+                prefixIcon: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  child: SvgPicture.asset(
+                    "assets/icons/search.svg",
+                  ),
+                ),
+                suffixIcon: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  child: SvgPicture.asset("assets/icons/close.svg"),
+                ),
                 hintText: 'Find your favorite items',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
@@ -58,7 +70,7 @@ class SearchScreen extends StatelessWidget {
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio: 160 / 249,
+                        childAspectRatio: 0.75,
                         crossAxisSpacing: 8,
                         mainAxisSpacing: 8,
                       ),
@@ -70,7 +82,14 @@ class SearchScreen extends StatelessWidget {
                     );
                   }
                   return const Center(
-                      child: Text('Start searching for products.'));
+                    child: Text(
+                      'Start searching for products.',
+                      style: TextStyle(
+                          fontSize: 24,
+                          color: Color(0xff323135),
+                          fontWeight: FontWeight.w400),
+                    ),
+                  );
                 },
               ),
             ),

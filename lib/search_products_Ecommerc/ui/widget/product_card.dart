@@ -1,11 +1,18 @@
 import 'package:base/search_products_Ecommerc/domain/models/product_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class ProductCard extends StatelessWidget {
+class ProductCard extends StatefulWidget {
   final ProductModel product;
 
   const ProductCard({Key? key, required this.product}) : super(key: key);
+
+  @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
+  bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
@@ -25,41 +32,83 @@ class ProductCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Product Image
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.network(
-              product.thumbnail,
-              height: 100,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
+          Stack(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.network(
+                  widget.product.thumbnail,
+                  height: 100,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Positioned(
+                top: 8,
+                right: 8,
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isFavorite = !isFavorite;
+                    });
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.rectangle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 4,
+                        ),
+                      ],
+                    ),
+                    child: Icon(
+                      isFavorite ? Icons.favorite : Icons.favorite_border,
+                      color: isFavorite ? Colors.red : Colors.grey,
+                      size: 15,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: 8),
-          // Product Title
           Text(
-            product.title,
+            widget.product.title,
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(height: 4),
-          // Product Price
-          Text(
-            "\$${product.price.toStringAsFixed(2)}",
-            style: TextStyle(fontSize: 14, color: Colors.green),
+          Row(
+            children: [
+              Text(
+                "\$${widget.product.price.toStringAsFixed(2)}",
+                style: TextStyle(fontSize: 14, color: Colors.green),
+              ),
+              const SizedBox(width: 8),
+              Text(
+                "\$${widget.product.oldPrice.toStringAsFixed(2)}",
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey,
+                  decoration: TextDecoration.lineThrough,
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: 4),
-          // Product Rating
           Row(children: [
             SvgPicture.asset(
               "assets/icons/star.svg",
               height: 21.5,
               width: 21.5,
             ),
-            SizedBox(width: 4),
+            SizedBox(width: 8),
             Text(
-              product.rating.toString(),
+              widget.product.rating.toString(),
               style: TextStyle(fontSize: 14),
             ),
           ]),
