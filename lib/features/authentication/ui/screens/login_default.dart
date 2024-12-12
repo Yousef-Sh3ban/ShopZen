@@ -21,7 +21,6 @@ class _LoginDefaultScreenState extends State<LoginDefaultScreen> {
     TextEditingController nameController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -96,6 +95,9 @@ class _LoginDefaultScreenState extends State<LoginDefaultScreen> {
                           }
                           return null;
                         }),
+                    const SizedBox(
+                      height: 8,
+                    ),
                     const Row(
                       children: [
                         Expanded(child: SizedBox()),

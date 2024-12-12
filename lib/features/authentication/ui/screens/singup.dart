@@ -13,7 +13,6 @@ class SingupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 68),
@@ -27,18 +26,21 @@ class SingupScreen extends StatelessWidget {
                 height: 47,
               ),
               const CustomLoginButton(
-                  text: "Singup with Google",
-                  textcolor: Colors.black,
-                  imagepath: "assets/images/image.png",
-                  continarColor: Colors.white),
+                text: "Singup with Google",
+                // textcolor: Colors.black,
+                imagepath: "assets/images/image.png",
+                // continarColor: Colors.white
+              ),
               const SizedBox(
                 height: 16,
               ),
               const CustomLoginButton(
-                  text: "Singup with Apple",
-                  textcolor: Color(0xff323135),
-                  imagepath: "assets/images/image copy.png",
-                  continarColor: Colors.white),
+                changeColor: true,
+                text: "Singup with Apple",
+                // textcolor: Color(0xff323135),
+                imagepath: "assets/images/image copy.png",
+                // continarColor: Colors.white
+              ),
               const SizedBox(
                 height: 48,
               ),

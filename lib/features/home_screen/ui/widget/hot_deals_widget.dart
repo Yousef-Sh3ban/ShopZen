@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/features/home_screen/ui/widget/deal_card.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class HotDealsWidget extends StatelessWidget {
@@ -18,9 +19,9 @@ class HotDealsWidget extends StatelessWidget {
       children: [
         const Text(
           "Hot Deals",
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
         ),
-        GridView.builder(
+        GridView.builder( 
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

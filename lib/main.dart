@@ -1,7 +1,6 @@
 import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/configurations/app_states.dart';
 
-
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,28 +18,44 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        bottomNavigationBarTheme:
-            const BottomNavigationBarThemeData(backgroundColor: Colors.white),
+    return BlocProvider(
+      create: (context) => SettingsCubit.instance,
+      child: BlocBuilder<SettingsCubit, AppStates>(
+        builder: (context, state) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: SettingsCubit.instance.isDarkMode
+                ? ThemeData(
+                    primaryColor: Color(0xFF452CE8),
+                    brightness: Brightness.dark,
+                    scaffoldBackgroundColor: Colors.black,
+                    textTheme: const TextTheme(
+                      bodyLarge: TextStyle(color: Color(0xFF452CE8)),
+                    ),
+                  )
+                : ThemeData(
+                    brightness: Brightness.light,
+                    scaffoldBackgroundColor: Colors.white,
+                    textTheme: const TextTheme(
+                      bodyLarge: TextStyle(color: Color(0xFF323135)),
+                    ),
+                  ),
+            locale: SettingsCubit.instance.locale,
+            onGenerateRoute: generateRoute,
+            initialRoute: AppRoutes.splash,
+            supportedLocales: const [
+              Locale('ar'),
+              Locale('en'),
+            ],
+            localizationsDelegates: const [
+              // AppLocalizationsDelegate(),
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+          );
+        },
       ),
-      debugShowCheckedModeBanner: false,
-      // theme: SettingsCubit.instance.isDarkMode
-      //     ? ThemeData.dark()
-      //     : ThemeData.light(),
-      locale: SettingsCubit.instance.locale,
-      onGenerateRoute: generateRoute,
-      initialRoute: AppRoutes.home,
-      supportedLocales: const [
-        Locale('ar'),
-        Locale('en'),
-      ],
-      localizationsDelegates: const [
-        // AppLocalizationsDelegate(),
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
     );
   }
 }

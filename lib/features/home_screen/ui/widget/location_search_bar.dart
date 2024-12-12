@@ -1,4 +1,7 @@
+import 'package:base/app/bloc/settings_cubit.dart';
+import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LocationSearchBar extends StatelessWidget {
@@ -14,7 +17,7 @@ class LocationSearchBar extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Column(
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -30,16 +33,34 @@ class LocationSearchBar extends StatelessWidget {
                 Text(
                   "Dhaka, Bangladesh",
                   style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF323135)),
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    //  color:  Theme.of(context).textTheme.bodyLarge?.color
+                    //color: Color(0xFF323135)
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(SettingsCubit.instance.isDarkMode
+                      ? Icons.dark_mode
+                      : Icons.light_mode),
+                  onPressed: () {
+                    context.read<SettingsCubit>().toggleDarkMode();
+                  },
                 ),
               ],
             ),
-            SvgPicture.asset(
-              "assets/icons/notifcation.svg",
-              width: 25,
-              height: 25,
+            InkWell(
+              child: SvgPicture.asset(
+                "assets/icons/notifcation.svg",
+                width: 25,
+                height: 25,
+                color: Theme.of(context).iconTheme.color,
+              ),
+              onTap: () {
+                Navigator.of(context).pushNamed(
+                  AppRoutes.notifaction,
+                );
+              },
             ),
           ],
         ),

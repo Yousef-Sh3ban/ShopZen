@@ -9,7 +9,6 @@ class StartText extends StatelessWidget {
     return Text(
       "$text",
       style: const TextStyle(
-        color: Color(0xff323135),
         fontWeight: FontWeight.w400,
         fontSize: 32,
         fontFamily: "Alata",

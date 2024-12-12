@@ -3,12 +3,12 @@ import 'package:base/configurations/app_states.dart';
 import 'package:base/features/favorites/ui/screens/favorites_screen.dart';
 import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/features/home_screen/ui/blocs/home_bloc.dart';
-import 'package:base/features/home_screen/ui/widget/Custom_Bottom_NavigationBar.dart';
+import 'package:base/features/home_screen/ui/widget/custom_bottom_navigationBar.dart';
 import 'package:base/features/home_screen/ui/widget/banner_widget.dart';
 import 'package:base/features/home_screen/ui/widget/categories_widget.dart';
 import 'package:base/features/home_screen/ui/widget/hot_deals_widget.dart';
 import 'package:base/features/home_screen/ui/widget/location_search_bar.dart';
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -39,9 +39,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: _screens[_selectedIndex],
-      bottomNavigationBar: CustomBottomNavigationBar(
+      bottomNavigationBar: CustomBottomNavigationBar(selectedIndex:_selectedIndex ,
         ontap: _onItemTapped, // Pass function to handle item tap
       ),
     );

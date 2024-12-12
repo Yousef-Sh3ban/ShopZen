@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/features/notifaction/domain/models/notifaction_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -19,11 +20,17 @@ class NotificationWidget extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         return Column(
           children: [
-            SizedBox(height: 16,),
+            SizedBox(
+              height: 16,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SvgPicture.asset(notifactionList[index].iconUrl),
+                SvgPicture.asset(
+                  notifactionList[index].iconUrl,
+                  color:
+                      SettingsCubit.instance.isDarkMode ? Colors.white : null,
+                ),
                 SizedBox(
                   width: 13,
                 ),
@@ -55,7 +62,10 @@ class NotificationWidget extends StatelessWidget {
               height: 16,
             ),
             index != notifactionList.length - 1
-                ? Divider(height: 0,color: Color(0xFFE6E6E6),)
+                ? Divider(
+                    height: 0,
+                    color: Color(0xFFE6E6E6),
+                  )
                 : const SizedBox(),
           ],
         );

@@ -76,7 +76,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                       style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.w400,
-                          color: AppTheme.lightSecondary),
+                          ),
                     ),
                     Text(
                       "${favoriteProducts.length} Items",

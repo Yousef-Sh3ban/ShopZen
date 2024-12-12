@@ -1,3 +1,4 @@
+import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/handlers/favorites_handler.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,7 @@ class _DealCardState extends State<DealCard> {
       width: 180,
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -120,7 +121,6 @@ class _DealCardState extends State<DealCard> {
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w500,
-              color: Colors.black87,
             ),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
@@ -133,7 +133,6 @@ class _DealCardState extends State<DealCard> {
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF323135),
                 ),
               ),
               const SizedBox(width: 8),
@@ -160,9 +159,9 @@ class _DealCardState extends State<DealCard> {
               Text(
                 "${widget.rating}",
                 style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xFF68656E)),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
               const SizedBox(width: 4),
               Text(

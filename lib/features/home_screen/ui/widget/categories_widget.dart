@@ -11,7 +11,7 @@ class CategoriesWidget extends StatelessWidget {
     {"name": "Beauty", "icon": "assets/icons/Beauty.svg"},
   ];
 
-   CategoriesWidget({super.key});
+  CategoriesWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +28,7 @@ class CategoriesWidget extends StatelessWidget {
             TextButton(
               onPressed: () {},
               child: const Text("View All",
-                  style: TextStyle(
-                      color: Color(0xFF57545B),
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14)),
+                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14)),
             ),
           ],
         ),
@@ -61,7 +58,8 @@ class CategoriesWidget extends StatelessWidget {
                         style: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xFF57545B)),
+                            color: Color(0xFF57545B)
+                            ),
                       ),
                     ],
                   ),

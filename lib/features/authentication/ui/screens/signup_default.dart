@@ -23,7 +23,6 @@ class _SignupDefaultScreenState extends State<SignupDefaultScreen> {
     TextEditingController passwordController = TextEditingController();
     TextEditingController passwordConfiirmController = TextEditingController();
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -162,9 +161,9 @@ class _SignupDefaultScreenState extends State<SignupDefaultScreen> {
                           const Text(
                             "Agree with ",
                             style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                           const Text(
                             "Terms & Condition",
