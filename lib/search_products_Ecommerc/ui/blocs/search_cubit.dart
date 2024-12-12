@@ -13,7 +13,6 @@ class SearchCubit extends Cubit<SearchState> {
 
   final Dio _dio = Dio();
 
-  // Fetch initial products
   Future<void> fetchProducts() async {
     emit(SearchLoading());
     try {
@@ -28,11 +27,9 @@ class SearchCubit extends Cubit<SearchState> {
     }
   }
 
-  // Search products by query
   Future<void> searchProducts(String query) async {
     if (query.isEmpty) {
-      emit(SearchLoaded(
-          products)); // إذا كان البحث فارغًا، اعرض المنتجات الأصلية.
+      emit(SearchLoaded(products));
       return;
     }
     emit(SearchLoading());

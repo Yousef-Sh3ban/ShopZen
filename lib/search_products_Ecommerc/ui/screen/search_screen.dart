@@ -14,7 +14,7 @@ class SearchScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Center(child: Text('Search Products')),
+        title: const Center(child: Text("Smart watch")),
         toolbarHeight: 60,
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
