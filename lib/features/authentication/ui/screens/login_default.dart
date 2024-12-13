@@ -53,7 +53,8 @@ class _LoginDefaultScreenState extends State<LoginDefaultScreen> {
                     const SizedBox(
                       height: 24,
                     ),
-                    const Text("Login with Name",
+                    const Text(
+                      "Login with Name",
                         style: TextStyle(
                             fontSize: 24, fontWeight: FontWeight.w400)),
                     const SizedBox(

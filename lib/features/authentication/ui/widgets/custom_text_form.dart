@@ -58,7 +58,7 @@ class _CustomTextFormState extends State<CustomTextForm> {
                         },
                       );
                     },
-                    child: SizedBox(
+                    child: SizedBox(  
                       width: 45,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
