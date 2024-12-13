@@ -1,10 +1,10 @@
+import 'package:base/search_products_Ecommerc/ui/blocs/search_cubit.dart';
+import 'package:base/search_products_Ecommerc/ui/blocs/search_state.dart';
 import 'package:base/search_products_Ecommerc/ui/widget/EmptySearchWidget.dart';
 import 'package:base/search_products_Ecommerc/ui/widget/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import '../blocs/search_cubit.dart';
-import '../blocs/search_state.dart';
 
 class SearchScreen extends StatelessWidget {
   @override
@@ -14,7 +14,24 @@ class SearchScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Center(child: Text("Smart watch")),
+        title: BlocBuilder<SearchCubit, SearchState>(
+          builder: (context, state) {
+            String title = "Search Products";
+            if (state is SearchLoaded) {
+              title = "${state.products.length} Items Found";
+            }
+            return Center(
+              child: Text(
+                title,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            );
+          },
+        ),
         toolbarHeight: 60,
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
@@ -53,9 +70,7 @@ class SearchScreen extends StatelessWidget {
                 cubit.searchProducts(value);
               },
             ),
-            SizedBox(
-              height: 16,
-            ),
+            const SizedBox(height: 16),
             Expanded(
               child: BlocBuilder<SearchCubit, SearchState>(
                 builder: (context, state) {
