@@ -76,7 +76,7 @@ class _CustomTextFormState extends State<CustomTextForm> {
                   )
                 : const SizedBox(),
             prefix: const SizedBox(
-              width: 16,
+              width:7,
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
