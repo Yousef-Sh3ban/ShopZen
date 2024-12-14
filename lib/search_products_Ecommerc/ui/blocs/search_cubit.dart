@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:base/search_products_Ecommerc/domain/models/product_model.dart';
 import 'package:base/search_products_Ecommerc/ui/blocs/search_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,24 +30,31 @@ class SearchCubit extends Cubit<SearchState> {
   }
 
   Future<void> searchProducts(String query) async {
-    if (query.isEmpty) {
-      emit(SearchLoaded(products));
-      return;
-    }
-    emit(SearchLoading());
-    try {
-      final response = await _dio.get('https://dummyjson.com/products/search',
-          queryParameters: {'q': query});
-      searchResults = (response.data['products'] as List)
-          .map((item) => ProductModel.fromJson(item))
-          .toList();
-      if (searchResults.isEmpty) {
-        emit(SearchEmpty('No products found for "$query"'));
-      } else {
-        emit(SearchLoaded(searchResults));
+    var _debounce;
+    _debounce?.cancel();
+
+    _debounce = Timer(const Duration(seconds: 10), () async {
+      if (query.isEmpty) {
+        emit(SearchLoaded(products));
+        return;
       }
-    } catch (e) {
-      emit(SearchError('Failed to search products'));
-    }
+      emit(SearchLoading());
+      try {
+        final response = await _dio.get(
+          'https://dummyjson.com/products/search',
+          queryParameters: {'q': query},
+        );
+        searchResults = (response.data['products'] as List)
+            .map((item) => ProductModel.fromJson(item))
+            .toList();
+        if (searchResults.isEmpty) {
+          emit(SearchEmpty('No products found for "$query"'));
+        } else {
+          emit(SearchLoaded(searchResults));
+        }
+      } catch (e) {
+        emit(SearchError('Failed to search products'));
+      }
+    });
   }
 }
