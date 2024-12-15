@@ -21,10 +21,10 @@ class LoginBottom extends StatelessWidget {
         child: Text(
           text,
           style: const TextStyle(
-              fontFamily: "Poppins",
               fontSize: 16,
               fontWeight: FontWeight.w400,
-              color: Color(0xFFFFFFFF)),
+              color: Color(0xFFFFFFFF)
+              ),
         ),
       ),
     );

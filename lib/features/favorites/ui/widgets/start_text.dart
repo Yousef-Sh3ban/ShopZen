@@ -12,7 +12,6 @@ class StartText extends StatelessWidget {
         color: Color(0xff323135),
         fontWeight: FontWeight.w400,
         fontSize: 32,
-        fontFamily: "Alata",
       ),
     );
   }

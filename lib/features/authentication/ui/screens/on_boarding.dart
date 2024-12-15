@@ -1,6 +1,8 @@
+import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/features/authentication/ui/widgets/login_bottom.dart';
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class OnBoarding extends StatelessWidget {
@@ -9,7 +11,6 @@ class OnBoarding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffFFFFFF),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 29,
@@ -18,13 +19,16 @@ class OnBoarding extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(
-              height: 123,
+              height: 79,
             ),
             SvgPicture.asset("assets/images/onboarding_image.svg"),
+            const SizedBox(
+              height: 78,
+            ),
             const Text(
               "Welcome to ShopZen",
               style: TextStyle(
-                color: Color(0xff323135),
+                fontFamily: "Alata",
                 fontWeight: FontWeight.w400,
                 fontSize: 32,
               ),

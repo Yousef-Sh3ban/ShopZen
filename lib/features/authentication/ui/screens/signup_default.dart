@@ -55,7 +55,7 @@ class _SignupDefaultScreenState extends State<SignupDefaultScreen> {
                         style: TextStyle(
                             fontSize: 24, fontWeight: FontWeight.w400)),
                     const SizedBox(
-                      height: 24,
+                      height: 47,
                     ),
                     CustomTextForm(
                       onChanged: (value) {

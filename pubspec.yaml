@@ -44,6 +44,8 @@ dependencies:
   dio: ^5.7.0
   video_player: ^2.9.2
   flutter_svg: ^2.0.16
+  sqflite: ^2.3.0
+  path_provider: ^2.1.2
   # firebase dependencies
   #===============================
   firebase_core: ^3.8.0
@@ -94,6 +96,9 @@ flutter:
     - family: Pacifico
       fonts:
         - asset: assets/fonts/Pacifico-Regular.ttf
+    - family: Alata
+      fonts:
+        - asset: assets/fonts/Alata-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

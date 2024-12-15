@@ -1,13 +1,17 @@
+import 'dart:developer';
+
 class ProductModel {
+  final int id;
   final String imageUrl;
   final String title;
   final double price;
   final double oldPrice;
   final double rating;
   final int reviewsCount;
-  final bool isFavorite;
+  bool isFavorite;
   ProductModel(
-      {required this.imageUrl,
+      {required this.id,
+      required this.imageUrl,
       required this.title,
       required this.price,
       required this.oldPrice,
@@ -17,29 +21,33 @@ class ProductModel {
 //=================================
 //=================================
 //=================================
-  factory ProductModel.fromJson(Map<String, dynamic> json) {
-    return ProductModel(
-      imageUrl: json['imageUrl'],
-      title: json['title'],
-      price: json['price'],
-      oldPrice: json['oldPrice'],
-      rating: json['rating'],
-      reviewsCount: json['reviewsCount'],
-      isFavorite: json['isFavorite'] ?? false,
-    );
-  }
+factory ProductModel.fromJson(Map<String, dynamic> json) {
+  log("starting to json");
+  return ProductModel(
+    id: json['id'] ?? 0, 
+    imageUrl: json['imageUrl'] ?? '',
+    title: json['title'] ?? 'No Title', 
+    price: (json['price'] ?? 0.0).toDouble(),
+    oldPrice: (json['oldPrice'] ?? 0.0).toDouble(), 
+    rating: (json['rating'] ?? 0.0).toDouble(),
+    reviewsCount: (json['reviewsCount'] ?? 0).toInt(),
+    isFavorite: json['isFavorite'] == 1,
+  );
+}
+
 //=================================
 //=================================
 //=================================
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'imageUrl': imageUrl,
       'title': title,
       'price': price,
       'oldPrice': oldPrice,
       'rating': rating,
       'reviewsCount': reviewsCount,
-      'isFavorite': isFavorite,
+      'isFavorite': isFavorite ? 1 : 0,
     };
   }
 }

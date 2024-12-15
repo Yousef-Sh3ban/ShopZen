@@ -17,7 +17,6 @@ class TextBottomLogin extends StatelessWidget {
             text: text1,
             style: const TextStyle(
                 color: Color(0xff68656E),
-                // fontFamily: "Satoshi",
                 fontSize: 16,
                 fontWeight: FontWeight.w400),
             children: <TextSpan>[
@@ -25,7 +24,6 @@ class TextBottomLogin extends StatelessWidget {
                   text: text2,
                   style: const TextStyle(
                       color: Color(0xff452CE8),
-                      // fontFamily: "Satoshi",
                       fontSize: 16,
                       decoration: TextDecoration.underline,
                       fontWeight: FontWeight.w700))

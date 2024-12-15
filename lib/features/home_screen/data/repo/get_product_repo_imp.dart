@@ -1,5 +1,6 @@
 import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/features/home_screen/domain/repo/get_hot_deals_repo_interface.dart';
+import 'package:base/handlers/fav.dart';
 import 'package:base/handlers/favorites_handler.dart';
 import 'package:dio/dio.dart';
 
@@ -18,8 +19,11 @@ class GetProductsRepoImp implements GetProductsRepoInterface {
 
   Future<List<ProductModel>> mapingData(data) async {
     List<ProductModel> products = [];
+    final dbHelper = DBHelper.instance;
     for (int i = 0; i < 10; i++) {
-      products.add(ProductModel(
+      products.add(
+        ProductModel(
+          id: data["products"][i]["id"],
           imageUrl: data["products"][i]["images"][0] ?? "NO image",
           title: data["products"][i]["title"] ?? "Unknown Title",
           price: data["products"][i]["price"] ?? 0.00,
@@ -29,7 +33,9 @@ class GetProductsRepoImp implements GetProductsRepoInterface {
               ? data["products"][i]["reviews"].length
               : 0,
           isFavorite:
-              await FavoritesHandler.isFavorite(data["products"][i]["title"])));
+              await dbHelper.isProductFavorite(data["products"][i]["id"]),
+        ),
+      );
     }
     return products;
   }

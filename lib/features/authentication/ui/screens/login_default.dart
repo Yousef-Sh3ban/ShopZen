@@ -53,12 +53,11 @@ class _LoginDefaultScreenState extends State<LoginDefaultScreen> {
                     const SizedBox(
                       height: 24,
                     ),
-                    const Text(
-                      "Login with Name",
+                    const Text("Login with Name",
                         style: TextStyle(
                             fontSize: 24, fontWeight: FontWeight.w400)),
                     const SizedBox(
-                      height: 24,
+                      height: 47,
                     ),
                     CustomTextForm(
                         onChanged: (value) {
@@ -75,6 +74,9 @@ class _LoginDefaultScreenState extends State<LoginDefaultScreen> {
                           }
                           return null;
                         }),
+                    const SizedBox(
+                      height: 16,
+                    ),
                     CustomTextForm(
                         onChanged: (value) {
                           context.read<LoginBloc>().add(
@@ -108,7 +110,6 @@ class _LoginDefaultScreenState extends State<LoginDefaultScreen> {
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
-                              color: Color(0xFF323135),
                             ),
                           ),
                         )
@@ -118,7 +119,7 @@ class _LoginDefaultScreenState extends State<LoginDefaultScreen> {
                       height: 48,
                     ),
                     LoginBottom(
-                      text: "login",
+                      text: "Login",
                       color: state is ReadyToLoginState
                           ? const Color(0xFF452CE8)
                           : const Color(0xFF6A70FF),

@@ -22,7 +22,7 @@ class CustomLoginButton extends StatelessWidget {
     return Container(
       height: 50,
       decoration: BoxDecoration(
-        border: Border.all(color: const Color((0xffDAE2FF))),
+        border: Border.all(width: 1.5, color: const Color((0xffDAE2FF))),
         // color: continarColor,
         borderRadius: BorderRadius.circular(8),
       ),
@@ -45,7 +45,7 @@ class CustomLoginButton extends StatelessWidget {
                 // color: textcolor,
                 fontWeight: FontWeight.w500,
                 fontSize: 16,
-                fontFamily: "Alata"),
+                ),
           )
         ],
       ),

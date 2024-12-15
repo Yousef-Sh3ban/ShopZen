@@ -1,13 +1,11 @@
 import 'dart:developer';
-
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:base/configurations/app_theme.dart';
 import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/features/home_screen/ui/widget/deal_card.dart';
-import 'package:base/features/home_screen/ui/widget/hot_deals_widget.dart';
+import 'package:base/handlers/fav.dart';
 import 'package:base/handlers/favorites_handler.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({super.key});
@@ -19,6 +17,8 @@ class FavoritesScreen extends StatefulWidget {
 class _FavoritesScreenState extends State<FavoritesScreen> {
   bool isLoading = true;
   List<ProductModel> favoriteProducts = [];
+  final dbHelper = DBHelper.instance;
+
   @override
   void initState() {
     super.initState();
@@ -27,7 +27,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
 
   Future<void> _loadFavorites() async {
     try {
-      final products = await FavoritesHandler.loadFavorites();
+      final List<ProductModel> products = await dbHelper.getFavorites();
       setState(() {
         favoriteProducts = products;
         isLoading = false;
@@ -40,22 +40,41 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
     }
   }
 
+  void _onFavoriteChanged(int productId, bool isFavorite) {
+    final productIndex =
+        favoriteProducts.indexWhere((product) => product.id == productId);
+    if (productIndex != -1) {
+      setState(() {
+        favoriteProducts[productIndex].isFavorite = isFavorite;
+      });
+
+      // If the product is no longer a favorite, delete it from the database
+      if (!isFavorite) {
+        dbHelper.deleteProduct(favoriteProducts[productIndex].id);
+        
+        // Use a delay to allow for animation before removing the item
+        Future.delayed(const Duration(milliseconds: 200), () {
+          setState(() {
+            favoriteProducts.removeAt(productIndex); // Remove after animation
+          });
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
+      return const Center(child: CircularProgressIndicator());
     }
     if (favoriteProducts.isEmpty) {
-      return Center(
-        child:SvgPicture.asset("assets/images/no_items.svg")
-      );
+      return Center(child: SvgPicture.asset("assets/images/no_items.svg"));
     }
 
-    List<DealCard> dealCaredList = modelingProductList(favoriteProducts);
+    List<DealCard> dealCaredList = _modelingProductList(favoriteProducts);
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -68,15 +87,11 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      height: 70,
-                    ),
+                    SizedBox(height: 70),
                     const Text(
                       "Favorite Items",
-                      style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w400,
-                          ),
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
                     ),
                     Text(
                       "${favoriteProducts.length} Items",
@@ -85,7 +100,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                           fontWeight: FontWeight.w500,
                           color: AppTheme.maingrey),
                     ),
-                    const SizedBox(height: 16,)
+                    const SizedBox(height: 16)
                   ],
                 ),
               ],
@@ -103,7 +118,14 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                 ),
                 itemCount: dealCaredList.length,
                 itemBuilder: (context, index) {
-                  return dealCaredList[index];
+                  // Wrap each DealCard with AnimatedOpacity
+                  return AnimatedOpacity(
+                    opacity: favoriteProducts[index].isFavorite ? 1.0 : 0.0,
+                    duration: const Duration(milliseconds: 300),
+                    child: favoriteProducts[index].isFavorite
+                        ? dealCaredList[index]
+                        : Container(),
+                  );
                 },
               ),
             ),
@@ -111,5 +133,27 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         ),
       ),
     );
+  }
+
+  List<DealCard> _modelingProductList(List<ProductModel> products) {
+    List<DealCard> data = [];
+    for (int i = 0; i < products.length; i++) {
+      data.add(
+        DealCard(
+          id: products[i].id,
+          imageUrl: products[i].imageUrl,
+          title: products[i].title,
+          price: products[i].price,
+          oldPrice: products[i].oldPrice * 2,
+          rating: products[i].rating,
+          reviewsCount: products[i].reviewsCount,
+          isFavorite: products[i].isFavorite,
+          onFavoriteChanged: (isFavorite) {
+            _onFavoriteChanged(products[i].id, isFavorite);
+          },
+        ),
+      );
+    }
+    return data;
   }
 }

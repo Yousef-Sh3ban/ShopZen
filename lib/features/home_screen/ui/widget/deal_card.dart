@@ -1,10 +1,11 @@
-import 'package:base/app/bloc/settings_cubit.dart';
-import 'package:base/features/home_screen/domain/models/product_model.dart';
-import 'package:base/handlers/favorites_handler.dart';
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:base/features/home_screen/domain/models/product_model.dart';
+import 'package:base/handlers/fav.dart';
 
 class DealCard extends StatefulWidget {
+  final int id;
   final String imageUrl;
   final String title;
   final double price;
@@ -12,9 +13,11 @@ class DealCard extends StatefulWidget {
   final double rating;
   final int reviewsCount;
   bool isFavorite;
+  final Function(bool)? onFavoriteChanged; // Nullable callback
 
   DealCard({
     super.key,
+    required this.id,
     required this.imageUrl,
     required this.title,
     required this.price,
@@ -22,21 +25,28 @@ class DealCard extends StatefulWidget {
     required this.rating,
     required this.reviewsCount,
     required this.isFavorite,
+    this.onFavoriteChanged, // Pass the callback here
   });
 
   @override
   State<DealCard> createState() => _DealCardState();
 }
 
+final dbHelper = DBHelper.instance;
+
 class _DealCardState extends State<DealCard> {
   @override
   void initState() {
     super.initState();
-    FavoritesHandler.isFavorite(widget.title).then((isFav) {
-      setState(() {
-        widget.isFavorite = isFav;
-      });
-    });
+    dbHelper.isProductFavorite(widget.id).then(
+      (isFav) {
+        setState(
+          () {
+            widget.isFavorite = isFav;
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -81,11 +91,15 @@ class _DealCardState extends State<DealCard> {
                   ),
                   child: MaterialButton(
                     onPressed: () {
-                      setState(() {
-                        widget.isFavorite = !widget.isFavorite;
-                      });
+                      setState(
+                        () {
+                          widget.isFavorite = !widget.isFavorite;
+                        },
+                      );
                       if (widget.isFavorite) {
-                        FavoritesHandler.addFavorite(ProductModel(
+                        log("i will make this product favorite");
+                        dbHelper.insertProduct(ProductModel(
+                          id: widget.id,
                           imageUrl: widget.imageUrl,
                           title: widget.title,
                           price: widget.price,
@@ -95,7 +109,12 @@ class _DealCardState extends State<DealCard> {
                           isFavorite: widget.isFavorite,
                         ));
                       } else {
-                        FavoritesHandler.removeFavorite(widget.title);
+                        dbHelper.deleteProduct(widget.id);
+                      }
+
+                      // Call the onFavoriteChanged callback if it's not null
+                      if (widget.onFavoriteChanged != null) {
+                        widget.onFavoriteChanged!(widget.isFavorite);
                       }
                     },
                     color: Colors.white,

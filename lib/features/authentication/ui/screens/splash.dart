@@ -115,7 +115,6 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
                       color: const Color(0xffFBFBFC),
                       fontSize: _widthAnimation.value / 2,
                       fontWeight: FontWeight.w700,
-                      fontFamily: "Satoshi",
                     ),
                   ),
                 ],

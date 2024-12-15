@@ -11,7 +11,6 @@ class StartText extends StatelessWidget {
       style: const TextStyle(
         fontWeight: FontWeight.w400,
         fontSize: 32,
-        fontFamily: "Alata",
       ),
     );
   }

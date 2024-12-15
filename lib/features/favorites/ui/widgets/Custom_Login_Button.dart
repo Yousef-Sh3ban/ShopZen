@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/widgets.dart';
 
 class CustomLoginButton extends StatelessWidget {
@@ -38,10 +36,10 @@ class CustomLoginButton extends StatelessWidget {
           Text(
             text,
             style: TextStyle(
-                color: textcolor,
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
-                fontFamily: "Alata"),
+              color: textcolor,
+              fontWeight: FontWeight.w500,
+              fontSize: 16,
+            ),
           )
         ],
       ),

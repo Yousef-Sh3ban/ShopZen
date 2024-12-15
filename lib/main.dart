@@ -26,23 +26,27 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: SettingsCubit.instance.isDarkMode
                 ? ThemeData(
-                    primaryColor: Color(0xFF452CE8),
+                    fontFamily: "Alata",
+                    primaryColor: const Color(0xFF452CE8),
                     brightness: Brightness.dark,
                     scaffoldBackgroundColor: Colors.black,
                     textTheme: const TextTheme(
+                      bodyMedium: TextStyle(color: Color(0xFFDAE2FF)),
                       bodyLarge: TextStyle(color: Color(0xFF452CE8)),
                     ),
                   )
                 : ThemeData(
+                    fontFamily: "Alata",
                     brightness: Brightness.light,
                     scaffoldBackgroundColor: Colors.white,
                     textTheme: const TextTheme(
+                      bodyMedium: TextStyle(color: Color(0xFF323135)),
                       bodyLarge: TextStyle(color: Color(0xFF323135)),
                     ),
                   ),
             locale: SettingsCubit.instance.locale,
             onGenerateRoute: generateRoute,
-            initialRoute: AppRoutes.splash,
+            initialRoute: AppRoutes.home,
             supportedLocales: const [
               Locale('ar'),
               Locale('en'),

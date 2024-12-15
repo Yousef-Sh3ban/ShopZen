@@ -1,4 +1,3 @@
-
 import 'dart:developer';
 
 import 'package:base/features/home_screen/domain/models/product_model.dart';
@@ -19,16 +18,19 @@ class HotDealsWidget extends StatelessWidget {
       children: [
         const Text(
           "Hot Deals",
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
         ),
-        GridView.builder( 
+        GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 8,
             crossAxisSpacing: 8,
-            childAspectRatio: screenWidth/screenHeight*1.2,
+            childAspectRatio: screenWidth / screenHeight * 1.2,
           ),
           itemCount: dealCaredList.length,
           itemBuilder: (context, index) {
@@ -46,6 +48,7 @@ List<DealCard> modelingProductList(List<ProductModel> products) {
   for (int i = 0; i < products.length; i++) {
     data.add(
       DealCard(
+          id: products[i].id,
           imageUrl: products[i].imageUrl,
           title: products[i].title,
           price: products[i].price,
