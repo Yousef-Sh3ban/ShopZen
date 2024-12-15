@@ -1,4 +1,4 @@
-import 'package:base/features/home_screen/domain/models/product_model.dart';
+import 'package:base/features/home_screen/domain/models/product.dart';
 import 'package:base/features/home_screen/ui/widget/deal_card.dart';
 import 'package:flutter/widgets.dart';
 

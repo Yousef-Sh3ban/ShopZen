@@ -2,7 +2,8 @@ import 'dart:developer';
 
 import 'package:base/configurations/app_events.dart';
 import 'package:base/configurations/app_states.dart';
-import 'package:base/features/home_screen/domain/models/product_model.dart';
+import 'package:base/features/home_screen/domain/models/product.dart';
+
 import 'package:base/features/home_screen/ui/blocs/home_bloc.dart';
 import 'package:base/features/home_screen/ui/widget/banner_widget.dart';
 import 'package:base/features/home_screen/ui/widget/categories_widget.dart';

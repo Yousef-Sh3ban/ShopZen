@@ -3,10 +3,15 @@ import 'package:base/search_products_Ecommerc/ui/blocs/search_state.dart';
 import 'package:base/search_products_Ecommerc/ui/widget/EmptySearchWidget.dart';
 import 'package:base/search_products_Ecommerc/ui/widget/product_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SearchScreen extends StatelessWidget {
+  SearchScreen({Key? key}) : super(key: key);
+
+  final TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final cubit = SearchCubit.get(context);
@@ -14,6 +19,7 @@ class SearchScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        surfaceTintColor: Colors.white,
         title: BlocBuilder<SearchCubit, SearchState>(
           builder: (context, state) {
             String title = "Search Products";
@@ -48,6 +54,7 @@ class SearchScreen extends StatelessWidget {
         child: Column(
           children: [
             TextField(
+              controller: controller,
               decoration: InputDecoration(
                 prefixIcon: Padding(
                   padding:
@@ -56,10 +63,17 @@ class SearchScreen extends StatelessWidget {
                     "assets/icons/search.svg",
                   ),
                 ),
-                suffixIcon: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                  child: SvgPicture.asset("assets/icons/close.svg"),
+                suffixIcon: IconButton(
+                  icon: SvgPicture.asset("assets/icons/close.svg"),
+                  onPressed: () {
+                    if (controller.text.isNotEmpty) {
+                      controller.text = controller.text
+                          .substring(0, controller.text.length - 1);
+                      controller.selection = TextSelection.fromPosition(
+                          TextPosition(offset: controller.text.length));
+                      cubit.searchProducts(controller.text);
+                    }
+                  },
                 ),
                 hintText: 'Find your favorite items',
                 border: OutlineInputBorder(

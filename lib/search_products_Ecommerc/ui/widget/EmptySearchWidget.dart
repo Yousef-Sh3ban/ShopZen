@@ -6,21 +6,23 @@ class EmptySearchWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            "assets/images/Search-rafiki 1.png",
-          ),
-          const SizedBox(height: 64),
-          const Text(
-            'No Result Found!',
-            style: TextStyle(
-                fontSize: 24,
-                color: Color(0xff323135),
-                fontWeight: FontWeight.w400),
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              "assets/images/Search-rafiki 1.png",
+            ),
+            const SizedBox(height: 64),
+            const Text(
+              'No Result Found!',
+              style: TextStyle(
+                  fontSize: 24,
+                  color: Color(0xff323135),
+                  fontWeight: FontWeight.w400),
+            ),
+          ],
+        ),
       ),
     );
   }
