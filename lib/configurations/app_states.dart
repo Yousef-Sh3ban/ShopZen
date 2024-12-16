@@ -10,6 +10,10 @@ class LoadedState extends AppStates {
   final dynamic data;
   LoadedState(this.data);
 }
+class CategoriesState extends AppStates {
+  final dynamic data;
+  CategoriesState({required this.data});
+}
 
 class EmptyState extends AppStates {}
 

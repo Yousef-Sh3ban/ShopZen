@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   // List of screens for navigation
   final List<Widget> _screens = [
     const HomeScreenContent(), // Home screen widget (current screen)
-    FavoritesScreen(), // Saved screen widget
+    const FavoritesScreen(), // Saved screen widget
     CartPage(), // Cart screen widget
     AccountPage(), // Account screen widget
   ];
@@ -40,7 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screens[_selectedIndex],
-      bottomNavigationBar: CustomBottomNavigationBar(selectedIndex:_selectedIndex ,
+      bottomNavigationBar: CustomBottomNavigationBar(
+        selectedIndex: _selectedIndex,
         ontap: _onItemTapped, // Pass function to handle item tap
       ),
     );
@@ -50,14 +51,14 @@ class _HomeScreenState extends State<HomeScreen> {
 class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Cart Page'));
+    return const Center(child: Text('Cart Page'));
   }
 }
 
 class AccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Account Page'));
+    return const Center(child: Text('Account Page'));
   }
 }
 
@@ -74,6 +75,7 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
     super.initState();
     Future.microtask(() {
       context.read<HomeBloc>().add(GetDataEvent(data: null));
+      context.read<HomeBloc>().add(GetCategoriesEvent());
     });
   }
 
@@ -87,7 +89,18 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
           children: [
             LocationSearchBar(),
             const SizedBox(height: 16),
-            CategoriesWidget(),
+            BlocBuilder<HomeBloc, AppStates>(
+              buildWhen: (previous, current) {
+                return current is CategoriesState;
+              },
+              builder: (context, state) {
+                if (state is CategoriesState) {
+                  return CategoriesWidget(response: state.data);
+                } else {
+                  return const Center(child: CircularProgressIndicator());
+                }
+              },
+            ),
             const SizedBox(height: 16),
             const BannerWidget(),
             const SizedBox(height: 8),
@@ -96,6 +109,9 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
             ),
             const SizedBox(height: 16),
             BlocConsumer<HomeBloc, AppStates>(
+              buildWhen: (previous, current) {
+                return current is LoadedState || current is LoadingState;
+              },
               listener: (context, state) {
                 if (state is ErrorState) {
                   ScaffoldMessenger.of(context).showSnackBar(
