@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:ffi';
 
 import 'package:base/configurations/app_events.dart';
 import 'package:base/configurations/app_states.dart';

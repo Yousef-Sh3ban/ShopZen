@@ -1,3 +1,5 @@
+import 'package:base/features/cart/ui/bloc/cart_cubit.dart';
+import 'package:base/features/cart/ui/screen/cart_screen.dart';
 import 'package:base/search_products_Ecommerc/ui/blocs/search_cubit.dart';
 import 'package:base/search_products_Ecommerc/ui/screen/search_screen.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +51,11 @@ Route generateRoute(settings) {
         create: (context) => SearchCubit(),
         child: SearchScreen(),
       ));
-
+    case AppRoutes.CartScreen:
+      return _createRoute(BlocProvider(
+        create: (context) => CartCubit(),
+        child: CartScreen(),
+      ));
     default:
       return _createRoute(SizedBox());
   }

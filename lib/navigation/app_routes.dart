@@ -8,4 +8,5 @@ abstract class AppRoutes {
   static const String Home = "Home";
 
   static const String SearchScreen = "SearchScreen";
+  static const String CartScreen = "CartScreen";
 }

@@ -1,4 +1,5 @@
 // import 'package:flutter/material.dart';
+import 'package:base/features/home_screen/ui/widget/Custom_Bottom_NavigationBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:base/features/cart/ui/bloc/cart_cubit.dart';
@@ -11,8 +12,11 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         surfaceTintColor: Colors.white,
+        backgroundColor: Colors.white,
+        elevation: 0,
         title: Text(
           'My Cart',
           style: TextStyle(
@@ -48,6 +52,7 @@ class CartScreen extends StatelessWidget {
           return Center(child: CircularProgressIndicator());
         },
       ),
+      bottomNavigationBar: const CustomBottomNavigationBar(),
     );
   }
 }
