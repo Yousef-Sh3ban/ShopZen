@@ -14,6 +14,7 @@ class GetProductsRepoImp implements GetProductsRepoInterface {
           await dio.get("https://dummyjson.com/products?limit=10&skip=10");
       return await mapingPrductsFromAPI(response.data);
     } catch (e) {
+      log(e.toString());
       return [];
     }
   }
@@ -21,7 +22,7 @@ class GetProductsRepoImp implements GetProductsRepoInterface {
   Future<List<ProductModel>> mapingPrductsFromAPI(data) async {
     List<ProductModel> products = [];
     final dbHelper = DBHelper.instance;
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < (data["products"] as List).length; i++) {
       products.add(
         ProductModel(
           id: data["products"][i]["id"],

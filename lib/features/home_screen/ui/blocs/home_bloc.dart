@@ -28,13 +28,18 @@ class HomeBloc extends Bloc<AppEvents, AppStates> {
   //================================== Events
   //==================================
   getHotDeals(GetDataEvent event, Emitter emit) async {
+    try{
     List<ProductModel> products = await _getHotDealsint.getHotDeals();
     if (products.isNotEmpty) {
-      emit(LoadedState(products));
+      emit(LoadedState(products as List<ProductModel>));
     } else {
       emit(
         LoadedState([]),
       );
+    }
+    }catch(e)
+    {
+      log("error: ${e.toString()}");
     }
   }
 

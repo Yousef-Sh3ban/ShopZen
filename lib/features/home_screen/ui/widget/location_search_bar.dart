@@ -20,17 +20,17 @@ class LocationSearchBar extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Location",
                   style: TextStyle(
                       fontSize: 14,
                       color: Color(0xFF68656E),
                       fontWeight: FontWeight.w400),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 6,
                 ),
-                Text(
+                const Text(
                   "Dhaka, Bangladesh",
                   style: TextStyle(
                     fontSize: 14,

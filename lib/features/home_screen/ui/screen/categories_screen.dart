@@ -52,37 +52,31 @@ class CategoriesScreen extends StatelessWidget {
           } else if (state is ErrorState) {
             return const Center(child: Text("Error happend "));
           } else if (state is CategoryProductsState) {
-            log("the number of itmes in the lisnt form the state is :${state.data.length}");
             List<DealCard> dealCaredList = modelingProductList((state.data));
             return SingleChildScrollView(
               child: Column(
                 children: [
-                  // Row(
-                  //   crossAxisAlignment: CrossAxisAlignment.center,
-                  //   mainAxisAlignment: MainAxisAlignment.center,
-                  //   children: [
-                  //     Column(
-                  //       crossAxisAlignment: CrossAxisAlignment.center,
-                  //       mainAxisAlignment: MainAxisAlignment.center,
-                  //       children: [
-                  //         SizedBox(height: 70),
-                  //         const Text(
-                  //           "Favorite Items",
-                  //           style:
-                  //               TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
-                  //         ),
-                  //         Text(
-                  //           "${favoriteProducts.length} Items",
-                  //           style: const TextStyle(
-                  //               fontSize: 18,
-                  //               fontWeight: FontWeight.w500,
-                  //               color: AppTheme.maingrey),
-                  //         ),
-                  //         const SizedBox(height: 16)
-                  //       ],
-                  //     ),
-                  //   ],
-                  // ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "${dealCaredList.length} Items",
+                            style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xFF68656E)
+                                ),
+                          ),
+                          const SizedBox(height: 28)
+                        ],
+                      ),
+                    ],
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: GridView.builder(

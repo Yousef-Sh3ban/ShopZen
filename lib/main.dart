@@ -10,6 +10,7 @@ import 'navigation/route_generator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SettingsCubit.instance.loadThemeMode();
   runApp(const MyApp());
 }
 
