@@ -34,7 +34,6 @@ class HotDealsWidget extends StatelessWidget {
           ),
           itemCount: dealCaredList.length,
           itemBuilder: (context, index) {
-            // log(dealCaredList[index].isFavorite.toString());
             return dealCaredList[index];
           },
         ),
@@ -58,5 +57,7 @@ List<DealCard> modelingProductList(List<ProductModel> products) {
           isFavorite: products[i].isFavorite),
     );
   }
+  log("returning the data:");
+  log(data.toString());
   return data;
 }

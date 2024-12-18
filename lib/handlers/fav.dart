@@ -51,14 +51,9 @@ class DBHelper {
 
   // Get all favorite products
   Future<List<ProductModel>> getFavorites() async {
-    log("line1");
     final db = await database;
-    log("line2");
     final result = await db.query('favorites');
-    log(result.toString());
-    log("==========================");
-    // log(result.map((json) => ProductModel.fromJson(json)).toList().toString());
-    return result.map((json) => ProductModel.fromJson(json)).toList();
+    return result.map((json) => ProductModel.fromJsonForDB(json)).toList();
   }
 
   // Delete a product

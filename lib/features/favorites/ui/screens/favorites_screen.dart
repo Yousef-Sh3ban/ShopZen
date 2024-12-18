@@ -5,7 +5,6 @@ import 'package:base/configurations/app_theme.dart';
 import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/features/home_screen/ui/widget/deal_card.dart';
 import 'package:base/handlers/fav.dart';
-import 'package:base/handlers/favorites_handler.dart';
 
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({super.key});

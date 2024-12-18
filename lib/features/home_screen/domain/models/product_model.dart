@@ -21,19 +21,19 @@ class ProductModel {
 //=================================
 //=================================
 //=================================
-factory ProductModel.fromJson(Map<String, dynamic> json) {
-  log("starting to json");
-  return ProductModel(
-    id: json['id'] ?? 0, 
-    imageUrl: json['imageUrl'] ?? '',
-    title: json['title'] ?? 'No Title', 
-    price: (json['price'] ?? 0.0).toDouble(),
-    oldPrice: (json['oldPrice'] ?? 0.0).toDouble(), 
-    rating: (json['rating'] ?? 0.0).toDouble(),
-    reviewsCount: (json['reviewsCount'] ?? 0).toInt(),
-    isFavorite: json['isFavorite'] == 1,
-  );
-}
+  factory ProductModel.fromJsonForDB(Map<String, dynamic> json) {
+    //This is only for the datbase don't try to use it for API or anoter thing becuse the name of the keys is made only for the database
+    return ProductModel(
+      id: json['id'] ?? 0,
+      imageUrl: json['imageUrl'] ?? '',
+      title: json['title'] ?? 'No Title',
+      price: (json['price'] ?? 0.0).toDouble(),
+      oldPrice: (json['oldPrice'] ?? 0.0).toDouble(),
+      rating: (json['rating'] ?? 0.0).toDouble(),
+      reviewsCount: (json['reviewsCount'] ?? 0).toInt(),
+      isFavorite: json['isFavorite'] == 1,
+    );
+  }
 
 //=================================
 //=================================

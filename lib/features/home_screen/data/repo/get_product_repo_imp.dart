@@ -1,7 +1,8 @@
+import 'dart:developer';
+
 import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/features/home_screen/domain/repo/get_hot_deals_repo_interface.dart';
 import 'package:base/handlers/fav.dart';
-import 'package:base/handlers/favorites_handler.dart';
 import 'package:dio/dio.dart';
 
 class GetProductsRepoImp implements GetProductsRepoInterface {
@@ -11,13 +12,13 @@ class GetProductsRepoImp implements GetProductsRepoInterface {
       Dio dio = Dio();
       Response response =
           await dio.get("https://dummyjson.com/products?limit=10&skip=10");
-      return await mapingData(response.data);
+      return await mapingPrductsFromAPI(response.data);
     } catch (e) {
       return [];
     }
   }
-
-  Future<List<ProductModel>> mapingData(data) async {
+}
+  Future<List<ProductModel>> mapingPrductsFromAPI(data) async {
     List<ProductModel> products = [];
     final dbHelper = DBHelper.instance;
     for (int i = 0; i < 10; i++) {
@@ -39,4 +40,3 @@ class GetProductsRepoImp implements GetProductsRepoInterface {
     }
     return products;
   }
-}

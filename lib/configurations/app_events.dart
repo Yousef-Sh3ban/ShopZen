@@ -39,8 +39,10 @@ class GetDataEvent extends AppEvents {
 
   GetDataEvent({required this.data});
 }
-class GetCategoriesEvent extends AppEvents {
-}
+
+class GetCategoriesEvent extends AppEvents {}
+
+class GetCategoryProdutsEvent extends AppEvents {}
 
 class CheckboxEvent extends AppEvents {
   final bool? data;

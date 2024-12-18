@@ -41,7 +41,6 @@ class HomeBloc extends Bloc<AppEvents, AppStates> {
   getCategories(GetCategoriesEvent event, Emitter emit) async {
     Response categories =
         await NetworkHandler.instance.get('products/categories');
-    log(categories.toString());
 
     emit(CategoriesState(data: categories));
     // if (categories.isNotEmpty) {

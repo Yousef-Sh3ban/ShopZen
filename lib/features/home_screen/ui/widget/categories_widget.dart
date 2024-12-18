@@ -1,7 +1,10 @@
 import 'dart:developer';
 
+import 'package:base/features/home_screen/ui/blocs/category_cubit.dart';
+import 'package:base/features/home_screen/ui/screen/categories_screen.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CategoriesWidget extends StatelessWidget {
@@ -34,25 +37,36 @@ class CategoriesWidget extends StatelessWidget {
           child: Row(
             children: categories.map(
               (category) {
-                String d = "sdff";
-                if (d.contains("sd")) {
-                  log("yesssssssssssssssssssssssssss");
-                }
-
                 return Row(
                   children: [
                     Column(
                       children: [
-                        Container(
-                          height: 48,
-                          width: 48,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: const Color(0xFFEBEFFF),
-                          ),
-                          padding: const EdgeInsets.all(12),
-                          child: SvgPicture.asset(
-                            category["icon"]!,
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BlocProvider(
+                                  create: (context) => CategoryCubit(),
+                                  child: CategoriesScreen(
+                                    title: category["name"]!,
+                                    categoryurl: category["categoryurl"]!,
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            height: 48,
+                            width: 48,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: const Color(0xFFEBEFFF),
+                            ),
+                            padding: const EdgeInsets.all(12),
+                            child: SvgPicture.asset(
+                              category["icon"]!,
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -92,7 +106,8 @@ List<Map<String, String>> modelingCategories(Response response) {
   List<Map<String, String>> categories = (response.data as List)
       .map((json) => {
             "name": json["name"] as String,
-            "icon": _determineIcon(json["name"])
+            "icon": _determineIcon(json["name"]),
+            "categoryurl": json["url"] as String
           })
       .toList();
   return categories;
