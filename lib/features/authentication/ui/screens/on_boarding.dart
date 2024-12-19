@@ -1,4 +1,3 @@
-import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/features/authentication/ui/widgets/login_bottom.dart';
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';

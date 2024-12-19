@@ -41,7 +41,7 @@ class CustomLoginButton extends StatelessWidget {
           ),
           Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
                 // color: textcolor,
                 fontWeight: FontWeight.w500,
                 fontSize: 16,

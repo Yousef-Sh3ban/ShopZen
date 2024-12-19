@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:base/features/authentication/domain/models/login_response.dart';
 import 'package:base/features/authentication/domain/models/register_response.dart';

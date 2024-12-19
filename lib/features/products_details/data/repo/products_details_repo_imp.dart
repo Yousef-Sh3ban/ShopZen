@@ -1,46 +1,34 @@
-
-import 'package:base/features/notifaction/domain/models/notifaction_model.dart';
-import 'package:base/features/notifaction/domain/repo/notifaction_repo_interface.dart';
+import 'dart:developer';
+import 'package:base/features/products_details/domain/models/product_details_model.dart';
+import 'package:base/features/products_details/domain/repo/notifaction_repo_interface.dart';
 import 'package:base/network/app_end_points.dart';
 import 'package:dio/dio.dart';
 
-class GetDiscountRepoImp implements GetNotifactionRepoInterface {
+class GetProductDetailsRepoImp implements GetProductDetailsRepoInterface {
   @override
-  Future<List<NotifactionModel>> getNotifaction() async {
+  Future<ProductDetailsModel> getProductDetails(int id) async {
     try {
       Dio dio = Dio();
-      Response response = await dio.get(AppEndPoints.notifactionUrl);
-      return await mapingData(response.data);
+      Response response =
+          await dio.get(AppEndPoints.productDetailsUrl + (id.toString()));
+      return ProductDetailsModel.fromJson(response.data);
     } catch (e) {
-      return [];
+      log(e.toString());
+
+      return ProductDetailsModel(
+          id: 0,
+          category: "",
+          stock: 0,
+          reviews: [],
+          images: [],
+          discountPercentage: 0.0,
+          description: "",
+          title: "",
+          price: 0.0,
+          oldPrice: 0.0,
+          rating: 0.0,
+          reviewsCount: 0,
+          isFavorite: false);
     }
-  }
-
-  Future<List<NotifactionModel>> mapingData(data) async {
-    List<NotifactionModel> notifactions = (data['data'] as List)
-        .map((json) => NotifactionModel.fromJson(json))
-        .toList();
-    // for (int i = 0; i < 10; i++) {
-    //   log(i.toString());
-    //   notifactions.add(NotifactionModel(
-    //       iconUrl: determineIcon(data["data"][i]["type"]),
-    //       message: data["data"][i]["message"],
-    //       title: data["data"][i]["title"]));
-    // }
-    return notifactions;
-  }
-}
-
-String determineIcon(String notificationType) {
-  if (notificationType == "purchase") {
-    return "assets/icons/wallet.svg";
-  } else if (notificationType == "new_arrivals") {
-    return "assets/icons/location.svg";
-  } else if (notificationType == "discount") {
-    return "assets/icons/discount.svg";
-  } else if (notificationType == "special_offer") {
-    return "assets/icons/discount.svg";
-  } else {
-    return "assets/icons/discount.svg";
   }
 }

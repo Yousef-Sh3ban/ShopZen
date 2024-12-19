@@ -1,5 +1,5 @@
-import '../models/notifaction_model.dart';
+import 'package:base/features/products_details/domain/models/product_details_model.dart';
 
-abstract class GetNotifactionRepoInterface {
-  Future<List<NotifactionModel>> getNotifaction();
+abstract class GetProductDetailsRepoInterface {
+  Future<ProductDetailsModel> getProductDetails(int id);
 }

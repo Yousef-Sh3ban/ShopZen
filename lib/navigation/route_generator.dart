@@ -12,8 +12,6 @@ import 'package:base/features/authentication/ui/screens/splash.dart';
 import 'package:base/features/notifaction/ui/blocs/notifaction_bloc.dart';
 import 'package:base/features/notifaction/ui/screen/notifaction_screen.dart';
 
-import 'package:base/features/product_details/ui/blocs/product_details_bloc.dart';
-import 'package:base/features/product_details/ui/screens/product_details_screen.dart';
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -64,13 +62,6 @@ Route generateRoute(settings) {
         BlocProvider(
           create: (context) => HomeBloc(),
           child: const HomeScreen(),
-        ),
-      );
-    case AppRoutes.productDetails:
-      return _createRoute(
-        BlocProvider(
-          create: (context) => ProductDetailsBloc(settings.arguments as String),
-          child: const ProductDetailsScreen(),
         ),
       );
     case AppRoutes.main:

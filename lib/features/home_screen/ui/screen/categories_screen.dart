@@ -1,7 +1,5 @@
-import 'dart:developer';
 
 import 'package:base/configurations/app_states.dart';
-import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/features/home_screen/ui/blocs/category_cubit.dart';
 import 'package:base/features/home_screen/ui/widget/deal_card.dart';
 import 'package:base/features/home_screen/ui/widget/hot_deals_widget.dart';

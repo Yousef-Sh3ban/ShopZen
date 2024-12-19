@@ -1,4 +1,3 @@
-import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/features/authentication/ui/widgets/custom_login_button.dart';
 import 'package:base/features/authentication/ui/widgets/login_bottom.dart';
 import 'package:base/features/authentication/ui/widgets/or_divider.dart';
@@ -7,7 +6,6 @@ import 'package:base/features/authentication/ui/widgets/text_bottom_login.dart';
 import 'package:base/navigation/app_routes.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});

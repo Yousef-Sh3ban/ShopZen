@@ -25,7 +25,7 @@ class _MultiSelectInputFieldState extends State<MultiSelectInputField> {
   String get _selectedOptionsLabels {
     String labels = "";
     for (var option in options) {
-      if (option.isSelected) labels += option.label + ", ";
+      if (option.isSelected) labels += "${option.label}, ";
     }
     return labels;
   }

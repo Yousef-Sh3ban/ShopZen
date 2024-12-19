@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 class ProductModel {
   final int id;
   final String imageUrl;
@@ -39,6 +37,7 @@ class ProductModel {
 //=================================
 //=================================
   Map<String, dynamic> toJson() {
+    //This is only for the datbase don't try to use it for API or anoter thing becuse the name of the keys is made only for the database
     return {
       'id': id,
       'imageUrl': imageUrl,

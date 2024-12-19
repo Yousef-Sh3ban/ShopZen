@@ -20,7 +20,7 @@ class NotificationWidget extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         return Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Row(
@@ -31,7 +31,7 @@ class NotificationWidget extends StatelessWidget {
                   color:
                       SettingsCubit.instance.isDarkMode ? Colors.white : null,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 13,
                 ),
                 Expanded(
@@ -62,7 +62,7 @@ class NotificationWidget extends StatelessWidget {
               height: 16,
             ),
             index != notifactionList.length - 1
-                ? Divider(
+                ? const Divider(
                     height: 0,
                     color: Color(0xFFE6E6E6),
                   )

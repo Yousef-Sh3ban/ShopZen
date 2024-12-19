@@ -86,7 +86,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 70),
+                    const SizedBox(height: 70),
                     const Text(
                       "Favorite Items",
                       style:

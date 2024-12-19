@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:base/features/home_screen/ui/blocs/category_cubit.dart';
 import 'package:base/features/home_screen/ui/screen/categories_screen.dart';

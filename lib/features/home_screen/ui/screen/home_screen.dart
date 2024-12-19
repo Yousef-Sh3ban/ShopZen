@@ -49,6 +49,8 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class CartPage extends StatelessWidget {
+  const CartPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const Center(child: Text('Cart Page'));
@@ -56,6 +58,8 @@ class CartPage extends StatelessWidget {
 }
 
 class AccountPage extends StatelessWidget {
+  const AccountPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const Center(child: Text('Account Page'));

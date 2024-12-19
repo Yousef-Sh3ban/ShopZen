@@ -1,7 +1,5 @@
 import 'package:base/configurations/app_events.dart';
 import 'package:base/configurations/app_states.dart';
-import 'package:base/features/home_screen/ui/widget/deal_card.dart';
-import 'package:base/features/notifaction/domain/models/notifaction_model.dart';
 import 'package:base/features/notifaction/ui/blocs/notifaction_bloc.dart';
 import 'package:base/features/notifaction/ui/widget/notification_widget.dart';
 import 'package:flutter/material.dart';

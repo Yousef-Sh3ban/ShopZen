@@ -38,7 +38,7 @@ class _CustomTextFormState extends State<CustomTextForm> {
           widget.title,
           style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
         ),
-        SizedBox(height: 4,),
+        const SizedBox(height: 4,),
         TextFormField(
           keyboardType: widget.keyboardType ?? TextInputType.text,
           inputFormatters: [
