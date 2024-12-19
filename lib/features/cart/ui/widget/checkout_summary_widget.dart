@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:base/features/cart/ui/widget/dased_lin.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +20,7 @@ class CheckoutSummaryWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 'Sub-total',
                 style: TextStyle(
                     fontSize: 16,
@@ -31,19 +29,19 @@ class CheckoutSummaryWidget extends StatelessWidget {
                     fontFamily: "Satoshi"),
               ),
               Text('\$${totalAmount.toStringAsFixed(2)}',
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                       color: Color(0xff323135))),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 12,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Delivery Fee ",
+              const Text("Delivery Fee ",
                   style: TextStyle(
                     fontSize: 16,
                     color: Color(0xff57545B),
@@ -51,13 +49,13 @@ class CheckoutSummaryWidget extends StatelessWidget {
                     fontFamily: "Satoshi",
                   )),
               Text('\$${dliveryfree.toStringAsFixed(2)}',
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                       color: Color(0xff323135))),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           const DashedLine(
@@ -66,20 +64,20 @@ class CheckoutSummaryWidget extends StatelessWidget {
             dashSpace: 3,
             color: Color(0xffE0E0E5),
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Total ",
+              const Text("Total",
                   style: TextStyle(
                       fontSize: 16,
                       color: Color(0xff1A1A1A),
                       fontWeight: FontWeight.w400)),
               Text(
                 '\$${totalAmount + dliveryfree}',
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 16,
                   color: Color(0xff1A1A1A),
@@ -87,19 +85,19 @@ class CheckoutSummaryWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 78),
+          const SizedBox(height: 78),
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xff452CE8),
+                backgroundColor: const Color(0xff452CE8),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 16),
+                padding: const EdgeInsets.symmetric(vertical: 16),
               ),
-              child: Text(
+              child: const Text(
                 'Go To Checkout',
                 style: TextStyle(
                     fontSize: 16,

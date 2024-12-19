@@ -17,7 +17,7 @@ class EmptyCartWidget extends StatelessWidget {
             ),
             SizedBox(height: 8),
             Text(
-              'When you add products, they’ll ',
+              'When you add products, they’ll',
               style: TextStyle(
                   color: Color(0xff68656E),
                   fontSize: 16,

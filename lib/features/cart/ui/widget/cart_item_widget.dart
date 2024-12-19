@@ -1,6 +1,6 @@
 import 'package:base/features/cart/domain/models/cart_item.dart';
 import 'package:base/features/cart/ui/bloc/cart_cubit.dart';
-import 'package:flutter/gestures.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
