@@ -46,6 +46,7 @@ dependencies:
   flutter_svg: ^2.0.16
   sqflite: ^2.3.0
   path_provider: ^2.1.2
+  google_fonts: ^6.2.1
   # firebase dependencies
   #===============================
   firebase_core: ^3.8.0
@@ -101,7 +102,10 @@ flutter:
         - asset: assets/fonts/Alata-Regular.ttf
     - family: Satoshi
       fonts:
-        - asset: assets/fonts/Satoshi-Regular.ttf
+        - asset: assets/fonts/Satoshi-Medium.otf
+    - family: Sf
+      fonts:
+        - asset: assets/fonts/SFPRODISPLAYREGULAR.OTF
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

@@ -101,7 +101,6 @@ class _DealCardState extends State<DealCard> {
                           },
                         );
                         if (widget.isFavorite) {
-                          log("i will make this product favorite");
                           dbHelper.insertProduct(ProductModel(
                             id: widget.id,
                             imageUrl: widget.imageUrl,

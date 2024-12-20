@@ -41,6 +41,7 @@ class _DescreptionWidgetState extends State<DescreptionWidget> {
                         _isExpanded ? 2 : 1000, // Show 3 lines if not expanded
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
+                        fontFamily: "Sf",
                         color: Color(0xFF68656E),
                         fontWeight: FontWeight.w400,
                         fontSize: 14),
@@ -91,15 +92,20 @@ class _DescreptionWidgetState extends State<DescreptionWidget> {
                             reviewsBottomSheet(context, widget.reviews);
                           },
                         )
-                      : SizedBox(),SizedBox(height: 22,)
+                      : SizedBox(),
+                  SizedBox(
+                    height: 22,
+                  )
                 ],
               ),
             ),
-            !_isExpanded? Container(
-              height: 1,
-              width: double.infinity,
-              color: const Color(0xFFE0E0E5),
-            ):SizedBox()
+            !_isExpanded
+                ? Container(
+                    height: 1,
+                    width: double.infinity,
+                    color: const Color(0xFFE0E0E5),
+                  )
+                : SizedBox()
           ],
         );
       },

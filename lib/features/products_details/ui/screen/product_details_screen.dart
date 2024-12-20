@@ -2,25 +2,38 @@ import 'dart:developer';
 
 import 'package:base/configurations/app_states.dart';
 import 'package:base/features/authentication/ui/widgets/login_bottom.dart';
+import 'package:base/features/home_screen/domain/models/product_model.dart';
+import 'package:base/features/home_screen/ui/widget/deal_card.dart';
 import 'package:base/features/products_details/domain/models/product_details_model.dart';
 import 'package:base/features/products_details/ui/blocs/product_details_cubit.dart';
 import 'package:base/features/products_details/ui/widget/descreption_widget.dart';
+import 'package:base/features/products_details/ui/widget/favorite_icon_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ProductDetailsScreen extends StatelessWidget {
+class ProductDetailsScreen extends StatefulWidget {
   final int id;
   const ProductDetailsScreen({super.key, required this.id});
+
+  @override
+  State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
+}
+
+class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     var productDetailsCubit = BlocProvider.of<ProductDetailsCubit>(context);
-    productDetailsCubit.getProductDetails(id);
-    log("ProductDetailsScreen: $id");
+    productDetailsCubit.getProductDetails(widget.id);
+    log("ProductDetailsScreen: ${widget.id}");
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(
-          Icons.arrow_back_ios_new,
+        forceMaterialTransparency: true,
+        leading: InkWell(
+          onTap: () => Navigator.of(context).pop(),
+          child: const Icon(
+            Icons.arrow_back_ios_new,
+          ),
         ),
         title: const Text("Product Details"),
       ),
@@ -35,25 +48,36 @@ class ProductDetailsScreen extends StatelessWidget {
               child: Text("Error"),
             );
           } else if (state is LoadedState) {
-            // log((state.data as ProductDetailsModel).title.toString());
-            // log((state.data as ProductDetailsModel).category.toString());
-            // log((state.data as ProductDetailsModel).description.toString());
-            // log((state.data as ProductDetailsModel).discountPercentage.toString());
-            // log((state.data as ProductDetailsModel).id.toString());
-            // log((state.data as ProductDetailsModel).price.toString());
-            // log((state.data as ProductDetailsModel).reviews.toString());
-            // log((state.data as ProductDetailsModel).reviewsCount.toString());
-            // log((state.data as ProductDetailsModel).stock.toString());
             ProductDetailsModel productDetails =
                 (state.data as ProductDetailsModel);
+            // productDetails.isFavorite = dbHelper.isProductFavorite(widget.id);
             return ListView(
               children: [
-                SizedBox(
-                    height: 260,
-                    child: Image.network(
-                      productDetails.images[0],
-                      fit: BoxFit.cover,
-                    )),
+                Stack(
+                  children: [
+                    SizedBox(
+                      height: 260,
+                      width: MediaQuery.of(context).size.width,
+                      child: Image.network(
+                        productDetails.images[0],
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Positioned(
+                      top: 12,
+                      right: 32,
+                      child: Container(
+                        height: 24,
+                        width: 24,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          shape: BoxShape.rectangle,
+                        ),
+                        child: FavoriteIcon(productDetails: productDetails, productId: productDetails.id,)
+                      ),
+                    ),
+                  ],
+                ),
                 Padding(
                   padding: const EdgeInsets.all(20),
                   child: Column(
