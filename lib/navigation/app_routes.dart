@@ -9,4 +9,8 @@ abstract class AppRoutes {
 
   static const String SearchScreen = "SearchScreen";
   static const String CartScreen = "CartScreen";
+  static const String AddressPage = "AddressPage";
+  static const String CongratulationsPage = "CongratulationsPage";
+
+  static const String CheckoutPage = "CheckoutPage ";
 }

@@ -1,5 +1,8 @@
 import 'package:base/features/cart/ui/bloc/cart_cubit.dart';
 import 'package:base/features/cart/ui/screen/cart_screen.dart';
+import 'package:base/features/chek_out/ui/screen/address_page.dart';
+import 'package:base/features/chek_out/ui/screen/chek_out_page.dart';
+import 'package:base/features/chek_out/ui/screen/congration_page.dart';
 import 'package:base/search_products_Ecommerc/ui/blocs/search_cubit.dart';
 import 'package:base/search_products_Ecommerc/ui/screen/search_screen.dart';
 import 'package:flutter/material.dart';
@@ -56,6 +59,14 @@ Route generateRoute(settings) {
         create: (context) => CartCubit(),
         child: CartScreen(),
       ));
+    case AppRoutes.AddressPage:
+      return _createRoute(AddressPage());
+
+    case AppRoutes.CongratulationsPage:
+      return _createRoute(CongratulationsPage());
+    case AppRoutes.CheckoutPage:
+      return _createRoute(CheckoutPage());
+
     default:
       return _createRoute(SizedBox());
   }

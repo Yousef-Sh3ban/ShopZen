@@ -1,4 +1,6 @@
+import 'package:base/features/cart/ui/widget/custom_Bottom.dart';
 import 'package:base/features/cart/ui/widget/dased_lin.dart';
+import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class CheckoutSummaryWidget extends StatelessWidget {
@@ -86,27 +88,13 @@ class CheckoutSummaryWidget extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 78),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xff452CE8),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                padding: const EdgeInsets.symmetric(vertical: 16),
-              ),
-              child: const Text(
-                'Go To Checkout',
-                style: TextStyle(
-                    fontSize: 16,
-                    color: Color(0xffFBFBFC),
-                    fontWeight: FontWeight.w400,
-                    fontFamily: "Alata"),
-              ),
-            ),
-          ),
+          CustomBottom(
+              width: double.infinity,
+              height: 50,
+              onPressed: () {
+                Navigator.pushNamed(context, AppRoutes.CheckoutPage);
+              },
+              text: "Go To Checkout"),
         ],
       ),
     );
