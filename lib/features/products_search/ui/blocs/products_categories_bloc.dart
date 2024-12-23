@@ -13,7 +13,7 @@ class ProductsCategoriesBloc extends Cubit<AppStates>{
   //======================================== Variables
   //========================================
   List<Category> categories = [];
-  ProductsRepoInterface _repo = ProductsRepoImp();
+  final ProductsRepoInterface _repo = ProductsRepoImp();
   //========================================
   //======================================== Functions
   //========================================

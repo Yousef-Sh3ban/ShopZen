@@ -1,26 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class CustomLoginButton extends StatelessWidget {
-  CustomLoginButton(
+  const CustomLoginButton(
       {super.key,
       required this.text,
-      required this.textcolor,
+      // required this.textcolor,
       required this.imagepath,
-      required this.ContinarColor,
-      this.ontap});
+      // required this.continarColor,
+      this.ontap,
+      this.changeColor});
   final String text;
-  final Color textcolor;
+  final bool? changeColor;
+
+  // final Color textcolor;
   final String imagepath;
-  final Color ContinarColor;
+  // final Color continarColor;
   final VoidCallback? ontap;
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 335,
       height: 50,
       decoration: BoxDecoration(
-        border: Border.all(color: Color((0xffDAE2FF))),
-        color: ContinarColor,
+        border: Border.all(width: 1.5, color: const Color((0xffDAE2FF))),
+        // color: continarColor,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
@@ -30,17 +33,19 @@ class CustomLoginButton extends StatelessWidget {
             imagepath,
             width: 24,
             height: 24,
+            color:
+                changeColor ?? false ? Theme.of(context).iconTheme.color : null,
           ),
-          SizedBox(
+          const SizedBox(
             width: 8,
           ),
           Text(
             text,
-            style: TextStyle(
-                color: textcolor,
+            style: const TextStyle(
+                // color: textcolor,
                 fontWeight: FontWeight.w500,
                 fontSize: 16,
-                fontFamily: "Alata"),
+                ),
           )
         ],
       ),

@@ -23,7 +23,7 @@ class _ImageInputFieldState extends State<ImageInputField> {
         if (widget.label != null)
           Align(
             alignment: Alignment.centerLeft,
-            child: Text(widget.label!, style: TextStyle(fontSize: 16,fontWeight: FontWeight.w700),),
+            child: Text(widget.label!, style: const TextStyle(fontSize: 16,fontWeight: FontWeight.w700),),
           ),
         if (widget.label != null) const SizedBox(height: 8),
         GestureDetector(
@@ -38,7 +38,7 @@ class _ImageInputFieldState extends State<ImageInputField> {
           },
           child: Container(
             width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
               borderRadius: BorderRadius.circular(16),
@@ -46,7 +46,7 @@ class _ImageInputFieldState extends State<ImageInputField> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                if (image == null) Icon(Icons.image, size: 48),
+                if (image == null) const Icon(Icons.image, size: 48),
                 if (image != null)
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10),
@@ -58,7 +58,7 @@ class _ImageInputFieldState extends State<ImageInputField> {
                     ),
                   ),
                 const SizedBox(height: 8),
-                if (image == null)Text(widget.hint, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+                if (image == null)Text(widget.hint, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
                 if (image != null) const SizedBox(height: 8),
                 if (image != null)
                   OutlinedButton(
@@ -67,7 +67,7 @@ class _ImageInputFieldState extends State<ImageInputField> {
                         image = null;
                       });
                     },
-                    child: Text("Clear"),
+                    child: const Text("Clear"),
                   ),
                 // Text(image!.path.split("/").last, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400)
               ],

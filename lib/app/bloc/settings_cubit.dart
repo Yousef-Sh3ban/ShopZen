@@ -1,31 +1,37 @@
 import 'package:base/configurations/app_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class SettingsCubit extends Cubit<AppStates>{
-  SettingsCubit._internal():super(InitialState());
+class SettingsCubit extends Cubit<AppStates> {
+  SettingsCubit._internal() : super(InitialState());
   static SettingsCubit instance = SettingsCubit._internal();
   //========================================
   //======================================== Variables
   //========================================
   bool isDarkMode = false;
-  Locale locale = Locale('en');
+  Locale locale = const Locale('en');
   //========================================
   //======================================== Functions
   //========================================
-  void toggleDarkMode() async{
+  void toggleDarkMode() async {
     isDarkMode = !isDarkMode;
-    // TODO: save the value in shared preferences
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool("isDarkMode", isDarkMode);
+
     emit(LoadedState(isDarkMode));
   }
 
-  void toggleLocale() async{
-    if(locale.languageCode == 'en'){
-      locale = Locale('ar');
-    }else{
-      locale = Locale('en');
-    }
-    // TODO: save the value in shared preferences
-    emit(LoadedState(locale));
+  Future<void> loadThemeMode() async {
+    // Load the saved theme mode from SharedPreferences
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    isDarkMode = prefs.getBool("isDarkMode") ?? false;
+    
+    // Emit the loaded state
+    emit(LoadedState(isDarkMode));
+  }  Future<bool> getThemeMode() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    isDarkMode = prefs.getBool("isDarkMode") ?? false;
+    return isDarkMode;
   }
 }

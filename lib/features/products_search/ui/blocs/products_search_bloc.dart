@@ -1,5 +1,3 @@
-// import 'dart:developer';
-
 // import 'package:base/configurations/app_states.dart';
 // import 'package:base/features/products_search/domain/models/category.dart';
 // import 'package:base/features/products_search/domain/repo_interface/products_repo.dart';

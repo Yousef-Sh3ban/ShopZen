@@ -36,8 +36,9 @@ class _CustomTextFormState extends State<CustomTextForm> {
       children: [
         Text(
           widget.title,
-          style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+          style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
         ),
+        const SizedBox(height: 4,),
         TextFormField(
           keyboardType: widget.keyboardType ?? TextInputType.text,
           inputFormatters: [
@@ -58,7 +59,7 @@ class _CustomTextFormState extends State<CustomTextForm> {
                         },
                       );
                     },
-                    child: SizedBox(
+                    child: SizedBox(  
                       width: 45,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -76,7 +77,7 @@ class _CustomTextFormState extends State<CustomTextForm> {
                   )
                 : const SizedBox(),
             prefix: const SizedBox(
-              width: 16,
+              width:7,
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),

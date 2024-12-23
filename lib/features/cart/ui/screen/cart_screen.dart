@@ -52,7 +52,7 @@ class CartScreen extends StatelessWidget {
           return Center(child: CircularProgressIndicator());
         },
       ),
-      bottomNavigationBar: const CustomBottomNavigationBar(),
+      //bottomNavigationBar: const CustomBottomNavigationBar(),
     );
   }
 }

@@ -1,11 +1,16 @@
 abstract class AppRoutes {
-  static const String Splash = '/splash';
   static const String main = '/main';
+  static const String splash = '/splash';
+  static const String onBoarding = "/OnBoarding";
+  static const String login = '/login';
+  static const String signup = '/signup';
+  static const String loginDefaultScreen = "/LoginDefaultScreen";
+  static const String signupDefaultScreen = "/SignupDefaultScreen";
+  static const String home = "Home";
   static const String productDetails = '/productDetails';
-  static const String Login = '/login';
-  static const String OnBoarding = "/OnBoarding";
-  static const String LoginDefaultScreen = "/LoginDefaultScreen";
-  static const String Home = "Home";
+  static const String notifaction = '/notifaction';
+  static const String favorites = '/favorites';
+  static const String category = '/category';
 
   static const String SearchScreen = "SearchScreen";
   static const String CartScreen = "CartScreen";

@@ -1,29 +1,36 @@
-import 'package:base/features/home_screen/domain/models/product.dart';
+import 'dart:developer';
+
+import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/features/home_screen/ui/widget/deal_card.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-// ignore: must_be_immutable
 class HotDealsWidget extends StatelessWidget {
   List<ProductModel> products;
   HotDealsWidget({super.key, required this.products});
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     List<DealCard> dealCaredList = modelingProductList(products);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
           "Hot Deals",
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 8,
             crossAxisSpacing: 8,
-            childAspectRatio: 0.68,
+            childAspectRatio: screenWidth / screenHeight * 1.2,
           ),
           itemCount: dealCaredList.length,
           itemBuilder: (context, index) {
@@ -40,14 +47,17 @@ List<DealCard> modelingProductList(List<ProductModel> products) {
   for (int i = 0; i < products.length; i++) {
     data.add(
       DealCard(
+          id: products[i].id,
           imageUrl: products[i].imageUrl,
           title: products[i].title,
           price: products[i].price,
           oldPrice: products[i].oldPrice * 2,
           rating: products[i].rating,
           reviewsCount: products[i].reviewsCount,
-          isFavorite: false),
+          isFavorite: products[i].isFavorite),
     );
   }
+  log("returning the data:");
+  log(data.toString());
   return data;
 }

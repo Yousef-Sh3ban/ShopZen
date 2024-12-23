@@ -17,8 +17,8 @@ class SearchScreen extends StatelessWidget {
     final cubit = SearchCubit.get(context);
 
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
+        forceMaterialTransparency: true,
         surfaceTintColor: Colors.white,
         title: BlocBuilder<SearchCubit, SearchState>(
           builder: (context, state) {
@@ -26,21 +26,18 @@ class SearchScreen extends StatelessWidget {
             if (state is SearchLoaded) {
               title = "${state.products.length} Items Found";
             }
-            return Center(
-              child: Text(
-                title,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+            return Text(
+              title,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
             );
           },
         ),
+        centerTitle: true,
         toolbarHeight: 60,
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
         elevation: 0.1,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
@@ -77,6 +74,19 @@ class SearchScreen extends StatelessWidget {
                 ),
                 hintText: 'Find your favorite items',
                 border: OutlineInputBorder(
+                  borderSide: const BorderSide(color: Color(0xFF4F48FF)),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(color: Color(0xFF4F48FF)),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(color: Color(0xFF4F48FF)),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                errorBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(color: Color(0xFF4F48FF)),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
               ),

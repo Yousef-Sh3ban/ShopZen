@@ -1,6 +1,6 @@
 import 'package:base/features/cart/ui/widget/custom_Bottom.dart';
 import 'package:base/features/chek_out/ui/widget/address_tile.dart';
-import 'package:base/features/home_screen/ui/widget/Custom_Bottom_NavigationBar.dart';
+
 import 'package:flutter/material.dart';
 
 class AddressPage extends StatefulWidget {

@@ -8,11 +8,9 @@ class StartText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       "$text",
-      style: TextStyle(
-        color: Color(0xff323135),
+      style: const TextStyle(
         fontWeight: FontWeight.w400,
         fontSize: 32,
-        fontFamily: "Alata",
       ),
     );
   }
