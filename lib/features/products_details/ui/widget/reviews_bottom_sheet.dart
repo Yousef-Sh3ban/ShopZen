@@ -44,7 +44,8 @@ void reviewsBottomSheet(BuildContext context, List<ReviewModel> reviews) {
                             height: 1,
                             width: double.infinity,
                             color: const Color(0xFFE0E0E5),
-                          ),                          const SizedBox(
+                          ),
+                          const SizedBox(
                             height: 24,
                           ),
                         ],
@@ -54,7 +55,9 @@ void reviewsBottomSheet(BuildContext context, List<ReviewModel> reviews) {
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: StarsWidget(rating: reviews[index].rating.round()),
                 ),
-                SizedBox(height: 16,),
+                SizedBox(
+                  height: 16,
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: Text(
@@ -99,7 +102,8 @@ class StarsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(spacing: 8,
+    return Row(
+      spacing: 8,//from the new update :)
       children: [
         for (int i = 1; i < 6; i++)
           rating >= i
