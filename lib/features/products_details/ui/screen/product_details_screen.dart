@@ -8,6 +8,7 @@ import 'package:base/features/products_details/domain/models/product_details_mod
 import 'package:base/features/products_details/ui/blocs/product_details_cubit.dart';
 import 'package:base/features/products_details/ui/widget/descreption_widget.dart';
 import 'package:base/features/products_details/ui/widget/favorite_icon_widget.dart';
+import 'package:base/features/products_details/ui/widget/product_image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -21,6 +22,7 @@ class ProductDetailsScreen extends StatefulWidget {
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
+  static int currentImage = 0;
   @override
   Widget build(BuildContext context) {
     var productDetailsCubit = BlocProvider.of<ProductDetailsCubit>(context);
@@ -67,14 +69,16 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       top: 12,
                       right: 32,
                       child: Container(
-                        height: 24,
-                        width: 24,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          shape: BoxShape.rectangle,
-                        ),
-                        child: FavoriteIcon(productDetails: productDetails, productId: productDetails.id,)
-                      ),
+                          height: 24,
+                          width: 24,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            shape: BoxShape.rectangle,
+                          ),
+                          child: FavoriteIcon(
+                            productDetails: productDetails,
+                            productId: productDetails.id,
+                          )),
                     ),
                   ],
                 ),
@@ -86,45 +90,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       const SizedBox(
                         height: 16,
                       ),
-                      Row(
-                        children: [
-                          ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: const SizedBox() // Image.network(""),
-                              ),
-                          const SizedBox(
-                            width: 16,
-                          ),
-                          ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: const SizedBox() //Image.network(""),
-                              ),
-                          const SizedBox(
-                            width: 16,
-                          ),
-                          ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: const SizedBox() //Image.network(""),
-                              ),
-                          const SizedBox(
-                            width: 16,
-                          ),
-                          ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: const SizedBox() // Image.network(""),
-                              ),
-                          const SizedBox(
-                            width: 16,
-                          ),
-                          ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: const SizedBox() //Image.network(""),
-                              ),
-                          const SizedBox(
-                            width: 16,
-                          ),
-                        ],
-                      ),
+                      ProductImageWidget(images: productDetails.images),
                       const SizedBox(
                         height: 24,
                       ),

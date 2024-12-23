@@ -11,4 +11,6 @@ abstract class AppRoutes {
   static const String notifaction = '/notifaction';
   static const String favorites = '/favorites';
   static const String category = '/category';
+
+  static const String SearchScreen = "SearchScreen";
 }

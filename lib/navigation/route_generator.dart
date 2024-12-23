@@ -1,3 +1,10 @@
+import 'package:base/features/products_details/ui/blocs/product_details_cubit.dart';
+import 'package:base/features/products_details/ui/screen/product_details_screen.dart';
+import 'package:base/search_products_Ecommerc/ui/blocs/search_cubit.dart';
+import 'package:base/search_products_Ecommerc/ui/screen/search_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:base/features/authentication/ui/blocs/login_bloc.dart';
 import 'package:base/features/authentication/ui/blocs/signup_bloc.dart';
 import 'package:base/features/favorites/ui/screens/favorites_screen.dart';
@@ -11,6 +18,7 @@ import 'package:base/features/authentication/ui/screens/singup.dart';
 import 'package:base/features/authentication/ui/screens/splash.dart';
 import 'package:base/features/notifaction/ui/blocs/notifaction_bloc.dart';
 import 'package:base/features/notifaction/ui/screen/notifaction_screen.dart';
+import 'package:base/features/home_screen/ui/blocs/home_bloc.dart';
 
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
@@ -64,18 +72,11 @@ Route generateRoute(settings) {
           child: const HomeScreen(),
         ),
       );
-    case AppRoutes.main:
-      return _createRoute(
-        MultiBlocProvider(
-          providers: [
-            BlocProvider<ProductsSearchBloc>(
-                create: (context) => ProductsSearchBloc()),
-            BlocProvider<ProductsCategoriesBloc>(
-                create: (context) => ProductsCategoriesBloc()),
-          ],
-          child: const ProductsSearchScreen(),
-        ),
-      );
+    case AppRoutes.SearchScreen:
+      return _createRoute(BlocProvider(
+        create: (context) => SearchCubit(),
+        child: SearchScreen(),
+      ));
 
     default:
       return _createRoute(const SizedBox());

@@ -8,5 +8,7 @@ abstract class AppEndPoints {
   static const String productsSearch = "products";
   static String productsDetails(String id) => "products/$id";
   static const String categories = "categories";
+
+  static var categoryItems;
   //todo: Add more endpoints
 }

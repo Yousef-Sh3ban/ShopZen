@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:base/configurations/app_events.dart';
 import 'package:base/configurations/app_states.dart';
 import 'package:base/features/favorites/ui/screens/favorites_screen.dart';
@@ -8,7 +10,9 @@ import 'package:base/features/home_screen/ui/widget/banner_widget.dart';
 import 'package:base/features/home_screen/ui/widget/categories_widget.dart';
 import 'package:base/features/home_screen/ui/widget/hot_deals_widget.dart';
 import 'package:base/features/home_screen/ui/widget/location_search_bar.dart';
+import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -91,7 +95,12 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           children: [
-            LocationSearchBar(),
+            // LocationSearchBar(),
+                          LocationSearchBar(
+                ontap: () {
+                  Navigator.pushNamed(context, AppRoutes.SearchScreen);
+                },
+              ),
             const SizedBox(height: 16),
             BlocBuilder<HomeBloc, AppStates>(
               buildWhen: (previous, current) {
