@@ -22,13 +22,15 @@ class TextBottomLogin extends StatelessWidget {
                 fontWeight: FontWeight.w400),
             children: <TextSpan>[
               TextSpan(
-                  text: text2,
-                  style: const TextStyle(
-                      color: Color(0xff452CE8),
-                      fontFamily: "Satoshi",
-                      fontSize: 16,
-                      decoration: TextDecoration.underline,
-                      fontWeight: FontWeight.w700))
+                text: text2,
+                style: const TextStyle(
+                    color: Color(0xff452CE8),
+                    fontFamily: "Satoshi",
+                    fontSize: 16,
+                    decorationColor: Color(0xff452CE8),
+                    decoration: TextDecoration.underline,
+                    fontWeight: FontWeight.w700),
+              )
             ],
           ),
         ),

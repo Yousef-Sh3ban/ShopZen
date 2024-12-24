@@ -5,13 +5,12 @@ import 'package:flutter_svg/svg.dart';
 void reviewsBottomSheet(BuildContext context, List<ReviewModel> reviews) {
   showModalBottomSheet(
     context: context,
-    isScrollControlled: true, // Allow for height control try to remove
+    isScrollControlled: true,
     builder: (BuildContext context) {
       return Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height * 0.90,
         decoration: const BoxDecoration(
-          color: Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
@@ -27,9 +26,9 @@ void reviewsBottomSheet(BuildContext context, List<ReviewModel> reviews) {
                     ? Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
-                            child: const Text(
+                          const Padding(
+                            padding: EdgeInsets.fromLTRB(24, 24, 24, 0),
+                            child: Text(
                               "Rating & Reviews",
                               style: TextStyle(
                                   fontFamily: "Satoshi",
@@ -55,7 +54,7 @@ void reviewsBottomSheet(BuildContext context, List<ReviewModel> reviews) {
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: StarsWidget(rating: reviews[index].rating.round()),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 Padding(
@@ -63,7 +62,6 @@ void reviewsBottomSheet(BuildContext context, List<ReviewModel> reviews) {
                   child: Text(
                     reviews[index].reviewerName,
                     style: const TextStyle(
-                        color: Color(0xFF323135),
                         fontFamily: "Satoshi",
                         fontWeight: FontWeight.w400,
                         fontSize: 16),
@@ -103,7 +101,7 @@ class StarsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      spacing: 8,//from the new update :)
+      spacing: 8, //from the new update :)
       children: [
         for (int i = 1; i < 6; i++)
           rating >= i

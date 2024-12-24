@@ -36,7 +36,7 @@ class ProductDetailsModel {
       title: json['title'],
       description: json['description'],
       category: json['category'],
-      price: (json['price'] as num).toDouble(), // Safely converting to double
+      price: (json['price'] as num).toDouble(), 
       discountPercentage: (json['discountPercentage'] as num).toDouble(),
       rating: (json['rating'] as num).toDouble(),
       stock: json['stock'],
@@ -50,7 +50,7 @@ class ProductDetailsModel {
               .toList())
           .length,
       isFavorite:
-          json['isFavorite'] ?? false, // Default to false if not present
+          json['isFavorite'] ?? false, 
     );
   }
 }

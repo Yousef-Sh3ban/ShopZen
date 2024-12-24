@@ -1,9 +1,11 @@
 import 'package:base/features/cart/ui/widget/custom_Bottom.dart';
-import 'package:base/features/chek_out/ui/widget/address_tile.dart';
+import 'package:base/features/checkout/ui/widget/address_tile.dart';
 
 import 'package:flutter/material.dart';
 
 class AddressPage extends StatefulWidget {
+  const AddressPage({super.key});
+
   @override
   _AddressPageState createState() => _AddressPageState();
 }
@@ -16,9 +18,8 @@ class _AddressPageState extends State<AddressPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Address'),
-        backgroundColor: Colors.white,
+        forceMaterialTransparency: true,
         elevation: 0,
-        //foregroundColor: Colors.black,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -73,7 +74,7 @@ class _AddressPageState extends State<AddressPage> {
                       });
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 142,
                   ),
                   CustomBottom(

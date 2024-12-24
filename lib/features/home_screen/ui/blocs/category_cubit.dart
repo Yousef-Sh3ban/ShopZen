@@ -20,10 +20,8 @@ class CategoryCubit extends Cubit<AppStates> {
   getCategoriesProducts(String categoryurl) async {
     emit(LoadingState());
 
-    log(categoryurl);
     List<ProductModel> products =
         await _getCategoriesProducts.getCategoriesProducts(categoryurl);
-    // log("the number of itmes in the lisnt form the state is :${products.length}");
 
     emit(CategoryProductsState(data: products));
   }

@@ -14,7 +14,6 @@ class GetCategoriesProductsRepoImp
       Response response = await dio.get(categoryurl);
       return await mapingPrductsFromAPI(response.data);
     } catch (e) {
-      log("error happend in the modling :${e.toString()}");
       return [];
     }
   }

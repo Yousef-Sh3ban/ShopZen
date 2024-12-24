@@ -1,5 +1,3 @@
-// import 'package:flutter/material.dart';
-import 'package:base/features/home_screen/ui/widget/Custom_Bottom_NavigationBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:base/features/cart/ui/bloc/cart_cubit.dart';
@@ -9,32 +7,33 @@ import 'package:base/features/cart/ui/widget/checkout_summary_widget.dart';
 import 'package:base/features/cart/ui/widget/empty_cart_widget.dart';
 
 class CartScreen extends StatelessWidget {
+  const CartScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        surfaceTintColor: Colors.white,
-        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false, //to remove back button
+        forceMaterialTransparency: true,
         elevation: 0,
-        title: Text(
+        title: const Text(
           'My Cart',
           style: TextStyle(
-              fontWeight: FontWeight.w400,
-              fontSize: 24,
-              color: Color(0xff323135)),
+            fontWeight: FontWeight.w400,
+            fontSize: 24,
+          ),
         ),
         centerTitle: true,
       ),
       body: BlocBuilder<CartCubit, CartState>(
         builder: (context, state) {
           if (state is CartEmpty) {
-            return EmptyCartWidget();
+            return const EmptyCartWidget();
           } else if (state is CartLoaded) {
             return ListView.separated(
-              padding: EdgeInsets.symmetric(vertical: 5),
+              padding: const EdgeInsets.symmetric(vertical: 5),
               itemCount: state.items.length + 1,
-              separatorBuilder: (ctx, index) => Divider(
+              separatorBuilder: (ctx, index) => const Divider(
                 color: Color(0xffE0E0E5),
               ),
               itemBuilder: (ctx, index) {
@@ -48,11 +47,12 @@ class CartScreen extends StatelessWidget {
                 );
               },
             );
+          } else if(state is CartLoading) {
+            return const Center(child: CircularProgressIndicator());
           }
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: Text("NO DATA"));
         },
       ),
-      //bottomNavigationBar: const CustomBottomNavigationBar(),
     );
   }
 }

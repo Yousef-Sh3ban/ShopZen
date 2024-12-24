@@ -1,21 +1,20 @@
 import 'package:base/features/cart/ui/widget/custom_Bottom.dart';
-import 'package:base/features/chek_out/ui/screen/payment_page.dart';
-import 'package:base/features/chek_out/ui/widget/order_samry.dart';
-import 'package:base/features/chek_out/ui/widget/payment.dart';
+import 'package:base/features/checkout/ui/screen/payment_page.dart';
+import 'package:base/features/checkout/ui/widget/order_samry.dart';
 
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class CheckoutPage extends StatelessWidget {
+  const CheckoutPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Checkout'),
-        backgroundColor: Colors.white,
         elevation: 0,
-        foregroundColor: Colors.black,
+        forceMaterialTransparency: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -55,14 +54,14 @@ class CheckoutPage extends StatelessWidget {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
-            PaymentPage(),
+            const PaymentPage(),
             const SizedBox(height: 16),
             const Text(
               'Order Summary',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
-            OrderSummary(),
+            const OrderSummary(),
             const SizedBox(
               height: 24,
             ),

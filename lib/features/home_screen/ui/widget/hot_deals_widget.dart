@@ -57,7 +57,5 @@ List<DealCard> modelingProductList(List<ProductModel> products) {
           isFavorite: products[i].isFavorite),
     );
   }
-  log("returning the data:");
-  log(data.toString());
   return data;
 }

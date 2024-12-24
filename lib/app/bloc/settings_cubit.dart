@@ -23,11 +23,9 @@ class SettingsCubit extends Cubit<AppStates> {
   }
 
   Future<void> loadThemeMode() async {
-    // Load the saved theme mode from SharedPreferences
     SharedPreferences prefs = await SharedPreferences.getInstance();
     isDarkMode = prefs.getBool("isDarkMode") ?? false;
     
-    // Emit the loaded state
     emit(LoadedState(isDarkMode));
   }  Future<bool> getThemeMode() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

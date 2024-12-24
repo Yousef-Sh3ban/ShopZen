@@ -1,1 +1,1 @@
-final BaseUrl = "https://dummyjson.com/";
+const BaseUrl = "https://dummyjson.com/";

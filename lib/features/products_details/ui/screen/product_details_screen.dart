@@ -2,16 +2,17 @@ import 'dart:developer';
 
 import 'package:base/configurations/app_states.dart';
 import 'package:base/features/authentication/ui/widgets/login_bottom.dart';
-import 'package:base/features/home_screen/domain/models/product_model.dart';
-import 'package:base/features/home_screen/ui/widget/deal_card.dart';
+import 'package:base/features/cart/domain/models/cart_item.dart';
 import 'package:base/features/products_details/domain/models/product_details_model.dart';
 import 'package:base/features/products_details/ui/blocs/product_details_cubit.dart';
 import 'package:base/features/products_details/ui/widget/descreption_widget.dart';
 import 'package:base/features/products_details/ui/widget/favorite_icon_widget.dart';
 import 'package:base/features/products_details/ui/widget/product_image_widget.dart';
+import 'package:base/handlers/cart_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   final int id;
@@ -22,12 +23,10 @@ class ProductDetailsScreen extends StatefulWidget {
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
-  static int currentImage = 0;
   @override
   Widget build(BuildContext context) {
     var productDetailsCubit = BlocProvider.of<ProductDetailsCubit>(context);
     productDetailsCubit.getProductDetails(widget.id);
-    log("ProductDetailsScreen: ${widget.id}");
     return Scaffold(
       appBar: AppBar(
         forceMaterialTransparency: true,
@@ -52,7 +51,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           } else if (state is LoadedState) {
             ProductDetailsModel productDetails =
                 (state.data as ProductDetailsModel);
-            // productDetails.isFavorite = dbHelper.isProductFavorite(widget.id);
             return ListView(
               children: [
                 Stack(
@@ -123,7 +121,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           Text(
                             "(${productDetails.reviewsCount} Review)",
                             style: const TextStyle(
-                                color: const Color(0xFF68656E),
+                                color: Color(0xFF68656E),
                                 fontWeight: FontWeight.w400,
                                 fontSize: 12),
                           ),
@@ -139,13 +137,45 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   description: productDetails.description,
                   reviews: productDetails.reviews,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 12,
                 ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                   child: LoginBottom(
-                    color: Color(0xFF6A70FF),
+                    ontap: () {
+                      final dbHelper = CartDatabaseHelper.instance;
+                      dbHelper.insertCartItem(CartItem(
+                          id: productDetails.id,
+                          title: productDetails.title,
+                          image: productDetails.images[0],
+                          price: productDetails.price));
+                      final snackBar = SnackBar(
+                        elevation: 0,
+                        behavior: SnackBarBehavior.floating,
+                        backgroundColor: Colors.transparent,
+                        padding:
+                            const EdgeInsets.symmetric(horizontal: 0, vertical: 13),
+                        duration: const Duration(seconds: 10),
+                        content: AwesomeSnackbarContent(
+                          color: const Color(0xFF452CE8),
+                          title: 'Yay!',
+                          messageTextStyle: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          message:
+                              ' ${productDetails.title} is now in your cart! 🛒',
+                          contentType: ContentType.success,
+                        ),
+                      );
+
+                      ScaffoldMessenger.of(context)
+                        ..hideCurrentSnackBar()
+                        ..showSnackBar(snackBar);
+                    },
+                    color: const Color(0xFF6A70FF),
                     text: "Add to Cart",
                   ),
                 )

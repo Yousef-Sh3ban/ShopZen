@@ -27,9 +27,7 @@ class SingupScreen extends StatelessWidget {
               ),
               const CustomLoginButton(
                 text: "Singup with Google",
-                // textcolor: Colors.black,
                 imagepath: "assets/images/image.png",
-                // continarColor: Colors.white
               ),
               const SizedBox(
                 height: 16,
@@ -37,9 +35,7 @@ class SingupScreen extends StatelessWidget {
               const CustomLoginButton(
                 changeColor: true,
                 text: "Singup with Apple",
-                // textcolor: Color(0xff323135),
                 imagepath: "assets/images/image copy.png",
-                // continarColor: Colors.white
               ),
               const SizedBox(
                 height: 48,

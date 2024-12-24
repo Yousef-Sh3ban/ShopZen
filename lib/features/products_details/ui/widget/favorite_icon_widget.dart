@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:base/features/home_screen/domain/models/product_model.dart';
-import 'package:base/features/home_screen/ui/widget/deal_card.dart';
 import 'package:base/features/products_details/domain/models/product_details_model.dart';
 import 'package:base/handlers/fav.dart';
 import 'package:flutter/material.dart';
@@ -52,7 +51,6 @@ class _FavoriteIconState extends State<FavoriteIcon> {
       ),
       onPressed: () {
         setState(() {
-          log(isFavorite.toString());
           isFavorite = !isFavorite;
           widget.productDetails.isFavorite = isFavorite;
           if (isFavorite) {

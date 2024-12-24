@@ -1,38 +1,9 @@
-// import 'package:flutter/material.dart';
+import 'dart:developer';
 
-// class Splash extends StatelessWidget {
-//   const Splash({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Color(0xff452CE8),
-//       body: Center(
-//         child: Row(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             Image.asset("assets/images/logo.png"),
-//             SizedBox(
-//               width: 20.68,
-//             ),
-//             Text(
-//               "ShopZen",
-//               style: TextStyle(
-//                 color: Color(0xffFBFBFC),
-//                 fontSize: 44.81,
-//                 fontWeight: FontWeight.w700,
-//                 fontFamily: "Pacifico",
-//               ),
-//             )
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-import 'package:base/features/authentication/ui/screens/on_boarding.dart';
+import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -46,18 +17,16 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
   late Animation<double> _opacityAnimation;
   late Animation<double> _widthAnimation;
   late Animation<double> _heightAnimation;
-
+  bool isLogin = false;
   @override
   void initState() {
     super.initState();
 
-    // Initialize Animation Controller
     _controller = AnimationController(
       duration: const Duration(seconds: 10),
       vsync: this,
     );
 
-    // Define Animations
     _opacityAnimation = CurvedAnimation(
       parent: _controller,
       curve: Curves.easeIn,
@@ -71,15 +40,16 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
     );
 
-    // Start the animation
     _controller.forward();
 
-    // Navigate to the next screen after 4 seconds
-    Future.delayed(const Duration(seconds: 20), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const OnBoarding()),
-      );
+    Future.delayed(const Duration(seconds: 20), () async {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      final bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+      if (isLoggedIn) {
+        Navigator.pushReplacementNamed(context, AppRoutes.home);
+      } else {
+        Navigator.pushReplacementNamed(context, AppRoutes.onBoarding);
+      }
     });
   }
 

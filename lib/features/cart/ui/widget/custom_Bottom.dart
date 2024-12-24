@@ -13,25 +13,24 @@ class CustomBottom extends StatelessWidget {
   final double width;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: width,
       height: height,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xff452CE8),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+      decoration: BoxDecoration(
+        color: const Color(0xff452CE8),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: InkWell(
+        onTap: onPressed,
+        child: Center(
+          child: Text(
+            text,
+            style: const TextStyle(
+                fontSize: 16,
+                color: Color(0xffFBFBFC),
+                fontWeight: FontWeight.w400,
+                fontFamily: "Alata"),
           ),
-          padding: const EdgeInsets.symmetric(vertical: 16),
-        ),
-        child: Text(
-          text,
-          style: TextStyle(
-              fontSize: 16,
-              color: Color(0xffFBFBFC),
-              fontWeight: FontWeight.w400,
-              fontFamily: "Alata"),
         ),
       ),
     );

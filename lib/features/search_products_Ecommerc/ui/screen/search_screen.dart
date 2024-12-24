@@ -1,14 +1,13 @@
-import 'package:base/search_products_Ecommerc/ui/blocs/search_cubit.dart';
-import 'package:base/search_products_Ecommerc/ui/blocs/search_state.dart';
-import 'package:base/search_products_Ecommerc/ui/widget/EmptySearchWidget.dart';
-import 'package:base/search_products_Ecommerc/ui/widget/product_card.dart';
+import 'package:base/features/search_products_Ecommerc/ui/blocs/search_cubit.dart';
+import 'package:base/features/search_products_Ecommerc/ui/blocs/search_state.dart';
+import 'package:base/features/search_products_Ecommerc/ui/widget/empty_search_widget.dart';
+import 'package:base/features/search_products_Ecommerc/ui/widget/product_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SearchScreen extends StatelessWidget {
-  SearchScreen({Key? key}) : super(key: key);
+  SearchScreen({super.key});
 
   final TextEditingController controller = TextEditingController();
 

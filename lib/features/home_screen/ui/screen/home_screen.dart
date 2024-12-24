@@ -2,6 +2,7 @@ import 'dart:core';
 
 import 'package:base/configurations/app_events.dart';
 import 'package:base/configurations/app_states.dart';
+import 'package:base/features/cart/ui/bloc/cart_cubit.dart';
 import 'package:base/features/cart/ui/screen/cart_screen.dart';
 import 'package:base/features/favorites/ui/screens/favorites_screen.dart';
 import 'package:base/features/home_screen/domain/models/product_model.dart';
@@ -13,7 +14,6 @@ import 'package:base/features/home_screen/ui/widget/hot_deals_widget.dart';
 import 'package:base/features/home_screen/ui/widget/location_search_bar.dart';
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -25,19 +25,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0; // Track the selected index for the navigation bar
+  int _selectedIndex = 0;
 
-  // List of screens for navigation
   final List<Widget> _screens = [
-    const HomeScreenContent(), // Home screen widget (current screen)
-    const FavoritesScreen(), // Saved screen widget
-    CartScreen(), // Cart screen widget
-    AccountPage(), // Account screen widget
+    const HomeScreenContent(),
+    const FavoritesScreen(),
+    BlocProvider(
+      create: (context) => CartCubit(),
+      child: const CartScreen(),
+    ),
+    const AccountPage(),
   ];
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index; // Update the selected index
+      _selectedIndex = index;
     });
   }
 
@@ -47,18 +49,9 @@ class _HomeScreenState extends State<HomeScreen> {
       body: _screens[_selectedIndex],
       bottomNavigationBar: CustomBottomNavigationBar(
         selectedIndex: _selectedIndex,
-        ontap: _onItemTapped, // Pass function to handle item tap
+        ontap: _onItemTapped,
       ),
     );
-  }
-}
-
-class CartPage extends StatelessWidget {
-  const CartPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Cart Page'));
   }
 }
 
@@ -121,16 +114,9 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
               child: SvgPicture.asset("assets/icons/ad_dots.svg"),
             ),
             const SizedBox(height: 16),
-            BlocConsumer<HomeBloc, AppStates>(
+            BlocBuilder<HomeBloc, AppStates>(
               buildWhen: (previous, current) {
                 return current is LoadedState || current is LoadingState;
-              },
-              listener: (context, state) {
-                if (state is ErrorState) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(state.errorMessage)),
-                  );
-                }
               },
               builder: (context, state) {
                 if (state is LoadingState) {

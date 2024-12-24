@@ -1,7 +1,9 @@
-import 'package:base/features/chek_out/ui/widget/payment.dart';
+import 'package:base/features/checkout/ui/widget/payment.dart';
 import 'package:flutter/material.dart';
 
 class PaymentPage extends StatefulWidget {
+  const PaymentPage({super.key});
+
   @override
   _PaymentPageState createState() => _PaymentPageState();
 }

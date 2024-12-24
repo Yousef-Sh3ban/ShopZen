@@ -1,5 +1,3 @@
-//
-
 import 'package:base/features/cart/domain/models/cart_item.dart';
 
 abstract class CartState {}
@@ -13,3 +11,4 @@ class CartLoaded extends CartState {
 }
 
 class CartEmpty extends CartState {}
+class CartLoading extends CartState {}

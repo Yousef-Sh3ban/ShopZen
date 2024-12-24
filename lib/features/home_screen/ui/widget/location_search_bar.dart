@@ -38,8 +38,6 @@ class LocationSearchBar extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
-                    //  color:  Theme.of(context).textTheme.bodyLarge?.color
-                    //color: Color(0xFF323135)
                   ),
                 ),
                 IconButton(

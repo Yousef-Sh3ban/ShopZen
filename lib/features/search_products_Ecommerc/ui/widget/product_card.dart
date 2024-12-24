@@ -1,11 +1,11 @@
-import 'package:base/search_products_Ecommerc/domain/models/product_model.dart';
+import 'package:base/features/search_products_Ecommerc/domain/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductCard extends StatefulWidget {
   final ProductModel product;
 
-  const ProductCard({Key? key, required this.product}) : super(key: key);
+  const ProductCard({super.key, required this.product});
 
   @override
   State<ProductCard> createState() => _ProductCardState();
@@ -17,7 +17,7 @@ class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -25,7 +25,7 @@ class _ProductCardState extends State<ProductCard> {
           BoxShadow(
             color: Colors.grey.withOpacity(0.2),
             blurRadius: 8,
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -77,7 +77,7 @@ class _ProductCardState extends State<ProductCard> {
           const SizedBox(height: 8),
           Text(
             widget.product.title,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
@@ -86,12 +86,12 @@ class _ProductCardState extends State<ProductCard> {
             children: [
               Text(
                 "\$${widget.product.price.toStringAsFixed(2)}",
-                style: TextStyle(fontSize: 14, color: Colors.green),
+                style: const TextStyle(fontSize: 14, color: Colors.green),
               ),
               const SizedBox(width: 8),
               Text(
                 "\$${widget.product.oldPrice.toStringAsFixed(2)}",
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14,
                   color: Colors.grey,
                   decoration: TextDecoration.lineThrough,
@@ -106,10 +106,10 @@ class _ProductCardState extends State<ProductCard> {
               height: 21.5,
               width: 21.5,
             ),
-            SizedBox(width: 8),
+            const SizedBox(width: 8),
             Text(
               widget.product.rating.toString(),
-              style: TextStyle(fontSize: 14),
+              style: const TextStyle(fontSize: 14),
             ),
           ]),
         ],

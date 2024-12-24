@@ -47,11 +47,9 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         favoriteProducts[productIndex].isFavorite = isFavorite;
       });
 
-      // If the product is no longer a favorite, delete it from the database
       if (!isFavorite) {
         dbHelper.deleteProduct(favoriteProducts[productIndex].id);
         
-        // Use a delay to allow for animation before removing the item
         Future.delayed(const Duration(milliseconds: 200), () {
           setState(() {
             favoriteProducts.removeAt(productIndex); // Remove after animation
@@ -117,7 +115,6 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                 ),
                 itemCount: dealCaredList.length,
                 itemBuilder: (context, index) {
-                  // Wrap each DealCard with AnimatedOpacity
                   return AnimatedOpacity(
                     opacity: favoriteProducts[index].isFavorite ? 1.0 : 0.0,
                     duration: const Duration(milliseconds: 300),

@@ -17,14 +17,11 @@ class ProductDetailsCubit extends Cubit<AppStates> {
   //functions
   //==================================
   getProductDetails(int id) async { 
-    log("emit loading state");
     emit(LoadingState());
     try {
       var product = await _getProductDetailsRepoInterface.getProductDetails(id);
-      log("loded state");
       emit(LoadedState(product));
     } catch (e) {
-      log("errr happend ");
       emit(ErrorState(e.toString()));
     }
   }

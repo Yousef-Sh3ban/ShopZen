@@ -6,7 +6,7 @@ class AddressTile extends StatelessWidget {
   final bool selected;
   final VoidCallback onTap;
 
-  const AddressTile({
+  const AddressTile({super.key, 
     required this.label,
     required this.address,
     required this.selected,
