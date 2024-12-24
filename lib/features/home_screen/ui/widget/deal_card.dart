@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:base/features/products_details/ui/blocs/product_details_cubit.dart';
 import 'package:base/features/products_details/ui/screen/product_details_screen.dart';
 import 'package:flutter/material.dart';

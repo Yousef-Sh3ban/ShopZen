@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:base/configurations/app_states.dart';
 import 'package:base/features/products_details/data/repo/products_details_repo_imp.dart';

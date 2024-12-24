@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +22,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
     super.initState();
 
     _controller = AnimationController(
-      duration: const Duration(seconds: 10),
+      duration: const Duration(seconds: 2),
       vsync: this,
     );
 
@@ -42,7 +41,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
 
     _controller.forward();
 
-    Future.delayed(const Duration(seconds: 20), () async {
+    Future.delayed(const Duration(seconds: 3), () async {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       final bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
       if (isLoggedIn) {

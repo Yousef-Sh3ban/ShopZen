@@ -1,4 +1,5 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
+import 'package:base/app/functions/vibration.dart';
 import 'package:base/configurations/app_events.dart';
 import 'package:base/configurations/app_states.dart';
 import 'package:base/features/authentication/ui/blocs/login_bloc.dart';
@@ -29,6 +30,7 @@ class _LoginDefaultScreenState extends State<LoginDefaultScreen> {
           child: BlocConsumer<LoginBloc, AppStates>(
             listener: (context, state) {
               if (state is LoadedState) {
+                triggerVibration(duration: 500);
                 saveLoginStatus(true);
                 const snackBar = SnackBar(
                   elevation: 0,

@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:base/configurations/app_states.dart';
 import 'package:base/features/home_screen/data/repo/get_categories_products_repo_imp.dart';

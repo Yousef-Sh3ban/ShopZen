@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:base/configurations/app_events.dart';
 import 'package:base/configurations/app_states.dart';
 import 'package:base/features/notifaction/ui/blocs/notifaction_bloc.dart';
@@ -27,25 +28,29 @@ class _NotifactionScreenState extends State<NotifactionScreen> {
     return Scaffold(
       appBar: AppBar(
         forceMaterialTransparency: true,
-        leading: Row(
-          children: [
-            const SizedBox(
-              width: 30,
-            ),
-            InkWell(
-              child: const Icon(
-                Icons.arrow_back_ios_new,
-                size: 18,
+        leading: FadeInDown(
+          child: Row(
+            children: [
+              const SizedBox(
+                width: 30,
               ),
-              onTap: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
+              InkWell(
+                child: const Icon(
+                  Icons.arrow_back_ios_new,
+                  size: 18,
+                ),
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
         ),
-        title: const Text(
-          "Notifications",
-          style: TextStyle(fontWeight: FontWeight.w400, fontSize: 24),
+        title: FadeInDown(
+          child: const Text(
+            "Notifications",
+            style: TextStyle(fontWeight: FontWeight.w400, fontSize: 24),
+          ),
         ),
         centerTitle: true,
       ),
@@ -59,7 +64,8 @@ class _NotifactionScreenState extends State<NotifactionScreen> {
           } else if (state is LoadedState) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: NotificationWidget(notifactionList: state.data),
+              child: FadeIn(
+                  child: NotificationWidget(notifactionList: state.data)),
             );
           }
           return const Center(child: Text("No data to show"));

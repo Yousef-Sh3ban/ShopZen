@@ -9,9 +9,8 @@ class CongratulationsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Checkout'),
-        backgroundColor: Colors.white,
         elevation: 0,
-        foregroundColor: Colors.black,
+        forceMaterialTransparency: true,
       ),
       body: Center(
         child: Padding(

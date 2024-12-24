@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:base/features/cart/ui/bloc/cart_cubit.dart';
@@ -16,11 +17,14 @@ class CartScreen extends StatelessWidget {
         automaticallyImplyLeading: false, //to remove back button
         forceMaterialTransparency: true,
         elevation: 0,
-        title: const Text(
-          'My Cart',
-          style: TextStyle(
-            fontWeight: FontWeight.w400,
-            fontSize: 24,
+        title: FadeInDown(
+          from: 50,
+          child: const Text(
+            'My Cart',
+            style: TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 24,
+            ),
           ),
         ),
         centerTitle: true,
@@ -39,15 +43,19 @@ class CartScreen extends StatelessWidget {
               itemBuilder: (ctx, index) {
                 if (index < state.items.length) {
                   final item = state.items[index];
-                  return CartItemWidget(item: item);
+                  return FadeIn(
+                      duration: const Duration(milliseconds: 700),
+                      child: CartItemWidget(item: item));
                 }
-                return CheckoutSummaryWidget(
-                  totalAmount: state.totalAmount,
-                  dliveryfree: 20,
+                return FadeIn(
+                  child: CheckoutSummaryWidget(
+                    totalAmount: state.totalAmount,
+                    dliveryfree: 20,
+                  ),
                 );
               },
             );
-          } else if(state is CartLoading) {
+          } else if (state is CartLoading) {
             return const Center(child: CircularProgressIndicator());
           }
           return const Center(child: Text("NO DATA"));

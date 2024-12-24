@@ -1,5 +1,6 @@
 import 'dart:core';
 
+import 'package:animate_do/animate_do.dart';
 import 'package:base/configurations/app_events.dart';
 import 'package:base/configurations/app_states.dart';
 import 'package:base/features/cart/ui/bloc/cart_cubit.dart';
@@ -47,9 +48,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screens[_selectedIndex],
-      bottomNavigationBar: CustomBottomNavigationBar(
-        selectedIndex: _selectedIndex,
-        ontap: _onItemTapped,
+      bottomNavigationBar: FadeInUpBig(
+        duration: const Duration(seconds: 1),
+        child: CustomBottomNavigationBar(
+          selectedIndex: _selectedIndex,
+          ontap: _onItemTapped,
+        ),
       ),
     );
   }
@@ -89,10 +93,13 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           children: [
-            LocationSearchBar(
-              ontap: () {
-                Navigator.pushNamed(context, AppRoutes.SearchScreen);
-              },
+            FadeInDown(
+              from: 70,
+              child: LocationSearchBar(
+                ontap: () {
+                  Navigator.pushNamed(context, AppRoutes.SearchScreen);
+                },
+              ),
             ),
             const SizedBox(height: 16),
             BlocBuilder<HomeBloc, AppStates>(
@@ -101,17 +108,28 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
               },
               builder: (context, state) {
                 if (state is CategoriesState) {
-                  return CategoriesWidget(response: state.data);
+                  return FadeIn(
+                      duration: Duration(seconds: 1),
+                      child: CategoriesWidget(response: state.data));
                 } else {
-                  return const Center(child: CircularProgressIndicator());
+                  return SizedBox(
+                      height: 125,
+                      width: double.infinity,
+                      child: const Center(child: CircularProgressIndicator()));
                 }
               },
             ),
             const SizedBox(height: 16),
-            const BannerWidget(),
+            FadeInLeft(
+                duration: const Duration(milliseconds: 700),
+                from: 20,
+                child: const BannerWidget()),
             const SizedBox(height: 8),
-            Center(
-              child: SvgPicture.asset("assets/icons/ad_dots.svg"),
+            FadeIn(
+              duration: const Duration(milliseconds: 700),
+              child: Center(
+                child: SvgPicture.asset("assets/icons/ad_dots.svg"),
+              ),
             ),
             const SizedBox(height: 16),
             BlocBuilder<HomeBloc, AppStates>(
@@ -124,12 +142,15 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                 } else if (state is LoadedState) {
                   final List<ProductModel> products =
                       state.data as List<ProductModel>;
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      HotDealsWidget(products: products),
-                      const SizedBox(height: 16),
-                    ],
+                  return FadeInUp(
+                    duration: const Duration(milliseconds: 700),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        HotDealsWidget(products: products),
+                        const SizedBox(height: 16),
+                      ],
+                    ),
                   );
                 } else {
                   return const Center(child: Text("No data available."));
