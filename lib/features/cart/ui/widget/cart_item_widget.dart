@@ -7,7 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 class CartItemWidget extends StatelessWidget {
   final CartItem item;
 
-  CartItemWidget({required this.item});
+  const CartItemWidget({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class CartItemWidget extends StatelessWidget {
                 ),
               ),
             ),
-          const  SizedBox(width: 16),
+            const SizedBox(width: 16),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,12 +50,12 @@ class CartItemWidget extends StatelessWidget {
                       Text(
                         '\$${item.price.toStringAsFixed(2)}',
                         style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xff323135)),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
-                      const SizedBox(
-                        width: 60,
+                      const Expanded(
+                        child: SizedBox(),
                       ),
                       IconButton(
                         icon: SvgPicture.asset(

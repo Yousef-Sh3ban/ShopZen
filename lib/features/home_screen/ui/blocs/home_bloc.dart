@@ -31,7 +31,7 @@ class HomeBloc extends Bloc<AppEvents, AppStates> {
     try{
     List<ProductModel> products = await _getHotDealsint.getHotDeals();
     if (products.isNotEmpty) {
-      emit(LoadedState(products as List<ProductModel>));
+      emit(LoadedState(products));
     } else {
       emit(
         LoadedState([]),
@@ -48,11 +48,5 @@ class HomeBloc extends Bloc<AppEvents, AppStates> {
         await NetworkHandler.instance.get('products/categories');
 
     emit(CategoriesState(data: categories));
-    // if (categories.isNotEmpty) {
-    // } else {
-    //   emit(
-    //     LoadedState([]),
-    //   );
-    // }
   }
 }

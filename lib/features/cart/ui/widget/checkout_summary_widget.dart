@@ -1,3 +1,4 @@
+import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/features/cart/ui/widget/custom_Bottom.dart';
 import 'package:base/features/cart/ui/widget/dased_lin.dart';
 import 'package:base/navigation/app_routes.dart';
@@ -9,8 +10,8 @@ class CheckoutSummaryWidget extends StatelessWidget {
   final double dliveryfree;
   final double? total;
 
-  CheckoutSummaryWidget(
-      {required this.totalAmount, this.total, required this.dliveryfree});
+  const CheckoutSummaryWidget(
+      {super.key, required this.totalAmount, this.total, required this.dliveryfree});
 
   @override
   Widget build(BuildContext context) {
@@ -22,19 +23,23 @@ class CheckoutSummaryWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
+              Text(
                 'Sub-total',
                 style: TextStyle(
                     fontSize: 16,
-                    color: Color(0xff57545B),
+                    color: SettingsCubit.instance.isDarkMode
+                        ? Colors.white
+                        : const Color(0xff57545B),
                     fontWeight: FontWeight.w400,
                     fontFamily: "Satoshi"),
               ),
-              Text('\$${totalAmount.toStringAsFixed(2)}',
-                  style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xff323135))),
+              Text(
+                '\$${totalAmount.toStringAsFixed(2)}',
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ],
           ),
           const SizedBox(
@@ -43,18 +48,21 @@ class CheckoutSummaryWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text("Delivery Fee ",
+              Text("Delivery Fee ",
                   style: TextStyle(
                     fontSize: 16,
-                    color: Color(0xff57545B),
+                    color: SettingsCubit.instance.isDarkMode
+                        ? Colors.white
+                        : const Color(0xff57545B),
+
                     fontWeight: FontWeight.w400,
                     fontFamily: "Satoshi",
                   )),
               Text('\$${dliveryfree.toStringAsFixed(2)}',
                   style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xff323135))),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  )),
             ],
           ),
           const SizedBox(
@@ -72,17 +80,19 @@ class CheckoutSummaryWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text("Total",
+              Text("Total",
                   style: TextStyle(
                       fontSize: 16,
-                      color: Color(0xff1A1A1A),
+                      color: SettingsCubit.instance.isDarkMode
+                          ? Colors.white
+                          : const Color(0xff57545B),
+
                       fontWeight: FontWeight.w400)),
               Text(
                 '\$${totalAmount + dliveryfree}',
                 style: const TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 16,
-                  color: Color(0xff1A1A1A),
                 ),
               ),
             ],

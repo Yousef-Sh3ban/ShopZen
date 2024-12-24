@@ -28,7 +28,8 @@ class MyApp extends StatelessWidget {
             theme: SettingsCubit.instance.isDarkMode
                 ? ThemeData(
                     fontFamily: "Alata",
-                    bottomAppBarTheme: BottomAppBarTheme(color: Colors.black),
+                    bottomAppBarTheme:
+                        const BottomAppBarTheme(color: Colors.black),
                     primaryColor: const Color(0xFF452CE8),
                     brightness: Brightness.dark,
                     scaffoldBackgroundColor: Colors.black,
@@ -39,7 +40,8 @@ class MyApp extends StatelessWidget {
                   )
                 : ThemeData(
                     fontFamily: "Alata",
-                    bottomAppBarTheme: BottomAppBarTheme(color: Colors.white),
+                    bottomAppBarTheme:
+                        const BottomAppBarTheme(color: Colors.white),
                     brightness: Brightness.light,
                     scaffoldBackgroundColor: Colors.white,
                     textTheme: const TextTheme(
@@ -49,7 +51,7 @@ class MyApp extends StatelessWidget {
                   ),
             locale: SettingsCubit.instance.locale,
             onGenerateRoute: generateRoute,
-            initialRoute: AppRoutes.home,
+            initialRoute: AppRoutes.splash,
             supportedLocales: const [
               Locale('ar'),
               Locale('en'),

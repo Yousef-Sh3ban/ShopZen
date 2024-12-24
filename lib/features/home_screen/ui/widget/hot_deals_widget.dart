@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/features/home_screen/ui/widget/deal_card.dart';
@@ -57,7 +56,5 @@ List<DealCard> modelingProductList(List<ProductModel> products) {
           isFavorite: products[i].isFavorite),
     );
   }
-  log("returning the data:");
-  log(data.toString());
   return data;
 }

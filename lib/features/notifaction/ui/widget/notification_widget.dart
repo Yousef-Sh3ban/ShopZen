@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/features/notifaction/domain/models/notifaction_model.dart';

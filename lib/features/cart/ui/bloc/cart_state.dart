@@ -11,3 +11,4 @@ class CartLoaded extends CartState {
 }
 
 class CartEmpty extends CartState {}
+class CartLoading extends CartState {}

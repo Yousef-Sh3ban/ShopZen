@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:base/configurations/app_states.dart';
 import 'package:base/features/home_screen/data/repo/get_categories_products_repo_imp.dart';
@@ -20,10 +19,8 @@ class CategoryCubit extends Cubit<AppStates> {
   getCategoriesProducts(String categoryurl) async {
     emit(LoadingState());
 
-    log(categoryurl);
     List<ProductModel> products =
         await _getCategoriesProducts.getCategoriesProducts(categoryurl);
-    // log("the number of itmes in the lisnt form the state is :${products.length}");
 
     emit(CategoryProductsState(data: products));
   }

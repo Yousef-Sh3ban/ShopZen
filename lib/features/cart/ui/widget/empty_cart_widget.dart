@@ -1,35 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class EmptyCartWidget extends StatelessWidget {
+  const EmptyCartWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.white,
+    return Scaffold(
       body: Center(
-        child: const Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.shopping_cart_outlined, size: 100, color: Colors.grey),
-            SizedBox(height: 20),
-            Text(
+            SvgPicture.asset("assets/icons/cart_em.svg",),
+            const SizedBox(height: 20),
+            const Text(
               'Your Cart Is Empty!',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
             ),
-            SizedBox(height: 8),
-            Text(
+            const SizedBox(height: 8),
+            const Text(
               'When you add products, they’ll',
               style: TextStyle(
-                  color: Color(0xff68656E),
                   fontSize: 16,
                   fontWeight: FontWeight.w400),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            Text(
+            const Text(
               'appear here. ',
               style: TextStyle(
-                  color: Color(0xff68656E),
                   fontSize: 16,
                   fontWeight: FontWeight.w400),
             ),

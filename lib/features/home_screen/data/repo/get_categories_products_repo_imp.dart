@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/features/home_screen/domain/repo/get_hot_deals_repo_interface.dart';
@@ -14,7 +13,6 @@ class GetCategoriesProductsRepoImp
       Response response = await dio.get(categoryurl);
       return await mapingPrductsFromAPI(response.data);
     } catch (e) {
-      log("error happend in the modling :${e.toString()}");
       return [];
     }
   }

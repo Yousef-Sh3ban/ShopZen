@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:base/features/home_screen/domain/models/review_model.dart';
 import 'package:base/features/products_details/ui/widget/reviews_bottom_sheet.dart';
@@ -38,7 +37,7 @@ class _DescreptionWidgetState extends State<DescreptionWidget> {
                   Text(
                     widget.description,
                     maxLines:
-                        _isExpanded ? 2 : 1000, // Show 3 lines if not expanded
+                        _isExpanded ? 2 : 1000, 
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                         fontFamily: "Sf",
@@ -49,7 +48,7 @@ class _DescreptionWidgetState extends State<DescreptionWidget> {
                   GestureDetector(
                     onTap: () {
                       setState(() {
-                        _isExpanded = !_isExpanded; // Toggle expansion state
+                        _isExpanded = !_isExpanded;  
                       });
                     },
                     child: Text(
@@ -92,8 +91,8 @@ class _DescreptionWidgetState extends State<DescreptionWidget> {
                             reviewsBottomSheet(context, widget.reviews);
                           },
                         )
-                      : SizedBox(),
-                  SizedBox(
+                      : const SizedBox(),
+                  const SizedBox(
                     height: 22,
                   )
                 ],
@@ -105,7 +104,7 @@ class _DescreptionWidgetState extends State<DescreptionWidget> {
                     width: double.infinity,
                     color: const Color(0xFFE0E0E5),
                   )
-                : SizedBox()
+                : const SizedBox()
           ],
         );
       },

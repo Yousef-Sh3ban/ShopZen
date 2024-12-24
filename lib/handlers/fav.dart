@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:sqflite/sqflite.dart';
@@ -42,27 +41,23 @@ class DBHelper {
     ''');
   }
 
-  // Insert a product
   Future<void> insertProduct(ProductModel product) async {
     final db = await database;
     await db.insert('favorites', product.toJson(),
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
-  // Get all favorite products
   Future<List<ProductModel>> getFavorites() async {
     final db = await database;
     final result = await db.query('favorites');
     return result.map((json) => ProductModel.fromJsonForDB(json)).toList();
   }
 
-  // Delete a product
   Future<void> deleteProduct(int id) async {
     final db = await database;
     await db.delete('favorites', where: 'id = ?', whereArgs: [id]);
   }
 
-  // Check if a product is favorite
   Future<bool> isProductFavorite(int? id) async {
     if (id == null) {
       return false;

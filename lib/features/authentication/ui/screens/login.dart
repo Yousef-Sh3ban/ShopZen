@@ -19,14 +19,6 @@ class Login extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // IconButton(
-            //   icon: Icon(SettingsCubit.instance.isDarkMode
-            //       ? Icons.dark_mode
-            //       : Icons.light_mode),
-            //   onPressed: () {
-            //     context.read<SettingsCubit>().toggleDarkMode();
-            //   },
-            // ),
             const StartText(
               text: "Login to ShopZen",
             ),
@@ -35,9 +27,7 @@ class Login extends StatelessWidget {
             ),
             const CustomLoginButton(
               text: "Login with Google",
-              // textcolor: Colors.black,
               imagepath: "assets/images/image.png",
-              // continarColor: Colors.white
             ),
             const SizedBox(
               height: 16,
@@ -45,9 +35,7 @@ class Login extends StatelessWidget {
             const CustomLoginButton(
               changeColor: true,
               text: "Login with Apple",
-              // textcolor: Color(0xff323135),
               imagepath: "assets/images/image copy.png",
-              // continarColor: Colors.white
             ),
             const SizedBox(
               height: 48,

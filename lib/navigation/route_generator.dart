@@ -1,20 +1,19 @@
 import 'package:base/features/cart/ui/bloc/cart_cubit.dart';
 import 'package:base/features/cart/ui/screen/cart_screen.dart';
-import 'package:base/features/chek_out/ui/screen/address_page.dart';
-import 'package:base/features/chek_out/ui/screen/chek_out_page.dart';
-import 'package:base/features/chek_out/ui/screen/congration_page.dart';
+import 'package:base/features/checkout/ui/screen/address_page.dart';
+import 'package:base/features/checkout/ui/screen/checkout_page.dart';
+import 'package:base/features/checkout/ui/screen/congration_page.dart';
 import 'package:base/features/notifaction/ui/blocs/notifaction_bloc.dart';
 import 'package:base/features/notifaction/ui/screen/notifaction_screen.dart';
 import 'package:base/navigation/app_routes.dart';
 
-import 'package:base/search_products_Ecommerc/ui/blocs/search_cubit.dart';
-import 'package:base/search_products_Ecommerc/ui/screen/search_screen.dart';
+import 'package:base/features/search_products_Ecommerc/ui/blocs/search_cubit.dart';
+import 'package:base/features/search_products_Ecommerc/ui/screen/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:base/features/authentication/ui/blocs/login_bloc.dart';
 import 'package:base/features/authentication/ui/blocs/signup_bloc.dart';
-import 'package:base/features/favorites/ui/screens/favorites_screen.dart';
 import 'package:base/features/home_screen/ui/blocs/home_bloc.dart';
 import 'package:base/features/home_screen/ui/screen/home_screen.dart';
 import 'package:base/features/authentication/ui/screens/login.dart';
@@ -30,8 +29,6 @@ _createRoute(Widget page) {
 
 Route generateRoute(settings) {
   switch (settings.name) {
-    case AppRoutes.favorites:
-      return _createRoute(FavoritesScreen());
     case AppRoutes.notifaction:
       return _createRoute(
         BlocProvider(
@@ -73,6 +70,7 @@ Route generateRoute(settings) {
         create: (context) => SearchCubit(),
         child: SearchScreen(),
       ));
+
     case AppRoutes.CartScreen:
       return _createRoute(
         BlocProvider<CartCubit>(
@@ -80,13 +78,14 @@ Route generateRoute(settings) {
           child: const CartScreen(),
         ),
       );
+
     case AppRoutes.AddressPage:
-      return _createRoute(AddressPage());
+      return _createRoute(const AddressPage());
 
     case AppRoutes.CongratulationsPage:
-      return _createRoute(CongratulationsPage());
+      return _createRoute(const CongratulationsPage());
     case AppRoutes.CheckoutPage:
-      return _createRoute(CheckoutPage());
+      return _createRoute(const CheckoutPage());
 
     default:
       return _createRoute(const SizedBox());

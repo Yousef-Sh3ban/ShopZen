@@ -18,7 +18,7 @@ class DateInputField extends StatefulWidget {
 }
 
 class _DateInputFieldState extends State<DateInputField> {
-  DateTime? selectedDate = null;
+  DateTime? selectedDate;
 
   @override
   Widget build(BuildContext context) {

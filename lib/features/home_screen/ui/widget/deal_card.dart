@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:base/features/products_details/ui/blocs/product_details_cubit.dart';
 import 'package:base/features/products_details/ui/screen/product_details_screen.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +15,7 @@ class DealCard extends StatefulWidget {
   final double rating;
   final int reviewsCount;
   bool isFavorite;
-  final Function(bool)? onFavoriteChanged; // Nullable callback
+  final Function(bool)? onFavoriteChanged;
 
   DealCard({
     super.key,
@@ -28,7 +27,7 @@ class DealCard extends StatefulWidget {
     required this.rating,
     required this.reviewsCount,
     required this.isFavorite,
-    this.onFavoriteChanged, // Pass the callback here
+    this.onFavoriteChanged,
   });
 
   @override
@@ -115,7 +114,6 @@ class _DealCardState extends State<DealCard> {
                           dbHelper.deleteProduct(widget.id);
                         }
 
-                        // Call the onFavoriteChanged callback if it's not null
                         if (widget.onFavoriteChanged != null) {
                           widget.onFavoriteChanged!(widget.isFavorite);
                         }
@@ -199,7 +197,6 @@ class _DealCardState extends State<DealCard> {
         ),
       ),
       onTap: () {
-        log("negation now for details");
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => BlocProvider(

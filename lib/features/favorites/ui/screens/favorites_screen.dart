@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:base/configurations/app_theme.dart';
@@ -47,11 +48,9 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         favoriteProducts[productIndex].isFavorite = isFavorite;
       });
 
-      // If the product is no longer a favorite, delete it from the database
       if (!isFavorite) {
         dbHelper.deleteProduct(favoriteProducts[productIndex].id);
         
-        // Use a delay to allow for animation before removing the item
         Future.delayed(const Duration(milliseconds: 200), () {
           setState(() {
             favoriteProducts.removeAt(productIndex); // Remove after animation
@@ -82,25 +81,27 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const SizedBox(height: 70),
-                    const Text(
-                      "Favorite Items",
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
-                    ),
-                    Text(
-                      "${favoriteProducts.length} Items",
-                      style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          color: AppTheme.maingrey),
-                    ),
-                    const SizedBox(height: 16)
-                  ],
+                FadeInDown(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(height: 70),
+                      const Text(
+                        "Favorite Items",
+                        style:
+                            TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
+                      ),
+                      Text(
+                        "${favoriteProducts.length} Items",
+                        style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: AppTheme.maingrey),
+                      ),
+                      const SizedBox(height: 16)
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -117,12 +118,11 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                 ),
                 itemCount: dealCaredList.length,
                 itemBuilder: (context, index) {
-                  // Wrap each DealCard with AnimatedOpacity
                   return AnimatedOpacity(
                     opacity: favoriteProducts[index].isFavorite ? 1.0 : 0.0,
                     duration: const Duration(milliseconds: 300),
                     child: favoriteProducts[index].isFavorite
-                        ? dealCaredList[index]
+                         ? FadeIn(child: dealCaredList[index])
                         : Container(),
                   );
                 },

@@ -6,13 +6,11 @@ class GlobalTranslations {
   Locale? _locale;
   Map<dynamic, dynamic>? _localizedValues;
   String word(String key) {
-    // Return the requested string
     return (_localizedValues == null || _localizedValues![key] == null)
         ? '** $key not found'
         : _localizedValues![key];
   }
   String text(List<String> keys) {
-    // Return the requested string
     String text = "";
     for (var key in keys) {
       if (_localizedValues == null || _localizedValues![key] == null) {
@@ -44,7 +42,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<GlobalTranslations>
 
   @override
   Future<GlobalTranslations> load(Locale locale) async {
-    return await GlobalTranslations.translator..initTranslation(locale.languageCode,false);
+    return GlobalTranslations.translator..initTranslation(locale.languageCode,false);
   }
 
   @override

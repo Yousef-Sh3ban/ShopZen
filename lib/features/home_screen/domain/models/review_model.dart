@@ -13,7 +13,7 @@ class ReviewModel {
       required this.reviewerEmail});
   factory ReviewModel.fromJson(Map<String, dynamic> json) {
     return ReviewModel(
-      rating: (json['rating'] as num).toDouble(), // Safely converting to double
+      rating: (json['rating'] as num).toDouble(),
       comment: json['comment'],
       date: json['date'],
       reviewerName: json['reviewerName'],
