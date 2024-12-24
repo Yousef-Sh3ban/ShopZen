@@ -27,12 +27,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0; // Track the selected index for the navigation bar
 
-  // List of screens for navigation
   final List<Widget> _screens = [
     const HomeScreenContent(), // Home screen widget (current screen)
-    const FavoritesScreen(), // Saved screen widget
-    CartScreen(), // Cart screen widget
-    AccountPage(), // Account screen widget
+    const FavoritesScreen(),
+
+    CartScreen(),
+    AccountPage(),
   ];
 
   void _onItemTapped(int index) {

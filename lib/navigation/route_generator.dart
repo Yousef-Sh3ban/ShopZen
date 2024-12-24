@@ -5,6 +5,7 @@ import 'package:base/features/chek_out/ui/screen/chek_out_page.dart';
 import 'package:base/features/chek_out/ui/screen/congration_page.dart';
 import 'package:base/features/notifaction/ui/blocs/notifaction_bloc.dart';
 import 'package:base/features/notifaction/ui/screen/notifaction_screen.dart';
+import 'package:base/navigation/app_routes.dart';
 
 import 'package:base/search_products_Ecommerc/ui/blocs/search_cubit.dart';
 import 'package:base/search_products_Ecommerc/ui/screen/search_screen.dart';
@@ -22,15 +23,6 @@ import 'package:base/features/authentication/ui/screens/on_boarding.dart';
 import 'package:base/features/authentication/ui/screens/signup_default.dart';
 import 'package:base/features/authentication/ui/screens/singup.dart';
 import 'package:base/features/authentication/ui/screens/splash.dart';
-import 'package:base/features/home_screen/ui/blocs/home_bloc.dart';
-
-import 'package:base/navigation/app_routes.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../features/products_search/ui/blocs/products_categories_bloc.dart';
-import '../features/products_search/ui/blocs/products_search_bloc.dart';
-import '../features/products_search/ui/screens/products_search_screen.dart';
 
 _createRoute(Widget page) {
   return MaterialPageRoute(builder: (context) => page);
@@ -82,10 +74,12 @@ Route generateRoute(settings) {
         child: SearchScreen(),
       ));
     case AppRoutes.CartScreen:
-      return _createRoute(BlocProvider(
-        create: (context) => CartCubit(),
-        child: CartScreen(),
-      ));
+      return _createRoute(
+        BlocProvider<CartCubit>(
+          create: (context) => CartCubit(),
+          child: const CartScreen(),
+        ),
+      );
     case AppRoutes.AddressPage:
       return _createRoute(AddressPage());
 

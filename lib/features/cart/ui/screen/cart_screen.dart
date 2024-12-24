@@ -1,5 +1,3 @@
-// import 'package:flutter/material.dart';
-import 'package:base/features/home_screen/ui/widget/Custom_Bottom_NavigationBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:base/features/cart/ui/bloc/cart_cubit.dart';
@@ -9,6 +7,8 @@ import 'package:base/features/cart/ui/widget/checkout_summary_widget.dart';
 import 'package:base/features/cart/ui/widget/empty_cart_widget.dart';
 
 class CartScreen extends StatelessWidget {
+  const CartScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

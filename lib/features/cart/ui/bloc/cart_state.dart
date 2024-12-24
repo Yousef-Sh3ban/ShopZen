@@ -1,5 +1,3 @@
-//
-
 import 'package:base/features/cart/domain/models/cart_item.dart';
 
 abstract class CartState {}
