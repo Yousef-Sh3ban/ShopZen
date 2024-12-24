@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:base/features/products_details/ui/blocs/product_details_cubit.dart';
+import 'package:base/features/products_details/ui/screen/product_details_screen.dart';
 import 'package:base/features/search_products_Ecommerc/ui/blocs/search_cubit.dart';
 import 'package:base/features/search_products_Ecommerc/ui/blocs/search_state.dart';
 import 'package:base/features/search_products_Ecommerc/ui/widget/empty_search_widget.dart';
@@ -115,7 +119,21 @@ class SearchScreen extends StatelessWidget {
                       itemCount: state.products.length,
                       itemBuilder: (context, index) {
                         final product = state.products[index];
-                        return ProductCard(product: product);
+                        return InkWell(
+                            child: ProductCard(product: product),
+                            onTap: () {
+                              log("nevagetiowjaes");
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => BlocProvider(
+                                    create: (context) => ProductDetailsCubit(),
+                                    child: ProductDetailsScreen(
+                                      id: product.id,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            });
                       },
                     );
                   }
