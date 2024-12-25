@@ -3,6 +3,7 @@ import 'package:base/app/functions/vibration.dart';
 import 'package:base/features/cart/ui/widget/custom_Bottom.dart';
 import 'package:base/features/checkout/ui/screen/payment_page.dart';
 import 'package:base/features/checkout/ui/widget/order_samry.dart';
+import 'package:base/features/checkout/ui/widget/text_filed.dart';
 
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
@@ -34,47 +35,78 @@ class CheckoutPage extends StatelessWidget {
           ),
         ),
         title: FadeInDown(
-            duration: const Duration(milliseconds: 700),
-            child: const Text('Checkout')),
+          duration: const Duration(milliseconds: 700),
+          child: const Center(
+            child: Text('Checkout'),
+          ),
+        ),
         elevation: 0,
         forceMaterialTransparency: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: FadeIn(
-          delay: const Duration(milliseconds: 200),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Delivery Address',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      body: FadeIn(
+        delay: const Duration(milliseconds: 200),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              const Divider(
+                color: Colors.grey,
+                thickness: 0.5,
               ),
-              const SizedBox(height: 8),
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Expanded(
-                      child:
-                          Text('Home\n925 S Chugach St #APT 10, Alaska 99645'),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, AppRoutes.AddressPage);
-                      },
-                      child: const Text('Change',
-                          style: TextStyle(color: Colors.deepPurple)),
-                    ),
-                  ],
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Delivery Address',
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xff323135)),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, AppRoutes.AddressPage);
+                    },
+                    child: const Text('Change',
+                        style: TextStyle(
+                            color: const Color(0xff1A1A1A),
+                            decoration: TextDecoration.underline)),
+                  ),
+                ],
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 4),
+              Row(
+                children: [
+                  Icon(
+                    Icons.location_on_outlined,
+                    color: Color(0xff938F9C),
+                  ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "home",
+                        style: const TextStyle(fontWeight: FontWeight.w400),
+                      ),
+                      Text("data 925 S Chugach St #APT 10, Alaska 99645"),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              const Divider(
+                color: Colors.grey,
+                thickness: 0.5,
+              ),
+              SizedBox(
+                height: 15,
+              ),
               const Text(
                 'Payment Method',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -82,6 +114,14 @@ class CheckoutPage extends StatelessWidget {
               const SizedBox(height: 8),
               const PaymentPage(),
               const SizedBox(height: 16),
+              CardInputField(),
+              SizedBox(
+                height: 16,
+              ),
+              Divider(
+                color: Colors.grey,
+                thickness: 0.5,
+              ),
               const Text(
                 'Order Summary',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -121,7 +161,7 @@ class CheckoutPage extends StatelessWidget {
                     Navigator.pushNamed(context, AppRoutes.CongratulationsPage);
                   },
                   text: "Place Order"),
-            ],
+            ]),
           ),
         ),
       ),
