@@ -121,18 +121,6 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
               },
             ),
             const SizedBox(height: 16),
-            FadeInLeft(
-                duration: const Duration(milliseconds: 700),
-                from: 20,
-                child: const BannerWidget()),
-            const SizedBox(height: 8),
-            FadeIn(
-              duration: const Duration(milliseconds: 700),
-              child: Center(
-                child: SvgPicture.asset("assets/icons/ad_dots.svg"),
-              ),
-            ),
-            const SizedBox(height: 16),
             BlocBuilder<HomeBloc, AppStates>(
               buildWhen: (previous, current) {
                 if (current is LoadedState && previous is LoadedState) {

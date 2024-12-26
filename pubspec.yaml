@@ -51,6 +51,7 @@ dependencies:
   vibration: ^2.0.1
   animate_do: ^3.3.4
   redacted: ^1.0.13
+  carousel_slider: ^5.0.0
   # firebase dependencies
   #===============================
   firebase_core: ^3.8.0
