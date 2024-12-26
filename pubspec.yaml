@@ -50,6 +50,7 @@ dependencies:
   awesome_snackbar_content: ^0.1.4
   vibration: ^2.0.1
   animate_do: ^3.3.4
+  carousel_slider: ^5.0.0
   # firebase dependencies
   #===============================
   firebase_core: ^3.8.0
