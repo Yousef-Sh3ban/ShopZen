@@ -37,7 +37,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         centerTitle: true,
         forceMaterialTransparency: true,
         leading: FadeInDown(
-          duration: Duration(milliseconds: 700),
+          duration: const Duration(milliseconds: 700),
           child: InkWell(
             onTap: () => Navigator.of(context).pop(),
             child: const Icon(
@@ -46,7 +46,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           ),
         ),
         title: FadeInDown(
-            duration: Duration(milliseconds: 700),
+            duration: const Duration(milliseconds: 700),
             child: const Text("Product Details")),
       ),
       body: FadeIn(
@@ -65,7 +65,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               ProductDetailsModel productDetails =
                   (state.data as ProductDetailsModel);
               selectedImage ??= productDetails.images[0];
-              return ListView(
+              return Column(
                 children: [
                   Stack(
                     children: [
@@ -94,76 +94,81 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(20),
+                  SingleChildScrollView(
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(
-                          height: 16,
+                        Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(
+                                height: 16,
+                              ),
+                              ProductImageWidget(
+                                images: productDetails.images,
+                                onImageSelected: (String image) {
+                                  setState(() {
+                                    selectedImage = image;
+                                  });
+                                },
+                              ),
+                              const SizedBox(
+                                height: 24,
+                              ),
+                              Text(
+                                productDetails.title,
+                                style: const TextStyle(
+                                    fontFamily: "Satoshi",
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 18),
+                              ),
+                              const SizedBox(
+                                height: 16,
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    "${productDetails.price}\$",
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 20),
+                                  ),
+                                  const Expanded(child: SizedBox()),
+                                  SvgPicture.asset("assets/icons/star.svg"),
+                                  const SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(productDetails.rating.toString()),
+                                  const SizedBox(
+                                    width: 4,
+                                  ),
+                                  Text(
+                                    "(${productDetails.reviewsCount} Review)",
+                                    style: const TextStyle(
+                                        color: Color(0xFF68656E),
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 12),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 15,
+                              ),
+                            ],
+                          ),
                         ),
-                        ProductImageWidget(
-                          images: productDetails.images,
-                          onImageSelected: (String image) {
-                            setState(() {
-                              selectedImage = image;
-                            });
-                          },
-                        ),
-                        const SizedBox(
-                          height: 24,
-                        ),
-                        Text(
-                          productDetails.title,
-                          style: const TextStyle(
-                              fontFamily: "Satoshi",
-                              fontWeight: FontWeight.w700,
-                              fontSize: 18),
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              "${productDetails.price}\$",
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.w400, fontSize: 20),
-                            ),
-                            const Expanded(child: SizedBox()),
-                            SvgPicture.asset("assets/icons/star.svg"),
-                            const SizedBox(
-                              width: 5,
-                            ),
-                            Text(productDetails.rating.toString()),
-                            const SizedBox(
-                              width: 4,
-                            ),
-                            Text(
-                              "(${productDetails.reviewsCount} Review)",
-                              style: const TextStyle(
-                                  color: Color(0xFF68656E),
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 12),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 15,
+                        DescreptionWidget(
+                          description: productDetails.description,
+                          reviews: productDetails.reviews,
                         ),
                       ],
                     ),
                   ),
-                  DescreptionWidget(
-                    description: productDetails.description,
-                    reviews: productDetails.reviews,
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
+                  const Expanded(child: SizedBox()),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 20, horizontal: 20),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
                     child: LoginBottom(
                       ontap: () {
                         triggerVibration(duration: 400);
@@ -179,7 +184,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           backgroundColor: Colors.transparent,
                           padding: const EdgeInsets.symmetric(
                               horizontal: 0, vertical: 13),
-                          duration: const Duration(seconds: 10),
+                          duration: const Duration(milliseconds: 800),
                           content: AwesomeSnackbarContent(
                             color: const Color(0xFF452CE8),
                             title: 'Yay!',
@@ -201,7 +206,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       color: const Color(0xFF6A70FF),
                       text: "Add to Cart",
                     ),
-                  )
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
                 ],
               );
             } else {

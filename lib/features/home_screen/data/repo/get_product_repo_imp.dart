@@ -26,7 +26,7 @@ class GetProductsRepoImp implements GetProductsRepoInterface {
       products.add(
         ProductModel(
           id: data["products"][i]["id"],
-          imageUrl: data["products"][i]["images"][0] ?? "NO image",
+          imageUrl: data["products"][i]["thumbnail"]?? "NO image",
           title: data["products"][i]["title"] ?? "Unknown Title",
           price: data["products"][i]["price"] ?? 0.00,
           oldPrice: data["products"][i]["price"] ?? 0.00,

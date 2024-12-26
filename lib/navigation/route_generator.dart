@@ -5,6 +5,7 @@ import 'package:base/features/checkout/ui/screen/checkout_page.dart';
 import 'package:base/features/checkout/ui/screen/congration_page.dart';
 import 'package:base/features/notifaction/ui/blocs/notifaction_bloc.dart';
 import 'package:base/features/notifaction/ui/screen/notifaction_screen.dart';
+import 'package:base/features/profile/ui/screen/profile_screen.dart';
 import 'package:base/navigation/app_routes.dart';
 
 import 'package:base/features/search_products_Ecommerc/ui/blocs/search_cubit.dart';
@@ -38,6 +39,8 @@ Route generateRoute(settings) {
       );
     case AppRoutes.splash:
       return _createRoute(const Splash());
+    case AppRoutes.profile:
+      return _createRoute(ProfileScreen());
     case AppRoutes.onBoarding:
       return _createRoute(const OnBoarding());
     case AppRoutes.login:

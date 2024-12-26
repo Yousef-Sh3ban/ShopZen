@@ -7,6 +7,7 @@ import 'package:base/features/cart/ui/bloc/cart_state.dart';
 import 'package:base/features/cart/ui/widget/cart_item_widget.dart';
 import 'package:base/features/cart/ui/widget/checkout_summary_widget.dart';
 import 'package:base/features/cart/ui/widget/empty_cart_widget.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -33,7 +34,10 @@ class CartScreen extends StatelessWidget {
       body: BlocBuilder<CartCubit, CartState>(
         builder: (context, state) {
           if (state is CartEmpty) {
-            return const EmptyCartWidget();
+            return FadeIn(
+                child: Center(
+                    child: SvgPicture.asset("assets/images/empty_cart.svg")));
+            // return FadeIn(child: const EmptyCartWidget());
           } else if (state is CartLoaded) {
             return ListView.separated(
               padding: const EdgeInsets.symmetric(vertical: 5),

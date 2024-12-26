@@ -1,4 +1,3 @@
-
 import 'package:base/features/home_screen/domain/models/review_model.dart';
 import 'package:base/features/products_details/ui/widget/reviews_bottom_sheet.dart';
 import 'package:flutter/material.dart';
@@ -36,8 +35,7 @@ class _DescreptionWidgetState extends State<DescreptionWidget> {
                   ),
                   Text(
                     widget.description,
-                    maxLines:
-                        _isExpanded ? 2 : 1000, 
+                    maxLines: _isExpanded ? 2 : 1000,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                         fontFamily: "Sf",
@@ -48,11 +46,11 @@ class _DescreptionWidgetState extends State<DescreptionWidget> {
                   GestureDetector(
                     onTap: () {
                       setState(() {
-                        _isExpanded = !_isExpanded;  
+                        _isExpanded = !_isExpanded;
                       });
                     },
                     child: Text(
-                      _isExpanded ? "Read More" : "",
+                      _isExpanded ? "Read More" : "Read Less",
                       style: const TextStyle(
                         decoration: TextDecoration.underline,
                         fontSize: 14,
@@ -72,39 +70,35 @@ class _DescreptionWidgetState extends State<DescreptionWidget> {
                   const SizedBox(
                     height: 30,
                   ),
-                  !_isExpanded
-                      ? InkWell(
-                          child: const Row(
-                            children: [
-                              Text(
-                                "Rating & Reviews",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w500, fontSize: 18),
-                              ),
-                              Expanded(child: SizedBox()),
-                              Icon(
-                                Icons.keyboard_arrow_down_sharp,
-                              ),
-                            ],
-                          ),
-                          onTap: () {
-                            reviewsBottomSheet(context, widget.reviews);
-                          },
-                        )
-                      : const SizedBox(),
+                  InkWell(
+                    child: const Row(
+                      children: [
+                        Text(
+                          "Rating & Reviews",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500, fontSize: 18),
+                        ),
+                        Expanded(child: SizedBox()),
+                        Icon(
+                          Icons.keyboard_arrow_down_sharp,
+                        ),
+                      ],
+                    ),
+                    onTap: () {
+                      reviewsBottomSheet(context, widget.reviews);
+                    },
+                  ),
                   const SizedBox(
                     height: 22,
                   )
                 ],
               ),
             ),
-            !_isExpanded
-                ? Container(
-                    height: 1,
-                    width: double.infinity,
-                    color: const Color(0xFFE0E0E5),
-                  )
-                : const SizedBox()
+            Container(
+              height: 1,
+              width: double.infinity,
+              color: const Color(0xFFE0E0E5),
+            )
           ],
         );
       },

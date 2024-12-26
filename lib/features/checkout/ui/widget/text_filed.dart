@@ -26,10 +26,10 @@ class CardInputField extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
+          const Row(
             children: [
-              const Icon(Icons.credit_card, color: Colors.black),
-              const SizedBox(width: 8),
+              Icon(Icons.credit_card, color: Colors.black),
+              SizedBox(width: 8),
               Text(
                 "VISA",
                 style: TextStyle(
@@ -40,7 +40,7 @@ class CardInputField extends StatelessWidget {
               SizedBox(
                 width: 4.15,
               ),
-              const Text(
+              Text(
                 '**** **** **** 2512',
                 style: TextStyle(
                   fontSize: 16,

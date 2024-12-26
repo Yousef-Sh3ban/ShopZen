@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/app/functions/vibration.dart';
 import 'package:base/features/cart/ui/widget/custom_Bottom.dart';
 import 'package:base/features/checkout/ui/screen/payment_page.dart';
@@ -36,10 +37,9 @@ class CheckoutPage extends StatelessWidget {
         ),
         title: FadeInDown(
           duration: const Duration(milliseconds: 700),
-          child: const Center(
-            child: Text('Checkout'),
-          ),
+          child: const Text('Checkout'),
         ),
+        centerTitle: true,
         elevation: 0,
         forceMaterialTransparency: true,
       ),
@@ -60,23 +60,25 @@ class CheckoutPage extends StatelessWidget {
                   const Text(
                     'Delivery Address',
                     style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xff323135)),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                   TextButton(
                     onPressed: () {
                       Navigator.pushNamed(context, AppRoutes.AddressPage);
                     },
-                    child: const Text('Change',
+                    child: Text('Change',
                         style: TextStyle(
-                            color: const Color(0xff1A1A1A),
+                            color: SettingsCubit.instance.isDarkMode
+                                ? Colors.white
+                                : const Color(0xFF1A1A1A),
                             decoration: TextDecoration.underline)),
                   ),
                 ],
               ),
               const SizedBox(height: 4),
-              Row(
+              const Row(
                 children: [
                   Icon(
                     Icons.location_on_outlined,
@@ -90,21 +92,21 @@ class CheckoutPage extends StatelessWidget {
                     children: [
                       Text(
                         "home",
-                        style: const TextStyle(fontWeight: FontWeight.w400),
+                        style: TextStyle(fontWeight: FontWeight.w400),
                       ),
-                      Text("data 925 S Chugach St #APT 10, Alaska 99645"),
+                      Text("925 S Chugach St #APT 10, Alaska 99645"),
                     ],
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               const Divider(
                 color: Colors.grey,
                 thickness: 0.5,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               const Text(
@@ -114,11 +116,11 @@ class CheckoutPage extends StatelessWidget {
               const SizedBox(height: 8),
               const PaymentPage(),
               const SizedBox(height: 16),
-              CardInputField(),
-              SizedBox(
+              const CardInputField(),
+              const SizedBox(
                 height: 16,
               ),
-              Divider(
+              const Divider(
                 color: Colors.grey,
                 thickness: 0.5,
               ),
