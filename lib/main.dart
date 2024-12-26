@@ -28,7 +28,6 @@ class MyApp extends StatelessWidget {
             theme: SettingsCubit.instance.isDarkMode
                 ? ThemeData(
                     fontFamily: "Alata",
-                    
                     bottomAppBarTheme:
                         const BottomAppBarTheme(color: Colors.black),
                     primaryColor: const Color(0xFF452CE8),
