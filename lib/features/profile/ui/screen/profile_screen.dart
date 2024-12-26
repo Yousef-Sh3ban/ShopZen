@@ -4,6 +4,7 @@ import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/configurations/app_theme.dart';
 import 'package:base/features/authentication/ui/widgets/custom_text_form.dart';
 import 'package:base/features/authentication/ui/widgets/login_bottom.dart';
+import 'package:base/features/my_orders/ui/widget/order_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -110,249 +111,253 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
         centerTitle: true,
       ),
-      body: Form(
-        key: formKey,
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              SingleChildScrollView(
-                child: FadeIn(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomTextForm(
-                          borderColor: const Color(0xFFE6E6E6),
-                          onChanged: (value) {},
-                          hint: "Enter your Full Name",
-                          title: "Full Name",
-                          textEditingController: _nameController,
-                          validator: (String? name) {
-                            if (name!.length < 3) {
-                              return "Name must be at least 3 letter";
-                            }
-                            return null;
-                          }),
-                      SizedBox(
-                        height: 16,
-                      ),
-                      CustomTextForm(
-                          borderColor: const Color(0xFFE6E6E6),
-                          onChanged: (value) {},
-                          hint: "Enter your email address",
-                          title: "Email Address",
-                          textEditingController: _emailController,
-                          validator: (String? email) {
-                            if (email!.length < 3) {
-                              return "Name must be at least 3 letter";
-                            } else if (!email.contains("@") ||
-                                !email.contains(".com")) {
-                              return "Enter valid email address";
-                            }
-                            return null;
-                          }),
-                      SizedBox(
-                        height: 16,
-                      ),
-                      const Text(
-                        "Date of Birth",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500, fontSize: 16),
-                      ),
-                      GestureDetector(
-                        onTap: () async {
-                          DateTime? pickedDate = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime.now(),
-                            lastDate:
-                                DateTime.now().add(const Duration(days: 365)),
-                          );
-                          if (pickedDate != null) {
-                            setState(() {
-                              selectedDate = pickedDate;
-                            });
-                          }
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 14),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(
-                              color: const Color(0xFFE6E6E6),
-                              width: 1,
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                selectedDate != null
-                                    ? DateFormat('dd/MM/yyyy')
-                                        .format(selectedDate!)
-                                    : "Select Date",
-                                style: TextStyle(
-                                  color: SettingsCubit.instance.isDarkMode
-                                      ? AppTheme.mainColor
-                                      : Color(0xFFA7A5AF),
-                                  fontSize: 16,
-                                ),
-                              ),
-                              const Icon(Icons.calendar_today,
-                                  color: Color(0xFFA7A5AF)),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 16,
-                      ),
-                      const Text(
-                        "Gender",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500, fontSize: 16),
-                      ),
-                      DropdownButtonFormField<String>(
-                        decoration: const InputDecoration(
-                          disabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Color(0xFFE6E6E6), width: 1),
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Color(0xFFE6E6E6), width: 1),
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Color(0xFFE6E6E6), width: 1),
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Color(0xFFE6E6E6), width: 1),
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                          ),
-                          border: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Color(0xFFE6E6E6), width: 1),
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                          ),
-                          enabled: false,
-                          labelText: 'Select Gender',
-                          labelStyle: TextStyle(
-                            color: Color(0xFFA7A5AF),
-                            fontSize: 16,
-                          ),
-                        ),
-                        value: selectedGender,
-                        items: [
-                          DropdownMenuItem<String>(
-                              value: "Male",
-                              child: Text(
-                                "Male",
-                                style: TextStyle(
-                                    color: SettingsCubit.instance.isDarkMode
-                                        ? AppTheme.mainColor
-                                        : Colors.black),
-                              )),
-                          DropdownMenuItem<String>(
-                            value: "Female",
-                            child: Text(
-                              "Female",
-                              style: TextStyle(
-                                  color: SettingsCubit.instance.isDarkMode
-                                      ? AppTheme.mainColor
-                                      : Colors.black),
-                            ),
-                          ),
-                        ],
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              selectedGender = value;
-                            },
-                          );
-                        },
-                      ),
-                      SizedBox(
-                        height: 16,
-                      ),
-                      CustomTextForm(
-                        borderColor: const Color(0xFFE6E6E6),
-                        prefix: SizedBox(
-                          width: MediaQuery.of(context).size.width - 285,
-                          child: Row(
-                            children: [
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              SizedBox(
-                                height: 24,
-                                width: 24,
-                                child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: SvgPicture.asset(
-                                        "assets/icons/us.svg")),
-                              ),
-                              const SizedBox(
-                                width: 6,
-                              ),
-                              const Icon(Icons.keyboard_arrow_down_rounded),
-                              Text(
-                                "   +1",
-                                style: TextStyle(
-                                    color: SettingsCubit.instance.isDarkMode
-                                        ? AppTheme.mainColor
-                                        : Colors.black,
-                                    fontFamily: "Satoshi",
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 14),
-                              )
-                            ],
-                          ),
-                        ),
-                        hint: "Enter your phone number",
-                        keyboardType: const TextInputType.numberWithOptions(),
-                        textEditingController: _phoneController,
-                        validator: (String? phone) {
-                          if (phone!.length != 11) {
-                            return "Phone must be 11 number";
-                          }
-                          return null;
-                        },
-                        onChanged: (String? value) {},
-                        title: 'Phone Number',
-                      ),
-                      const SizedBox(
-                        height: 48,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(child: SizedBox()),
-              LoginBottom(
-                textColor: Color(0xFF6A70FF),
-                color: Color(0xFFDAE2FF),
-                text: 'Save',
-                ontap: () {
-                  if (formKey.currentState!.validate()) {
-                    SaveProfileData(
-                        _nameController.text,
-                        _emailController.text,
-                        _phoneController.text,
-                        selectedDate.toString(),
-                        selectedGender!);
-                  }
-                },
-              )
-            ],
-          ),
-        ),
-      ),
+      body: Padding(
+        padding: const EdgeInsets.all(24),
+        child: OrderWidget(),
+      )
+      // Form(
+      //   key: formKey,
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(20),
+      //     child: Column(
+      //       children: [
+      //         SingleChildScrollView(
+      //           child: FadeIn(
+      //             child: Column(
+      //               crossAxisAlignment: CrossAxisAlignment.start,
+      //               children: [
+      //                 CustomTextForm(
+      //                     borderColor: const Color(0xFFE6E6E6),
+      //                     onChanged: (value) {},
+      //                     hint: "Enter your Full Name",
+      //                     title: "Full Name",
+      //                     textEditingController: _nameController,
+      //                     validator: (String? name) {
+      //                       if (name!.length < 3) {
+      //                         return "Name must be at least 3 letter";
+      //                       }
+      //                       return null;
+      //                     }),
+      //                 SizedBox(
+      //                   height: 16,
+      //                 ),
+      //                 CustomTextForm(
+      //                     borderColor: const Color(0xFFE6E6E6),
+      //                     onChanged: (value) {},
+      //                     hint: "Enter your email address",
+      //                     title: "Email Address",
+      //                     textEditingController: _emailController,
+      //                     validator: (String? email) {
+      //                       if (email!.length < 3) {
+      //                         return "Name must be at least 3 letter";
+      //                       } else if (!email.contains("@") ||
+      //                           !email.contains(".com")) {
+      //                         return "Enter valid email address";
+      //                       }
+      //                       return null;
+      //                     }),
+      //                 SizedBox(
+      //                   height: 16,
+      //                 ),
+      //                 const Text(
+      //                   "Date of Birth",
+      //                   style: TextStyle(
+      //                       fontWeight: FontWeight.w500, fontSize: 16),
+      //                 ),
+      //                 GestureDetector(
+      //                   onTap: () async {
+      //                     DateTime? pickedDate = await showDatePicker(
+      //                       context: context,
+      //                       initialDate: DateTime.now(),
+      //                       firstDate: DateTime.now(),
+      //                       lastDate:
+      //                           DateTime.now().add(const Duration(days: 365)),
+      //                     );
+      //                     if (pickedDate != null) {
+      //                       setState(() {
+      //                         selectedDate = pickedDate;
+      //                       });
+      //                     }
+      //                   },
+      //                   child: Container(
+      //                     padding: const EdgeInsets.symmetric(
+      //                         horizontal: 16, vertical: 14),
+      //                     decoration: BoxDecoration(
+      //                       borderRadius: BorderRadius.circular(8),
+      //                       border: Border.all(
+      //                         color: const Color(0xFFE6E6E6),
+      //                         width: 1,
+      //                       ),
+      //                     ),
+      //                     child: Row(
+      //                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //                       children: [
+      //                         Text(
+      //                           selectedDate != null
+      //                               ? DateFormat('dd/MM/yyyy')
+      //                                   .format(selectedDate!)
+      //                               : "Select Date",
+      //                           style: TextStyle(
+      //                             color: SettingsCubit.instance.isDarkMode
+      //                                 ? AppTheme.mainColor
+      //                                 : Color(0xFFA7A5AF),
+      //                             fontSize: 16,
+      //                           ),
+      //                         ),
+      //                         const Icon(Icons.calendar_today,
+      //                             color: Color(0xFFA7A5AF)),
+      //                       ],
+      //                     ),
+      //                   ),
+      //                 ),
+      //                 SizedBox(
+      //                   height: 16,
+      //                 ),
+      //                 const Text(
+      //                   "Gender",
+      //                   style: TextStyle(
+      //                       fontWeight: FontWeight.w500, fontSize: 16),
+      //                 ),
+      //                 DropdownButtonFormField<String>(
+      //                   decoration: const InputDecoration(
+      //                     disabledBorder: OutlineInputBorder(
+      //                       borderSide:
+      //                           BorderSide(color: Color(0xFFE6E6E6), width: 1),
+      //                       borderRadius: BorderRadius.all(Radius.circular(8)),
+      //                     ),
+      //                     errorBorder: OutlineInputBorder(
+      //                       borderSide:
+      //                           BorderSide(color: Color(0xFFE6E6E6), width: 1),
+      //                       borderRadius: BorderRadius.all(Radius.circular(8)),
+      //                     ),
+      //                     enabledBorder: OutlineInputBorder(
+      //                       borderSide:
+      //                           BorderSide(color: Color(0xFFE6E6E6), width: 1),
+      //                       borderRadius: BorderRadius.all(Radius.circular(8)),
+      //                     ),
+      //                     focusedBorder: OutlineInputBorder(
+      //                       borderSide:
+      //                           BorderSide(color: Color(0xFFE6E6E6), width: 1),
+      //                       borderRadius: BorderRadius.all(Radius.circular(8)),
+      //                     ),
+      //                     border: OutlineInputBorder(
+      //                       borderSide:
+      //                           BorderSide(color: Color(0xFFE6E6E6), width: 1),
+      //                       borderRadius: BorderRadius.all(Radius.circular(8)),
+      //                     ),
+      //                     enabled: false,
+      //                     labelText: 'Select Gender',
+      //                     labelStyle: TextStyle(
+      //                       color: Color(0xFFA7A5AF),
+      //                       fontSize: 16,
+      //                     ),
+      //                   ),
+      //                   value: selectedGender,
+      //                   items: [
+      //                     DropdownMenuItem<String>(
+      //                         value: "Male",
+      //                         child: Text(
+      //                           "Male",
+      //                           style: TextStyle(
+      //                               color: SettingsCubit.instance.isDarkMode
+      //                                   ? AppTheme.mainColor
+      //                                   : Colors.black),
+      //                         )),
+      //                     DropdownMenuItem<String>(
+      //                       value: "Female",
+      //                       child: Text(
+      //                         "Female",
+      //                         style: TextStyle(
+      //                             color: SettingsCubit.instance.isDarkMode
+      //                                 ? AppTheme.mainColor
+      //                                 : Colors.black),
+      //                       ),
+      //                     ),
+      //                   ],
+      //                   onChanged: (value) {
+      //                     setState(
+      //                       () {
+      //                         selectedGender = value;
+      //                       },
+      //                     );
+      //                   },
+      //                 ),
+      //                 SizedBox(
+      //                   height: 16,
+      //                 ),
+      //                 CustomTextForm(
+      //                   borderColor: const Color(0xFFE6E6E6),
+      //                   prefix: SizedBox(
+      //                     width: MediaQuery.of(context).size.width - 285,
+      //                     child: Row(
+      //                       children: [
+      //                         const SizedBox(
+      //                           width: 20,
+      //                         ),
+      //                         SizedBox(
+      //                           height: 24,
+      //                           width: 24,
+      //                           child: ClipRRect(
+      //                               borderRadius: BorderRadius.circular(8),
+      //                               child: SvgPicture.asset(
+      //                                   "assets/icons/us.svg")),
+      //                         ),
+      //                         const SizedBox(
+      //                           width: 6,
+      //                         ),
+      //                         const Icon(Icons.keyboard_arrow_down_rounded),
+      //                         Text(
+      //                           "   +1",
+      //                           style: TextStyle(
+      //                               color: SettingsCubit.instance.isDarkMode
+      //                                   ? AppTheme.mainColor
+      //                                   : Colors.black,
+      //                               fontFamily: "Satoshi",
+      //                               fontWeight: FontWeight.w500,
+      //                               fontSize: 14),
+      //                         )
+      //                       ],
+      //                     ),
+      //                   ),
+      //                   hint: "Enter your phone number",
+      //                   keyboardType: const TextInputType.numberWithOptions(),
+      //                   textEditingController: _phoneController,
+      //                   validator: (String? phone) {
+      //                     if (phone!.length != 11) {
+      //                       return "Phone must be 11 number";
+      //                     }
+      //                     return null;
+      //                   },
+      //                   onChanged: (String? value) {},
+      //                   title: 'Phone Number',
+      //                 ),
+      //                 const SizedBox(
+      //                   height: 48,
+      //                 ),
+      //               ],
+      //             ),
+      //           ),
+      //         ),
+      //         Expanded(child: SizedBox()),
+      //         LoginBottom(
+      //           textColor: Color(0xFF6A70FF),
+      //           color: Color(0xFFDAE2FF),
+      //           text: 'Save',
+      //           ontap: () {
+      //             if (formKey.currentState!.validate()) {
+      //               SaveProfileData(
+      //                   _nameController.text,
+      //                   _emailController.text,
+      //                   _phoneController.text,
+      //                   selectedDate.toString(),
+      //                   selectedGender!);
+      //             }
+      //           },
+      //         )
+      //       ],
+      //     ),
+      //   ),
+      // ),
     );
   }
 }

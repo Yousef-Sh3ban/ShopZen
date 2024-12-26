@@ -168,7 +168,8 @@ class _DealCardState extends State<DealCard> {
                       color: Color(0xFF68656E),
                       fontWeight: FontWeight.w400,
                       decoration: TextDecoration.lineThrough,
-                      decorationColor: Color(0xFF68656E)),
+                      decorationColor: Color(0xFF68656E)
+                      ),
                 ),
               ],
             ),
