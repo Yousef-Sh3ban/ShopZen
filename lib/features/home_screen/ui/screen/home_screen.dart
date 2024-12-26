@@ -92,76 +92,78 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: ListView(
-        children: [
-          FadeInDown(
-            from: 70,
-            child: LocationSearchBar(
-              ontap: () {
-                Navigator.pushNamed(context, AppRoutes.SearchScreen);
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            FadeInDown(
+              from: 70,
+              child: LocationSearchBar(
+                ontap: () {
+                  Navigator.pushNamed(context, AppRoutes.SearchScreen);
+                },
+              ),
+            ),
+            const SizedBox(height: 16),
+            BlocBuilder<HomeBloc, AppStates>(
+              buildWhen: (previous, current) {
+                if (current is CategoriesState && previous is CategoriesState) {
+                  //for better performance
+                  return current.data != previous.data;
+                }
+                return current is CategoriesState;
+              },
+              builder: (context, state) {
+                if (state is CategoriesState) {
+                  return CategoriesWidget(response: state.data);
+                } else {
+                  return const CategoriesLoadingWidget();
+                }
               },
             ),
-          ),
-          const SizedBox(height: 16),
-          BlocBuilder<HomeBloc, AppStates>(
-            buildWhen: (previous, current) {
-              if (current is CategoriesState && previous is CategoriesState) {
-                //for better performance
-                return current.data != previous.data;
-              }
-              return current is CategoriesState;
-            },
-            builder: (context, state) {
-              if (state is CategoriesState) {
-                return CategoriesWidget(response: state.data);
-              } else {
-                return const CategoriesLoadingWidget();
-              }
-            },
-          ),
-          const SizedBox(height: 16),
-          FadeInLeft(
+            const SizedBox(height: 16),
+            FadeInLeft(
+                duration: const Duration(milliseconds: 700),
+                from: 20,
+                child: const BannerWidget()),
+            const SizedBox(height: 8),
+            FadeIn(
               duration: const Duration(milliseconds: 700),
-              from: 20,
-              child: const BannerWidget()),
-          const SizedBox(height: 8),
-          FadeIn(
-            duration: const Duration(milliseconds: 700),
-            child: Center(
-              child: SvgPicture.asset("assets/icons/ad_dots.svg"),
+              child: Center(
+                child: SvgPicture.asset("assets/icons/ad_dots.svg"),
+              ),
             ),
-          ),
-          const SizedBox(height: 16),
-          BlocBuilder<HomeBloc, AppStates>(
-            buildWhen: (previous, current) {
-              if (current is LoadedState && previous is LoadedState) {
-                //for better performance
-                return current.data != previous.data;
-              }
-              return current is LoadedState || current is LoadingState;
-            },
-            builder: (context, state) {
-              if (state is LoadingState) {
-                return DealCardLoading();
-              } else if (state is LoadedState) {
-                final List<ProductModel> products =
-                    state.data as List<ProductModel>;
-                return FadeIn(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      RepaintBoundary(
-                          child: HotDealsWidget(products: products)),
-                      const SizedBox(height: 16),
-                    ],
-                  ),
-                );
-              } else {
-                return const Center(child: Text("No data available."));
-              }
-            },
-          ),
-        ],
+            const SizedBox(height: 16),
+            BlocBuilder<HomeBloc, AppStates>(
+              buildWhen: (previous, current) {
+                if (current is LoadedState && previous is LoadedState) {
+                  //for better performance
+                  return current.data != previous.data;
+                }
+                return current is LoadedState || current is LoadingState;
+              },
+              builder: (context, state) {
+                if (state is LoadingState) {
+                  return DealCardLoading();
+                } else if (state is LoadedState) {
+                  final List<ProductModel> products =
+                      state.data as List<ProductModel>;
+                  return FadeIn(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        RepaintBoundary(
+                            child: HotDealsWidget(products: products)),
+                        const SizedBox(height: 16),
+                      ],
+                    ),
+                  );
+                } else {
+                  return const Center(child: Text("No data available."));
+                }
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -119,7 +119,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SingleChildScrollView(
                 child: FadeIn(
                   child: Column(
-                    spacing: 16,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomTextForm(
@@ -134,6 +133,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             }
                             return null;
                           }),
+                      SizedBox(
+                        height: 16,
+                      ),
                       CustomTextForm(
                           borderColor: const Color(0xFFE6E6E6),
                           onChanged: (value) {},
@@ -143,13 +145,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           validator: (String? email) {
                             if (email!.length < 3) {
                               return "Name must be at least 3 letter";
+                            } else if (!email.contains("@") ||
+                                !email.contains(".com")) {
+                              return "Enter valid email address";
                             }
-                            //  else if (email.contains("@") ||
-                            //     email.contains(".com")) {
-                            //   return "Enter valid email address";
-                            // }
                             return null;
                           }),
+                      SizedBox(
+                        height: 16,
+                      ),
                       const Text(
                         "Date of Birth",
                         style: TextStyle(
@@ -171,7 +175,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           }
                         },
                         child: Container(
-                          height: 57,
                           padding: const EdgeInsets.symmetric(
                               horizontal: 16, vertical: 14),
                           decoration: BoxDecoration(
@@ -201,6 +204,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ],
                           ),
                         ),
+                      ),
+                      SizedBox(
+                        height: 16,
                       ),
                       const Text(
                         "Gender",
@@ -270,6 +276,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             },
                           );
                         },
+                      ),
+                      SizedBox(
+                        height: 16,
                       ),
                       CustomTextForm(
                         borderColor: const Color(0xFFE6E6E6),
