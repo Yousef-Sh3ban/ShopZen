@@ -3,10 +3,11 @@ import 'package:base/app/functions/vibration.dart';
 import 'package:base/features/cart/ui/widget/custom_Bottom.dart';
 import 'package:base/features/checkout/ui/screen/payment_page.dart';
 import 'package:base/features/checkout/ui/widget/order_samry.dart';
-import 'package:base/features/checkout/ui/widget/text_filed.dart';
+import 'package:base/features/checkout/ui/widget/CardInputField.dart';
 
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CheckoutPage extends StatelessWidget {
   const CheckoutPage({super.key});
@@ -105,13 +106,16 @@ class CheckoutPage extends StatelessWidget {
                 thickness: 0.5,
               ),
               SizedBox(
-                height: 15,
+                height: 16,
               ),
               const Text(
                 'Payment Method',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xff323135)),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 16),
               const PaymentPage(),
               const SizedBox(height: 16),
               CardInputField(),
@@ -124,7 +128,10 @@ class CheckoutPage extends StatelessWidget {
               ),
               const Text(
                 'Order Summary',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xff323135)),
               ),
               const SizedBox(height: 8),
               const OrderSummary(),
@@ -133,17 +140,32 @@ class CheckoutPage extends StatelessWidget {
               ),
               Row(
                 children: [
-                  const Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Enter promo code',
-                        border: OutlineInputBorder(),
+                  Expanded(
+                    child: Container(
+                      height: 52,
+                      child: TextField(
+                        decoration: InputDecoration(
+                          prefixIcon: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: SvgPicture.asset(
+                              "assets/icons/discount.svg",
+                              color: Color(0xff938F9C),
+                            ),
+                          ),
+                          hintText: 'Enter promo code',
+                          hintStyle: TextStyle(
+                            color: Color(0xff938F9C),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          border: OutlineInputBorder(),
+                        ),
                       ),
                     ),
                   ),
                   const SizedBox(width: 8),
                   CustomBottom(
-                    text: "add",
+                    text: "Add",
                     height: 52,
                     width: 83,
                     onPressed: () {},

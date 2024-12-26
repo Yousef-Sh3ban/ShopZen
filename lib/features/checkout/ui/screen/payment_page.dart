@@ -38,11 +38,11 @@ class _PaymentPageState extends State<PaymentPage> {
         ),
         PaymentMethodContainer(
           svgPath: "assets/icons/apple.svg",
-          label: "Apple Pay",
-          isSelected: selectedMethod == 'Apple Pay',
+          label: "Pay",
+          isSelected: selectedMethod == 'Pay',
           onTap: () {
             setState(() {
-              selectedMethod = 'Apple Pay';
+              selectedMethod = 'Pay';
             });
           },
         ),

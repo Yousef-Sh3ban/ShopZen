@@ -7,7 +7,8 @@ class PaymentMethodContainer extends StatelessWidget {
   final bool isSelected;
   final VoidCallback onTap;
 
-  const PaymentMethodContainer({super.key, 
+  const PaymentMethodContainer({
+    super.key,
     required this.svgPath,
     required this.label,
     this.isSelected = false,
@@ -42,16 +43,16 @@ class PaymentMethodContainer extends StatelessWidget {
           children: [
             SvgPicture.asset(
               svgPath,
-              width: 20,
-              height: 20,
+              width: 15,
+              height: 15,
               color: isSelected ? Colors.white : Colors.black,
             ),
-            const SizedBox(width: 8),
+            const SizedBox(width: 2.5),
             Text(
               label,
               style: TextStyle(
-                color: isSelected ? Colors.white : Colors.black,
-                fontWeight: FontWeight.bold,
+                color: isSelected ? Colors.white : Color(0xff323135),
+                fontWeight: FontWeight.w400,
                 fontSize: 14,
               ),
               textAlign: TextAlign.center,

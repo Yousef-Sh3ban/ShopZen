@@ -1,3 +1,4 @@
+import 'package:base/features/cart/ui/widget/dased_lin.dart';
 import 'package:flutter/material.dart';
 
 class OrderSummary extends StatelessWidget {
@@ -11,30 +12,89 @@ class OrderSummary extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Sub-total:'),
-            Text('\$170.75'),
+            Text(
+              'Sub-total:',
+              style: TextStyle(
+                  color: Color(0xff57545B),
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16),
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            Text(
+              '\$170.75',
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                color: Color(0xff323135),
+              ),
+            ),
           ],
+        ),
+        SizedBox(
+          height: 12,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Delivery Fee:'),
-            Text('\$20.00'),
+            Text(
+              'Delivery Fee:',
+              style: TextStyle(
+                  color: Color(0xff57545B),
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16),
+            ),
+            Text(
+              '\$20.00',
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                color: Color(0xff323135),
+              ),
+            ),
           ],
+        ),
+        SizedBox(
+          height: 12,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Discount:'),
-            Text('-\$10'),
+            Text(
+              'Discount:',
+              style: TextStyle(
+                  color: Color(0xff57545B),
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16),
+            ),
+            Text(
+              '-\$10',
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                color: Color(0xff323135),
+              ),
+            ),
           ],
         ),
-        Divider(),
+        SizedBox(
+          height: 16,
+        ),
+        DashedLine(),
+        SizedBox(
+          height: 16,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Total:', style: TextStyle(fontWeight: FontWeight.bold)),
-            Text('\$180.99', style: TextStyle(fontWeight: FontWeight.bold)),
+            Text('Total:',
+                style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16,
+                )),
+            Text('\$180.99',
+                style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16,
+                )),
           ],
         ),
       ],

@@ -19,7 +19,7 @@ class CardInputField extends StatelessWidget {
             color: Colors.grey.withOpacity(0.1),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: const Offset(0, 3), // changes position of shadow
+            offset: const Offset(0, 3),
           ),
         ],
       ),
@@ -40,8 +40,14 @@ class CardInputField extends StatelessWidget {
               SizedBox(
                 width: 4.15,
               ),
+              Text("**** **** ****",
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xff323135),
+                  )),
               const Text(
-                '**** **** **** 2512',
+                ' 2512',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
@@ -50,10 +56,8 @@ class CardInputField extends StatelessWidget {
               ),
             ],
           ),
-          // Edit Icon
           InkWell(
             onTap: () {
-              // Handle edit tap
               debugPrint("Edit Card Tapped");
             },
             child: SvgPicture.asset("assets/icons/edit.svg"),
