@@ -3,6 +3,8 @@ import 'package:base/features/cart/ui/screen/cart_screen.dart';
 import 'package:base/features/checkout/ui/screen/address_page.dart';
 import 'package:base/features/checkout/ui/screen/checkout_page.dart';
 import 'package:base/features/checkout/ui/screen/congration_page.dart';
+import 'package:base/features/my_orders/ui/blocs/orders_bloc.dart';
+import 'package:base/features/my_orders/ui/screen/my_order_screen.dart';
 import 'package:base/features/notifaction/ui/blocs/notifaction_bloc.dart';
 import 'package:base/features/notifaction/ui/screen/notifaction_screen.dart';
 import 'package:base/features/profile/ui/screen/profile_screen.dart';
@@ -37,6 +39,11 @@ Route generateRoute(settings) {
           child: const NotifactionScreen(),
         ),
       );
+    case AppRoutes.orders:
+      return _createRoute(BlocProvider(
+        create: (context) => OrderCubit(),
+        child: const MyOrderScreen(),
+      ));
     case AppRoutes.splash:
       return _createRoute(const Splash());
     case AppRoutes.profile:

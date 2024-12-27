@@ -1,25 +1,27 @@
+import 'dart:developer';
 
-import 'package:base/features/notifaction/domain/models/notifaction_model.dart';
-import 'package:base/features/notifaction/domain/repo/notifaction_repo_interface.dart';
+import 'package:base/features/my_orders/domain/models/order_model.dart';
+import 'package:base/features/my_orders/domain/repo/order_repo_interface.dart';
 import 'package:base/network/app_end_points.dart';
 import 'package:dio/dio.dart';
 
-class GetDiscountRepoImp implements GetNotifactionRepoInterface {
+class GetOrderRepoImp implements GetOrderRepoInterface {
   @override
-  Future<List<NotifactionModel>> getNotifaction() async {
+  Future<List<OrderModel>> getOrders() async {
     try {
       Dio dio = Dio();
-      Response response = await dio.get(AppEndPoints.notifactionUrl);
-      return await mapingData(response.data);
+      Response response = await dio.get(AppEndPoints.ordersUrl);
+      return mapingOrdersData(response.data);
     } catch (e) {
+      log(e.toString());//this is geting print
       return [];
     }
   }
 
-  Future<List<NotifactionModel>> mapingData(data) async {
-    List<NotifactionModel> notifactions = (data['data'] as List)
-        .map((json) => NotifactionModel.fromJson(json))
+  List<OrderModel> mapingOrdersData(data) {
+    List<OrderModel> orders = (data["carts"][0]["products"] as List)
+        .map((json) => OrderModel.fromJson(json))
         .toList();
-    return notifactions;
+    return orders;
   }
 }

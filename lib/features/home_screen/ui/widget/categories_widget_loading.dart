@@ -75,7 +75,8 @@ class CategoriesLoadingWidget extends StatelessWidget {
                           // Text("sdsada"),
                           // SizedBox(height: 6,),
                         ],
-                      ).redacted(configuration: RedactedConfiguration(defaultBorderRadius: BorderRadius.all(Radius.circular(8))),
+                      ).redacted(
+                        configuration: RedactedConfiguration(defaultBorderRadius: BorderRadius.all(Radius.circular(8))),
                         context: context,
                         redact: true,
                       ),

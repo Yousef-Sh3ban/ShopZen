@@ -11,6 +11,7 @@ abstract class AppRoutes {
   static const String notifaction = '/notifaction';
   static const String category = '/category';
   static const String profile = '/profile';
+  static const String orders = '/orders';
 
   static const String SearchScreen = "SearchScreen";
   static const String AddressPage = "AddressPage";

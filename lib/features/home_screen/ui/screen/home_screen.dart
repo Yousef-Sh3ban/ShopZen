@@ -10,7 +10,6 @@ import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/features/home_screen/ui/blocs/home_bloc.dart';
 import 'package:base/features/home_screen/ui/widget/categories_widget_loading.dart';
 import 'package:base/features/home_screen/ui/widget/custom_bottom_navigationBar.dart';
-import 'package:base/features/home_screen/ui/widget/banner_widget.dart';
 import 'package:base/features/home_screen/ui/widget/categories_widget.dart';
 import 'package:base/features/home_screen/ui/widget/deal_card_loading.dart';
 import 'package:base/features/home_screen/ui/widget/hot_deals_widget.dart';
@@ -19,7 +18,6 @@ import 'package:base/features/profile/ui/screen/profile_screen.dart';
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

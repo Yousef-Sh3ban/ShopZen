@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
                   ),
             locale: SettingsCubit.instance.locale,
             onGenerateRoute: generateRoute,
-            initialRoute: AppRoutes.home,
+            initialRoute: AppRoutes.orders,
             supportedLocales: const [
               Locale('ar'),
               Locale('en'),

@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:base/features/products_details/domain/models/product_details_model.dart';
-import 'package:base/features/products_details/domain/repo/notifaction_repo_interface.dart';
+import 'package:base/features/products_details/domain/repo/product_details_repo_interface.dart';
 import 'package:base/network/app_end_points.dart';
 import 'package:dio/dio.dart';
 
