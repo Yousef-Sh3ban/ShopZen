@@ -4,7 +4,6 @@ import 'package:base/configurations/app_states.dart';
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'navigation/route_generator.dart';
 
@@ -49,19 +48,8 @@ class MyApp extends StatelessWidget {
                       bodyLarge: TextStyle(color: Color(0xFF323135)),
                     ),
                   ),
-            locale: SettingsCubit.instance.locale,
             onGenerateRoute: generateRoute,
-            initialRoute: AppRoutes.orders,
-            supportedLocales: const [
-              Locale('ar'),
-              Locale('en'),
-            ],
-            localizationsDelegates: const [
-              // AppLocalizationsDelegate(),
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
+            initialRoute: AppRoutes.splash,
           );
         },
       ),

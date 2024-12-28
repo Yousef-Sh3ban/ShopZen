@@ -25,7 +25,7 @@ class LoginBottom extends StatelessWidget {
           style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w400,
-              color:textColor
+              color:textColor??Theme.of(context).bottomAppBarTheme.color,
               ),
         ),
       ),

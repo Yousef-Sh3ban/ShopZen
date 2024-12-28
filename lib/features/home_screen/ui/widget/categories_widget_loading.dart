@@ -1,10 +1,5 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:base/features/home_screen/ui/blocs/category_cubit.dart';
-import 'package:base/features/home_screen/ui/screen/categories_screen.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:redacted/redacted.dart';
 
 class CategoriesLoadingWidget extends StatelessWidget {
@@ -15,12 +10,12 @@ class CategoriesLoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Widget> categories = [
-      SizedBox(),
-      SizedBox(),
-      SizedBox(),
-      SizedBox(),
-      SizedBox(),
-      SizedBox(),
+      const SizedBox(),
+      const SizedBox(),
+      const SizedBox(),
+      const SizedBox(),
+      const SizedBox(),
+      const SizedBox(),
     ];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,12 +48,8 @@ class CategoriesLoadingWidget extends StatelessWidget {
                           Container(
                             height: 47,
                             width: 47,
-                            // decoration: BoxDecoration(
-                            //   borderRadius: BorderRadius.circular(8),
-                            //   color: const Color(0xFFEBEFFF),
-                            // ),
                           ),
-                          SizedBox(height: 4,),
+                          const SizedBox(height: 4,),
                           SizedBox(
                             child: Center(
                               child: Container(
@@ -71,12 +62,9 @@ class CategoriesLoadingWidget extends StatelessWidget {
                               ),
                             ),
                           )
-                          // SizedBox(height: 6,),
-                          // Text("sdsada"),
-                          // SizedBox(height: 6,),
                         ],
                       ).redacted(
-                        configuration: RedactedConfiguration(defaultBorderRadius: BorderRadius.all(Radius.circular(8))),
+                        configuration: RedactedConfiguration(defaultBorderRadius: const BorderRadius.all(Radius.circular(8))),
                         context: context,
                         redact: true,
                       ),

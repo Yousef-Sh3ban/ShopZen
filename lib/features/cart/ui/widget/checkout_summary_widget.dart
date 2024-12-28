@@ -1,4 +1,5 @@
 import 'package:base/app/bloc/settings_cubit.dart';
+import 'package:base/app/functions/max_two_diget.dart';
 import 'package:base/features/cart/ui/widget/custom_Bottom.dart';
 import 'package:base/features/cart/ui/widget/dased_lin.dart';
 import 'package:base/navigation/app_routes.dart';
@@ -11,7 +12,10 @@ class CheckoutSummaryWidget extends StatelessWidget {
   final double? total;
 
   const CheckoutSummaryWidget(
-      {super.key, required this.totalAmount, this.total, required this.dliveryfree});
+      {super.key,
+      required this.totalAmount,
+      this.total,
+      required this.dliveryfree});
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +38,9 @@ class CheckoutSummaryWidget extends StatelessWidget {
                     fontFamily: "Satoshi"),
               ),
               Text(
-                '\$${totalAmount.toStringAsFixed(2)}',
+                '\$${truncateToTwoDecimalPlaces(totalAmount)}',
                 style: const TextStyle(
+                  fontFamily: "Satoshi",
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),
@@ -48,18 +53,20 @@ class CheckoutSummaryWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Delivery Fee ",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: SettingsCubit.instance.isDarkMode
-                        ? Colors.white
-                        : const Color(0xff57545B),
-
-                    fontWeight: FontWeight.w400,
-                    fontFamily: "Satoshi",
-                  )),
-              Text('\$${dliveryfree.toStringAsFixed(2)}',
+              Text(
+                "Delivery Fee ",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: SettingsCubit.instance.isDarkMode
+                      ? Colors.white
+                      : const Color(0xff57545B),
+                  fontWeight: FontWeight.w400,
+                  fontFamily: "Satoshi",
+                ),
+              ),
+              Text('\$${dliveryfree}',
                   style: const TextStyle(
+                    fontFamily: "Satoshi",
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   )),
@@ -82,22 +89,23 @@ class CheckoutSummaryWidget extends StatelessWidget {
             children: [
               Text("Total",
                   style: TextStyle(
+                      fontFamily: "Satoshi",
                       fontSize: 16,
                       color: SettingsCubit.instance.isDarkMode
                           ? Colors.white
                           : const Color(0xff57545B),
-
                       fontWeight: FontWeight.w400)),
               Text(
-                '\$${totalAmount + dliveryfree}',
+                '\$${truncateToTwoDecimalPlaces(totalAmount + dliveryfree)}',
                 style: const TextStyle(
+                  fontFamily: "Satoshi",
                   fontWeight: FontWeight.w400,
                   fontSize: 16,
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 78),
+          const SizedBox(height: 44),
           CustomBottom(
               width: double.infinity,
               height: 50,
@@ -105,6 +113,8 @@ class CheckoutSummaryWidget extends StatelessWidget {
                 Navigator.pushNamed(context, AppRoutes.CheckoutPage);
               },
               text: "Go To Checkout"),
+          const SizedBox(height: 15),
+              
         ],
       ),
     );

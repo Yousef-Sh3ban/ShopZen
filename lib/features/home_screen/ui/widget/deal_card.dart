@@ -1,11 +1,12 @@
 import 'package:base/app/bloc/settings_cubit.dart';
+import 'package:base/app/functions/max_two_diget.dart';
 import 'package:base/features/products_details/ui/blocs/product_details_cubit.dart';
 import 'package:base/features/products_details/ui/screen/product_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:base/features/home_screen/domain/models/product_model.dart';
-import 'package:base/handlers/fav.dart';
+import 'package:base/handlers/favorite_handler.dart';
 
 class DealCard extends StatefulWidget {
   final int id;
@@ -138,7 +139,6 @@ class _DealCardState extends State<DealCard> {
                 ),
               ],
             ),
-            const SizedBox(height: 16),
             Expanded(
               child: Text(
                 widget.title,
@@ -154,7 +154,7 @@ class _DealCardState extends State<DealCard> {
             Row(
               children: [
                 Text(
-                  "\$${widget.price}",
+                  "\$${truncateToTwoDecimalPlaces(widget.price)}",
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -162,7 +162,7 @@ class _DealCardState extends State<DealCard> {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  "\$${widget.oldPrice}",
+                  "\$${truncateToTwoDecimalPlaces(widget.oldPrice)}",
                   style: const TextStyle(
                       fontSize: 14,
                       color: Color(0xFF68656E),
@@ -198,7 +198,7 @@ class _DealCardState extends State<DealCard> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             )
           ],

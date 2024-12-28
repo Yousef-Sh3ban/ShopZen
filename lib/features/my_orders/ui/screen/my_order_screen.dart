@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:base/configurations/app_states.dart';
@@ -50,7 +49,6 @@ class MyOrderScreen extends StatelessWidget {
         builder: (context, state) {
           if (state is LoadedState) {
             List<OrderModel> orders = state.data;
-            log("orders length is ${orders.length}");
             return FadeIn(
               child: ListView.builder(
                 padding: const EdgeInsets.all(16),

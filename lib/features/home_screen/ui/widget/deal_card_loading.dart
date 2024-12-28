@@ -1,10 +1,6 @@
-import 'package:base/features/products_details/ui/blocs/product_details_cubit.dart';
-import 'package:base/features/products_details/ui/screen/product_details_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:base/features/home_screen/domain/models/product_model.dart';
-import 'package:base/handlers/fav.dart';
+import 'package:base/handlers/favorite_handler.dart';
 import 'package:redacted/redacted.dart';
 
 class DealCardLoading extends StatelessWidget {
@@ -122,17 +118,17 @@ class DealCardLoading extends StatelessWidget {
                         width: 21.5,
                       ),
                       const SizedBox(width: 8),
-                      Text(
+                      const Text(
                         "5.0",
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                       const SizedBox(width: 4),
-                      Text(
+                      const Text(
                         "(100)",
-                        style: const TextStyle(
+                        style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
                             color: Color(0xFF68656E)),

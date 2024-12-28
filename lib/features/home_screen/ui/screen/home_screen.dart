@@ -28,16 +28,22 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
+  late final List<Widget> _screens;
 
-  final List<Widget> _screens = [
-    const HomeScreenContent(),
-    const FavoritesScreen(),
-    BlocProvider(
-      create: (context) => CartCubit(),
-      child: const CartScreen(),
-    ),
-    ProfileScreen(),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _screens = [
+      const HomeScreenContent(),
+      const FavoritesScreen(),
+      BlocProvider(create: (context) => CartCubit(), child: const CartScreen()),
+      ProfileScreen(), //will be replaced with "Account" page
+      //put this in the "My Order" card in "Account" page
+      //onPressed: () {
+      //   Navigator.pushNamed(context, AppRoutes.orders);
+      // },
+    ];
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -80,14 +86,12 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() {
-      context.read<HomeBloc>().add(GetDataEvent(data: null));
-      context.read<HomeBloc>().add(GetCategoriesEvent());
-    });
   }
 
   @override
   Widget build(BuildContext context) {
+    context.read<HomeBloc>().add(GetDataEvent(data: null));
+    context.read<HomeBloc>().add(GetCategoriesEvent());
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: SingleChildScrollView(

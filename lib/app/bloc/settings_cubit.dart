@@ -1,5 +1,5 @@
 import 'package:base/configurations/app_states.dart';
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -10,7 +10,7 @@ class SettingsCubit extends Cubit<AppStates> {
   //======================================== Variables
   //========================================
   bool isDarkMode = false;
-  Locale locale = const Locale('en');
+  // Locale locale = const Locale('en');
   //========================================
   //======================================== Functions
   //========================================
@@ -25,9 +25,11 @@ class SettingsCubit extends Cubit<AppStates> {
   Future<void> loadThemeMode() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     isDarkMode = prefs.getBool("isDarkMode") ?? false;
-    
+
     emit(LoadedState(isDarkMode));
-  }  Future<bool> getThemeMode() async {
+  }
+
+  Future<bool> getThemeMode() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     isDarkMode = prefs.getBool("isDarkMode") ?? false;
     return isDarkMode;

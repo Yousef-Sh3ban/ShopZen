@@ -1,3 +1,6 @@
+import 'package:base/app/bloc/settings_cubit.dart';
+import 'package:base/app/functions/max_two_diget.dart';
+import 'package:base/features/home_screen/ui/widget/deal_card.dart';
 import 'package:base/features/my_orders/domain/models/order_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -15,6 +18,9 @@ class OrderWidget extends StatelessWidget {
           height: 122,
           width: double.infinity,
           decoration: BoxDecoration(
+            color: SettingsCubit.instance.isDarkMode
+                ? const Color.fromARGB(29, 255, 255, 255)
+                : Theme.of(context).scaffoldBackgroundColor,
             border: Border.all(color: const Color(0xFFd0d0d1)),
             borderRadius: const BorderRadius.all(
               Radius.circular(10),
@@ -102,12 +108,10 @@ class OrderWidget extends StatelessWidget {
             ],
           ),
         ),
-              SizedBox(height: 16,)
+        const SizedBox(
+          height: 16,
+        )
       ],
     );
   }
-}
-double truncateToTwoDecimalPlaces(double value) {
-  int scaledValue = (value * 100).truncate(); // Remove extra decimals
-  return scaledValue / 100;
 }

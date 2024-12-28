@@ -4,6 +4,7 @@ import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/configurations/app_theme.dart';
 import 'package:base/features/authentication/ui/widgets/custom_text_form.dart';
 import 'package:base/features/authentication/ui/widgets/login_bottom.dart';
+import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -112,11 +113,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
       body: Form(
         key: formKey,
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              SingleChildScrollView(
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                 child: FadeIn(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -133,7 +134,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             }
                             return null;
                           }),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       CustomTextForm(
@@ -151,7 +152,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             }
                             return null;
                           }),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       const Text(
@@ -163,10 +164,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         onTap: () async {
                           DateTime? pickedDate = await showDatePicker(
                             context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime.now(),
-                            lastDate:
-                                DateTime.now().add(const Duration(days: 365)),
+    initialDate: DateTime.now(),
+  firstDate: DateTime(1900), // Allow dates from 1900
+  lastDate: DateTime.now(), // Prevent future dates
                           );
                           if (pickedDate != null) {
                             setState(() {
@@ -194,8 +194,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     : "Select Date",
                                 style: TextStyle(
                                   color: SettingsCubit.instance.isDarkMode
-                                      ? AppTheme.mainColor
-                                      : Color(0xFFA7A5AF),
+                                      ? selectedDate == null
+                                          ? const Color(0xFFA7A5AF)
+                                          : AppTheme.mainColor
+                                      : const Color(0xFFA7A5AF),
                                   fontSize: 16,
                                 ),
                               ),
@@ -205,7 +207,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       const Text(
@@ -277,7 +279,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           );
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       CustomTextForm(
@@ -326,17 +328,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         onChanged: (String? value) {},
                         title: 'Phone Number',
                       ),
-                      const SizedBox(
-                        height: 48,
-                      ),
+                      // const SizedBox(
+                      //   height: 48,
+                      // ),
                     ],
                   ),
                 ),
               ),
-              Expanded(child: SizedBox()),
-              LoginBottom(
-                textColor: Color(0xFF6A70FF),
-                color: Color(0xFFDAE2FF),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: LoginBottom(
+                textColor: const Color(0xFF6A70FF),
+                color: const Color(0xFFDAE2FF),
                 text: 'Save',
                 ontap: () {
                   if (formKey.currentState!.validate()) {
@@ -348,9 +352,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         selectedGender!);
                   }
                 },
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );

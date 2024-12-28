@@ -2,7 +2,7 @@ import 'package:base/features/cart/ui/bloc/cart_cubit.dart';
 import 'package:base/features/cart/ui/screen/cart_screen.dart';
 import 'package:base/features/checkout/ui/screen/address_page.dart';
 import 'package:base/features/checkout/ui/screen/checkout_page.dart';
-import 'package:base/features/checkout/ui/screen/congration_page.dart';
+import 'package:base/features/checkout/ui/widget/congration_dilog.dart';
 import 'package:base/features/my_orders/ui/blocs/orders_bloc.dart';
 import 'package:base/features/my_orders/ui/screen/my_order_screen.dart';
 import 'package:base/features/notifaction/ui/blocs/notifaction_bloc.dart';
@@ -92,8 +92,6 @@ Route generateRoute(settings) {
     case AppRoutes.AddressPage:
       return _createRoute(const AddressPage());
 
-    case AppRoutes.CongratulationsPage:
-      return _createRoute(const CongratulationsPage());
     case AppRoutes.CheckoutPage:
       return _createRoute(const CheckoutPage());
 

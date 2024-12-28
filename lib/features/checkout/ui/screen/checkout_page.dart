@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/app/functions/vibration.dart';
 import 'package:base/features/cart/ui/widget/custom_Bottom.dart';
+import 'package:base/features/checkout/ui/widget/congration_dilog.dart';
 import 'package:base/features/checkout/ui/screen/payment_page.dart';
 import 'package:base/features/checkout/ui/widget/order_samry.dart';
 import 'package:base/features/checkout/ui/widget/text_filed.dart';
@@ -160,7 +161,7 @@ class CheckoutPage extends StatelessWidget {
                   height: 50,
                   onPressed: () async {
                     triggerVibration(duration: 600);
-                    Navigator.pushNamed(context, AppRoutes.CongratulationsPage);
+                    placedDialog(context);
                   },
                   text: "Place Order"),
             ]),

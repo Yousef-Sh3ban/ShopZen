@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/features/home_screen/domain/repo/get_hot_deals_repo_interface.dart';
-import 'package:base/handlers/fav.dart';
+import 'package:base/handlers/favorite_handler.dart';
 import 'package:dio/dio.dart';
 
 class GetProductsRepoImp implements GetProductsRepoInterface {

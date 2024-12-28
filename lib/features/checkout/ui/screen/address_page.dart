@@ -223,7 +223,7 @@ class _AddressPageState extends State<AddressPage> {
                 },
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 142,
             ),
             CustomBottom(
