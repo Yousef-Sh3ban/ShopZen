@@ -1,14 +1,14 @@
 import 'package:base/features/checkout/ui/widget/payment.dart';
 import 'package:flutter/material.dart';
 
-class PaymentPage extends StatefulWidget {
-  const PaymentPage({super.key});
+class PaymentWidget extends StatefulWidget {
+  const PaymentWidget({super.key});
 
   @override
-  _PaymentPageState createState() => _PaymentPageState();
+  _PaymentWidgetState createState() => _PaymentWidgetState();
 }
 
-class _PaymentPageState extends State<PaymentPage> {
+class _PaymentWidgetState extends State<PaymentWidget> {
   String selectedMethod = 'Card';
 
   @override
