@@ -54,7 +54,7 @@ class _SignupDefaultScreenState extends State<SignupDefaultScreen> {
                   ..hideCurrentSnackBar()
                   ..showSnackBar(snackBar);
               } else if (state is ErrorState) {
-                const snackBar = SnackBar(
+                const SnackBar snackBar = SnackBar(
                   elevation: 0,
                   behavior: SnackBarBehavior.floating,
                   backgroundColor: Colors.transparent,

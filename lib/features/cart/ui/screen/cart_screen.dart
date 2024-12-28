@@ -1,13 +1,11 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:base/features/home_screen/ui/screen/categories_screen.dart';
-import 'package:base/features/home_screen/ui/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:base/features/cart/ui/bloc/cart_cubit.dart';
 import 'package:base/features/cart/ui/bloc/cart_state.dart';
 import 'package:base/features/cart/ui/widget/cart_item_widget.dart';
 import 'package:base/features/cart/ui/widget/checkout_summary_widget.dart';
-import 'package:base/features/cart/ui/widget/empty_cart_widget.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -46,12 +44,15 @@ class CartScreen extends StatelessWidget {
       body: BlocBuilder<CartCubit, CartState>(
         builder: (context, state) {
           if (state is CartEmpty) {
-            return const EmptyCartWidget();
+            return FadeIn(
+              child: Center(
+                  child: SvgPicture.asset("assets/images/empty_cart.svg")),
+            );
           } else if (state is CartLoaded) {
             return Stack(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 100),
+                  padding: const EdgeInsets.only(bottom: 270),
                   child: ListView.separated(
                     padding: const EdgeInsets.symmetric(vertical: 5),
                     itemCount: state.items.length + 1,
@@ -66,7 +67,7 @@ class CartScreen extends StatelessWidget {
                           child: CartItemWidget(item: item),
                         );
                       }
-                      return const SizedBox(height: 100);
+                      return const SizedBox();
                     },
                   ),
                 ),
@@ -75,7 +76,6 @@ class CartScreen extends StatelessWidget {
                   left: 0,
                   right: 0,
                   child: Container(
-                    color: Colors.white,
                     child: FadeIn(
                       child: CheckoutSummaryWidget(
                         totalAmount: state.totalAmount,

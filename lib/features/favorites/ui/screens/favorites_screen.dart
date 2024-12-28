@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:base/configurations/app_theme.dart';
 import 'package:base/features/home_screen/domain/models/product_model.dart';
 import 'package:base/features/home_screen/ui/widget/deal_card.dart';
-import 'package:base/handlers/fav.dart';
+import 'package:base/handlers/favorite_handler.dart';
 
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({super.key});
@@ -43,6 +43,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   void _onFavoriteChanged(int productId, bool isFavorite) {
     final productIndex =
         favoriteProducts.indexWhere((product) => product.id == productId);
+    
     if (productIndex != -1) {
       setState(() {
         favoriteProducts[productIndex].isFavorite = isFavorite;
@@ -50,8 +51,8 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
 
       if (!isFavorite) {
         dbHelper.deleteProduct(favoriteProducts[productIndex].id);
-        
-        Future.delayed(const Duration(milliseconds: 200), () {
+
+        Future.delayed(const Duration(milliseconds: 150), () {
           setState(() {
             favoriteProducts.removeAt(productIndex); // Remove after animation
           });
@@ -66,7 +67,23 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
       return const Center(child: CircularProgressIndicator());
     }
     if (favoriteProducts.isEmpty) {
-      return Center(child: SvgPicture.asset("assets/images/no_items.svg"));
+      return Column(
+        children: [
+          const SizedBox(height: 45),
+          FadeInDown(
+            from: 50,
+            child: const Text(
+              "Favorite Items",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
+            ),
+          ),
+          const Expanded(child: SizedBox()),
+          FadeIn(
+              child: Center(
+                  child: SvgPicture.asset("assets/images/no_items.svg"))),
+          const Expanded(child: SizedBox()),
+        ],
+      );
     }
 
     List<DealCard> dealCaredList = _modelingProductList(favoriteProducts);
@@ -89,8 +106,8 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                       const SizedBox(height: 70),
                       const Text(
                         "Favorite Items",
-                        style:
-                            TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.w400),
                       ),
                       Text(
                         "${favoriteProducts.length} Items",
@@ -122,12 +139,13 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                     opacity: favoriteProducts[index].isFavorite ? 1.0 : 0.0,
                     duration: const Duration(milliseconds: 300),
                     child: favoriteProducts[index].isFavorite
-                         ? FadeIn(child: dealCaredList[index])
+                        ? FadeIn(child: dealCaredList[index])
                         : Container(),
                   );
                 },
               ),
             ),
+            const SizedBox(height: 10,)
           ],
         ),
       ),

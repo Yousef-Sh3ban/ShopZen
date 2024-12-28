@@ -59,7 +59,7 @@ class _BannerWidgetState extends State<BannerWidget> {
           width: 6,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: _currentIndex == index ? AppTheme.mainColor : Color(0xFFE0E0E5),
+            color: _currentIndex == index ? AppTheme.mainColor : const Color(0xFFE0E0E5),
           ),
         ),
       ),
@@ -70,7 +70,6 @@ class _BannerWidgetState extends State<BannerWidget> {
 class _AdBunner extends StatelessWidget {
   const _AdBunner({required this.imageUrl});
   final String imageUrl;
-
   @override
   Widget build(BuildContext context) {
     return Container(

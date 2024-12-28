@@ -19,13 +19,7 @@
         ".flutter-plugins-dependencies": true,
         ".gitignore": true,
         ".metadata": true,
-        "analysis_options.yaml": true,
-        "firebase.json": true,
-        "pubspec.lock": true,
-        "README.md": true,
-        "lib/firebase_options.dart": true,
-        "lib/features/product_details": true,
-        "lib/features/products_search": true
+        "analysis_options.yaml": true
     },
     "hide-files.files": [
         ".dart_tool",
@@ -41,13 +35,7 @@
         ".flutter-plugins-dependencies",
         ".gitignore",
         ".metadata",
-        "analysis_options.yaml",
-        "firebase.json",
-        "pubspec.lock",
-        "README.md",
-        "lib/firebase_options.dart",
-        "lib/features/product_details",
-        "lib/features/products_search"
+        "analysis_options.yaml"
     ],
     "autoHide.autoHideSideBar": false
 }

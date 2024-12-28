@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/app/functions/vibration.dart';
 import 'package:base/configurations/app_states.dart';
 import 'package:base/features/authentication/ui/widgets/login_bottom.dart';
@@ -33,11 +34,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: SettingsCubit.instance.isDarkMode
+                ? const Color.fromARGB(29, 255, 255, 255)
+                : Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         centerTitle: true,
         forceMaterialTransparency: true,
         leading: FadeInDown(
-          duration: Duration(milliseconds: 700),
+          duration: const Duration(milliseconds: 700),
           child: InkWell(
             onTap: () => Navigator.of(context).pop(),
             child: const Icon(
@@ -46,7 +50,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           ),
         ),
         title: FadeInDown(
-            duration: Duration(milliseconds: 700),
+            duration: const Duration(milliseconds: 700),
             child: const Text("Product Details")),
       ),
       body: FadeIn(
@@ -65,105 +69,111 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               ProductDetailsModel productDetails =
                   (state.data as ProductDetailsModel);
               selectedImage ??= productDetails.images[0];
-              return ListView(
+              return Column(
                 children: [
-                  Stack(
-                    children: [
-                      SizedBox(
-                        height: 260,
-                        width: MediaQuery.of(context).size.width,
-                        child: Image.network(
-                          selectedImage!,
-                          fit: BoxFit.cover,
-                        ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          Stack(
+                            children: [
+                              SizedBox(
+                                height: 260,
+                                width: MediaQuery.of(context).size.width,
+                                child: Image.network(
+                                  selectedImage!,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              Positioned(
+                                top: 12,
+                                right: 32,
+                                child: Container(
+                                    height: 24,
+                                    width: 24,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(4),
+                                      shape: BoxShape.rectangle,
+                                    ),
+                                    child: FavoriteIcon(
+                                      productDetails: productDetails,
+                                      productId: productDetails.id,
+                                    )),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(
+                                  height: 16,
+                                ),
+                                ProductImageWidget(
+                                  images: productDetails.images,
+                                  onImageSelected: (String image) {
+                                    setState(() {
+                                      selectedImage = image;
+                                    });
+                                  },
+                                ),
+                                const SizedBox(
+                                  height: 24,
+                                ),
+                                Text(
+                                  productDetails.title,
+                                  style: const TextStyle(
+                                      fontFamily: "Satoshi",
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 18),
+                                ),
+                                const SizedBox(
+                                  height: 16,
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "${productDetails.price}\$",
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 20),
+                                    ),
+                                    const Expanded(child: SizedBox()),
+                                    SvgPicture.asset("assets/icons/star.svg"),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(productDetails.rating.toString()),
+                                    const SizedBox(
+                                      width: 4,
+                                    ),
+                                    Text(
+                                      "(${productDetails.reviewsCount} Review)",
+                                      style: const TextStyle(
+                                          color: Color(0xFF68656E),
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 12),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 15,
+                                ),
+                              ],
+                            ),
+                          ),
+                          DescreptionWidget(
+                            description: productDetails.description,
+                            reviews: productDetails.reviews,
+                          ),
+                        ],
                       ),
-                      Positioned(
-                        top: 12,
-                        right: 32,
-                        child: Container(
-                            height: 24,
-                            width: 24,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              shape: BoxShape.rectangle,
-                            ),
-                            child: FavoriteIcon(
-                              productDetails: productDetails,
-                              productId: productDetails.id,
-                            )),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        ProductImageWidget(
-                          images: productDetails.images,
-                          onImageSelected: (String image) {
-                            setState(() {
-                              selectedImage = image;
-                            });
-                          },
-                        ),
-                        const SizedBox(
-                          height: 24,
-                        ),
-                        Text(
-                          productDetails.title,
-                          style: const TextStyle(
-                              fontFamily: "Satoshi",
-                              fontWeight: FontWeight.w700,
-                              fontSize: 18),
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              "${productDetails.price}\$",
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.w400, fontSize: 20),
-                            ),
-                            const Expanded(child: SizedBox()),
-                            SvgPicture.asset("assets/icons/star.svg"),
-                            const SizedBox(
-                              width: 5,
-                            ),
-                            Text(productDetails.rating.toString()),
-                            const SizedBox(
-                              width: 4,
-                            ),
-                            Text(
-                              "(${productDetails.reviewsCount} Review)",
-                              style: const TextStyle(
-                                  color: Color(0xFF68656E),
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 12),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                      ],
                     ),
-                  ),
-                  DescreptionWidget(
-                    description: productDetails.description,
-                    reviews: productDetails.reviews,
-                  ),
-                  const SizedBox(
-                    height: 12,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        vertical: 20, horizontal: 20),
+                        vertical: 10, horizontal: 20),
                     child: LoginBottom(
                       ontap: () {
                         triggerVibration(duration: 400);
@@ -179,7 +189,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           backgroundColor: Colors.transparent,
                           padding: const EdgeInsets.symmetric(
                               horizontal: 0, vertical: 13),
-                          duration: const Duration(seconds: 10),
+                          duration: const Duration(milliseconds: 800),
                           content: AwesomeSnackbarContent(
                             color: const Color(0xFF452CE8),
                             title: 'Yay!',
@@ -201,7 +211,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       color: const Color(0xFF6A70FF),
                       text: "Add to Cart",
                     ),
-                  )
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
                 ],
               );
             } else {

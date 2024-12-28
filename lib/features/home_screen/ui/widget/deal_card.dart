@@ -1,10 +1,12 @@
+import 'package:base/app/bloc/settings_cubit.dart';
+import 'package:base/app/functions/max_two_diget.dart';
 import 'package:base/features/products_details/ui/blocs/product_details_cubit.dart';
 import 'package:base/features/products_details/ui/screen/product_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:base/features/home_screen/domain/models/product_model.dart';
-import 'package:base/handlers/fav.dart';
+import 'package:base/handlers/favorite_handler.dart';
 
 class DealCard extends StatefulWidget {
   final int id;
@@ -58,7 +60,9 @@ class _DealCardState extends State<DealCard> {
         width: 180,
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: Theme.of(context).scaffoldBackgroundColor,
+          color: SettingsCubit.instance.isDarkMode
+              ? const Color.fromARGB(2, 255, 255, 255)
+              : Theme.of(context).scaffoldBackgroundColor,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
@@ -77,7 +81,7 @@ class _DealCardState extends State<DealCard> {
                   borderRadius: BorderRadius.circular(12),
                   child: Image.network(
                     widget.imageUrl,
-                    height: 120,
+                    height: 160,
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
@@ -135,21 +139,22 @@ class _DealCardState extends State<DealCard> {
                 ),
               ],
             ),
-            const SizedBox(height: 8),
-            Text(
-              widget.title,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
+            Expanded(
+              child: Text(
+                widget.title,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 8),
             Row(
               children: [
                 Text(
-                  "\$${widget.price}",
+                  "\$${truncateToTwoDecimalPlaces(widget.price)}",
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -157,7 +162,7 @@ class _DealCardState extends State<DealCard> {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  "\$${widget.oldPrice}",
+                  "\$${truncateToTwoDecimalPlaces(widget.oldPrice)}",
                   style: const TextStyle(
                       fontSize: 14,
                       color: Color(0xFF68656E),
@@ -193,6 +198,9 @@ class _DealCardState extends State<DealCard> {
                 ),
               ],
             ),
+            const SizedBox(
+              height: 12,
+            )
           ],
         ),
       ),

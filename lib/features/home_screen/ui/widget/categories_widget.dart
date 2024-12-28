@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:base/features/home_screen/ui/blocs/category_cubit.dart';
 import 'package:base/features/home_screen/ui/screen/categories_screen.dart';
 import 'package:dio/dio.dart';
@@ -30,69 +31,71 @@ class CategoriesWidget extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 8),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: categories.map(
-              (category) {
-                return Row(
-                  children: [
-                    Column(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => BlocProvider(
-                                  create: (context) => CategoryCubit(),
-                                  child: CategoriesScreen(
-                                    title: category["name"]!,
-                                    categoryurl: category["categoryurl"]!,
+        FadeIn(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: categories.map(
+                (category) {
+                  return Row(
+                    children: [
+                      Column(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => BlocProvider(
+                                    create: (context) => CategoryCubit(),
+                                    child: CategoriesScreen(
+                                      title: category["name"]!,
+                                      categoryurl: category["categoryurl"]!,
+                                    ),
                                   ),
                                 ),
+                              );
+                            },
+                            child: Container(
+                              height: 48,
+                              width: 48,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: const Color(0xFFEBEFFF),
                               ),
-                            );
-                          },
-                          child: Container(
-                            height: 48,
-                            width: 48,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: const Color(0xFFEBEFFF),
-                            ),
-                            padding: const EdgeInsets.all(12),
-                            child: SvgPicture.asset(
-                              category["icon"]!,
+                              padding: const EdgeInsets.all(12),
+                              child: SvgPicture.asset(
+                                category["icon"]!,
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 50,
-                          child: Center(
-                            child: Text(
-                              category["name"]!,
-                              overflow: TextOverflow.visible,
-                              maxLines: 1,
-                              style: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xFF57545B)),
+                          SizedBox(
+                            width: 50,
+                            child: Center(
+                              child: Text(
+                                category["name"]!,
+                                overflow: TextOverflow.visible,
+                                maxLines: 1,
+                                style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: Color(0xFF57545B)),
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    category["name"] !=
-                            categories[categories.length - 1]["name"]
-                        ? const SizedBox(
-                            width: 16,
-                          )
-                        : const SizedBox()
-                  ],
-                );
-              },
-            ).toList(),
+                        ],
+                      ),
+                      category["name"] !=
+                              categories[categories.length - 1]["name"]
+                          ? const SizedBox(
+                              width: 16,
+                            )
+                          : const SizedBox()
+                    ],
+                  );
+                },
+              ).toList(),
+            ),
           ),
         ),
       ],
