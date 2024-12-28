@@ -17,18 +17,6 @@ class CartScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         forceMaterialTransparency: true,
         elevation: 0,
-        leading: FadeInDown(
-          duration: const Duration(milliseconds: 700),
-          child: InkWell(
-            child: const Icon(
-              Icons.arrow_back_ios_new,
-              size: 18,
-            ),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
         title: FadeInDown(
           from: 50,
           child: const Text(
