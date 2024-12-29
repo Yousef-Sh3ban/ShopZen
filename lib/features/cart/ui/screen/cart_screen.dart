@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:base/features/home_screen/ui/screen/categories_screen.dart';
 import 'package:base/features/home_screen/ui/screen/home_screen.dart';
+import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:base/features/cart/ui/bloc/cart_cubit.dart';
@@ -66,7 +67,7 @@ class CartScreen extends StatelessWidget {
                           child: CartItemWidget(item: item),
                         );
                       }
-                      return const SizedBox(height: 100);
+                      return const SizedBox(height: 90);
                     },
                   ),
                 ),

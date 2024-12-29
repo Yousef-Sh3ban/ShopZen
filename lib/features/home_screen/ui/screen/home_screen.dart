@@ -13,6 +13,7 @@ import 'package:base/features/home_screen/ui/widget/banner_widget.dart';
 import 'package:base/features/home_screen/ui/widget/categories_widget.dart';
 import 'package:base/features/home_screen/ui/widget/hot_deals_widget.dart';
 import 'package:base/features/home_screen/ui/widget/location_search_bar.dart';
+import 'package:base/features/profile/ui/screen/account_screen.dart';
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
       create: (context) => CartCubit(),
       child: const CartScreen(),
     ),
-    const AccountPage(),
+    AccountScreen()
   ];
 
   void _onItemTapped(int index) {

@@ -5,6 +5,8 @@ import 'package:base/features/checkout/ui/screen/checkout_page.dart';
 import 'package:base/features/checkout/ui/screen/congration_page.dart';
 import 'package:base/features/notifaction/ui/blocs/notifaction_bloc.dart';
 import 'package:base/features/notifaction/ui/screen/notifaction_screen.dart';
+import 'package:base/features/profile/ui/screen/account_screen.dart';
+import 'package:base/features/profile/ui/screen/profile_notfcation.dart';
 import 'package:base/navigation/app_routes.dart';
 
 import 'package:base/features/search_products_Ecommerc/ui/blocs/search_cubit.dart';
@@ -86,6 +88,10 @@ Route generateRoute(settings) {
       return _createRoute(const CongratulationsPage());
     case AppRoutes.CheckoutPage:
       return _createRoute(const CheckoutPage());
+    case AppRoutes.AccountScreen:
+      return _createRoute(AccountScreen());
+    case AppRoutes.NotificationSettings:
+      return _createRoute(NotificationSettings());
 
     default:
       return _createRoute(const SizedBox());

@@ -17,4 +17,6 @@ abstract class AppRoutes {
 
   static const String CheckoutPage = "CheckoutPage ";
   static const String CartScreen = "CartScreen";
+  static const String AccountScreen = "AccountScreen";
+  static const String NotificationSettings = "NotificationSettings";
 }

@@ -11,7 +11,10 @@ class CheckoutSummaryWidget extends StatelessWidget {
   final double? total;
 
   const CheckoutSummaryWidget(
-      {super.key, required this.totalAmount, this.total, required this.dliveryfree});
+      {super.key,
+      required this.totalAmount,
+      this.total,
+      required this.dliveryfree});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +57,6 @@ class CheckoutSummaryWidget extends StatelessWidget {
                     color: SettingsCubit.instance.isDarkMode
                         ? Colors.white
                         : const Color(0xff57545B),
-
                     fontWeight: FontWeight.w400,
                     fontFamily: "Satoshi",
                   )),
@@ -86,7 +88,6 @@ class CheckoutSummaryWidget extends StatelessWidget {
                       color: SettingsCubit.instance.isDarkMode
                           ? Colors.white
                           : const Color(0xff57545B),
-
                       fontWeight: FontWeight.w400)),
               Text(
                 '\$${totalAmount + dliveryfree}',
