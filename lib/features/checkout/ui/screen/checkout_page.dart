@@ -1,7 +1,10 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/app/functions/vibration.dart';
 import 'package:base/features/cart/ui/widget/custom_Bottom.dart';
-import 'package:base/features/checkout/ui/screen/payment_page.dart';
+import 'package:base/features/checkout/ui/screen/payment_widget.dart';
+import 'package:base/features/checkout/ui/widget/congration_dilog.dart';
+
 import 'package:base/features/checkout/ui/widget/order_samry.dart';
 import 'package:base/features/checkout/ui/widget/CardInputField.dart';
 
@@ -37,154 +40,180 @@ class CheckoutPage extends StatelessWidget {
         ),
         title: FadeInDown(
           duration: const Duration(milliseconds: 700),
-          child: const Center(
-            child: Text('Checkout'),
-          ),
+          child: const Text('Checkout'),
         ),
+        centerTitle: true,
         elevation: 0,
         forceMaterialTransparency: true,
       ),
       body: FadeIn(
         delay: const Duration(milliseconds: 200),
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              const Divider(
-                color: Colors.grey,
-                thickness: 0.5,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Delivery Address',
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xff323135)),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.AddressPage);
-                    },
-                    child: const Text('Change',
-                        style: TextStyle(
-                            color: const Color(0xff1A1A1A),
-                            decoration: TextDecoration.underline)),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 4),
-              Row(
-                children: [
-                  Icon(
-                    Icons.location_on_outlined,
-                    color: Color(0xff938F9C),
-                  ),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "home",
-                        style: const TextStyle(fontWeight: FontWeight.w400),
-                      ),
-                      Text("data 925 S Chugach St #APT 10, Alaska 99645"),
-                    ],
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              const Divider(
-                color: Colors.grey,
-                thickness: 0.5,
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              const Text(
-                'Payment Method',
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xff323135)),
-              ),
-              const SizedBox(height: 16),
-              const PaymentPage(),
-              const SizedBox(height: 16),
-              CardInputField(),
-              SizedBox(
-                height: 16,
-              ),
-              Divider(
-                color: Colors.grey,
-                thickness: 0.5,
-              ),
-              const Text(
-                'Order Summary',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xff323135)),
-              ),
-              const SizedBox(height: 8),
-              const OrderSummary(),
-              const SizedBox(
-                height: 24,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: 52,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          prefixIcon: Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: SvgPicture.asset(
-                              "assets/icons/discount.svg",
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Divider(
+                          color: Colors.grey,
+                          thickness: 0.5,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              'Delivery Address',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                    context, AppRoutes.AddressPage);
+                              },
+                              child: Text('Change',
+                                  style: TextStyle(
+                                      color: SettingsCubit.instance.isDarkMode
+                                          ? Colors.white
+                                          : const Color(0xFF1A1A1A),
+                                      decoration: TextDecoration.underline)),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 4),
+                        const Row(
+                          children: [
+                            Icon(
+                              Icons.location_on_outlined,
                               color: Color(0xff938F9C),
                             ),
-                          ),
-                          hintText: 'Enter promo code',
-                          hintStyle: TextStyle(
-                            color: Color(0xff938F9C),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                          ),
-                          border: OutlineInputBorder(),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "home",
+                                  style: TextStyle(fontWeight: FontWeight.w400),
+                                ),
+                                Text("925 S Chugach St #APT 10, Alaska 99645"),
+                              ],
+                            ),
+                          ],
                         ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  CustomBottom(
-                    text: "Add",
-                    height: 52,
-                    width: 83,
-                    onPressed: () {},
-                  ),
-                ],
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        const Divider(
+                          color: Colors.grey,
+                          thickness: 0.5,
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        const Text(
+                          'Payment Method',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xff323135)),
+                        ),
+                        const SizedBox(height: 16),
+                        const PaymentWidget(),
+                        const SizedBox(height: 16),
+                        const CardInputField(),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        const Divider(
+                          color: Colors.grey,
+                          thickness: 0.5,
+                        ),
+                        const Text(
+                          'Order Summary',
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xff323135)),
+                        ),
+                        const SizedBox(height: 8),
+                        const OrderSummary(),
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Container(
+                                height: 52,
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    prefixIcon: Padding(
+                                      padding: const EdgeInsets.all(12.0),
+                                      child: SvgPicture.asset(
+                                        "assets/icons/discount.svg",
+                                        color: const Color(0xff938F9C),
+                                      ),
+                                    ),
+                                    hintText: 'Enter promo code',
+                                    hintStyle: const TextStyle(
+                                      color: Color(0xff938F9C),
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                    enabledBorder: const OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Color(0xFFE0E0E5)),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(8))),
+                                    focusedBorder: const OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Color(0xFFE0E0E5)),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(8))),
+                                    border: const OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Color(0xFFE0E0E5)),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(8))),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            CustomBottom(
+                              text: "Add",
+                              height: 52,
+                              width: 83,
+                              onPressed: () {},
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 48,
+                        ),
+                      ]),
+                ),
               ),
-              const SizedBox(
-                height: 48,
-              ),
-              CustomBottom(
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 2, 20, 20),
+              child: CustomBottom(
                   width: double.infinity,
                   height: 50,
                   onPressed: () async {
                     triggerVibration(duration: 600);
-                    Navigator.pushNamed(context, AppRoutes.CongratulationsPage);
+                    placedDialog(context);
                   },
                   text: "Place Order"),
-            ]),
-          ),
+            ),
+          ],
         ),
       ),
     );

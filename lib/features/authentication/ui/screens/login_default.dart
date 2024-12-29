@@ -37,7 +37,7 @@ class _LoginDefaultScreenState extends State<LoginDefaultScreen> {
                   behavior: SnackBarBehavior.floating,
                   backgroundColor: Colors.transparent,
                   padding: EdgeInsets.symmetric(horizontal: 0, vertical: 13),
-                  duration: Duration(seconds: 10),
+                  duration: Duration(seconds: 2),
                   content: AwesomeSnackbarContent(
                     color: Color(0xFF452CE8),
                     title: 'Yay!',

@@ -1,3 +1,5 @@
+import 'package:base/features/my_orders/ui/screen/my_order_screen.dart';
+import 'package:base/features/profile/ui/screen/profile_screen.dart';
 import 'package:base/features/profile/ui/widget/LogoutBottomSheet.dart';
 import 'package:base/features/profile/ui/widget/buildListTile_account.dart';
 import 'package:base/navigation/app_routes.dart';
@@ -10,6 +12,7 @@ class AccountScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
@@ -24,19 +27,24 @@ class AccountScreen extends StatelessWidget {
         iconTheme: IconThemeData(color: Colors.black),
       ),
       body: ListView(
+        padding: EdgeInsets.all(20),
         children: [
           buildListTile(
             context,
             iconPath: 'assets/icons/user.svg',
             title: 'Your Profile',
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, AppRoutes.ProfileScreen);
+            },
           ),
           Divider(),
           buildListTile(
             context,
             iconPath: 'assets/icons/content.svg',
             title: 'My Order',
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, AppRoutes.MyOrderScreen);
+            },
           ),
           Divider(),
           buildListTile(

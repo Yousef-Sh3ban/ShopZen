@@ -40,6 +40,7 @@ class _NotificationSettingsState extends State<NotificationSettings> {
         ),
       ),
       body: ListView(
+        padding: EdgeInsets.symmetric(horizontal: 20),
         children: [
           buildSwitchTile(
             title: 'General Notifications',

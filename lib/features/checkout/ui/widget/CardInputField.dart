@@ -28,26 +28,13 @@ class CardInputField extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Icon(Icons.credit_card, color: Colors.black),
+              SvgPicture.asset("assets/icons/visa.svg"),
               const SizedBox(width: 8),
-              Text(
-                "VISA",
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
-              ),
-              SizedBox(
+              const SizedBox(
                 width: 4.15,
               ),
-              Text("**** **** ****",
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xff323135),
-                  )),
               const Text(
-                ' 2512',
+                '**** **** **** 2512',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,

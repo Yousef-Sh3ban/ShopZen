@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:base/features/products_details/ui/blocs/product_details_cubit.dart';
 import 'package:base/features/products_details/ui/screen/product_details_screen.dart';
 import 'package:base/features/search_products_Ecommerc/domain/models/product_model.dart';
@@ -21,12 +19,12 @@ class _ProductCardState extends State<ProductCard> {
 
   @override
   Widget build(BuildContext context) {
-          log("asdsdm,nflkaksdjkfnbjsaldfjnnevagetiowjaes");
+          // log("asdsdm,nflkaksdjkfnbjsaldfjnnevagetiowjaes");
     return InkWell(
         child: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: Colors.white,
+            // color: Colors.white,
             borderRadius: BorderRadius.circular(12),
             boxShadow: [
               BoxShadow(
@@ -124,7 +122,6 @@ class _ProductCardState extends State<ProductCard> {
           ),
         ),
         onTap: () {
-          log("nevagetiowjaes");
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => BlocProvider(

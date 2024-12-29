@@ -2,11 +2,17 @@ import 'package:base/features/cart/ui/bloc/cart_cubit.dart';
 import 'package:base/features/cart/ui/screen/cart_screen.dart';
 import 'package:base/features/checkout/ui/screen/address_page.dart';
 import 'package:base/features/checkout/ui/screen/checkout_page.dart';
-import 'package:base/features/checkout/ui/screen/congration_page.dart';
+import 'package:base/features/checkout/ui/widget/congration_dilog.dart';
+import 'package:base/features/my_orders/ui/blocs/orders_bloc.dart';
+import 'package:base/features/my_orders/ui/screen/my_order_screen.dart';
 import 'package:base/features/notifaction/ui/blocs/notifaction_bloc.dart';
 import 'package:base/features/notifaction/ui/screen/notifaction_screen.dart';
+
 import 'package:base/features/profile/ui/screen/account_screen.dart';
 import 'package:base/features/profile/ui/screen/profile_notfcation.dart';
+
+import 'package:base/features/profile/ui/screen/profile_screen.dart';
+
 import 'package:base/navigation/app_routes.dart';
 
 import 'package:base/features/search_products_Ecommerc/ui/blocs/search_cubit.dart';
@@ -38,8 +44,15 @@ Route generateRoute(settings) {
           child: const NotifactionScreen(),
         ),
       );
+    case AppRoutes.orders:
+      return _createRoute(BlocProvider(
+        create: (context) => OrderCubit(),
+        child: const MyOrderScreen(),
+      ));
     case AppRoutes.splash:
       return _createRoute(const Splash());
+    case AppRoutes.profile:
+      return _createRoute(ProfileScreen());
     case AppRoutes.onBoarding:
       return _createRoute(const OnBoarding());
     case AppRoutes.login:
@@ -84,14 +97,17 @@ Route generateRoute(settings) {
     case AppRoutes.AddressPage:
       return _createRoute(const AddressPage());
 
-    case AppRoutes.CongratulationsPage:
-      return _createRoute(const CongratulationsPage());
     case AppRoutes.CheckoutPage:
       return _createRoute(const CheckoutPage());
     case AppRoutes.AccountScreen:
       return _createRoute(AccountScreen());
     case AppRoutes.NotificationSettings:
       return _createRoute(NotificationSettings());
+    case AppRoutes.ProfileScreen:
+      return _createRoute(ProfileScreen());
+    case AppRoutes.MyOrderScreen:
+      return _createRoute(BlocProvider<OrderCubit>(
+          create: (context) => OrderCubit(), child: const MyOrderScreen()));
 
     default:
       return _createRoute(const SizedBox());

@@ -6,9 +6,11 @@ class CustomTextForm extends StatefulWidget {
   const CustomTextForm({
     super.key,
     required this.hint,
+    this.borderColor = const Color(0xFFA7A5AF),
     required this.title,
     required this.textEditingController,
     this.ispassword = false,
+    this.prefix,
     required this.validator,
     this.keyboardType,
     required this.onChanged,
@@ -16,7 +18,9 @@ class CustomTextForm extends StatefulWidget {
   final TextInputType? keyboardType;
   final String hint;
   final String title;
+  final Widget? prefix;
   final bool ispassword;
+  final Color borderColor;
   final TextEditingController textEditingController;
   final String? Function(String? value) validator;
   final void Function(String? value) onChanged;
@@ -38,7 +42,9 @@ class _CustomTextFormState extends State<CustomTextForm> {
           widget.title,
           style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
         ),
-        const SizedBox(height: 4,),
+        const SizedBox(
+          height: 4,
+        ),
         TextFormField(
           keyboardType: widget.keyboardType ?? TextInputType.text,
           inputFormatters: [
@@ -49,6 +55,7 @@ class _CustomTextFormState extends State<CustomTextForm> {
           obscureText: obscure && widget.ispassword,
           controller: widget.textEditingController,
           decoration: InputDecoration(
+            prefixIcon: widget.prefix,
             suffixIcon: widget.ispassword
                 ? MaterialButton(
                     onPressed: () {
@@ -59,7 +66,7 @@ class _CustomTextFormState extends State<CustomTextForm> {
                         },
                       );
                     },
-                    child: SizedBox(  
+                    child: SizedBox(
                       width: 45,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -76,13 +83,10 @@ class _CustomTextFormState extends State<CustomTextForm> {
                     ),
                   )
                 : const SizedBox(),
-            prefix: const SizedBox(
-              width:7,
-            ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(
-                color: Color(0xFFA7A5AF),
+              borderSide: BorderSide(
+                color: widget.borderColor,
               ),
             ),
             focusedErrorBorder: OutlineInputBorder(

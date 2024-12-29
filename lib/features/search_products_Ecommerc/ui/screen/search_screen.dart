@@ -1,11 +1,9 @@
-import 'dart:developer';
-
+import 'package:base/features/home_screen/ui/widget/deal_card.dart';
 import 'package:base/features/products_details/ui/blocs/product_details_cubit.dart';
 import 'package:base/features/products_details/ui/screen/product_details_screen.dart';
 import 'package:base/features/search_products_Ecommerc/ui/blocs/search_cubit.dart';
 import 'package:base/features/search_products_Ecommerc/ui/blocs/search_state.dart';
 import 'package:base/features/search_products_Ecommerc/ui/widget/empty_search_widget.dart';
-import 'package:base/features/search_products_Ecommerc/ui/widget/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,7 +16,8 @@ class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = SearchCubit.get(context);
-
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         forceMaterialTransparency: true,
@@ -43,7 +42,7 @@ class SearchScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         elevation: 0.1,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -67,11 +66,8 @@ class SearchScreen extends StatelessWidget {
                   icon: SvgPicture.asset("assets/icons/close.svg"),
                   onPressed: () {
                     if (controller.text.isNotEmpty) {
-                      controller.text = controller.text
-                          .substring(0, controller.text.length - 1);
-                      controller.selection = TextSelection.fromPosition(
-                          TextPosition(offset: controller.text.length));
-                      cubit.searchProducts(controller.text);
+                      controller.clear();
+                      cubit.clearSearch();
                     }
                   },
                 ),
@@ -109,20 +105,28 @@ class SearchScreen extends StatelessWidget {
                     return const EmptySearchWidget();
                   } else if (state is SearchLoaded) {
                     return GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
+                      shrinkWrap: true,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio: 0.75,
-                        crossAxisSpacing: 8,
                         mainAxisSpacing: 8,
+                        crossAxisSpacing: 8,
+                        childAspectRatio: screenWidth / screenHeight * 1.2,
                       ),
                       itemCount: state.products.length,
                       itemBuilder: (context, index) {
                         final product = state.products[index];
                         return InkWell(
-                            child: ProductCard(product: product),
+                            child: DealCard(
+                              id: product.id,
+                              imageUrl: product.thumbnail,
+                              title: product.title,
+                              price: product.price,
+                              oldPrice: product.oldPrice,
+                              rating: product.rating,
+                              reviewsCount: product.reviewsCount,
+                              isFavorite: product.isFavorite,
+                            ),
                             onTap: () {
-                              log("nevagetiowjaes");
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) => BlocProvider(
