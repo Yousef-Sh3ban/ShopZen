@@ -7,7 +7,12 @@ import 'package:base/features/my_orders/ui/blocs/orders_bloc.dart';
 import 'package:base/features/my_orders/ui/screen/my_order_screen.dart';
 import 'package:base/features/notifaction/ui/blocs/notifaction_bloc.dart';
 import 'package:base/features/notifaction/ui/screen/notifaction_screen.dart';
+
+import 'package:base/features/profile/ui/screen/account_screen.dart';
+import 'package:base/features/profile/ui/screen/profile_notfcation.dart';
+
 import 'package:base/features/profile/ui/screen/profile_screen.dart';
+
 import 'package:base/navigation/app_routes.dart';
 
 import 'package:base/features/search_products_Ecommerc/ui/blocs/search_cubit.dart';
@@ -75,13 +80,13 @@ Route generateRoute(settings) {
           child: const HomeScreen(),
         ),
       );
-    case AppRoutes.SearchScreen:
+    case AppRoutes.searchScreen:
       return _createRoute(BlocProvider(
         create: (context) => SearchCubit(),
         child: SearchScreen(),
       ));
 
-    case AppRoutes.CartScreen:
+    case AppRoutes.cartScreen:
       return _createRoute(
         BlocProvider<CartCubit>(
           create: (context) => CartCubit(),
@@ -89,11 +94,20 @@ Route generateRoute(settings) {
         ),
       );
 
-    case AppRoutes.AddressPage:
+    case AppRoutes.addressPage:
       return _createRoute(const AddressPage());
 
-    case AppRoutes.CheckoutPage:
+    case AppRoutes.checkoutPage:
       return _createRoute(const CheckoutPage());
+    case AppRoutes.accountScreen:
+      return _createRoute(AccountScreen());
+    case AppRoutes.notificationSettings:
+      return _createRoute(NotificationSettings());
+    case AppRoutes.profileScreen:
+      return _createRoute(ProfileScreen());
+    case AppRoutes.myOrderScreen:
+      return _createRoute(BlocProvider<OrderCubit>(
+          create: (context) => OrderCubit(), child: const MyOrderScreen()));
 
     default:
       return _createRoute(const SizedBox());

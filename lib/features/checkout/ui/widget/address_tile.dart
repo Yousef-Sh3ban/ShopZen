@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class AddressTile extends StatelessWidget {
   final String label;
@@ -17,10 +18,7 @@ class AddressTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: const Icon(
-        Icons.location_on_outlined,
-        color: Color(0xff938F9C),
-      ),
+      leading: SvgPicture.asset("assets/icons/loction.svg"),
       title: Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
       subtitle: Text(address),
       trailing: selected
@@ -48,7 +46,6 @@ class CustomContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 341,
       height: 80,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey, width: 0.5), // إضافة البوردر هنا

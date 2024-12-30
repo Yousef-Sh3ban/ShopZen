@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<SettingsCubit, AppStates>(
         builder: (context, state) {
           return MaterialApp(
-            debugShowCheckedModeBanner: false,
+            debugShowCheckedModeBanner: false,  
             theme: SettingsCubit.instance.isDarkMode
                 ? ThemeData(
                     fontFamily: "Alata",
@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
             onGenerateRoute: generateRoute,
-            initialRoute: AppRoutes.splash,
+            initialRoute: AppRoutes.home,
           );
         },
       ),

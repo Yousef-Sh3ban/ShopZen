@@ -1,9 +1,9 @@
 import 'dart:async';
-
 import 'package:base/features/search_products_Ecommerc/domain/models/product_model.dart';
 import 'package:base/features/search_products_Ecommerc/ui/blocs/search_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 class SearchCubit extends Cubit<SearchState> {
   SearchCubit() : super(SearchInitial());
@@ -12,6 +12,7 @@ class SearchCubit extends Cubit<SearchState> {
 
   List<ProductModel> products = [];
   List<ProductModel> searchResults = [];
+  final TextEditingController searchController = TextEditingController();
 
   final Dio _dio = Dio();
   Timer? _debounce;
@@ -61,6 +62,8 @@ class SearchCubit extends Cubit<SearchState> {
   }
 
   void clearSearch() {
+    searchController.clear();
+    searchResults.clear();
     emit(SearchInitial());
   }
 }

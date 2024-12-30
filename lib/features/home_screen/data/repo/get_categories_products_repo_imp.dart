@@ -1,5 +1,5 @@
 
-import 'package:base/features/home_screen/domain/models/product_model.dart';
+import 'package:base/app/models/product_model.dart';
 import 'package:base/features/home_screen/domain/repo/get_hot_deals_repo_interface.dart';
 import 'package:dio/dio.dart';
 import 'get_product_repo_imp.dart';

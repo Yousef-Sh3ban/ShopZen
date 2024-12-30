@@ -13,96 +13,92 @@ class CartItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-      child: SingleChildScrollView(
-        child: Row(
-          children: [
-            Container(
-              width: 80,
-              height: 80,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                image: DecorationImage(
-                  image: NetworkImage(item.image),
-                  fit: BoxFit.cover,
+      child: Row(
+        children: [
+          Container(
+            width: 80,
+            height: 80,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              image: DecorationImage(
+                image: NetworkImage(item.image),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  item.title,
+                  style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: "Satoshi"),
                 ),
-              ),
-            ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    item.title,
-                    style: const TextStyle(
+                const SizedBox(height: 4),
+                const Text(
+                  'Size: XL',
+                  style: TextStyle(color: Color(0xff68656E), fontSize: 14),
+                ),
+                const SizedBox(height: 4),
+                Row(
+                  children: [
+                    Text(
+                      '\$${item.price.toStringAsFixed(2)}',
+                      style: const TextStyle(
                         fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: "Satoshi"),
-                  ),
-                  const SizedBox(height: 4),
-                  const Text(
-                    'Size: XL',
-                    style: TextStyle(color: Color(0xff68656E), fontSize: 14),
-                  ),
-                  const SizedBox(height: 4),
-                  Row(
-                    children: [
-                      Text(
-                        '\$${item.price.toStringAsFixed(2)}',
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                        ),
+                        fontWeight: FontWeight.w700,
                       ),
-                      const Expanded(
-                        child: SizedBox(),
+                    ),
+                    const Expanded(
+                      child: SizedBox(),
+                    ),
+                    IconButton(
+                      icon: SvgPicture.asset(
+                        "assets/icons/remove.svg",
+                        width: 20,
+                        height: 20,
                       ),
-                      IconButton(
-                        icon: SvgPicture.asset(
-                          "assets/icons/remove.svg",
-                          width: 20,
-                          height: 20,
-                        ),
-                        onPressed: () {
-                          context
-                              .read<CartCubit>()
-                              .updateQuantity(item.id, false);
-                        },
+                      onPressed: () {
+                        context
+                            .read<CartCubit>()
+                            .updateQuantity(item.id, false);
+                      },
+                    ),
+                    Text(
+                      '${item.quantity}',
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    IconButton(
+                      icon: SvgPicture.asset(
+                        'assets/icons/add.svg',
+                        width: 20,
+                        height: 20,
                       ),
-                      Text(
-                        '${item.quantity}',
-                        style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                      onPressed: () {
+                        context.read<CartCubit>().updateQuantity(item.id, true);
+                      },
+                    ),
+                    IconButton(
+                      icon: SvgPicture.asset(
+                        'assets/icons/delet.svg',
+                        width: 20,
+                        height: 20,
                       ),
-                      IconButton(
-                        icon: SvgPicture.asset(
-                          'assets/icons/add.svg',
-                          width: 20,
-                          height: 20,
-                        ),
-                        onPressed: () {
-                          context
-                              .read<CartCubit>()
-                              .updateQuantity(item.id, true);
-                        },
-                      ),
-                      IconButton(
-                        icon: SvgPicture.asset(
-                          'assets/icons/delet.svg',
-                          width: 20,
-                          height: 20,
-                        ),
-                        onPressed: () {
-                          context.read<CartCubit>().removeItem(item.id);
-                        },
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                      onPressed: () {
+                        context.read<CartCubit>().removeItem(item.id);
+                      },
+                    ),
+                  ],
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/app/functions/max_two_diget.dart';
-import 'package:base/features/cart/ui/widget/custom_Bottom.dart';
+import 'package:base/features/cart/ui/widget/custom_bottom.dart';
 import 'package:base/features/cart/ui/widget/dased_lin.dart';
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +64,7 @@ class CheckoutSummaryWidget extends StatelessWidget {
                   fontFamily: "Satoshi",
                 ),
               ),
-              Text('\$${dliveryfree}',
+              Text('\$${dliveryfree.toStringAsFixed(2)}',
                   style: const TextStyle(
                     fontFamily: "Satoshi",
                     fontSize: 16,
@@ -110,11 +110,10 @@ class CheckoutSummaryWidget extends StatelessWidget {
               width: double.infinity,
               height: 50,
               onPressed: () {
-                Navigator.pushNamed(context, AppRoutes.CheckoutPage);
+                Navigator.pushNamed(context, AppRoutes.checkoutPage);
               },
               text: "Go To Checkout"),
           const SizedBox(height: 15),
-              
         ],
       ),
     );

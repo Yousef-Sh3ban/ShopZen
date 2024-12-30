@@ -39,7 +39,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
         PaymentMethodContainer(
           svgPath: "assets/icons/apple.svg",
           label: "Pay",
-          isSelected: selectedMethod == 'Apple Pay',
+          isSelected: selectedMethod == 'Pay',
           onTap: () {
             setState(() {
               selectedMethod = 'Pay';

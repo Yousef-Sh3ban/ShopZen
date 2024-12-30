@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:base/features/cart/ui/bloc/cart_cubit.dart';
@@ -55,7 +56,8 @@ class CartScreen extends StatelessWidget {
                           child: CartItemWidget(item: item),
                         );
                       }
-                      return const SizedBox();
+
+                      return const SizedBox(height: 90);
                     },
                   ),
                 ),
@@ -63,12 +65,10 @@ class CartScreen extends StatelessWidget {
                   bottom: 0,
                   left: 0,
                   right: 0,
-                  child: Container(
-                    child: FadeIn(
-                      child: CheckoutSummaryWidget(
-                        totalAmount: state.totalAmount,
-                        dliveryfree: 20,
-                      ),
+                  child: FadeIn(
+                    child: CheckoutSummaryWidget(
+                      totalAmount: state.totalAmount,
+                      dliveryfree: 20,
                     ),
                   ),
                 ),

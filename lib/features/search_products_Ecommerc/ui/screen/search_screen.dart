@@ -1,4 +1,3 @@
-
 import 'package:base/features/home_screen/ui/widget/deal_card.dart';
 import 'package:base/features/products_details/ui/blocs/product_details_cubit.dart';
 import 'package:base/features/products_details/ui/screen/product_details_screen.dart';
@@ -67,11 +66,8 @@ class SearchScreen extends StatelessWidget {
                   icon: SvgPicture.asset("assets/icons/close.svg"),
                   onPressed: () {
                     if (controller.text.isNotEmpty) {
-                      controller.text = controller.text
-                          .substring(0, controller.text.length - 1);
-                      controller.selection = TextSelection.fromPosition(
-                          TextPosition(offset: controller.text.length));
-                      cubit.searchProducts(controller.text);
+                      controller.clear();
+                      cubit.clearSearch();
                     }
                   },
                 ),

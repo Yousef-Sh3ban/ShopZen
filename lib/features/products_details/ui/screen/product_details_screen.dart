@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:base/app/bloc/settings_cubit.dart';
-import 'package:base/app/functions/vibration.dart';
+import 'package:base/handlers/snackbars_handler.dart';
+import 'package:base/handlers/vibration_handler.dart';
 import 'package:base/configurations/app_states.dart';
 import 'package:base/features/authentication/ui/widgets/login_bottom.dart';
 import 'package:base/features/cart/domain/models/cart_item.dart';
@@ -13,7 +14,6 @@ import 'package:base/handlers/cart_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   final int id;
@@ -35,8 +35,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: SettingsCubit.instance.isDarkMode
-                ? const Color.fromARGB(29, 255, 255, 255)
-                : Theme.of(context).scaffoldBackgroundColor,
+          ? const Color.fromARGB(29, 255, 255, 255)
+          : Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         centerTitle: true,
         forceMaterialTransparency: true,
@@ -53,23 +53,22 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             duration: const Duration(milliseconds: 700),
             child: const Text("Product Details")),
       ),
-      body: FadeIn(
-        delay: const Duration(milliseconds: 700),
-        child: BlocBuilder<ProductDetailsCubit, AppStates>(
-          builder: (context, state) {
-            if (state is LoadingState) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (state is ErrorState) {
-              return const Center(
-                child: Text("Error"),
-              );
-            } else if (state is LoadedState) {
-              ProductDetailsModel productDetails =
-                  (state.data as ProductDetailsModel);
-              selectedImage ??= productDetails.images[0];
-              return Column(
+      body: BlocBuilder<ProductDetailsCubit, AppStates>(
+        builder: (context, state) {
+          if (state is LoadingState) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is ErrorState) {
+            return const Center(
+              child: Text("Error"),
+            );
+          } else if (state is LoadedState) {
+            ProductDetailsModel productDetails =
+                (state.data as ProductDetailsModel);
+            selectedImage ??= productDetails.images[0];
+            return FadeIn(
+              child: Column(
                 children: [
                   Expanded(
                     child: SingleChildScrollView(
@@ -113,9 +112,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 ProductImageWidget(
                                   images: productDetails.images,
                                   onImageSelected: (String image) {
-                                    setState(() {
-                                      selectedImage = image;
-                                    });
+                                    setState(
+                                      () {
+                                        selectedImage = image;
+                                      },
+                                    );
                                   },
                                 ),
                                 const SizedBox(
@@ -183,30 +184,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             title: productDetails.title,
                             image: productDetails.images[0],
                             price: productDetails.price));
-                        final snackBar = SnackBar(
-                          elevation: 0,
-                          behavior: SnackBarBehavior.floating,
-                          backgroundColor: Colors.transparent,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 0, vertical: 13),
-                          duration: const Duration(milliseconds: 800),
-                          content: AwesomeSnackbarContent(
-                            color: const Color(0xFF452CE8),
-                            title: 'Yay!',
-                            messageTextStyle: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 13,
-                              fontWeight: FontWeight.w400,
-                            ),
-                            message:
-                                ' ${productDetails.title} is now in your cart! 🛒',
-                            contentType: ContentType.success,
-                          ),
-                        );
-
                         ScaffoldMessenger.of(context)
                           ..hideCurrentSnackBar()
-                          ..showSnackBar(snackBar);
+                          ..showSnackBar(successSnackBar(
+                              " ${productDetails.title} is now in your cart! 🛒"));
                       },
                       color: const Color(0xFF6A70FF),
                       text: "Add to Cart",
@@ -216,14 +197,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     height: 16,
                   ),
                 ],
-              );
-            } else {
-              return const Center(
-                child: Text("NO DATA"),
-              );
-            }
-          },
-        ),
+              ),
+            );
+          } else {
+            return const Center(
+              child: Text("NO DATA"),
+            );
+          }
+        },
       ),
     );
   }

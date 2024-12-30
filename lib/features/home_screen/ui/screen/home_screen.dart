@@ -6,15 +6,19 @@ import 'package:base/configurations/app_states.dart';
 import 'package:base/features/cart/ui/bloc/cart_cubit.dart';
 import 'package:base/features/cart/ui/screen/cart_screen.dart';
 import 'package:base/features/favorites/ui/screens/favorites_screen.dart';
-import 'package:base/features/home_screen/domain/models/product_model.dart';
+import 'package:base/app/models/product_model.dart';
 import 'package:base/features/home_screen/ui/blocs/home_bloc.dart';
+import 'package:base/features/home_screen/ui/widget/banner_widget.dart';
 import 'package:base/features/home_screen/ui/widget/categories_widget_loading.dart';
 import 'package:base/features/home_screen/ui/widget/custom_bottom_navigationBar.dart';
 import 'package:base/features/home_screen/ui/widget/categories_widget.dart';
 import 'package:base/features/home_screen/ui/widget/deal_card_loading.dart';
 import 'package:base/features/home_screen/ui/widget/hot_deals_widget.dart';
 import 'package:base/features/home_screen/ui/widget/location_search_bar.dart';
-import 'package:base/features/profile/ui/screen/profile_screen.dart';
+
+import 'package:base/features/profile/ui/screen/account_screen.dart';
+
+
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,11 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
       const HomeScreenContent(),
       const FavoritesScreen(),
       BlocProvider(create: (context) => CartCubit(), child: const CartScreen()),
-      ProfileScreen(), //will be replaced with "Account" page
-      //put this in the "My Order" card in "Account" page
-      //onPressed: () {
-      //   Navigator.pushNamed(context, AppRoutes.orders);
-      // },
+      const AccountScreen(),
     ];
   }
 
@@ -93,7 +93,7 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
     context.read<HomeBloc>().add(GetDataEvent(data: null));
     context.read<HomeBloc>().add(GetCategoriesEvent());
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -101,7 +101,7 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
               from: 70,
               child: LocationSearchBar(
                 ontap: () {
-                  Navigator.pushNamed(context, AppRoutes.SearchScreen);
+                  Navigator.pushNamed(context, AppRoutes.searchScreen);
                 },
               ),
             ),
@@ -109,7 +109,6 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
             BlocBuilder<HomeBloc, AppStates>(
               buildWhen: (previous, current) {
                 if (current is CategoriesState && previous is CategoriesState) {
-                  //for better performance
                   return current.data != previous.data;
                 }
                 return current is CategoriesState;
@@ -122,11 +121,12 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                 }
               },
             ),
+            const SizedBox(height: 24),
+            BannerWidget(),
             const SizedBox(height: 16),
             BlocBuilder<HomeBloc, AppStates>(
               buildWhen: (previous, current) {
                 if (current is LoadedState && previous is LoadedState) {
-                  //for better performance
                   return current.data != previous.data;
                 }
                 return current is LoadedState || current is LoadingState;

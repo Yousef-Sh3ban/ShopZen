@@ -40,14 +40,6 @@ class LocationSearchBar extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                IconButton(
-                  icon: Icon(SettingsCubit.instance.isDarkMode
-                      ? Icons.dark_mode
-                      : Icons.light_mode),
-                  onPressed: () {
-                    context.read<SettingsCubit>().toggleDarkMode();
-                  },
-                ),
               ],
             ),
             InkWell(
@@ -67,11 +59,12 @@ class LocationSearchBar extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         Container(
+          padding: EdgeInsets.symmetric(horizontal: 1),
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                blurRadius: 4,
+                color: Colors.black.withOpacity(0.09),
+                blurRadius: 7,
                 offset: const Offset(0, 2),
               ),
             ],

@@ -31,7 +31,8 @@ class CartDatabaseHelper {
     id INTEGER PRIMARY KEY,
     title TEXT,
     image TEXT,
-    price REAL
+    price REAL,
+    quantity INTEGER DEFAULT 1
   )
 ''');
       },
@@ -41,26 +42,43 @@ class CartDatabaseHelper {
 
   Future<void> insertCartItem(CartItem item) async {
     final db = await database;
-    await db.insert(
+
+    final existingItem = await db.query(
       'cart_items',
-      item.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
+      where: 'id = ?',
+      whereArgs: [item.id],
     );
+
+    if (existingItem.isNotEmpty) {
+      final currentQuantity = existingItem.first['quantity'] as int;
+      await db.update(
+        'cart_items',
+        {'quantity': currentQuantity + 1},
+        where: 'id = ?',
+        whereArgs: [item.id],
+      );
+    } else {
+      await db.insert(
+        'cart_items',
+        item.toMap()..['quantity'] = 1,
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+    }
   }
 
   Future<List<CartItem>> getCartItems() async {
     final db = await database;
-    final List<Map<String, dynamic>> maps = await db.query('cart_items');
+    final List<Map<String, dynamic>> cartData = await db.query('cart_items');
 
-    return List.generate(maps.length, (i) {
+    return cartData.map((item) {
       return CartItem(
-        id: maps[i]['id'],
-        title: maps[i]['title'],
-        image: maps[i]['image'],
-        price: maps[i]['price'],
-        quantity: 1, 
+        id: item['id'] as int,
+        title: item['title'] as String,
+        image: item['image'] as String,
+        price: item['price'] as double,
+        quantity: item['quantity'] as int, // Include quantity
       );
-    });
+    }).toList();
   }
 
   Future<void> deleteCartItem(int id) async {
@@ -71,5 +89,4 @@ class CartDatabaseHelper {
       whereArgs: [id],
     );
   }
-
 }

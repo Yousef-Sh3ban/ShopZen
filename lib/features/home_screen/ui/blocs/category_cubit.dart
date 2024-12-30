@@ -1,7 +1,7 @@
 
 import 'package:base/configurations/app_states.dart';
 import 'package:base/features/home_screen/data/repo/get_categories_products_repo_imp.dart';
-import 'package:base/features/home_screen/domain/models/product_model.dart';
+import 'package:base/app/models/product_model.dart';
 import 'package:base/features/home_screen/domain/repo/get_hot_deals_repo_interface.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

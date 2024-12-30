@@ -1,5 +1,5 @@
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
-import 'package:base/app/functions/vibration.dart';
+import 'package:base/handlers/snackbars_handler.dart';
+import 'package:base/handlers/vibration_handler.dart';
 import 'package:base/configurations/app_events.dart';
 import 'package:base/configurations/app_states.dart';
 import 'package:base/features/authentication/ui/blocs/login_bloc.dart';
@@ -32,55 +32,17 @@ class _LoginDefaultScreenState extends State<LoginDefaultScreen> {
               if (state is LoadedState) {
                 triggerVibration(duration: 500);
                 saveLoginStatus(true);
-                const snackBar = SnackBar(
-                  elevation: 0,
-                  behavior: SnackBarBehavior.floating,
-                  backgroundColor: Colors.transparent,
-                  padding: EdgeInsets.symmetric(horizontal: 0, vertical: 13),
-                  duration: Duration(seconds: 2),
-                  content: AwesomeSnackbarContent(
-                    color: Color(0xFF452CE8),
-                    title: 'Yay!',
-                    messageTextStyle: TextStyle(
-                      color: Colors.black,
-                      fontSize: 13,
-                      fontWeight: FontWeight.w400,
-                    ),
-                    message: 'You login successfully',
-                    contentType: ContentType.success,
-                  ),
-                );
-
                 ScaffoldMessenger.of(context)
                   ..hideCurrentSnackBar()
-                  ..showSnackBar(snackBar);
+                  ..showSnackBar(successSnackBar("You login successfully"));
                 Navigator.of(context).pushNamedAndRemoveUntil(
                   AppRoutes.home,
                   (route) => false,
                 );
               } else if (state is ErrorState) {
-                const snackBar = SnackBar(
-                  elevation: 0,
-                  behavior: SnackBarBehavior.floating,
-                  backgroundColor: Colors.transparent,
-                  padding: EdgeInsets.symmetric(horizontal: 0, vertical: 13),
-                  duration: Duration(seconds: 10),
-                  content: AwesomeSnackbarContent(
-                    color: Color(0xFF452CE8),
-                    title: 'Oops!',
-                    messageTextStyle: TextStyle(
-                      color: Colors.black,
-                      fontSize: 13,
-                      fontWeight: FontWeight.w400,
-                    ),
-                    message: "Error, check your name and password",
-                    contentType: ContentType.success,
-                  ),
-                );
-
                 ScaffoldMessenger.of(context)
                   ..hideCurrentSnackBar()
-                  ..showSnackBar(snackBar);
+                  ..showSnackBar(errorSnackBar("Error, check your name and password"));
               }
             },
             builder: (context, state) {

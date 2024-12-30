@@ -45,7 +45,7 @@ class CategoriesLoadingWidget extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          Container(
+                          SizedBox(
                             height: 47,
                             width: 47,
                           ),

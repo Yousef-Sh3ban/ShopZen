@@ -3,7 +3,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:base/configurations/app_theme.dart';
-import 'package:base/features/home_screen/domain/models/product_model.dart';
+import 'package:base/app/models/product_model.dart';
 import 'package:base/features/home_screen/ui/widget/deal_card.dart';
 import 'package:base/handlers/favorite_handler.dart';
 
@@ -54,7 +54,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
 
         Future.delayed(const Duration(milliseconds: 150), () {
           setState(() {
-            favoriteProducts.removeAt(productIndex); // Remove after animation
+            favoriteProducts.removeAt(productIndex); 
           });
         });
       }

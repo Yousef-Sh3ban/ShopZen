@@ -15,6 +15,7 @@ class OrderSummary extends StatelessWidget {
             Text(
               'Sub-total:',
               style: TextStyle(
+                  fontFamily: "Satoshi",
                   color: Color(0xff57545B),
                   fontWeight: FontWeight.w400,
                   fontSize: 16),
@@ -25,6 +26,7 @@ class OrderSummary extends StatelessWidget {
             Text(
               '\$170.75',
               style: TextStyle(
+                fontFamily: "Satoshi",
                 fontWeight: FontWeight.w500,
                 color: Color(0xff323135),
               ),
@@ -40,6 +42,7 @@ class OrderSummary extends StatelessWidget {
             Text(
               'Delivery Fee:',
               style: TextStyle(
+                  fontFamily: "Satoshi",
                   color: Color(0xff57545B),
                   fontWeight: FontWeight.w400,
                   fontSize: 16),
@@ -62,13 +65,15 @@ class OrderSummary extends StatelessWidget {
             Text(
               'Discount:',
               style: TextStyle(
+                fontFamily: "Satoshi",
                   color: Color(0xff57545B),
                   fontWeight: FontWeight.w400,
                   fontSize: 16),
             ),
             Text(
-              '-\$10',
+              '\$10',
               style: TextStyle(
+                fontFamily: "Satoshi",
                 fontWeight: FontWeight.w500,
                 color: Color(0xff323135),
               ),
@@ -87,11 +92,13 @@ class OrderSummary extends StatelessWidget {
           children: [
             Text('Total:',
                 style: TextStyle(
+                fontFamily: "Satoshi",
                   fontWeight: FontWeight.w400,
                   fontSize: 16,
                 )),
             Text('\$180.99',
                 style: TextStyle(
+                fontFamily: "Satoshi",
                   fontWeight: FontWeight.w400,
                   fontSize: 16,
                 )),
