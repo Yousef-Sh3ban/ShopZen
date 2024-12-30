@@ -3,7 +3,7 @@ import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/app/functions/vibration.dart';
 import 'package:base/features/cart/ui/widget/custom_Bottom.dart';
 import 'package:base/features/checkout/ui/widget/congration_dilog.dart';
-import 'package:base/features/checkout/ui/screen/payment_page.dart';
+import 'package:base/features/checkout/ui/screen/payment_widget.dart';
 import 'package:base/features/checkout/ui/widget/order_samry.dart';
 import 'package:base/features/checkout/ui/widget/CardInputField.dart';
 
