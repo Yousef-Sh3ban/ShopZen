@@ -42,11 +42,6 @@ class _HomeScreenState extends State<HomeScreen> {
       const FavoritesScreen(),
       BlocProvider(create: (context) => CartCubit(), child: const CartScreen()),
       AccountScreen(),
-      //ProfileScreen(), //will be replaced with "Account" page
-      //put this in the "My Order" card in "Account" page
-      //onPressed: () {
-      //   Navigator.pushNamed(context, AppRoutes.orders);
-      // },
     ];
   }
 
@@ -114,7 +109,6 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
             BlocBuilder<HomeBloc, AppStates>(
               buildWhen: (previous, current) {
                 if (current is CategoriesState && previous is CategoriesState) {
-                  //for better performance
                   return current.data != previous.data;
                 }
                 return current is CategoriesState;
@@ -131,7 +125,6 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
             BlocBuilder<HomeBloc, AppStates>(
               buildWhen: (previous, current) {
                 if (current is LoadedState && previous is LoadedState) {
-                  //for better performance
                   return current.data != previous.data;
                 }
                 return current is LoadedState || current is LoadingState;
