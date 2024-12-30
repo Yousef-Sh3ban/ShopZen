@@ -70,7 +70,7 @@ class CartScreen extends StatelessWidget {
                         );
                       }
 
-                      return const SizedBox(height: 90);
+                      return const SizedBox(height: 100);
                     },
                   ),
                 ),

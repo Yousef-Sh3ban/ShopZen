@@ -63,23 +63,6 @@ class CheckoutSummaryWidget extends StatelessWidget {
                     fontFamily: "Satoshi",
                   )),
               Text('\$${dliveryfree.toStringAsFixed(2)}'),
-              Text(
-                "Delivery Fee ",
-                style: TextStyle(
-                  fontSize: 16,
-                  color: SettingsCubit.instance.isDarkMode
-                      ? Colors.white
-                      : const Color(0xff57545B),
-                  fontWeight: FontWeight.w400,
-                  fontFamily: "Satoshi",
-                ),
-              ),
-              Text('\$${dliveryfree}',
-                  style: const TextStyle(
-                    fontFamily: "Satoshi",
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  )),
             ],
           ),
           const SizedBox(
