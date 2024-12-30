@@ -1,4 +1,5 @@
-import 'package:base/features/profile/ui/widget/buildSwitchTile.dart';
+import 'package:animate_do/animate_do.dart';
+import 'package:base/features/profile/ui/widget/build_switchTile.dart';
 import 'package:flutter/material.dart';
 
 class NotificationSettings extends StatefulWidget {
@@ -21,22 +22,37 @@ class _NotificationSettingsState extends State<NotificationSettings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        forceMaterialTransparency: true,
         elevation: 0,
         centerTitle: true,
-        title: Text(
-          'Notifications',
-          style: TextStyle(
-            color: Color(0xff323135),
-            fontSize: 24,
-            fontWeight: FontWeight.w400,
+        title: FadeInDown(
+          from: 50,
+          child: Text(
+            'Notifications',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w400,
+            ),
           ),
         ),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+        leading: FadeInDown(
+          from: 50,
+          child: Row(
+            children: [
+              const SizedBox(
+                width: 30,
+              ),
+              InkWell(
+                child: const Icon(
+                  Icons.arrow_back_ios_new,
+                  size: 18,
+                ),
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
         ),
       ),
       body: ListView(
@@ -137,10 +153,13 @@ class _NotificationSettingsState extends State<NotificationSettings> {
   }
 
   Widget _buildDivider() {
-    return Divider(
-      thickness: 1,
-      height: 1,
-      color: Colors.grey[300],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 18), // تعديل المسافات هنا
+      child: Divider(
+        thickness: 1,
+        height: 1,
+        color: Colors.grey[300],
+      ),
     );
   }
 }

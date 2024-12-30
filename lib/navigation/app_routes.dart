@@ -13,13 +13,13 @@ abstract class AppRoutes {
   static const String profile = '/profile';
   static const String orders = '/orders';
 
-  static const String SearchScreen = "SearchScreen";
-  static const String AddressPage = "AddressPage";
+  static const String searchScreen = "SearchScreen";
+  static const String addressPage = "AddressPage";
 
-  static const String CheckoutPage = "CheckoutPage ";
-  static const String CartScreen = "CartScreen";
-  static const String AccountScreen = "AccountScreen";
-  static const String NotificationSettings = "NotificationSettings";
-  static const String ProfileScreen = "ProfileScreen";
-  static const String MyOrderScreen = "MyOrderScreen";
+  static const String checkoutPage = "CheckoutPage ";
+  static const String cartScreen = "CartScreen";
+  static const String accountScreen = "AccountScreen";
+  static const String notificationSettings = "NotificationSettings";
+  static const String profileScreen = "ProfileScreen";
+  static const String myOrderScreen = "MyOrderScreen";
 }

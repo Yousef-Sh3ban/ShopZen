@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:base/features/home_screen/data/repo/get_product_repo_imp.dart';
-import 'package:base/features/home_screen/domain/models/product_model.dart';
+import 'package:base/app/models/product_model.dart';
 import 'package:base/features/home_screen/domain/repo/get_hot_deals_repo_interface.dart';
 import 'package:base/network/network_handler.dart';
 import 'package:dio/dio.dart';

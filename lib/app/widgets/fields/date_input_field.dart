@@ -1,3 +1,5 @@
+import 'package:base/app/bloc/settings_cubit.dart';
+import 'package:base/configurations/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -27,43 +29,54 @@ class _DateInputFieldState extends State<DateInputField> {
         if (widget.label != null)
           Align(
             alignment: Alignment.centerLeft,
-            child: Text(widget.label!, style: const TextStyle(fontSize: 16,fontWeight: FontWeight.w700),),
+            child: Text(
+              widget.label!,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+            ),
           ),
         if (widget.label != null) const SizedBox(height: 8),
         GestureDetector(
           onTap: () async {
-            final DateTime? picked = await showDatePicker(
+            DateTime? pickedDate = await showDatePicker(
               context: context,
               initialDate: DateTime.now(),
-              firstDate: DateTime(2015, 8),
-              lastDate: DateTime(2101),
+              firstDate: DateTime(1900), // Allow dates from 1900
+              lastDate: DateTime.now(), // Prevent future dates
             );
-            if (picked != null) {
+            if (pickedDate != null) {
               setState(() {
-                selectedDate = picked;
+                selectedDate = pickedDate;
               });
             }
           },
           child: Container(
-            height: 56,
-            width: MediaQuery.of(context).size.width,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: const Color(0xFFE6E6E6),
+                width: 1,
+              ),
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Expanded(
-                  child: Text(
-                    selectedDate == null ? widget.hint : DateFormat("EEE, MMM d, ''yy").format(selectedDate!),
-                    style: TextStyle(
-                      color: selectedDate == null ? Colors.grey : Colors.black,
-                    ),
+                Text(
+                  selectedDate != null
+                      ? DateFormat('dd/MM/yyyy').format(selectedDate!)
+                      : "Select Date",
+                  style: TextStyle(
+                    color: SettingsCubit.instance.isDarkMode
+                        ? selectedDate == null
+                            ? const Color(0xFFA7A5AF)
+                            : AppTheme.mainColor
+                        : selectedDate == null
+                            ? const Color(0xFFA7A5AF)
+                            : Color(0xFF57545B),
+                    fontSize: 16,
                   ),
                 ),
-                const SizedBox(width: 16),
-                const Icon(Icons.calendar_month)
+                const Icon(Icons.calendar_today, color: Color(0xFFA7A5AF)),
               ],
             ),
           ),

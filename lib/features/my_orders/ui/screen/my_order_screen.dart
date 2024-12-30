@@ -61,24 +61,26 @@ class MyOrderScreen extends StatelessWidget {
               ),
             );
           } else if (state is LoadingState) {
-            return Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                  spacing: 16,
-                  children: List.generate(
-                    4,
-                    (int index) {
-                      return const OrderLoadingWidget().redacted(
-                        configuration: RedactedConfiguration(
-                          defaultBorderRadius: const BorderRadius.all(
-                            Radius.circular(10),
+            return FadeIn(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                    spacing: 16,
+                    children: List.generate(
+                      4,
+                      (int index) {
+                        return const OrderLoadingWidget().redacted(
+                          configuration: RedactedConfiguration(
+                            defaultBorderRadius: const BorderRadius.all(
+                              Radius.circular(10),
+                            ),
                           ),
-                        ),
-                        context: context,
-                        redact: true,
-                      );
-                    },
-                  )),
+                          context: context,
+                          redact: true,
+                        );
+                      },
+                    )),
+              ),
             );
           } else {
             return const SizedBox();

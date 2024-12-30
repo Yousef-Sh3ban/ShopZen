@@ -1,10 +1,9 @@
-import 'package:base/features/cart/ui/widget/custom_Bottom.dart';
+import 'package:base/features/cart/ui/widget/custom_bottom.dart';
+import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 void placedDialog(BuildContext context) {
-  final screenHeight = MediaQuery.of(context).size.height;
-
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -35,7 +34,7 @@ void placedDialog(BuildContext context) {
                   'Your order has been placed.',
                   style: TextStyle(
                       color: Color(0xFF808080),
-                      fontFamily: "Alata",
+                      fontFamily: "Satoshi",
                       fontSize: 16,
                       fontWeight: FontWeight.w400),
                 ),
@@ -48,7 +47,11 @@ void placedDialog(BuildContext context) {
                       width: double.infinity,
                       height: 50,
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          AppRoutes.home,
+                          (route) => false,
+                        );
                       },
                       text: 'Track Your Order'),
                 ),

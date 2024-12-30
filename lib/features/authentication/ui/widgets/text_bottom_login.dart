@@ -10,30 +10,31 @@ class TextBottomLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: InkWell(
-        onTap: ontap,
-        child: Text.rich(
-          TextSpan(
-            text: text1,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            text1,
             style: const TextStyle(
                 color: Color(0xff68656E),
                 fontFamily: "Satoshi",
                 fontSize: 16,
                 fontWeight: FontWeight.w400),
-            children: <TextSpan>[
-              TextSpan(
-                text: text2,
-                style: const TextStyle(
-                    color: Color(0xff452CE8),
-                    fontFamily: "Satoshi",
-                    fontSize: 16,
-                    decorationColor: Color(0xff452CE8),
-                    decoration: TextDecoration.underline,
-                    fontWeight: FontWeight.w700),
-              )
-            ],
           ),
-        ),
+          InkWell(
+            onTap: ontap,
+            child: Text(
+              text2,
+              style: const TextStyle(
+                  color: Color(0xff452CE8),
+                  fontFamily: "Satoshi",
+                  fontSize: 16,
+                  decorationColor: Color(0xff452CE8),
+                  decoration: TextDecoration.underline,
+                  fontWeight: FontWeight.w700),
+            ),
+          ),
+        ],
       ),
     );
   }

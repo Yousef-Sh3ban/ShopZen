@@ -5,7 +5,7 @@ import 'package:base/features/products_details/ui/screen/product_details_screen.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:base/features/home_screen/domain/models/product_model.dart';
+import 'package:base/app/models/product_model.dart';
 import 'package:base/handlers/favorite_handler.dart';
 
 class DealCard extends StatefulWidget {

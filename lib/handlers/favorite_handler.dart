@@ -1,11 +1,11 @@
 
-import 'package:base/features/home_screen/domain/models/product_model.dart';
+import 'package:base/app/models/product_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 class DBHelper {
-  static Database? _database;
-  static final DBHelper instance = DBHelper._init();
+  static Database? _database;//
+  static final DBHelper instance = DBHelper._init();//
 
   DBHelper._init();
 

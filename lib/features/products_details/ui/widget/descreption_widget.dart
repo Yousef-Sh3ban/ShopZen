@@ -68,19 +68,29 @@ class _DescreptionWidgetState extends State<DescreptionWidget> {
                     color: const Color(0xFFE0E0E5),
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   InkWell(
-                    child: const Row(
+                    child: Column(
                       children: [
-                        Text(
-                          "Rating & Reviews",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500, fontSize: 18),
+                        const SizedBox(
+                          height: 10,
                         ),
-                        Expanded(child: SizedBox()),
-                        Icon(
-                          Icons.keyboard_arrow_down_sharp,
+                        const Row(
+                          children: [
+                            Text(
+                              "Rating & Reviews",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500, fontSize: 18),
+                            ),
+                            Expanded(child: SizedBox()),
+                            Icon(
+                              Icons.keyboard_arrow_down_sharp,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
                         ),
                       ],
                     ),
@@ -89,8 +99,8 @@ class _DescreptionWidgetState extends State<DescreptionWidget> {
                     },
                   ),
                   const SizedBox(
-                    height: 22,
-                  )
+                    height: 12,
+                  ),
                 ],
               ),
             ),

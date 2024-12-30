@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:base/features/checkout/ui/widget/address_tile.dart';
-import 'package:base/features/cart/ui/widget/custom_Bottom.dart';
+import 'package:base/features/cart/ui/widget/custom_bottom.dart';
 
 class AddressPage extends StatefulWidget {
   const AddressPage({super.key});
@@ -104,14 +104,17 @@ class _AddressPageState extends State<AddressPage> {
                 },
               ),
             ),
-            const SizedBox(
-              height: 142,
+            Expanded(
+              child: const SizedBox(),
             ),
             CustomBottom(
               text: "Apply",
               height: 55,
               width: 342,
               onPressed: () {},
+            ),
+            const SizedBox(
+              height: 67,
             ),
           ],
         ),

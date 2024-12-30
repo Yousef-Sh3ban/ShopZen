@@ -1,9 +1,8 @@
-
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:base/configurations/app_events.dart';
 import 'package:base/configurations/app_states.dart';
 import 'package:base/features/authentication/ui/widgets/custom_text_form.dart';
 import 'package:base/features/authentication/ui/widgets/login.dart';
+import 'package:base/handlers/snackbars_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -31,51 +30,13 @@ class _SignupDefaultScreenState extends State<SignupDefaultScreen> {
           child: BlocConsumer<SignupBloc, AppStates>(
             listener: (context, state) {
               if (state is LoadedState) {
-                const snackBar = SnackBar(
-                  elevation: 0,
-                  behavior: SnackBarBehavior.floating,
-                  backgroundColor: Colors.transparent,
-                  padding: EdgeInsets.symmetric(horizontal: 0, vertical: 13),
-                  duration: Duration(seconds: 10),
-                  content: AwesomeSnackbarContent(
-                    color: Color(0xFF452CE8),
-                    title: 'Yay!',
-                    messageTextStyle: TextStyle(
-                      color: Colors.black,
-                      fontSize: 13,
-                      fontWeight: FontWeight.w400,
-                    ),
-                    message: "User registered successfully",
-                    contentType: ContentType.success,
-                  ),
-                );
-
                 ScaffoldMessenger.of(context)
                   ..hideCurrentSnackBar()
-                  ..showSnackBar(snackBar);
+                  ..showSnackBar(successSnackBar("User registered successfully"));
               } else if (state is ErrorState) {
-                const SnackBar snackBar = SnackBar(
-                  elevation: 0,
-                  behavior: SnackBarBehavior.floating,
-                  backgroundColor: Colors.transparent,
-                  padding: EdgeInsets.symmetric(horizontal: 0, vertical: 13),
-                  duration: Duration(seconds: 10),
-                  content: AwesomeSnackbarContent(
-                    color: Color(0xFF452CE8),
-                    title: "Oops!",
-                    messageTextStyle: TextStyle(
-                      color: Colors.black,
-                      fontSize: 13,
-                      fontWeight: FontWeight.w400,
-                    ),
-                    message: "Error, check your name and password",
-                    contentType: ContentType.failure,
-                  ),
-                );
-
                 ScaffoldMessenger.of(context)
                   ..hideCurrentSnackBar()
-                  ..showSnackBar(snackBar);
+                  ..showSnackBar(errorSnackBar("Error, check your name and password"));
               }
             },
             builder: (context, state) {
@@ -168,7 +129,7 @@ class _SignupDefaultScreenState extends State<SignupDefaultScreen> {
                           return null;
                         }),
                     const SizedBox(
-                      height: 16,
+                      height: 6,
                     ),
                     Transform.translate(
                       offset: const Offset(-10, 0),
@@ -212,7 +173,7 @@ class _SignupDefaultScreenState extends State<SignupDefaultScreen> {
                       ),
                     ),
                     const SizedBox(
-                      height: 16,
+                      height: 48,
                     ),
                     LoginBottom(
                       text: "Signup",
@@ -220,7 +181,6 @@ class _SignupDefaultScreenState extends State<SignupDefaultScreen> {
                           ? const Color(0xFF452CE8)
                           : const Color(0xFF6A70FF),
                       ontap: () {
-
                         if (SignupBloc.readyToGo) {
                           if (!isChecked) {
                             ScaffoldMessenger.of(context).showSnackBar(

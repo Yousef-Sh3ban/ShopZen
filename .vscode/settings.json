@@ -9,7 +9,6 @@
         ".dart_tool": true,
         ".vscode": true,
         "build": true,
-        "ios": true,
         "linux": true,
         "macos": true,
         "test": true,
@@ -19,13 +18,16 @@
         ".flutter-plugins-dependencies": true,
         ".gitignore": true,
         ".metadata": true,
-        "analysis_options.yaml": true
+        "analysis_options.yaml": true,
+        "android": true,
+        "ios": true,
+        "pubspec.lock": true,
+        "README.md": true
     },
     "hide-files.files": [
         ".dart_tool",
         ".vscode",
         "build",
-        "ios",
         "linux",
         "macos",
         "test",
@@ -35,7 +37,11 @@
         ".flutter-plugins-dependencies",
         ".gitignore",
         ".metadata",
-        "analysis_options.yaml"
+        "analysis_options.yaml",
+        "android",
+        "ios",
+        "pubspec.lock",
+        "README.md"
     ],
     "autoHide.autoHideSideBar": false
 }

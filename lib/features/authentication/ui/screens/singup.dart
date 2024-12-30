@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:base/features/authentication/ui/widgets/custom_login_button.dart';
 import 'package:base/features/authentication/ui/widgets/login_bottom.dart';
 import 'package:base/features/authentication/ui/widgets/or_divider.dart';
@@ -13,9 +14,11 @@ class SingupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 68),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 68),
+        child: FadeIn(
+          delay: Duration(milliseconds: 250),
+          duration: Duration(milliseconds: 700),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -51,8 +54,8 @@ class SingupScreen extends StatelessWidget {
                   Navigator.pushNamed(context, AppRoutes.signupDefaultScreen);
                 },
               ),
-              const SizedBox(
-                height: 220,
+              Expanded(
+                child: SizedBox(),
               ),
               TextBottomLogin(
                 text1: "Don’t have any account yet?",
@@ -60,7 +63,8 @@ class SingupScreen extends StatelessWidget {
                 ontap: () {
                   Navigator.pushNamed(context, AppRoutes.login);
                 },
-              )
+              ),
+              SizedBox(height: 64,)
             ],
           ),
         ),

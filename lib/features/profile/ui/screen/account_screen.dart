@@ -1,100 +1,146 @@
-import 'package:base/features/my_orders/ui/screen/my_order_screen.dart';
-import 'package:base/features/profile/ui/screen/profile_screen.dart';
-import 'package:base/features/profile/ui/widget/LogoutBottomSheet.dart';
-import 'package:base/features/profile/ui/widget/buildListTile_account.dart';
+import 'package:animate_do/animate_do.dart';
+import 'package:base/app/bloc/settings_cubit.dart';
+import 'package:base/configurations/app_theme.dart';
+import 'package:base/features/profile/ui/widget/logout_bottomSheet.dart';
+import 'package:base/features/profile/ui/widget/build_listTile_account.dart';
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AccountScreen extends StatelessWidget {
+class AccountScreen extends StatefulWidget {
+  const AccountScreen({super.key});
+
+  @override
+  State<AccountScreen> createState() => _AccountScreenState();
+}
+
+class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
+        forceMaterialTransparency: true,
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
-        title: Text(
-          'Account',
-          style: TextStyle(
-            color: Color(0xff323135),
-            fontSize: 24,
-            fontWeight: FontWeight.w400,
+        title: FadeInDown(
+          from: 50,
+          child: const Text(
+            'Account',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w400,
+            ),
           ),
         ),
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
-      body: ListView(
-        padding: EdgeInsets.all(20),
-        children: [
-          buildListTile(
-            context,
-            iconPath: 'assets/icons/user.svg',
-            title: 'Your Profile',
-            onTap: () {
-              Navigator.pushNamed(context, AppRoutes.ProfileScreen);
-            },
-          ),
-          Divider(),
-          buildListTile(
-            context,
-            iconPath: 'assets/icons/content.svg',
-            title: 'My Order',
-            onTap: () {
-              Navigator.pushNamed(context, AppRoutes.MyOrderScreen);
-            },
-          ),
-          Divider(),
-          buildListTile(
-            context,
-            iconPath: 'assets/icons/cridet_card.svg',
-            title: 'Payment Methods',
-            onTap: () {},
-          ),
-          Divider(),
-          buildListTile(
-            context,
-            iconPath: 'assets/icons/notfactinon.svg',
-            title: 'Notifications',
-            onTap: () {
-              Navigator.pushNamed(context, AppRoutes.NotificationSettings);
-            },
-          ),
-          Divider(),
-          buildListTile(
-            context,
-            iconPath: 'assets/icons/clic_loc.svg',
-            title: 'Privacy Policy',
-            onTap: () {},
-          ),
-          Divider(),
-          buildListTile(
-            context,
-            iconPath: 'assets/icons/user_add.svg',
-            title: 'Invite Friends',
-            onTap: () {},
-          ),
-          Divider(),
-          buildListTile(
-            context,
-            iconPath: 'assets/icons/logout.svg',
-            title: 'Log Out',
-            textColor: Colors.red,
-            iconColor: Colors.red,
-            onTap: () {
-              showModalBottomSheet(
-                context: context,
-                backgroundColor: Colors.transparent,
-                isScrollControlled: true,
-                builder: (BuildContext context) {
-                  return LogoutBottomSheet();
-                },
-              );
-            },
-          ),
-        ],
+      body: FadeIn(
+        duration: const Duration(milliseconds: 700),
+        child: ListView(
+          padding: const EdgeInsets.all(20),
+          children: [
+            buildListTile(
+              context,
+              iconPath: 'assets/icons/user.svg',
+              title: 'Your Profile',
+              onTap: () {
+                Navigator.pushNamed(context, AppRoutes.profileScreen);
+              },
+            ),
+            _buildDivider(),
+            buildListTile(
+              context,
+              iconPath: 'assets/icons/content.svg',
+              title: 'My Order',
+              onTap: () {
+                Navigator.pushNamed(context, AppRoutes.myOrderScreen);
+              },
+            ),
+            _buildDivider(),
+            buildListTile(
+              context,
+              iconPath: 'assets/icons/cridet_card.svg',
+              title: 'Payment Methods',
+              onTap: () {},
+            ),
+            _buildDivider(),
+            buildListTile(
+              context,
+              iconPath: 'assets/icons/notfactinon.svg',
+              title: 'Notifications',
+              onTap: () {
+                Navigator.pushNamed(context, AppRoutes.notificationSettings);
+              },
+            ),
+            _buildDivider(),
+            buildListTile(
+              context,
+              iconPath: 'assets/icons/clic_loc.svg',
+              title: 'Privacy Policy',
+              onTap: () {},
+            ),
+            _buildDivider(),
+            buildListTile(
+              context,
+              iconPath: 'assets/icons/user_add.svg',
+              title: 'Invite Friends',
+              onTap: () {},
+            ),
+            _buildDivider(),
+            buildListTile(
+              context,
+              arrow_forward: false,
+              iconPath: 'assets/icons/logout.svg',
+              title: 'Log Out',
+              textColor: Colors.red,
+              iconColor: Colors.red,
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  backgroundColor: Colors.transparent,
+                  isScrollControlled: true,
+                  builder: (BuildContext context) {
+                    return LogoutBottomSheet();
+                  },
+                );
+              },
+            ),
+            Row(
+              children: [
+                Text(
+                  "Dark Mode",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    color: Theme.of(context).textTheme.bodyMedium!.color,
+                  ),
+                ),
+                Expanded(child: SizedBox()),
+                Switch(
+                  value: SettingsCubit.instance.isDarkMode,
+                  onChanged: (bool newVal) {
+                    setState(() {
+                      context.read<SettingsCubit>().toggleDarkMode();
+                    });
+                  },
+                  activeColor: AppTheme.mainColor,
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDivider() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 18), // تعديل المسافات هنا
+      child: Divider(
+        thickness: 1,
+        height: 1,
+        color: Colors.grey[300],
       ),
     );
   }

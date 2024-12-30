@@ -1,9 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 
-import 'package:base/features/home_screen/ui/screen/categories_screen.dart';
-import 'package:base/features/home_screen/ui/screen/home_screen.dart';
-import 'package:base/features/products_details/ui/screen/product_details_screen.dart';
-import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:base/features/cart/ui/bloc/cart_cubit.dart';
@@ -32,15 +28,6 @@ class CartScreen extends StatelessWidget {
             ),
           ),
         ),
-        leading: FadeInDown(
-          from: 50,
-          child: IconButton(
-            icon: const Icon(Icons.arrow_back_ios),
-            onPressed: () {
-              Navigator.pop(context, AppRoutes.productDetails);
-            },
-          ),
-        ),
         centerTitle: true,
       ),
       body: BlocBuilder<CartCubit, CartState>(
@@ -54,7 +41,7 @@ class CartScreen extends StatelessWidget {
             return Stack(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 270),
+                  padding: const EdgeInsets.only(bottom: 285),
                   child: ListView.separated(
                     padding: const EdgeInsets.symmetric(vertical: 5),
                     itemCount: state.items.length + 1,
@@ -78,12 +65,10 @@ class CartScreen extends StatelessWidget {
                   bottom: 0,
                   left: 0,
                   right: 0,
-                  child: Container(
-                    child: FadeIn(
-                      child: CheckoutSummaryWidget(
-                        totalAmount: state.totalAmount,
-                        dliveryfree: 20,
-                      ),
+                  child: FadeIn(
+                    child: CheckoutSummaryWidget(
+                      totalAmount: state.totalAmount,
+                      dliveryfree: 20,
                     ),
                   ),
                 ),

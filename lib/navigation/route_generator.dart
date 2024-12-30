@@ -80,13 +80,13 @@ Route generateRoute(settings) {
           child: const HomeScreen(),
         ),
       );
-    case AppRoutes.SearchScreen:
+    case AppRoutes.searchScreen:
       return _createRoute(BlocProvider(
         create: (context) => SearchCubit(),
         child: SearchScreen(),
       ));
 
-    case AppRoutes.CartScreen:
+    case AppRoutes.cartScreen:
       return _createRoute(
         BlocProvider<CartCubit>(
           create: (context) => CartCubit(),
@@ -94,18 +94,18 @@ Route generateRoute(settings) {
         ),
       );
 
-    case AppRoutes.AddressPage:
+    case AppRoutes.addressPage:
       return _createRoute(const AddressPage());
 
-    case AppRoutes.CheckoutPage:
+    case AppRoutes.checkoutPage:
       return _createRoute(const CheckoutPage());
-    case AppRoutes.AccountScreen:
+    case AppRoutes.accountScreen:
       return _createRoute(AccountScreen());
-    case AppRoutes.NotificationSettings:
+    case AppRoutes.notificationSettings:
       return _createRoute(NotificationSettings());
-    case AppRoutes.ProfileScreen:
+    case AppRoutes.profileScreen:
       return _createRoute(ProfileScreen());
-    case AppRoutes.MyOrderScreen:
+    case AppRoutes.myOrderScreen:
       return _createRoute(BlocProvider<OrderCubit>(
           create: (context) => OrderCubit(), child: const MyOrderScreen()));
 

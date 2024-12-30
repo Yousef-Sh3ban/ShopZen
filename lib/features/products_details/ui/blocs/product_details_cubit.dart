@@ -9,7 +9,7 @@ class ProductDetailsCubit extends Cubit<AppStates> {
   //==================================
   //variables
   //==================================
-  final GetProductDetailsRepoImp _getProductDetailsRepoInterface =
+  final GetProductDetailsRepoInterface _getProductDetailsRepoInterface =
       GetProductDetailsRepoImp();
 
   //==================================

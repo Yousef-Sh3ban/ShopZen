@@ -1,12 +1,12 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:base/app/bloc/settings_cubit.dart';
-import 'package:base/app/functions/vibration.dart';
-import 'package:base/features/cart/ui/widget/custom_Bottom.dart';
+import 'package:base/handlers/vibration_handler.dart';
+import 'package:base/features/cart/ui/widget/custom_bottom.dart';
 import 'package:base/features/checkout/ui/screen/payment_widget.dart';
 import 'package:base/features/checkout/ui/widget/congration_dilog.dart';
 
 import 'package:base/features/checkout/ui/widget/order_samry.dart';
-import 'package:base/features/checkout/ui/widget/CardInputField.dart';
+import 'package:base/features/checkout/ui/widget/card_input_field.dart';
 
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
@@ -74,7 +74,7 @@ class CheckoutPage extends StatelessWidget {
                             TextButton(
                               onPressed: () {
                                 Navigator.pushNamed(
-                                    context, AppRoutes.AddressPage);
+                                    context, AppRoutes.addressPage);
                               },
                               child: Text('Change',
                                   style: TextStyle(
@@ -86,16 +86,14 @@ class CheckoutPage extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 4),
-                        const Row(
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Icon(
-                              Icons.location_on_outlined,
-                              color: Color(0xff938F9C),
+                            SvgPicture.asset("assets/icons/loction.svg"),
+                            const SizedBox(
+                              width: 11.4,
                             ),
-                            SizedBox(
-                              width: 8,
-                            ),
-                            Column(
+                            const Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(

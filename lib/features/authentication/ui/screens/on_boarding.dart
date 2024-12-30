@@ -59,7 +59,7 @@ class OnBoarding extends StatelessWidget {
               text: "Get Started",
               color: const Color(0xff452CE8),
               ontap: () {
-                Navigator.pushNamed(context, AppRoutes.login);
+                Navigator.pushReplacementNamed(context, AppRoutes.login);
               },
             ),
           ],
