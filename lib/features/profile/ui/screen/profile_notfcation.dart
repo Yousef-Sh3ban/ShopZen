@@ -154,7 +154,7 @@ class _NotificationSettingsState extends State<NotificationSettings> {
 
   Widget _buildDivider() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 18), // تعديل المسافات هنا
+      padding: const EdgeInsets.symmetric(horizontal: 18),
       child: Divider(
         thickness: 1,
         height: 1,

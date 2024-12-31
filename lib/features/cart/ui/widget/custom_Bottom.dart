@@ -1,3 +1,4 @@
+import 'package:base/configurations/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class CustomBottom extends StatelessWidget {
@@ -17,7 +18,7 @@ class CustomBottom extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: const Color(0xff452CE8),
+        color: AppTheme.mainColor,
         borderRadius: BorderRadius.circular(8),
       ),
       child: InkWell(

@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:base/configurations/app_theme.dart';
 import 'package:base/features/authentication/ui/widgets/custom_login_button.dart';
 import 'package:base/features/authentication/ui/widgets/login_bottom.dart';
 import 'package:base/features/authentication/ui/widgets/or_divider.dart';
@@ -49,7 +50,7 @@ class SingupScreen extends StatelessWidget {
               ),
               LoginBottom(
                 text: "Singup with Email",
-                color: const Color(0xff452CE8),
+                color:  AppTheme.mainColor,
                 ontap: () {
                   Navigator.pushNamed(context, AppRoutes.signupDefaultScreen);
                 },

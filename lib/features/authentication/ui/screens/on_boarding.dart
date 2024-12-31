@@ -1,3 +1,4 @@
+import 'package:base/configurations/app_theme.dart';
 import 'package:base/features/authentication/ui/widgets/login_bottom.dart';
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
@@ -34,10 +35,10 @@ class OnBoarding extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
-            const Text(
+             Text(
               "Your one-stop destination for hassle-",
               style: TextStyle(
-                color: Color(0xff68656E),
+                color: AppTheme.maingrey,
                 fontWeight: FontWeight.w500,
                 fontSize: 18,
               ),
@@ -46,7 +47,7 @@ class OnBoarding extends StatelessWidget {
               child: Text(
                 "free online shopping",
                 style: TextStyle(
-                  color: Color(0xff68656E),
+                  color: AppTheme.maingrey,
                   fontWeight: FontWeight.w500,
                   fontSize: 18,
                 ),
@@ -57,7 +58,7 @@ class OnBoarding extends StatelessWidget {
             ),
             LoginBottom(
               text: "Get Started",
-              color: const Color(0xff452CE8),
+              color: AppTheme.mainColor,
               ontap: () {
                 Navigator.pushReplacementNamed(context, AppRoutes.login);
               },

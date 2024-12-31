@@ -1,5 +1,6 @@
 import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/app/functions/max_two_diget.dart';
+import 'package:base/configurations/app_theme.dart';
 import 'package:base/features/products_details/ui/blocs/product_details_cubit.dart';
 import 'package:base/features/products_details/ui/screen/product_details_screen.dart';
 import 'package:flutter/material.dart';
@@ -132,7 +133,7 @@ class _DealCardState extends State<DealCard> {
                                 : Icons.favorite_border,
                             color: widget.isFavorite
                                 ? const Color(0xFFDE1135)
-                                : const Color(0xFF323135)),
+                                :  AppTheme.darkPrimary),
                       ),
                     ),
                   ),
@@ -165,10 +166,10 @@ class _DealCardState extends State<DealCard> {
                   "\$${truncateToTwoDecimalPlaces(widget.oldPrice)}",
                   style: const TextStyle(
                       fontSize: 14,
-                      color: Color(0xFF68656E),
+                      color: AppTheme.maingrey,
                       fontWeight: FontWeight.w400,
                       decoration: TextDecoration.lineThrough,
-                      decorationColor: Color(0xFF68656E)),
+                      decorationColor: AppTheme.maingrey),
                 ),
               ],
             ),
@@ -194,7 +195,7 @@ class _DealCardState extends State<DealCard> {
                   style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
-                      color: Color(0xFF68656E)),
+                      color: AppTheme.maingrey),
                 ),
               ],
             ),

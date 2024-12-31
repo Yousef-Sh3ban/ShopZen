@@ -1,3 +1,4 @@
+import 'package:base/configurations/app_theme.dart';
 import 'package:base/features/home_screen/domain/models/review_model.dart';
 import 'package:base/features/products_details/ui/widget/reviews_bottom_sheet.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class _DescreptionWidgetState extends State<DescreptionWidget> {
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                         fontFamily: "Sf",
-                        color: Color(0xFF68656E),
+                        color: AppTheme.maingrey,
                         fontWeight: FontWeight.w400,
                         fontSize: 14),
                   ),
@@ -55,7 +56,7 @@ class _DescreptionWidgetState extends State<DescreptionWidget> {
                         decoration: TextDecoration.underline,
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xFF452CE8),
+                        color: AppTheme.mainColor,
                       ),
                     ),
                   ),

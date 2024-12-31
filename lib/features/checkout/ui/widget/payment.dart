@@ -1,5 +1,6 @@
+import 'package:base/configurations/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart'; // لإضافة دعم SVG
+import 'package:flutter_svg/flutter_svg.dart';
 
 class PaymentMethodContainer extends StatelessWidget {
   final String svgPath;
@@ -21,7 +22,7 @@ class PaymentMethodContainer extends StatelessWidget {
       width: 101,
       height: 36,
       decoration: BoxDecoration(
-        color: isSelected ? const Color(0xff452CE8) : Colors.white,
+        color: isSelected ? AppTheme.mainColor: Colors.white,
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
           color: isSelected ? Colors.deepPurple : Colors.grey,
@@ -51,7 +52,7 @@ class PaymentMethodContainer extends StatelessWidget {
             Text(
               label,
               style: TextStyle(
-                color: isSelected ? Colors.white : Color(0xff323135),
+                color: isSelected ? Colors.white : AppTheme.darkPrimary,
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
               ),

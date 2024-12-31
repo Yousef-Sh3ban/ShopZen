@@ -1,5 +1,6 @@
 import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/configurations/app_states.dart';
+import 'package:base/configurations/app_theme.dart';
 
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
@@ -29,12 +30,12 @@ class MyApp extends StatelessWidget {
                     fontFamily: "Alata",
                     bottomAppBarTheme:
                         const BottomAppBarTheme(color: Colors.black),
-                    primaryColor: const Color(0xFF452CE8),
+                    primaryColor: AppTheme.mainColor,
                     brightness: Brightness.dark,
                     scaffoldBackgroundColor: Colors.black,
                     textTheme: const TextTheme(
                       bodyMedium: TextStyle(color: Color(0xFFDAE2FF)),
-                      bodyLarge: TextStyle(color: Color(0xFF452CE8)),
+                      bodyLarge: TextStyle(color: AppTheme.mainColor),
                     ),
                   )
                 : ThemeData(
@@ -44,12 +45,12 @@ class MyApp extends StatelessWidget {
                     brightness: Brightness.light,
                     scaffoldBackgroundColor: Colors.white,
                     textTheme: const TextTheme(
-                      bodyMedium: TextStyle(color: Color(0xFF323135)),
-                      bodyLarge: TextStyle(color: Color(0xFF323135)),
+                      bodyMedium: TextStyle(color: AppTheme.darkPrimary),
+                      bodyLarge: TextStyle(color: AppTheme.darkPrimary),
                     ),
                   ),
             onGenerateRoute: generateRoute,
-            initialRoute: AppRoutes.home,
+            initialRoute: AppRoutes.splash,
           );
         },
       ),

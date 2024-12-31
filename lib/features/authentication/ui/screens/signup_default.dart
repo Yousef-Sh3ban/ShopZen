@@ -1,5 +1,6 @@
 import 'package:base/configurations/app_events.dart';
 import 'package:base/configurations/app_states.dart';
+import 'package:base/configurations/app_theme.dart';
 import 'package:base/features/authentication/ui/widgets/custom_text_form.dart';
 import 'package:base/features/authentication/ui/widgets/login.dart';
 import 'package:base/handlers/snackbars_handler.dart';
@@ -136,7 +137,7 @@ class _SignupDefaultScreenState extends State<SignupDefaultScreen> {
                       child: Row(
                         children: [
                           Checkbox(
-                            activeColor: const Color(0xFF452CE8),
+                            activeColor: AppTheme.mainColor,
                             side: const BorderSide(
                                 width: 1.5, color: Color(0xFF141B34)),
                             value: isChecked,
@@ -167,7 +168,7 @@ class _SignupDefaultScreenState extends State<SignupDefaultScreen> {
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
-                                color: Color(0xFF452CE8)),
+                                color: AppTheme.mainColor),
                           ),
                         ],
                       ),
@@ -178,7 +179,7 @@ class _SignupDefaultScreenState extends State<SignupDefaultScreen> {
                     LoginBottom(
                       text: "Signup",
                       color: SignupBloc.readyToGo
-                          ? const Color(0xFF452CE8)
+                          ? AppTheme.mainColor
                           : const Color(0xFF6A70FF),
                       ontap: () {
                         if (SignupBloc.readyToGo) {

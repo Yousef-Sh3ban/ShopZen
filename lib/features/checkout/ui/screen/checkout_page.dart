@@ -1,9 +1,10 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:base/app/bloc/settings_cubit.dart';
+import 'package:base/configurations/app_theme.dart';
 import 'package:base/handlers/vibration_handler.dart';
 import 'package:base/features/cart/ui/widget/custom_bottom.dart';
 import 'package:base/features/checkout/ui/screen/payment_widget.dart';
-import 'package:base/features/checkout/ui/widget/congration_dilog.dart';
+import 'package:base/features/checkout/ui/widget/congration_dialog.dart';
 
 import 'package:base/features/checkout/ui/widget/order_samry.dart';
 import 'package:base/features/checkout/ui/widget/card_input_field.dart';
@@ -120,7 +121,7 @@ class CheckoutPage extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xff323135)),
+                              color: AppTheme.darkPrimary),
                         ),
                         const SizedBox(height: 16),
                         const PaymentWidget(),
@@ -138,7 +139,7 @@ class CheckoutPage extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xff323135)),
+                              color: AppTheme.darkPrimary),
                         ),
                         const SizedBox(height: 8),
                         const OrderSummary(),

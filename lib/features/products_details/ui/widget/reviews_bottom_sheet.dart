@@ -1,3 +1,4 @@
+import 'package:base/configurations/app_theme.dart';
 import 'package:base/features/home_screen/domain/models/review_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -76,7 +77,7 @@ void reviewsBottomSheet(BuildContext context, List<ReviewModel> reviews) {
                     reviews[index].comment,
                     style: const TextStyle(
                       fontFamily: "Sf",
-                      color: Color(0xFF68656E),
+                      color: AppTheme.maingrey,
                       fontWeight: FontWeight.w400,
                       fontSize: 16,
                     ),

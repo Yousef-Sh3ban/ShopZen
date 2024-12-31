@@ -1,3 +1,4 @@
+import 'package:base/configurations/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class TextBottomLogin extends StatelessWidget {
@@ -16,7 +17,7 @@ class TextBottomLogin extends StatelessWidget {
           Text(
             text1,
             style: const TextStyle(
-                color: Color(0xff68656E),
+                color: AppTheme.maingrey,
                 fontFamily: "Satoshi",
                 fontSize: 16,
                 fontWeight: FontWeight.w400),
@@ -26,10 +27,10 @@ class TextBottomLogin extends StatelessWidget {
             child: Text(
               text2,
               style: const TextStyle(
-                  color: Color(0xff452CE8),
+                  color: AppTheme.mainColor,
                   fontFamily: "Satoshi",
                   fontSize: 16,
-                  decorationColor: Color(0xff452CE8),
+                  decorationColor: AppTheme.mainColor,
                   decoration: TextDecoration.underline,
                   fontWeight: FontWeight.w700),
             ),

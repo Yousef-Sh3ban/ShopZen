@@ -2,7 +2,6 @@ import 'package:base/features/cart/ui/bloc/cart_cubit.dart';
 import 'package:base/features/cart/ui/screen/cart_screen.dart';
 import 'package:base/features/checkout/ui/screen/address_page.dart';
 import 'package:base/features/checkout/ui/screen/checkout_page.dart';
-import 'package:base/features/checkout/ui/widget/congration_dilog.dart';
 import 'package:base/features/my_orders/ui/blocs/orders_bloc.dart';
 import 'package:base/features/my_orders/ui/screen/my_order_screen.dart';
 import 'package:base/features/notifaction/ui/blocs/notifaction_bloc.dart';
@@ -15,8 +14,8 @@ import 'package:base/features/profile/ui/screen/profile_screen.dart';
 
 import 'package:base/navigation/app_routes.dart';
 
-import 'package:base/features/search_products_Ecommerc/ui/blocs/search_cubit.dart';
-import 'package:base/features/search_products_Ecommerc/ui/screen/search_screen.dart';
+import 'package:base/features/search_products/ui/blocs/search_cubit.dart';
+import 'package:base/features/search_products/ui/screen/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

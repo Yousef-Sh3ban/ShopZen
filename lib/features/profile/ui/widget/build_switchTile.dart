@@ -1,3 +1,4 @@
+import 'package:base/configurations/app_theme.dart';
 import 'package:flutter/material.dart';
 
 Widget buildSwitchTile({
@@ -17,7 +18,7 @@ Widget buildSwitchTile({
         value: value,
         onChanged: onChanged,
         activeColor: Colors.white,
-        activeTrackColor: Color(0xff323135),
+        activeTrackColor: AppTheme.darkPrimary,
         inactiveThumbColor: Colors.white,
         inactiveTrackColor: Color(0xffCECDD4),
       ),

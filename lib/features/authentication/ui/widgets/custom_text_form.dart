@@ -1,3 +1,4 @@
+import 'package:base/configurations/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -92,19 +93,19 @@ class _CustomTextFormState extends State<CustomTextForm> {
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: const BorderSide(
-                color: Color(0xFF323135),
+                color: AppTheme.darkPrimary,
               ),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: const BorderSide(
-                color: Color(0xFF323135),
+                color: AppTheme.darkPrimary,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: const BorderSide(
-                color: Color(0xFF323135),
+                color: AppTheme.darkPrimary,
               ),
             ),
             hintText: widget.hint,

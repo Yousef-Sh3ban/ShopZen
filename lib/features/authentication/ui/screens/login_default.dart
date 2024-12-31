@@ -1,3 +1,4 @@
+import 'package:base/configurations/app_theme.dart';
 import 'package:base/handlers/snackbars_handler.dart';
 import 'package:base/handlers/vibration_handler.dart';
 import 'package:base/configurations/app_events.dart';
@@ -122,7 +123,7 @@ class _LoginDefaultScreenState extends State<LoginDefaultScreen> {
                     LoginBottom(
                       text: "Login",
                       color: state is ReadyToLoginState
-                          ? const Color(0xFF452CE8)
+                          ? AppTheme.mainColor
                           : const Color(0xFF6A70FF),
                       ontap: () {
                         if (formKey.currentState!.validate()) {

@@ -1,5 +1,5 @@
 
 double truncateToTwoDecimalPlaces(double value) {
-  int scaledValue = (value * 100).truncate(); // Remove extra decimals
+  int scaledValue = (value * 100).truncate(); 
   return scaledValue / 100;
 }

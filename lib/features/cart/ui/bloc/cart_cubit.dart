@@ -11,11 +11,11 @@ class CartCubit extends Cubit<CartState> {
   final dbHelper = CartDatabaseHelper();
 
   Future<void> getCartItems() async {
-    final List<CartItem> _data = await dbHelper.getCartItems();
-    if (_data.isEmpty) {
+    final List<CartItem> data = await dbHelper.getCartItems();
+    if (data.isEmpty) {
       emit(CartEmpty());
     } else {
-      emit(CartLoaded(items: _data));
+      emit(CartLoaded(items: data));
     }
   }
 

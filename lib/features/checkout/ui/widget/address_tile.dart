@@ -48,7 +48,7 @@ class CustomContainer extends StatelessWidget {
     return Container(
       height: 80,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey, width: 0.5), // إضافة البوردر هنا
+        border: Border.all(color: Colors.grey, width: 0.5),
         borderRadius: BorderRadius.circular(10),
       ),
       child: child,

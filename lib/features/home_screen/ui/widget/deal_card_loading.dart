@@ -1,3 +1,4 @@
+import 'package:base/configurations/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:base/handlers/favorite_handler.dart';
@@ -73,7 +74,7 @@ class DealCardLoading extends StatelessWidget {
                           child: const Icon(
                               size: 15,
                               Icons.favorite_border,
-                              color: Color(0xFF323135)),
+                              color: AppTheme.darkPrimary),
                         ),
                       ),
                     ],
@@ -102,10 +103,10 @@ class DealCardLoading extends StatelessWidget {
                         "\$10000",
                         style: TextStyle(
                             fontSize: 14,
-                            color: Color(0xFF68656E),
+                            color: AppTheme.maingrey,
                             fontWeight: FontWeight.w400,
                             decoration: TextDecoration.lineThrough,
-                            decorationColor: Color(0xFF68656E)),
+                            decorationColor: AppTheme.maingrey),
                       ),
                     ],
                   ),
@@ -131,7 +132,7 @@ class DealCardLoading extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
-                            color: Color(0xFF68656E)),
+                            color: AppTheme.maingrey),
                       ),
                     ],
                   ),

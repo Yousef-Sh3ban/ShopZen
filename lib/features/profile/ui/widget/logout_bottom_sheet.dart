@@ -7,6 +7,7 @@ class LogoutBottomSheet extends StatelessWidget {
     return Container(
       padding: EdgeInsets.fromLTRB(20, 16, 20, 47),
       decoration: BoxDecoration(
+         color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(16),
           topRight: Radius.circular(16),
@@ -58,7 +59,7 @@ class LogoutBottomSheet extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.pop(context); // Close the modal
+                      Navigator.pop(context);  
                     },
                     child: Text(
                       'Cancel',
@@ -81,10 +82,8 @@ class LogoutBottomSheet extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      // Perform logout logic here
                       Navigator.pushNamed(
-                          context, AppRoutes.login); // Close the modal
-                      // Add your logout logic
+                          context, AppRoutes.login);
                     },
                     child: Text(
                       'Yes, Logout',

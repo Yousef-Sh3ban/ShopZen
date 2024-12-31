@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:base/features/search_products_Ecommerc/domain/models/product_model.dart';
-import 'package:base/features/search_products_Ecommerc/ui/blocs/search_state.dart';
+import 'package:base/features/search_products/domain/models/product_model.dart';
+import 'package:base/features/search_products/ui/blocs/search_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';

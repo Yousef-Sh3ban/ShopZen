@@ -1,9 +1,10 @@
+import 'package:base/configurations/app_theme.dart';
 import 'package:base/features/home_screen/ui/widget/deal_card.dart';
 import 'package:base/features/products_details/ui/blocs/product_details_cubit.dart';
 import 'package:base/features/products_details/ui/screen/product_details_screen.dart';
-import 'package:base/features/search_products_Ecommerc/ui/blocs/search_cubit.dart';
-import 'package:base/features/search_products_Ecommerc/ui/blocs/search_state.dart';
-import 'package:base/features/search_products_Ecommerc/ui/widget/empty_search_widget.dart';
+import 'package:base/features/search_products/ui/blocs/search_cubit.dart';
+import 'package:base/features/search_products/ui/blocs/search_state.dart';
+import 'package:base/features/search_products/ui/widget/empty_search_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -146,7 +147,7 @@ class SearchScreen extends StatelessWidget {
                       'Start searching for products.',
                       style: TextStyle(
                           fontSize: 24,
-                          color: Color(0xff323135),
+                          color: AppTheme.darkPrimary,
                           fontWeight: FontWeight.w400),
                     ),
                   );

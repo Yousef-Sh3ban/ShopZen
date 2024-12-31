@@ -1,8 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/configurations/app_theme.dart';
-import 'package:base/features/profile/ui/widget/logout_bottomSheet.dart';
 import 'package:base/features/profile/ui/widget/build_listTile_account.dart';
+import 'package:base/features/profile/ui/widget/logout_bottom_sheet.dart';
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -48,7 +48,9 @@ class _AccountScreenState extends State<AccountScreen> {
                 Navigator.pushNamed(context, AppRoutes.profileScreen);
               },
             ),
-            _buildDivider(),
+            const Divider(
+              color: Color(0xFFE0E0E5),
+            ),
             buildListTile(
               context,
               iconPath: 'assets/icons/content.svg',
@@ -57,14 +59,18 @@ class _AccountScreenState extends State<AccountScreen> {
                 Navigator.pushNamed(context, AppRoutes.myOrderScreen);
               },
             ),
-            _buildDivider(),
+            const Divider(
+              color: Color(0xFFE0E0E5),
+            ),
             buildListTile(
               context,
               iconPath: 'assets/icons/cridet_card.svg',
               title: 'Payment Methods',
               onTap: () {},
             ),
-            _buildDivider(),
+            const Divider(
+              color: Color(0xFFE0E0E5),
+            ),
             buildListTile(
               context,
               iconPath: 'assets/icons/notfactinon.svg',
@@ -73,21 +79,27 @@ class _AccountScreenState extends State<AccountScreen> {
                 Navigator.pushNamed(context, AppRoutes.notificationSettings);
               },
             ),
-            _buildDivider(),
+            const Divider(
+              color: Color(0xFFE0E0E5),
+            ),
             buildListTile(
               context,
               iconPath: 'assets/icons/clic_loc.svg',
               title: 'Privacy Policy',
               onTap: () {},
             ),
-            _buildDivider(),
+            const Divider(
+              color: Color(0xFFE0E0E5),
+            ),
             buildListTile(
               context,
               iconPath: 'assets/icons/user_add.svg',
               title: 'Invite Friends',
               onTap: () {},
             ),
-            _buildDivider(),
+            const Divider(
+              color: Color(0xFFE0E0E5),
+            ),
             buildListTile(
               context,
               arrow_forward: false,
@@ -130,17 +142,6 @@ class _AccountScreenState extends State<AccountScreen> {
             )
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildDivider() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 18), // تعديل المسافات هنا
-      child: Divider(
-        thickness: 1,
-        height: 1,
-        color: Colors.grey[300],
       ),
     );
   }

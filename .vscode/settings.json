@@ -19,7 +19,6 @@
         ".gitignore": true,
         ".metadata": true,
         "analysis_options.yaml": true,
-        "android": true,
         "ios": true,
         "pubspec.lock": true,
         "README.md": true
@@ -38,7 +37,6 @@
         ".gitignore",
         ".metadata",
         "analysis_options.yaml",
-        "android",
         "ios",
         "pubspec.lock",
         "README.md"

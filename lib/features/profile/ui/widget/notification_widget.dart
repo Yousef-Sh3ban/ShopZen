@@ -1,5 +1,5 @@
-
 import 'package:base/app/bloc/settings_cubit.dart';
+import 'package:base/configurations/app_theme.dart';
 import 'package:base/features/notifaction/domain/models/notifaction_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -49,7 +49,7 @@ class NotificationWidget extends StatelessWidget {
                         style: const TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 12,
-                          color: Color(0xFF68656E),
+                          color: AppTheme.maingrey,
                         ),
                       )
                     ],

@@ -146,8 +146,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               context: context,
                               initialDate: DateTime.now(),
                               firstDate:
-                                  DateTime(1900), // Allow dates from 1900
-                              lastDate: DateTime.now(), // Prevent future dates
+                                  DateTime(1900),
+                              lastDate: DateTime.now(), 
                             );
                             if (pickedDate != null) {
                               setState(() {

@@ -1,4 +1,5 @@
 
+import 'package:base/configurations/app_theme.dart';
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -61,7 +62,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff452CE8),
+      backgroundColor: AppTheme.mainColor,
       body: Center(
         child: FadeTransition(
           opacity: _opacityAnimation,

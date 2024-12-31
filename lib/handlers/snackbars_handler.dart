@@ -1,4 +1,5 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
+import 'package:base/configurations/app_theme.dart';
 import 'package:flutter/material.dart';
 
 SnackBar successSnackBar(String message) {
@@ -9,7 +10,7 @@ SnackBar successSnackBar(String message) {
     padding: EdgeInsets.symmetric(horizontal: 0, vertical: 13),
     duration: Duration(seconds: 2),
     content: AwesomeSnackbarContent(
-      color: Color(0xFF452CE8),
+      color: AppTheme.mainColor,
       title: 'Yay!',
       messageTextStyle: TextStyle(
         color: Colors.black,
@@ -31,7 +32,7 @@ SnackBar errorSnackBar(String message) {
     padding: EdgeInsets.symmetric(horizontal: 0, vertical: 13),
     duration: Duration(seconds: 10),
     content: AwesomeSnackbarContent(
-      color: Color(0xFF452CE8),
+      color: AppTheme.mainColor,
       title: 'Oops!',
       messageTextStyle: TextStyle(
         color: Colors.black,

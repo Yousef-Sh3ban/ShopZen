@@ -1,7 +1,6 @@
-import 'package:base/app/bloc/settings_cubit.dart';
+import 'package:base/configurations/app_theme.dart';
 import 'package:base/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LocationSearchBar extends StatelessWidget {
@@ -27,7 +26,7 @@ class LocationSearchBar extends StatelessWidget {
                   "Location",
                   style: TextStyle(
                       fontSize: 14,
-                      color: Color(0xFF68656E),
+                      color: AppTheme.maingrey,
                       fontWeight: FontWeight.w400),
                 ),
                 const SizedBox(

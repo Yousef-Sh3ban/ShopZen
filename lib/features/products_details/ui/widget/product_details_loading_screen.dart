@@ -1,3 +1,4 @@
+import 'package:base/configurations/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:redacted/redacted.dart';
@@ -18,10 +19,6 @@ class ProductDetailsLoadingScreen extends StatelessWidget {
                     SizedBox(
                       height: 260,
                       width: MediaQuery.of(context).size.width,
-                      // child: Image.network(
-                      //   selectedImage!,
-                      //   fit: BoxFit.cover,
-                      // ),
                     ),
                     Positioned(
                       top: 12,
@@ -33,10 +30,6 @@ class ProductDetailsLoadingScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(4),
                           shape: BoxShape.rectangle,
                         ),
-                        // child: FavoriteIcon(
-                        //   productDetails: productDetails,
-                        //   productId: productDetails.id,
-                        // )
                       ),
                     ),
                   ],
@@ -49,14 +42,6 @@ class ProductDetailsLoadingScreen extends StatelessWidget {
                       const SizedBox(
                         height: 16,
                       ),
-                      // ProductImageWidget(
-                      //   images: productDetails.images,
-                      //   onImageSelected: (String image) {
-                      //     setState(() {
-                      //       selectedImage = image;
-                      //     });
-                      //   },
-                      // ),
                       const SizedBox(
                         height: 24,
                       ),
@@ -89,7 +74,7 @@ class ProductDetailsLoadingScreen extends StatelessWidget {
                           Text(
                             "(1 Review)",
                             style: const TextStyle(
-                                color: Color(0xFF68656E),
+                                color: AppTheme.maingrey,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 12),
                           ),
@@ -110,11 +95,9 @@ class ProductDetailsLoadingScreen extends StatelessWidget {
                 ),
                 Text(
                   "This is the blankThis is the blankThis is the blankThis is the blankThis is the blankThis is the blankThis is the blankThis is the blankThis is the blank",
-                  // maxLines: _isExpanded ? 2 : 1000,
-                  // overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                       fontFamily: "Sf",
-                      color: Color(0xFF68656E),
+                      color: AppTheme.maingrey,
                       fontWeight: FontWeight.w400,
                       fontSize: 14),
                 ),

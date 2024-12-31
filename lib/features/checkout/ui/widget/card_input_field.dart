@@ -1,8 +1,9 @@
+import 'package:base/configurations/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CardInputField extends StatelessWidget {
-  const CardInputField({Key? key}) : super(key: key);
+  const CardInputField({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class CardInputField extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
-                  color: Color(0xff323135),
+                  color: AppTheme.darkPrimary,
                 ),
               ),
             ],

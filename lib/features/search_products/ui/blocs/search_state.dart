@@ -1,4 +1,4 @@
-import 'package:base/features/search_products_Ecommerc/domain/models/product_model.dart';
+import 'package:base/features/search_products/domain/models/product_model.dart';
 
 abstract class SearchState {}
 

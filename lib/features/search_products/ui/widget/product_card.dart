@@ -1,6 +1,6 @@
 import 'package:base/features/products_details/ui/blocs/product_details_cubit.dart';
 import 'package:base/features/products_details/ui/screen/product_details_screen.dart';
-import 'package:base/features/search_products_Ecommerc/domain/models/product_model.dart';
+import 'package:base/features/search_products/domain/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -19,12 +19,10 @@ class _ProductCardState extends State<ProductCard> {
 
   @override
   Widget build(BuildContext context) {
-          // log("asdsdm,nflkaksdjkfnbjsaldfjnnevagetiowjaes");
     return InkWell(
         child: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            // color: Colors.white,
             borderRadius: BorderRadius.circular(12),
             boxShadow: [
               BoxShadow(

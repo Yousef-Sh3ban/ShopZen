@@ -1,3 +1,4 @@
+import 'package:base/configurations/app_theme.dart';
 import 'package:base/features/cart/domain/models/cart_item.dart';
 import 'package:base/features/cart/ui/bloc/cart_cubit.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,7 @@ class CartItemWidget extends StatelessWidget {
                 const SizedBox(height: 4),
                 const Text(
                   'Size: XL',
-                  style: TextStyle(color: Color(0xff68656E), fontSize: 14),
+                  style: TextStyle(color: AppTheme.maingrey, fontSize: 14),
                 ),
                 const SizedBox(height: 4),
                 Row(

@@ -1,5 +1,6 @@
 
 import 'package:base/app/models/product_model.dart';
+import 'package:base/configurations/app_theme.dart';
 import 'package:base/features/products_details/domain/models/product_details_model.dart';
 import 'package:base/handlers/favorite_handler.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,7 @@ class _FavoriteIconState extends State<FavoriteIcon> {
             size: 15,
             isFavorite ? Icons.favorite : Icons.favorite_border,
             color:
-                isFavorite ? const Color(0xFFDE1135) : const Color(0xFF323135)),
+                isFavorite ? const Color(0xFFDE1135) :  AppTheme.darkPrimary),
       ),
       onPressed: () {
         setState(() {

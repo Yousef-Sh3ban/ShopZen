@@ -76,7 +76,7 @@ class CartDatabaseHelper {
           title: item['title'] as String,
           image: item['image'] as String,
           price: item['price'] as double,
-          quantity: item['quantity'] as int // Include quantity
+          quantity: item['quantity'] as int 
           );
     }).toList();
   }

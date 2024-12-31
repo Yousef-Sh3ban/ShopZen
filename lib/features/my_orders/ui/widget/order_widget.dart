@@ -1,6 +1,5 @@
 import 'package:base/app/bloc/settings_cubit.dart';
 import 'package:base/app/functions/max_two_diget.dart';
-import 'package:base/features/home_screen/ui/widget/deal_card.dart';
 import 'package:base/features/my_orders/domain/models/order_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

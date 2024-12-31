@@ -1,3 +1,4 @@
+import 'package:base/configurations/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class EmptySearchWidget extends StatelessWidget {
@@ -20,7 +21,7 @@ class EmptySearchWidget extends StatelessWidget {
                 'No Result Found!',
                 style: TextStyle(
                     fontSize: 24,
-                    color: Color(0xff323135),
+                    color: AppTheme.darkPrimary,
                     fontWeight: FontWeight.w400),
               ),
             ],

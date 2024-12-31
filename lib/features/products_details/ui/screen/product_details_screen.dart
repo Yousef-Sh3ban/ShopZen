@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:base/app/bloc/settings_cubit.dart';
+import 'package:base/configurations/app_theme.dart';
 import 'package:base/handlers/snackbars_handler.dart';
 import 'package:base/handlers/vibration_handler.dart';
 import 'package:base/configurations/app_states.dart';
@@ -152,7 +153,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                     Text(
                                       "(${productDetails.reviewsCount} Review)",
                                       style: const TextStyle(
-                                          color: Color(0xFF68656E),
+                                          color: AppTheme.maingrey,
                                           fontWeight: FontWeight.w400,
                                           fontSize: 12),
                                     ),

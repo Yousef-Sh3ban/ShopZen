@@ -1,5 +1,6 @@
 
 import 'package:base/configurations/app_states.dart';
+import 'package:base/configurations/app_theme.dart';
 import 'package:base/features/home_screen/ui/blocs/category_cubit.dart';
 import 'package:base/features/home_screen/ui/widget/deal_card.dart';
 import 'package:base/features/home_screen/ui/widget/hot_deals_widget.dart';
@@ -67,7 +68,7 @@ class CategoriesScreen extends StatelessWidget {
                             style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
-                                color: Color(0xFF68656E)
+                                color: AppTheme.maingrey
                                 ),
                           ),
                           const SizedBox(height: 28)

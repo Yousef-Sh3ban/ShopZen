@@ -1,3 +1,4 @@
+import 'package:base/configurations/app_theme.dart';
 import 'package:base/features/cart/ui/widget/dased_lin.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +29,7 @@ class OrderSummary extends StatelessWidget {
               style: TextStyle(
                 fontFamily: "Satoshi",
                 fontWeight: FontWeight.w500,
-                color: Color(0xff323135),
+                color: AppTheme.darkPrimary,
               ),
             ),
           ],
@@ -51,7 +52,7 @@ class OrderSummary extends StatelessWidget {
               '\$20.00',
               style: TextStyle(
                 fontWeight: FontWeight.w500,
-                color: Color(0xff323135),
+                color: AppTheme.darkPrimary,
               ),
             ),
           ],
@@ -75,7 +76,7 @@ class OrderSummary extends StatelessWidget {
               style: TextStyle(
                 fontFamily: "Satoshi",
                 fontWeight: FontWeight.w500,
-                color: Color(0xff323135),
+                color: AppTheme.darkPrimary,
               ),
             ),
           ],
