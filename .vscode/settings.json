@@ -41,5 +41,5 @@
         "pubspec.lock",
         "README.md"
     ],
-    "autoHide.autoHideSideBar": false
+    "autoHide.autoHideSideBar": true
 }
