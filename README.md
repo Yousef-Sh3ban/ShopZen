@@ -38,7 +38,7 @@
 
 | Notification Settings | Profile | Account | Logout |
 |:--------------------:|:-------:|:-------:|:------:|
-| <img src="assets/screenshots/notifaction_settings.jpg" width="180"> | <img src="assets/screenshots/dark_profile.jpg" width="180"> | <img src="assets/screenshots/dark_account.jpeg" width="180"> | <img src="assets/screenshots/logout.jpg" width="180"> |
+| <img src="assets/screenshots/notifaction_settings.jpg" width="180"> | <img src="assets/screenshots/profile.jpg" width="180"> | <img src="assets/screenshots/account.jpg" width="180"> | <img src="assets/screenshots/logout.jpg" width="180"> |
 
 </div>
 
@@ -60,7 +60,7 @@
 
 | Dark Notification Settings | Dark Profile | Account | Dark Logout |
 |:-------------------------:|:------------:|:-------:|:-----------:|
-| <img src="assets/screenshots/dark_notifaction_settings.jpg" width="180"> | <img src="assets/screenshots/dark_profile.jpg" width="180"> | <img src="assets/screenshots/account.jpg" width="180"> | <img src="assets/screenshots/dark_logout.jpg" width="180"> |
+| <img src="assets/screenshots/dark_notifaction_settings.jpg" width="180"> | <img src="assets/screenshots/dark_profile.jpg" width="180"> | <img src="assets/screenshots/dark_account.jpeg" width="180"> | <img src="assets/screenshots/dark_logout.jpg" width="180"> |
 
 </div>
 
