@@ -38,7 +38,7 @@
 
 | Notification Settings | Profile | Account | Logout |
 |:--------------------:|:-------:|:-------:|:------:|
-| <img src="assets/screenshots/notifaction_settings.jpg" width="180"> | <img src="assets/screenshots/profile.jpg" width="180"> | <img src="assets/screenshots/dark_account.jpeg" width="180"> | <img src="assets/screenshots/logout.jpg" width="180"> |
+| <img src="assets/screenshots/notifaction_settings.jpg" width="180"> | <img src="assets/screenshots/profile.jpg" width="180"> | <img src="assets/screenshots/account.jpg" width="180"> | <img src="assets/screenshots/logout.jpg" width="180"> |
 
 </div>
 
@@ -58,9 +58,9 @@
 |:-------------:|:-------------:|:---------:|:-----------:|:------------------:|
 | <img src="assets/screenshots/dark_location.jpg" width="180"> | <img src="assets/screenshots/dark_pay.jpg" width="180"> | <img src="assets/screenshots/dark_done.jpg" width="180"> | <img src="assets/screenshots/dark_orders.jpg" width="180"> | <img src="assets/screenshots/dark_notifaction.jpg" width="180"> |
 
-| Dark Notification Settings | Dark Profile | Account | Dark Logout |
-|:-------------------------:|:------------:|:-------:|:-----------:|
-| <img src="assets/screenshots/dark_notifaction_settings.jpg" width="180"> | <img src="assets/screenshots/dark_profile.jpg" width="180"> | <img src="assets/screenshots/account.jpg" width="180"> | <img src="assets/screenshots/dark_logout.jpg" width="180"> |
+| Dark Notification Settings | Dark Profile | Dark Logout |
+|:-------------------------:|:------------:|:-----------:|
+| <img src="assets/screenshots/dark_notifaction_settings.jpg" width="180"> | <img src="assets/screenshots/dark_profile.jpg" width="180"> | <img src="assets/screenshots/dark_logout.jpg" width="180"> |
 
 </div>
 
@@ -103,17 +103,21 @@
 - **Search** - Real-time product search
 - **Cart Management** - Add, update, and remove items with quantity control
 - **Favorites** - Save and manage favorite products
+- **Checkout** - Address management and payment input
 - **Order History** - View all past orders
 
 ### 🎨 UI/UX Features
 - Beautiful modern design with smooth animations
 - Complete Dark Mode support
+- Responsive design for all screen sizes
 - Loading skeletons for better UX
 - Empty state illustrations
 
 ### 💾 Technical Features
 - SQLite local database for cart and favorites
 - Persistent user sessions
+- Image caching and optimization
+- Debounced search
 - Haptic feedback
 
 ---
@@ -124,46 +128,22 @@ Clean Architecture with feature-first structure:
 
 ```
 lib/
-├── app/
-│   ├── bloc/              # Global state management (Settings, Theme)
-│   ├── functions/         # Utility functions
-│   ├── models/           # Shared models (ProductModel)
-│   └── widgets/          # Reusable widgets
-├── configurations/
-│   ├── app_endpoints.dart    # API endpoint constants
-│   ├── app_events.dart       # BLoC events
-│   ├── app_states.dart       # BLoC states
-│   └── app_theme.dart        # Theme configuration
-├── features/
+├── app/                    # Global app components
+│   ├── bloc/              # Settings & theme management
+│   ├── models/            # Shared models
+│   └── widgets/           # Reusable widgets
+├── configurations/        # App configuration
+├── features/              # Feature modules
 │   ├── authentication/
-│   │   ├── ui/
-│   │   │   ├── screens/     # Login, Signup, Splash, OnBoarding
-│   │   │   ├── widgets/     # Auth-specific widgets
-│   │   │   └── blocs/       # Authentication BLoC
 │   ├── home_screen/
-│   │   ├── ui/              # Home screen UI
-│   │   ├── domain/          # Business logic & models
-│   │   └── data/            # Data repositories
 │   ├── products_details/
-│   ├── search_products/
 │   ├── cart/
 │   ├── favorites/
 │   ├── checkout/
-│   ├── my_orders/
-│   ├── profile/
-│   └── notification/
-├── handlers/
-│   ├── cart_database.dart       # SQLite cart operations
-│   ├── favorite_handler.dart    # SQLite favorites operations
-│   ├── snackbars_handler.dart   # Custom snackbar utility
-│   └── vibration_handler.dart   # Haptic feedback
-├── navigation/
-│   ├── app_routes.dart          # Route constants
-│   └── route_generator.dart     # Route configuration
-├── network/
-│   ├── app_end_points.dart      # API endpoints
-│   └── network_handler.dart     # Dio HTTP client
-└── main.dart                    # App entry point
+│   └── ...
+├── handlers/              # Database & utility handlers
+├── navigation/            # Routing
+└── network/               # API integration
 ```
 
 **Design Patterns:** BLoC, Repository, Singleton, Factory
@@ -230,7 +210,7 @@ The app uses **DummyJSON API** for demo data. Endpoints are configured in:
 
 ### Color Palette
 ```dart
-Main Color:      #452CE8
+Main Color:      #1f402b (Dark Green)
 Main Grey:       #68656E
 Light Primary:   #FBFBFC
 Dark Primary:    #323135
@@ -258,7 +238,7 @@ Network layer built with **Dio** client with centralized error handling.
 ## 📊 Project Outcomes
 
 ### What We Built
-- ✅ Complete e-commerce app
+- ✅ Complete e-commerce app from scratch
 - ✅ Clean architecture implementation
 - ✅ Cross-platform (iOS & Android)
 - ✅ Dark mode support
@@ -277,22 +257,36 @@ Network layer built with **Dio** client with centralized error handling.
 
 ### Statistics
 - **10,000+** lines of Dart code
+- **10+** major features
 - **20+** screens
+- **15+** packages
 - **1 month** development time
 
+---
 
-## 📞 Contact & Social Links
+## 🔗 Quick Links
 
-- **GitHub**: [@Yousef-Sh3ban](https://github.com/Yousef-Sh3ban)
-- **LinkedIn**: [yousef-sh3ban](https://linkedin.com/in/yousef-sh3ban)
-- **Email**: yousefshaban1551@gmail.com
+- [Flutter Documentation](https://docs.flutter.dev/)
+- [BLoC Pattern](https://bloclibrary.dev/)
+- [InnovaDigits](https://innovadigits.com)
 
 ---
 
 <div align="center">
 
-**⭐ If you found this project helpful, please consider giving it a star!**
+### 🎓 Flutter Master Class Graduation Project
 
-Made with ❤️ using Flutter
+**Made with ❤️ by Team 2**
+
+**InnovaDigits Academy | November 2025**
+
+---
+
+[![GitHub stars](https://img.shields.io/github/stars/Yousef-Sh3ban/ShopZen?style=social)](https://github.com/Yousef-Sh3ban/ShopZen)
+[![GitHub forks](https://img.shields.io/github/forks/Yousef-Sh3ban/ShopZen?style=social)](https://github.com/Yousef-Sh3ban/ShopZen/fork)
+
+---
+
+**© 2025 InnovaDigits Academy | Flutter Master Class**
 
 </div>
