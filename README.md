@@ -67,9 +67,6 @@
 ### 📊 Project Management
 
 <div align="center">
-  <img src="assets/screenshots/project_diagram.png" alt="Project Architecture" width="80%">
-  <p><em>Project Architecture & Flow Diagram</em></p>
-  <br>
   <img src="assets/screenshots/Task_division.png" alt="Task Division" width="80%">
   <p><em>Sprint Planning & Task Distribution</em></p>
 </div>
