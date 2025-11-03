@@ -38,7 +38,7 @@
 
 | Notification Settings | Profile | Account | Logout |
 |:--------------------:|:-------:|:-------:|:------:|
-| <img src="assets/screenshots/notifaction_settings.jpg" width="180"> | <img src="assets/screenshots/profile.jpg" width="180"> | <img src="assets/screenshots/dark_account.jpeg" width="180"> | <img src="assets/screenshots/logout.jpg" width="180"> |
+| <img src="assets/screenshots/notifaction_settings.jpg" width="180"> | <img src="assets/screenshots/dark_profile.jpg" width="180"> | <img src="assets/screenshots/dark_account.jpeg" width="180"> | <img src="assets/screenshots/logout.jpg" width="180"> |
 
 </div>
 
